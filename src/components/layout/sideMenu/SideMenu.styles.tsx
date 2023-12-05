@@ -25,7 +25,7 @@ const StyledSideMenu = styled.nav`
         width: 100%;
     }
 
-    .logo {
+    .logo, .used-space {
         margin-bottom: ${(props) => props.theme.margins.extraBig};
     }
 

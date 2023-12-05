@@ -7,6 +7,7 @@ import iconFolder from '../../../assets/icons/icon-folder.svg'
 import iconFiles from '../../../assets/icons/icon-files.svg'
 import iconStar from '../../../assets/icons/icon-star.svg'
 import iconTrash from '../../../assets/icons/icon-trash.svg'
+import iconAccount from '../../../assets/icons/icon-account.svg'
 
 const SideMenu = () => {
     return <StyledSideMenu>
@@ -44,8 +45,16 @@ const SideMenu = () => {
             </Button>
         </section>
 
-        <section>
+        <section className='used-space'>
             <UsedSpace />
+        </section>
+
+        <section>
+            <Button variant='tertiary'>
+                <img src={iconAccount} alt='Moje konto' />
+
+                Moje konto
+            </Button>
         </section>
     </StyledSideMenu>
 }
