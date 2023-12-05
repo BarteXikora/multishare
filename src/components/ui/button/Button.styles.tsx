@@ -37,7 +37,7 @@ const buttonTertiaryActiveStyles = css`
 const StyledButton = styled.button<ButtonProps>`
     display: flex;
     align-items: center;
-    gap: ${(props) => props.theme.margins.small};
+    gap: ${(props) => props.theme.margins.medium};
     border: none;
     border-radius: ${(props) => props.theme.borderRadiuses.small};
     transition: ${(props) => props.theme.transition};
