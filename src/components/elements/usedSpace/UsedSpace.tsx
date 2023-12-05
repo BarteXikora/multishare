@@ -37,7 +37,7 @@ const UsedSpace = () => {
     }, [])
 
     return <StyledUsedSpace>
-        <Button variant='tertiary' size='big'>
+        <Button $variant='tertiary' $size='big'>
             <h2>Aktualne wykorzystanie dysku:</h2>
 
             <div className="progress-bar">

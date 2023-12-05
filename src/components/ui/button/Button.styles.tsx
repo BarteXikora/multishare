@@ -43,16 +43,16 @@ const StyledButton = styled.button<ButtonProps>`
     transition: ${(props) => props.theme.transition};
     cursor: pointer;
 
-    padding: ${(props) => props.size === 'big' ?
+    padding: ${(props) => props.$size === 'big' ?
         props.theme.margins.sectionMedium
         :
         props.theme.margins.sectionSmall
     };
 
-    ${(props) => props.variant === 'tertiary' ?
-        (props.active ? buttonTertiaryActiveStyles : buttonTertiaryStyles)
+    ${(props) => props.$variant === 'tertiary' ?
+        (props.$active ? buttonTertiaryActiveStyles : buttonTertiaryStyles)
         :
-        props.variant === 'secondary' ?
+        props.$variant === 'secondary' ?
             buttonSecondaryStyles
             :
             buttonPrimaryStyles

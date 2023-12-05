@@ -12,7 +12,7 @@ import iconAccount from '../../../assets/icons/icon-account.svg'
 const SideMenu = () => {
     return <StyledSideMenu>
         <section className='logo'>
-            <Button variant='tertiary'>
+            <Button $variant='tertiary'>
                 <img src={logo} alt="Logo multishare" />
             </Button>
         </section>
@@ -20,25 +20,25 @@ const SideMenu = () => {
         <section className='nav-menu'>
             <h2>Menu:</h2>
 
-            <Button variant='tertiary' active>
+            <Button $variant='tertiary' $active>
                 <img src={iconFolder} alt='Dysk' />
 
                 Dysk
             </Button>
 
-            <Button variant='tertiary'>
+            <Button $variant='tertiary'>
                 <img src={iconFiles} alt='Wszystkie pliki' />
 
                 Wszystkie pliki
             </Button>
 
-            <Button variant='tertiary'>
+            <Button $variant='tertiary'>
                 <img src={iconStar} alt='Oznaczone gwiazdką' />
 
                 Oznaczone gwiazdką
             </Button>
 
-            <Button variant='tertiary'>
+            <Button $variant='tertiary'>
                 <img src={iconTrash} alt='Kosz' />
 
                 Kosz
@@ -50,7 +50,7 @@ const SideMenu = () => {
         </section>
 
         <section>
-            <Button variant='tertiary'>
+            <Button $variant='tertiary'>
                 <img src={iconAccount} alt='Moje konto' />
 
                 Moje konto
