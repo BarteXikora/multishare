@@ -16,7 +16,6 @@ const StyledUsedSpace = styled.div`
         height: 12px;
         width: 100%;
         background-color: ${(props) => props.theme.colors.gray2};
-        margin: ${(props) => props.theme.margins.small} 0;
         border-radius: ${(props) => props.theme.borderRadiuses.big};
 
         .progress {
