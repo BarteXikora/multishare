@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 const StyledSideMenu = styled.nav`
+    display: flex;
+    flex-direction: column;
     position: fixed;
     background-color: ${(props) => props.theme.colors.black};
     color: ${(props) => props.theme.colors.white};
@@ -28,6 +30,8 @@ const StyledSideMenu = styled.nav`
     }
 
     .nav-menu {
+        height: 100%;
+
         button {
             margin-bottom: ${(props) => props.theme.margins.small};
         }

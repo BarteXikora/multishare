@@ -1,5 +1,6 @@
 import StyledSideMenu from './SideMenu.styles'
 import Button from '../../ui/button/Button'
+import UsedSpace from '../../elements/usedSpace/UsedSpace'
 
 import logo from '../../../assets/images/img-logo.svg'
 import iconFolder from '../../../assets/icons/icon-folder.svg'
@@ -41,6 +42,10 @@ const SideMenu = () => {
 
                 Kosz
             </Button>
+        </section>
+
+        <section>
+            <UsedSpace />
         </section>
     </StyledSideMenu>
 }
