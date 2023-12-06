@@ -34,6 +34,15 @@ const buttonTertiaryActiveStyles = css`
     cursor: default;
 `
 
+const buttonWrongStyles = css`
+    background-color: ${(props) => props.theme.colors.wrong6};
+    color: ${(props) => props.theme.colors.white};
+
+    &:hover {
+        background-color: ${(props) => props.theme.colors.wrong5};
+    }
+`
+
 const buttonBigStyles = css`
     padding: ${(props) => props.theme.margins.sectionMedium}; 
     border-radius: ${(props) => props.theme.borderRadiuses.big};
@@ -64,7 +73,10 @@ const StyledButton = styled.button<ButtonProps>`
         props.$variant === 'secondary' ?
             buttonSecondaryStyles
             :
-            buttonPrimaryStyles
+            props.$variant === 'wrong' ?
+                buttonWrongStyles
+                :
+                buttonPrimaryStyles
     };
 `
 
