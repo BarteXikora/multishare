@@ -34,19 +34,28 @@ const buttonTertiaryActiveStyles = css`
     cursor: default;
 `
 
+const buttonBigStyles = css`
+    padding: ${(props) => props.theme.margins.sectionMedium}; 
+    border-radius: ${(props) => props.theme.borderRadiuses.big};
+`
+
+const buttonSmallStyles = css`
+    padding: ${(props) => props.theme.margins.sectionSmall}; 
+    border-radius: ${(props) => props.theme.borderRadiuses.small};
+`
+
 const StyledButton = styled.button<ButtonProps>`
     display: flex;
     align-items: center;
     gap: ${(props) => props.theme.margins.medium};
     border: none;
-    border-radius: ${(props) => props.theme.borderRadiuses.small};
     transition: ${(props) => props.theme.transition};
     cursor: pointer;
 
-    padding: ${(props) => props.$size === 'big' ?
-        props.theme.margins.sectionMedium
+    ${(props) => props.$size === 'big' ?
+        buttonBigStyles
         :
-        props.theme.margins.sectionSmall
+        buttonSmallStyles
     };
 
     ${(props) => props.$variant === 'tertiary' ?
