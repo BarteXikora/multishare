@@ -3,6 +3,8 @@ import AppTheme from './theme/AppTheme'
 import SideMenu from './components/layout/sideMenu/SideMenu'
 import MainBody from './components/layout/mainBody/MainBody'
 import TopBar from './components/layout/topBar/TopBar'
+import BodyColumns from './components/layout/bodyColumns/BodyColumns'
+import Header from './components/layout/header/Header'
 
 const App = () => {
   return <AppTheme>
@@ -10,6 +12,10 @@ const App = () => {
 
     <MainBody>
       <TopBar />
+
+      <BodyColumns>
+        <Header />
+      </BodyColumns>
     </MainBody>
   </AppTheme>
 }
