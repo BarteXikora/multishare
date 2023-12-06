@@ -1,7 +1,9 @@
 import StyledPathBox from './PathBox.styles'
 import Button from '../../ui/button/Button'
 import iconBack from '../../../assets/icons/icon-back.svg'
-import iconArrow from '../../../assets/icons/icon-arrow-right.svg'
+import PathButton from './pathButton/PathButton'
+
+const __currentPath = ['Moje pliki', 'Prywatne', 'Obrazy', 'Wycieczka na rowery 2023']
 
 const PathBox = () => {
     return <StyledPathBox>
@@ -9,19 +11,15 @@ const PathBox = () => {
             <img src={iconBack} alt="Cofnij" />
         </Button>
 
-        <Button className='path-element' $variant='tertiary'>Moje pliki</Button>
-
-        <img src={iconArrow} alt="/" />
-
-        <Button className='path-element' $variant='tertiary'>Prywatne</Button>
-
-        <img src={iconArrow} alt="/" />
-
-        <Button className='path-element' $variant='tertiary'>Obrazy</Button>
-
-        <img src={iconArrow} alt="/" />
-
-        <Button className='path-element' $variant='tertiary'>Wycieczka na rowery 2023</Button>
+        {
+            __currentPath.map((path, n) => {
+                return <PathButton
+                    key={n}
+                    displayName={path}
+                    isLast={n === __currentPath.length - 1}
+                />
+            })
+        }
     </StyledPathBox>
 }
 
