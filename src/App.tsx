@@ -14,7 +14,11 @@ const App = () => {
       <TopBar />
 
       <BodyColumns>
-        <Header />
+        <section className='main-column'>
+          <Header />
+        </section>
+
+        <aside className='aside-column'></aside>
       </BodyColumns>
     </MainBody>
   </AppTheme>
