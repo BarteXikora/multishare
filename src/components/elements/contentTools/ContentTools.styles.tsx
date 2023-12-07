@@ -5,6 +5,7 @@ const StyledContentTools = styled.div`
     justify-content: space-between;
     gap: ${(props) => props.theme.margins.big};
     background-color: ${(props) => props.theme.colors.white};
+    padding-bottom: ${(props) => props.theme.margins.medium};
 
     section {
         display: flex;

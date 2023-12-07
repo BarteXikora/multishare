@@ -9,6 +9,7 @@ const StyledTopBar = styled.nav`
     background-color: ${(props) => props.theme.colors.white};
     padding: ${(props) => props.theme.margins.sectionBig};
     box-sizing: border-box;
+    z-index: 1000;
 
     .search {
         display: flex;
