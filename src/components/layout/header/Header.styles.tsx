@@ -8,6 +8,7 @@ const StyledHeader = styled.header`
     gap: ${(props) => props.theme.margins.medium};
     width: 100%;
     top: 92px;
+    z-index: 1000;
 `
 
 export default StyledHeader
