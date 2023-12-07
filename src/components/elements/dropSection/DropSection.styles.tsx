@@ -21,6 +21,7 @@ const StyledDropSection = styled.div`
 
     img {
         width: 150px;
+        align-self: center;
     }
 `
 
