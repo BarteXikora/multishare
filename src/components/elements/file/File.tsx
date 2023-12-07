@@ -1,5 +1,8 @@
+import { useState, useEffect } from 'react'
+
 import StyledFile from './File.styles'
 import Button from '../../ui/button/Button'
+import getPreviewImage from '../../../functions/getPreviewImage/getPreviewImage'
 
 import iconStar from '../../../assets/icons/icon-star-color.svg'
 import iconKebab from '../../../assets/icons/icon-kebab.svg'
@@ -12,10 +15,17 @@ type FileProps = {
 }
 
 const File = ({ displayName, extension, preview, isStar }: FileProps) => {
+    const [previewImage, setPreviewImage] = useState<string>('')
+
+    useEffect(() => {
+        setPreviewImage(getPreviewImage(preview, extension))
+
+    }, [preview, extension])
+
     return <StyledFile $variant='secondary' $size='big'>
         <div
             className={`preview ${preview && 'preview-img'}`}
-            style={{ backgroundImage: `url('${preview}')` }}
+            style={{ backgroundImage: `url('${previewImage}')` }}
         >
             <div className="extension">{extension}</div>
         </div>
