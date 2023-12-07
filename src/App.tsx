@@ -5,6 +5,7 @@ import MainBody from './components/layout/mainBody/MainBody'
 import TopBar from './components/layout/topBar/TopBar'
 import BodyColumns from './components/layout/bodyColumns/BodyColumns'
 import Header from './components/layout/header/Header'
+import ContentSection from './components/layout/contentSection/ContentSection'
 
 const App = () => {
   return <AppTheme>
@@ -16,6 +17,8 @@ const App = () => {
       <BodyColumns>
         <section className='main-column'>
           <Header />
+
+          <ContentSection />
         </section>
 
         <aside className='aside-column'></aside>
