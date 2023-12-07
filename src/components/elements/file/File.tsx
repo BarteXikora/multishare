@@ -14,7 +14,7 @@ type FileProps = {
 const File = ({ displayName, extension, preview, isStar }: FileProps) => {
     return <StyledFile $variant='secondary' $size='big'>
         <div
-            className="preview"
+            className={`preview ${preview && 'preview-img'}`}
             style={{ backgroundImage: `url('${preview}')` }}
         >
             <div className="extension">{extension}</div>

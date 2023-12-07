@@ -12,8 +12,12 @@ const StyledFile = styled(Button)`
         background-color: ${(props) => props.theme.colors.gray5};
         width: 100%;
         aspect-ratio: 7 / 3;
-        background-position: center;
-        background-size: cover;
+
+        &.preview-img {
+            box-shadow: inset 0px 0px 47px -10px ${(props) => props.theme.colors.black};
+            background-position: center;
+            background-size: cover;
+        }
     }
 
     .extension {
