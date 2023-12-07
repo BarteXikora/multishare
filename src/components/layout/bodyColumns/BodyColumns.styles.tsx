@@ -13,7 +13,7 @@ const StyledBodyColumns = styled.div`
     }
 
     .aside-column {
-        width: 400px;
+        width: 300px;
         flex-shrink: 0;
     }
 `
