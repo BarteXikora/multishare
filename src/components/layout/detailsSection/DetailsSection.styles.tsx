@@ -9,7 +9,11 @@ const StyledDetailsSection = styled.div`
     box-sizing: border-box;
     background-color: ${(props) => props.theme.colors.gray2};
     border-radius: ${(props) => props.theme.borderRadiuses.big};
-    padding: ${(props) => props.theme.margins.sectionBig};
+
+    .main-content {
+        height: 100%;
+        padding: ${(props) => props.theme.margins.sectionBig};
+    }
 `
 
 export default StyledDetailsSection
