@@ -7,12 +7,16 @@ import iconKebab from '../../../assets/icons/icon-kebab.svg'
 type FileProps = {
     displayName: string
     extension: string
+    preview: string | false
     isStar: boolean
 }
 
-const File = ({ displayName, extension, isStar }: FileProps) => {
+const File = ({ displayName, extension, preview, isStar }: FileProps) => {
     return <StyledFile $variant='secondary' $size='big'>
-        <div className="preview">
+        <div
+            className="preview"
+            style={{ backgroundImage: `url('${preview}')` }}
+        >
             <div className="extension">{extension}</div>
         </div>
 

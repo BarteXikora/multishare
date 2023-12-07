@@ -9,9 +9,11 @@ const StyledFile = styled(Button)`
 
     .preview {
         position: relative;
-        background-color: ${(props) => props.theme.colors.correct6};
+        background-color: ${(props) => props.theme.colors.gray5};
         width: 100%;
-        aspect-ratio: 5 / 2;
+        aspect-ratio: 7 / 3;
+        background-position: center;
+        background-size: cover;
     }
 
     .extension {
