@@ -56,7 +56,7 @@ const buttonSmallStyles = css`
 const StyledButton = styled.button<ButtonProps>`
     display: flex;
     align-items: center;
-    gap: ${(props) => props.theme.margins.medium};
+    gap: ${(props) => props.theme.margins.small};
     border: none;
     transition: ${(props) => props.theme.transition};
     cursor: pointer;

@@ -12,6 +12,11 @@ const StyledSelectProject = styled.section`
         gap: ${(props) => props.theme.margins.medium};
         font-size: ${(props) => props.theme.fontSizes.title};
         margin: 0;
+
+        img {
+            width: 38px;
+            height: 38px;
+        }
     }
 `
 

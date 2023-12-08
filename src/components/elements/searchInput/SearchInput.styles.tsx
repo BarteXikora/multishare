@@ -11,6 +11,7 @@ const StyledSeachInput = styled.form`
     }
 
     button {
+        border-radius: ${(props) => props.theme.borderRadiuses.big};
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
 
