@@ -11,7 +11,7 @@ import iconTrash from '../../../assets/icons/icon-trash.svg'
 import iconAccount from '../../../assets/icons/icon-account.svg'
 
 const SideMenu = () => {
-    return <StyledSideMenu className='shown'>
+    return <StyledSideMenu className='_shown'>
         <Button className='close-button' $variant='wrong' $size='big'>
             <img src={iconClose} alt='Zamknij menu' />
         </Button>
