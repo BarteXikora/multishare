@@ -25,6 +25,8 @@ const StyledContentSection = styled.main`
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        padding-top: 50px;
+
         .content {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
