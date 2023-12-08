@@ -37,6 +37,15 @@ const StyledSelectProject = styled.section`
             flex-shrink: 0;
         }
     }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.smallerMobile}) {
+        width: 100%;
+
+        .mobile-button {
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
 `
 
 export default StyledSelectProject
