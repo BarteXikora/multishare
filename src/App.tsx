@@ -8,8 +8,12 @@ import Header from './components/layout/header/Header'
 import ContentSection from './components/layout/contentSection/ContentSection'
 import DetailsSection from './components/layout/detailsSection/DetailsSection'
 
+import ScreenSize from './components/__dev/__ScreenSize'
+
 const App = () => {
   return <AppTheme>
+    <ScreenSize />
+
     <SideMenu />
 
     <MainBody>
