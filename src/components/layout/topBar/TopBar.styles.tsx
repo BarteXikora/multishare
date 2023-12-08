@@ -33,6 +33,11 @@ const StyledTopBar = styled.nav`
             flex-shrink: 1000;
         }
     }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        padding: ${(props) => props.theme.margins.sectionMedium};
+        gap: ${(props) => props.theme.margins.medium};
+    }
 `
 
 export default StyledTopBar
