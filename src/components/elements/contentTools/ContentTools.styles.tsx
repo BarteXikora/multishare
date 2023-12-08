@@ -28,8 +28,27 @@ const StyledContentTools = styled.div`
         display: none;
     }
 
+    .tools-buttons {
+        display: flex;
+        gap: ${(props) => props.theme.margins.small};
+    }
+
+    .open-tools-buttons {
+        display: none;
+    }
+
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
         .details-button {
+            display: flex;
+        }
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        .tools-buttons {
+            display: none;
+        }
+
+        .open-tools-buttons {
             display: flex;
         }
     }
