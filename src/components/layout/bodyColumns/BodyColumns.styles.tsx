@@ -17,6 +17,14 @@ const StyledBodyColumns = styled.div`
         flex-shrink: 0;
     }
 
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
+        gap: 0;
+
+        .aside-column {
+            width: 0;
+        }
+    }
+
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
         padding-top: 74px;
         padding: ${(props) => props.theme.margins.sectionMedium};

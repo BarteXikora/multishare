@@ -14,6 +14,37 @@ const StyledDetailsSection = styled.div`
         height: 100%;
         padding: ${(props) => props.theme.margins.big};
     }
+
+    .close-button {
+        display: none;
+        position: absolute;
+        width: auto;
+        left: -60px;
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
+        position: fixed;
+        z-index: 2000;
+        height: calc(100vh - (${(props) => props.theme.margins.big} * 2));
+        margin: ${(props) => props.theme.margins.sectionBig};
+        top: 0;
+        right: auto;
+        left: 100vw;
+        width: 300px;
+
+        &.shown {
+            left: auto;
+            right: 0;
+            
+            .close-button {
+                display: flex;
+            }
+        }
+
+        .process-pill {
+            display: none;
+        }
+    }
 `
 
 export default StyledDetailsSection
