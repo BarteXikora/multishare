@@ -7,7 +7,7 @@ const StyledHeader = styled.header`
     background-color: ${(props) => props.theme.colors.white};
     gap: ${(props) => props.theme.margins.medium};
     width: 100%;
-    top: 92px;
+    top: 98px;
     z-index: 1000;
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {

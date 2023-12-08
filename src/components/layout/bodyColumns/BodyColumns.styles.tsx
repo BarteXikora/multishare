@@ -5,7 +5,7 @@ const StyledBodyColumns = styled.div`
     display: flex;
     gap: ${(props) => props.theme.margins.big};
     padding: ${(props) => props.theme.margins.sectionBig};
-    padding-top: 92px;
+    padding-top: 98px;
     box-sizing: border-box;
 
     .main-column {
