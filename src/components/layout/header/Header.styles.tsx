@@ -9,6 +9,10 @@ const StyledHeader = styled.header`
     width: 100%;
     top: 92px;
     z-index: 1000;
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        top: 74px;
+    }
 `
 
 export default StyledHeader

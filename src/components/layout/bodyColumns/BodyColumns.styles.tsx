@@ -16,6 +16,11 @@ const StyledBodyColumns = styled.div`
         width: 300px;
         flex-shrink: 0;
     }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        padding-top: 74px;
+        padding: ${(props) => props.theme.margins.sectionMedium};
+    }
 `
 
 export default StyledBodyColumns

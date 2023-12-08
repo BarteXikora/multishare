@@ -7,6 +7,11 @@ const StyledPathBox = styled.nav`
     color: ${(props) => props.theme.colors.white};
     padding: ${(props) => props.theme.margins.sectionMedium};
     border-radius: ${(props) => props.theme.borderRadiuses.big};
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        padding: ${(props) => props.theme.margins.sectionSmall};
+        gap: 0;
+    }
 `
 
 export default StyledPathBox
