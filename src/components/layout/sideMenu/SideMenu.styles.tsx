@@ -13,6 +13,7 @@ const StyledSideMenu = styled.nav`
     height: 100%;
     box-sizing: border-box;
     padding: ${(props) => props.theme.margins.sectionBig};
+    z-index: 2000;
 
     h2 {
         font-weight: bold;
@@ -40,10 +41,26 @@ const StyledSideMenu = styled.nav`
         }
     }
 
+    .close-button {
+        display: none;
+        position: absolute;
+        width: auto;
+        right: -60px;
+    }
+
     @media (max-width: ${(props) => props.theme.screenBreakpoints.tablet}) {
         position: absolute;
         left: auto;
         right: 100vw;
+
+        &.shown {
+            right: auto;
+            left: 0;
+
+            .close-button {
+                display: flex !important;
+            }
+        }
     }
 `
 
