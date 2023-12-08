@@ -3,9 +3,13 @@ import styled from 'styled-components'
 const StyledContentTools = styled.div`
     display: flex;
     justify-content: space-between;
-    gap: ${(props) => props.theme.margins.big};
+    gap: ${(props) => props.theme.margins.small};
     background-color: ${(props) => props.theme.colors.white};
     padding-bottom: ${(props) => props.theme.margins.medium};
+
+    button {
+        white-space: nowrap;
+    }
 
     section {
         display: flex;
@@ -17,11 +21,11 @@ const StyledContentTools = styled.div`
     }
 
     .general-tools {
-        display: none;
+        /* display: none; */
     }
 
     .selected-tools {
-        /* display: none; */
+        display: none;
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
