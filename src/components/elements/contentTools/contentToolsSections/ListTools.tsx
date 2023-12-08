@@ -4,6 +4,7 @@ import iconSelect from '../../../../assets/icons/icon-ok.svg'
 import iconSort from '../../../../assets/icons/icon-sort.svg'
 import iconFilter from '../../../../assets/icons/icon-filter.svg'
 import iconDisplay from '../../../../assets/icons/icon-display.svg'
+import iconDetails from '../../../../assets/icons/icon-details.svg'
 
 const ListTools = () => {
     return <section className="list-tools">
@@ -29,6 +30,10 @@ const ListTools = () => {
             <img src={iconDisplay} alt="Wyświetl..." />
 
             Wyświetl...
+        </Button>
+
+        <Button className='details-button'>
+            <img src={iconDetails} alt="Pokaż szczegóły" />
         </Button>
     </section>
 }

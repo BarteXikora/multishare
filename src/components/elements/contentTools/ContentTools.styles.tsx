@@ -12,12 +12,22 @@ const StyledContentTools = styled.div`
         gap: ${(props) => props.theme.margins.small};
     }
 
+    .details-button {
+        display: none;
+    }
+
     .general-tools {
         display: none;
     }
 
     .selected-tools {
         /* display: none; */
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
+        .details-button {
+            display: flex;
+        }
     }
 `
 
