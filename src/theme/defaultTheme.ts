@@ -57,11 +57,19 @@ const borderRadiuses = {
     small: '6px'
 }
 
+const screenBreakpoints = {
+    desktop: '1760px',
+    tablet: '1200px',
+    mobile: '880px',
+    smallerMobile: '600px'
+}
+
 const defaultTheme = {
     colors,
     fontSizes,
     margins: { ...margins, ...sectionMargins },
     borderRadiuses,
+    screenBreakpoints,
     transition: 'all .2s ease-in-out'
 }
 
