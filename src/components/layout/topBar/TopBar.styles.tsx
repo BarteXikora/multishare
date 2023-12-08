@@ -16,9 +16,17 @@ const StyledTopBar = styled.nav`
         width: 50%;
     }
 
+    .hamburger-button {
+        display: none;
+    }
+
     @media (max-width: ${(props) => props.theme.screenBreakpoints.tablet}) {
         left: 0;
         width: 100%;
+
+        .hamburger-button {
+            display: flex;
+        }
     }
 `
 
