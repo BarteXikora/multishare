@@ -1,6 +1,7 @@
 import AppTheme from './theme/AppTheme'
 
 import SideMenu from './components/layout/sideMenu/SideMenu'
+import Courtain from './components/layout/courtain/Courtain'
 import MainBody from './components/layout/mainBody/MainBody'
 import TopBar from './components/layout/topBar/TopBar'
 import BodyColumns from './components/layout/bodyColumns/BodyColumns'
@@ -15,6 +16,8 @@ const App = () => {
     <ScreenSize />
 
     <SideMenu />
+
+    <Courtain />
 
     <MainBody>
       <TopBar />
