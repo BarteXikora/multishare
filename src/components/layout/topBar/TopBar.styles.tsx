@@ -15,6 +15,11 @@ const StyledTopBar = styled.nav`
         display: flex;
         width: 50%;
     }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.tablet}) {
+        left: 0;
+        width: 100%;
+    }
 `
 
 export default StyledTopBar

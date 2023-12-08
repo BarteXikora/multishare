@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 const StyledSideMenu = styled.nav`
+    position: relative;
+    right: auto;
+    left: 0;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -35,6 +38,12 @@ const StyledSideMenu = styled.nav`
         button {
             margin-bottom: ${(props) => props.theme.margins.small};
         }
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.tablet}) {
+        position: absolute;
+        left: auto;
+        right: 100vw;
     }
 `
 
