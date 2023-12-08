@@ -12,8 +12,12 @@ const StyledContentTools = styled.div`
         gap: ${(props) => props.theme.margins.small};
     }
 
-    .selected-tools {
+    .general-tools {
         display: none;
+    }
+
+    .selected-tools {
+        /* display: none; */
     }
 `
 
