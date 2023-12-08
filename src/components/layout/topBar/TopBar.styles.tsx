@@ -27,6 +27,11 @@ const StyledTopBar = styled.nav`
         .hamburger-button {
             display: flex;
         }
+
+        .search {
+            width: 100%;
+            flex-shrink: 1000;
+        }
     }
 `
 
