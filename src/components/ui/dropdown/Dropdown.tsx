@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import useClickOutside from '../../../functions/useClickOutside/useClickOutside'
 
 import StyledDropdown from './Dropdown.styles'
 import Button, { ButtonProps } from '../button/Button'
@@ -16,7 +17,10 @@ type DropdownProps = {
 const Dropdown = ({ buttonContent, dropdownContent, buttonOptions, showArrow = true, className }: DropdownProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
 
-    return <StyledDropdown className={`${className || ''} ${isOpen && 'dropdown-open'}`}>
+    const dropdownRef = useRef(null)
+    useClickOutside(dropdownRef, () => setIsOpen(false))
+
+    return <StyledDropdown ref={dropdownRef} className={`${className || ''} ${isOpen && 'dropdown-open'}`}>
         <Button
             $variant={buttonOptions?.$variant || 'primary'}
             $size={buttonOptions?.$size || 'small'}
