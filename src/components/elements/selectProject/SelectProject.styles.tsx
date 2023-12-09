@@ -18,6 +18,34 @@ const StyledSelectProject = styled.section`
             height: 38px;
         }
     }
+
+    .mobile-button {
+        display: none;
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.tablet}) {
+        width: auto;
+
+        h1, .desktop-button {
+            display: none;
+        }
+
+        .mobile-button {
+            display: flex;
+            font-weight: bold;
+            font-size: ${(props) => props.theme.fontSizes.subtitle};
+            flex-shrink: 0;
+        }
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.smallerMobile}) {
+        width: 100%;
+
+        .mobile-button {
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
 `
 
 export default StyledSelectProject

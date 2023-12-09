@@ -2,6 +2,7 @@ import StyledSideMenu from './SideMenu.styles'
 import Button from '../../ui/button/Button'
 import UsedSpace from '../../elements/usedSpace/UsedSpace'
 
+import iconClose from '../../../assets/icons/icon-close.svg'
 import logo from '../../../assets/images/img-logo.svg'
 import iconFolder from '../../../assets/icons/icon-folder.svg'
 import iconFiles from '../../../assets/icons/icon-files.svg'
@@ -10,7 +11,11 @@ import iconTrash from '../../../assets/icons/icon-trash.svg'
 import iconAccount from '../../../assets/icons/icon-account.svg'
 
 const SideMenu = () => {
-    return <StyledSideMenu>
+    return <StyledSideMenu className='_shown'>
+        <Button className='close-button' $variant='wrong' $size='big'>
+            <img src={iconClose} alt='Zamknij menu' />
+        </Button>
+
         <section className='logo'>
             <Button $variant='tertiary'>
                 <img src={logo} alt="Logo multishare" />

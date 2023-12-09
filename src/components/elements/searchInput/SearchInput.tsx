@@ -7,8 +7,14 @@ const SearchInput = () => {
     return <StyledSeachInput>
         <Input placeholder='Szukaj plików i folderów...' />
 
-        <Button $variant='secondary' type='submit'>
+        <Button className='search-button' $variant='secondary' type='submit'>
             <img src={iconSearch} alt="Szukaj" />
+        </Button>
+
+        <Button className='open-search-button' $variant='secondary' $size='big'>
+            <img src={iconSearch} alt="Szukaj" />
+
+            Wyszukaj...
         </Button>
     </StyledSeachInput>
 }

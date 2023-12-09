@@ -23,6 +23,20 @@ const StyledContentSection = styled.main`
     .folders-section {
         margin-bottom: ${(props) => props.theme.margins.extraBig};
     }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        padding-top: 50px;
+
+        .content {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.smallerMobile}) {
+        .content {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+    }
 `
 
 export default StyledContentSection

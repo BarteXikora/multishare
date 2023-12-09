@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 const StyledSideMenu = styled.nav`
+    position: relative;
+    right: auto;
+    left: 0;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -10,6 +13,7 @@ const StyledSideMenu = styled.nav`
     height: 100%;
     box-sizing: border-box;
     padding: ${(props) => props.theme.margins.sectionBig};
+    z-index: 2000;
 
     h2 {
         font-weight: bold;
@@ -34,6 +38,28 @@ const StyledSideMenu = styled.nav`
 
         button {
             margin-bottom: ${(props) => props.theme.margins.small};
+        }
+    }
+
+    .close-button {
+        display: none;
+        position: absolute;
+        width: auto;
+        right: -60px;
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.tablet}) {
+        position: absolute;
+        left: auto;
+        right: 100vw;
+
+        &.shown {
+            right: auto;
+            left: 0;
+
+            .close-button {
+                display: flex !important;
+            }
         }
     }
 `

@@ -3,6 +3,7 @@ import Button from '../../ui/button/Button'
 
 import iconProject from '../../../assets/icons/icon-project.svg'
 import iconArrow from '../../../assets/icons/icon-arrow-down.svg'
+import iconArrowBig from '../../../assets/icons/icon-arrow-down-big.svg'
 
 const SelectProject = () => {
     return <StyledSelectProject>
@@ -12,10 +13,16 @@ const SelectProject = () => {
             Moje pliki:
         </h1>
 
-        <Button $size='big'>
+        <Button className='desktop-button' $size='big'>
             Wszystkie projekty
 
             <img src={iconArrow} alt="Wybierz projekt" />
+        </Button>
+
+        <Button className='mobile-button' $variant='secondary' $size='big'>
+            Moje pliki
+
+            <img src={iconArrowBig} alt="Wybierz projekt" />
         </Button>
     </StyledSelectProject>
 }

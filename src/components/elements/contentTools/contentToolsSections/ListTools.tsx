@@ -4,6 +4,7 @@ import iconSelect from '../../../../assets/icons/icon-ok.svg'
 import iconSort from '../../../../assets/icons/icon-sort.svg'
 import iconFilter from '../../../../assets/icons/icon-filter.svg'
 import iconDisplay from '../../../../assets/icons/icon-display.svg'
+import iconDetails from '../../../../assets/icons/icon-details.svg'
 
 const ListTools = () => {
     return <section className="list-tools">
@@ -13,22 +14,28 @@ const ListTools = () => {
             Zaznacz wszystko
         </Button>
 
-        <Button $variant='secondary'>
-            <img src={iconSort} alt="Sortuj..." />
+        <div className="tools-buttons">
+            <Button $variant='secondary'>
+                <img src={iconSort} alt="Sortuj..." />
 
-            Sortuj...
-        </Button>
+                Sortuj...
+            </Button>
 
-        <Button $variant='secondary'>
-            <img src={iconFilter} alt="Filtruj..." />
+            <Button $variant='secondary'>
+                <img src={iconFilter} alt="Filtruj..." />
 
-            Filtruj...
-        </Button>
+                Filtruj...
+            </Button>
 
-        <Button $variant='secondary'>
-            <img src={iconDisplay} alt="Wyświetl..." />
+            <Button $variant='secondary'>
+                <img src={iconDisplay} alt="Wyświetl..." />
 
-            Wyświetl...
+                Wyświetl...
+            </Button>
+        </div>
+
+        <Button className='details-button'>
+            <img src={iconDetails} alt="Pokaż szczegóły" />
         </Button>
     </section>
 }

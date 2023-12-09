@@ -5,7 +5,7 @@ const StyledBodyColumns = styled.div`
     display: flex;
     gap: ${(props) => props.theme.margins.big};
     padding: ${(props) => props.theme.margins.sectionBig};
-    padding-top: 92px;
+    padding-top: 98px;
     box-sizing: border-box;
 
     .main-column {
@@ -15,6 +15,19 @@ const StyledBodyColumns = styled.div`
     .aside-column {
         width: 300px;
         flex-shrink: 0;
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
+        gap: 0;
+
+        .aside-column {
+            width: 0;
+        }
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        padding-top: 74px;
+        padding: ${(props) => props.theme.margins.sectionMedium};
     }
 `
 

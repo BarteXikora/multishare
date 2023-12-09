@@ -15,6 +15,29 @@ const StyledTopBar = styled.nav`
         display: flex;
         width: 50%;
     }
+
+    .hamburger-button {
+        display: none;
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.tablet}) {
+        left: 0;
+        width: 100%;
+
+        .hamburger-button {
+            display: flex;
+        }
+
+        .search {
+            width: 100%;
+            flex-shrink: 1000;
+        }
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        padding: ${(props) => props.theme.margins.sectionMedium};
+        gap: ${(props) => props.theme.margins.medium};
+    }
 `
 
 export default StyledTopBar
