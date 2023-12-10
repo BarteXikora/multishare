@@ -2,12 +2,15 @@ import StyledPathBox from './PathBox.styles'
 import Button from '../../ui/button/Button'
 import CollapsedPathButton from './collapsedPathButton/CollapsedPathButton'
 import PathButton from './pathButton/PathButton'
+import getShortenName from '../../../functions/getShortenName/getShortenName'
 
 import iconBack from '../../../assets/icons/icon-back.svg'
 import iconHome from '../../../assets/icons/icon-home.svg'
 import iconArrow from '../../../assets/icons/icon-arrow-right.svg'
 
-const __currentPath = ['Moje pliki', 'Prywatne', 'Obrazy', 'Wycieczka na rowery 2023']
+const MAX_FOLDER_NAME_LENGTH = 30
+
+const __currentPath = ['Moje pliki', 'Prywatne', 'Obrazy', 'Wycieczka na rowery 2023 - głównie']
 
 const PathBox = () => {
     return <StyledPathBox>
@@ -24,6 +27,7 @@ const PathBox = () => {
         <CollapsedPathButton
             path={__currentPath}
             isPathCollapsed={__currentPath.length > 4}
+            maxFolderNameLength={MAX_FOLDER_NAME_LENGTH}
         />
 
         {
@@ -40,11 +44,11 @@ const PathBox = () => {
                     if (__currentPath.length <= 4 || (__currentPath.length > 4 && n > __currentPath.length - 3))
                         return <PathButton
                             key={n}
-                            displayName={path}
+                            displayName={getShortenName(path, MAX_FOLDER_NAME_LENGTH)}
                             isLast={n === __currentPath.length - 1}
                         />
 
-                    return ''
+                    return <></>
                 })
             }
         </div>
