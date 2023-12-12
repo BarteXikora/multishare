@@ -6,9 +6,9 @@ import CurrentFolderButton from './currentFolderButon/CurrentFolderButton'
 
 import getShortenName from '../../../functions/getShortenName/getShortenName'
 
-const MAX_FOLDER_NAME_LENGTH = 25
+const MAX_FOLDER_NAME_LENGTH = 30
 
-const __currentPath = ['Moje pliki', 'Prywatne', 'Obrazy', 'Wycieczka na rowery 2023 - wyjazd']
+const __currentPath = ['Moje pliki', 'Prywatne', 'Obrazy', 'Wycieczka na rowery 2023']
 
 const PathBox = () => {
     const [shortenPath, setShortenPath] = useState<string[]>([])
