@@ -6,7 +6,7 @@ describe('Content Tools', () => {
     test('renders correctly', () => {
         render(<ContentTools />)
         const buttonElements = screen.getAllByRole('button')
-        expect(buttonElements).toHaveLength(6)
+        expect(buttonElements).toHaveLength(8)
     })
 
 })

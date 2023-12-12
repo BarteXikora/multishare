@@ -8,11 +8,11 @@ describe('Select Project', () => {
 
         const imageElement = screen.getAllByRole('img')
         const headingElement = screen.getByRole('heading', { level: 1 })
-        const buttonElement = screen.getByRole('button')
+        const buttonsElements = screen.getAllByRole('button')
 
-        expect(imageElement).toHaveLength(2)
+        expect(imageElement).toHaveLength(3)
         expect(headingElement).toBeInTheDocument()
-        expect(buttonElement).toBeInTheDocument()
+        expect(buttonsElements).toHaveLength(2)
     })
 
 })

@@ -7,12 +7,12 @@ describe('Search Input', () => {
         render(<SearchInput />)
 
         const inputElement = screen.getByRole('textbox')
-        const buttonElement = screen.getByRole('button')
-        const imageElement = screen.getByRole('img')
+        const buttonsElements = screen.getAllByRole('button')
+        const imagesElements = screen.getAllByRole('img')
 
         expect(inputElement).toBeInTheDocument()
-        expect(buttonElement).toBeInTheDocument()
-        expect(imageElement).toBeInTheDocument()
+        expect(buttonsElements).toHaveLength(2)
+        expect(imagesElements).toHaveLength(2)
     })
 
 })

@@ -12,7 +12,7 @@ describe('Side Menu', () => {
     test('renders all buttons', () => {
         render(<SideMenu />)
         const buttonElements = screen.getAllByRole('button')
-        expect(buttonElements).toHaveLength(7)
+        expect(buttonElements).toHaveLength(8)
     })
 
 })
