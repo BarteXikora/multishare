@@ -26,6 +26,14 @@ const StyledCurrentFolderButton = styled(Dropdown)`
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
         display: block;
+
+        button {
+            padding: ${(props) => props.theme.margins.small};
+        }
+
+        .dropdown-content button {
+            padding: ${(props) => props.theme.margins.sectionSmall};
+        }
     }
 `
 
