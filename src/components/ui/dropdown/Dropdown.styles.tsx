@@ -11,8 +11,7 @@ const StyledDropdown = styled.div`
         padding: ${(props) => props.theme.margins.sectionSmall};
         margin-top: ${(props) => props.theme.margins.small};
         box-sizing: border-box;
-        min-width: 180px;
-        width: 100%;
+        min-width: 100%;
         border-radius: ${(props) => props.theme.borderRadiuses.small};
         border: 2px solid ${(props) => props.theme.colors.black};
         box-shadow: 6px 6px 18px 0 ${(props) => props.theme.colors.black};

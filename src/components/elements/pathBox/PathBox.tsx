@@ -1,33 +1,29 @@
+import { useState, useEffect } from 'react'
 import StyledPathBox from './PathBox.styles'
-import Button from '../../ui/button/Button'
-import PathButton from './pathButton/PathButton'
+import BackButton from './backButton/BackButton'
+import Path from './path/Path'
+import CurrentFolderButton from './currentFolderButon/CurrentFolderButton'
 
-import iconBack from '../../../assets/icons/icon-back.svg'
-import iconHome from '../../../assets/icons/icon-home.svg'
+import getShortenName from '../../../functions/getShortenName/getShortenName'
+
+const MAX_FOLDER_NAME_LENGTH = 30
 
 const __currentPath = ['Moje pliki', 'Prywatne', 'Obrazy', 'Wycieczka na rowery 2023']
 
 const PathBox = () => {
+    const [shortenPath, setShortenPath] = useState<string[]>([])
+
+    useEffect(() => {
+        setShortenPath(__currentPath.map(name => getShortenName(name, MAX_FOLDER_NAME_LENGTH)))
+
+    }, [])
+
     return <StyledPathBox>
-        <Button $variant='tertiary'>
-            {
-                __currentPath.length > 1 ?
-                    <img src={iconBack} alt="Cofnij" />
-                    :
-                    <img src={iconHome} alt="Folder główny" />
-            }
+        <BackButton isHome={shortenPath.length <= 1} />
 
-        </Button>
+        <Path path={shortenPath} />
 
-        {
-            __currentPath.map((path, n) => {
-                return <PathButton
-                    key={n}
-                    displayName={path}
-                    isLast={n === __currentPath.length - 1}
-                />
-            })
-        }
+        <CurrentFolderButton path={shortenPath} />
     </StyledPathBox>
 }
 
