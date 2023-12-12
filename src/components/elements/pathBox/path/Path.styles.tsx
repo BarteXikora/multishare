@@ -5,7 +5,7 @@ const StyledPath = styled.div`
     gap: ${(props) => props.theme.margins.small};
     white-space: nowrap;
     
-    button {
+    .path-button {
         font-size: ${(props) => props.theme.fontSizes.subtitle};
         font-weight: bold;
     }
