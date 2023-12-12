@@ -6,6 +6,7 @@ import iconFolder from '../../../../assets/icons/icon-project.svg'
 const CurrentFolderButton = ({ path }: { path: string[] }) => {
     return <StyledCurrentFolderButton
         buttonOptions={{ $variant: 'tertiary' }}
+        showArrow={false}
 
         buttonContent={path[path.length - 1]}
 

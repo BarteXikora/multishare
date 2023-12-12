@@ -3,10 +3,14 @@ import Dropdown from '../../../ui/dropdown/Dropdown'
 
 const StyledCurrentFolderButton = styled(Dropdown)`
     display: none;
+    white-space: nowrap;
+    max-width: 100%;
 
     button {
         font-size: ${(props) => props.theme.fontSizes.subtitle};
         font-weight: bold;
+        max-width: 100%;
+        overflow: hidden;
     }
 
     .dropdown-content {
