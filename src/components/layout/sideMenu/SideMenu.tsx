@@ -23,8 +23,6 @@ const SideMenu = () => {
         </section>
 
         <section className='nav-menu'>
-            <h2>Menu:</h2>
-
             <Button $variant='tertiary' $active>
                 <img src={iconFolder} alt='Dysk' />
 
