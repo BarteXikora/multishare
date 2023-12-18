@@ -15,12 +15,6 @@ const StyledSideMenu = styled.nav`
     padding: ${(props) => props.theme.margins.sectionBig};
     z-index: 2000;
 
-    h2 {
-        font-weight: bold;
-        font-size: ${(props) => props.theme.fontSizes.subtitle};
-        margin-bottom: ${(props) => props.theme.margins.medium};
-    }
-
     section {
         width: 100%;
     }
@@ -30,7 +24,7 @@ const StyledSideMenu = styled.nav`
     }
 
     .logo, .used-space {
-        margin-bottom: ${(props) => props.theme.margins.extraBig};
+        margin-bottom: ${(props) => props.theme.margins.big};
     }
 
     .nav-menu {

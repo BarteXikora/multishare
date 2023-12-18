@@ -13,7 +13,7 @@ const StyledUsedSpace = styled.div`
     }
 
     .progress-bar {
-        height: 12px;
+        height: 8px;
         width: 100%;
         background-color: ${(props) => props.theme.colors.gray2};
         border-radius: ${(props) => props.theme.borderRadiuses.big};
