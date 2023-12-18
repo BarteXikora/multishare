@@ -22,9 +22,7 @@ const Dropdown = ({ buttonContent, dropdownContent, buttonOptions, showArrow = t
 
     return <StyledDropdown ref={dropdownRef} className={`${className || ''} ${isOpen && 'dropdown-open'}`}>
         <Button
-            $variant={buttonOptions?.$variant || 'primary'}
-            $size={buttonOptions?.$size || 'small'}
-            $active={buttonOptions?.$active}
+            {...buttonOptions}
 
             onClick={() => setIsOpen(!isOpen)}
         >
