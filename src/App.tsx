@@ -1,3 +1,6 @@
+import { Provider } from 'react-redux'
+import { store } from './store/store'
+
 import AppTheme from './theme/AppTheme'
 
 import SideMenu from './components/layout/sideMenu/SideMenu'
@@ -12,29 +15,33 @@ import DetailsSection from './components/layout/detailsSection/DetailsSection'
 import ScreenSize from './components/__dev/__ScreenSize'
 
 const App = () => {
-  return <AppTheme>
-    <ScreenSize />
+  return (
+    <Provider store={store}>
+      <AppTheme>
+        <ScreenSize />
 
-    <SideMenu />
+        <SideMenu />
 
-    <Courtain />
+        <Courtain />
 
-    <MainBody>
-      <TopBar />
+        <MainBody>
+          <TopBar />
 
-      <BodyColumns>
-        <section className='main-column'>
-          <Header />
+          <BodyColumns>
+            <section className='main-column'>
+              <Header />
 
-          <ContentSection />
-        </section>
+              <ContentSection />
+            </section>
 
-        <aside className='aside-column'>
-          <DetailsSection />
-        </aside>
-      </BodyColumns>
-    </MainBody>
-  </AppTheme>
+            <aside className='aside-column'>
+              <DetailsSection />
+            </aside>
+          </BodyColumns>
+        </MainBody>
+      </AppTheme>
+    </Provider>
+  )
 }
 
 export default App
