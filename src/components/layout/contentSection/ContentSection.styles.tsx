@@ -16,7 +16,7 @@ const StyledContentSection = styled.main`
 
     .content {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(0, 1fr));
         grid-gap: ${(props) => props.theme.margins.medium};
     }
 
@@ -24,11 +24,17 @@ const StyledContentSection = styled.main`
         margin-bottom: ${(props) => props.theme.margins.extraBig};
     }
 
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
+        .content {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+    }
+
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
         padding-top: 50px;
 
         .content {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
         }
     }
 
