@@ -7,10 +7,12 @@ import {
 } from 'react-redux'
 
 import sideMenuSlice from './features/sideMenuSlice/sideMenuSlice'
+import detailsSectionSlice from './features/detailsSectionSlice/detailsSectionSlice'
 
 export const store = configureStore({
     reducer: {
-        sideMenu: sideMenuSlice
+        sideMenu: sideMenuSlice,
+        detailsSection: detailsSectionSlice
     }
 })
 

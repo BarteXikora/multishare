@@ -20,6 +20,7 @@ const StyledDetailsSection = styled.div`
         position: absolute;
         width: auto;
         left: -60px;
+        margin-top: ${(props) => props.theme.margins.medium};
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
@@ -44,6 +45,11 @@ const StyledDetailsSection = styled.div`
         .process-pill {
             display: none;
         }
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        height: calc(100vh - (${(props) => props.theme.margins.medium} * 2));
+        margin: ${(props) => props.theme.margins.sectionMedium};
     }
 `
 
