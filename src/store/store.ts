@@ -8,11 +8,13 @@ import {
 
 import sideMenuSlice from './features/sideMenuSlice/sideMenuSlice'
 import detailsSectionSlice from './features/detailsSectionSlice/detailsSectionSlice'
+import contentSlice from './features/contentSlice/contentSlice'
 
 export const store = configureStore({
     reducer: {
         sideMenu: sideMenuSlice,
-        detailsSection: detailsSectionSlice
+        detailsSection: detailsSectionSlice,
+        content: contentSlice
     }
 })
 
