@@ -1,3 +1,5 @@
+import { useSelector } from '../../../store/store'
+
 import StyledDetailsSection from './DetailsSection.styles'
 import Button from '../../ui/button/Button'
 
@@ -7,7 +9,9 @@ import ProcessPill from '../../elements/processPill/ProcessPill'
 import iconClose from '../../../assets/icons/icon-close.svg'
 
 const DetailsSection = () => {
-    return <StyledDetailsSection className='_shown'>
+    const isShown = useSelector(state => state.detailsSection.isShown)
+
+    return <StyledDetailsSection className={`${isShown ? 'shown' : ''}`}>
         <Button className='close-button' $variant='wrong' $size='big'>
             <img src={iconClose} alt='Zamknij szczegóły' />
         </Button>
