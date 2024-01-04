@@ -1,3 +1,6 @@
+import { useDispatch } from '../../../../store/store'
+import { toggle } from '../../../../store/features/detailsSectionSlice/detailsSectionSlice'
+
 import Button from '../../../ui/button/Button'
 
 import iconSelect from '../../../../assets/icons/icon-ok.svg'
@@ -7,6 +10,8 @@ import iconDisplay from '../../../../assets/icons/icon-display.svg'
 import iconDetails from '../../../../assets/icons/icon-details.svg'
 
 const ListTools = () => {
+    const dispatch = useDispatch()
+
     return <section className="list-tools">
         <Button $variant='secondary'>
             <img src={iconSelect} alt="Zaznacz wszystko" />
@@ -34,7 +39,7 @@ const ListTools = () => {
             </Button>
         </div>
 
-        <Button className='details-button'>
+        <Button className='details-button' onClick={() => dispatch(toggle())}>
             <img src={iconDetails} alt="Pokaż szczegóły" />
         </Button>
     </section>
