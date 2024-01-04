@@ -34,6 +34,7 @@ export type contentDisplayType = false | {
 }
 
 export type initialStateType = {
+    projectName: string,
     currentPath: pathType,
     loadedContent: contentType,
     currentFolder: contentDisplayType
