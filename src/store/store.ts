@@ -6,8 +6,12 @@ import {
 
 } from 'react-redux'
 
+import sideMenuSlice from './features/sideMenuSlice/sideMenuSlice'
+
 export const store = configureStore({
-    reducer: {}
+    reducer: {
+        sideMenu: sideMenuSlice
+    }
 })
 
 export const useSelector: TypedUseSelectorHook<ReturnType<typeof store.getState>> = useDefaultSelector

@@ -1,3 +1,6 @@
+import { useSelector, useDispatch } from '../../../store/store'
+import { toggle } from '../../../store/features/sideMenuSlice/sideMenuSlice'
+
 import StyledSideMenu from './SideMenu.styles'
 import Button from '../../ui/button/Button'
 import UsedSpace from '../../elements/usedSpace/UsedSpace'
@@ -11,8 +14,12 @@ import iconTrash from '../../../assets/icons/icon-trash.svg'
 import iconAccount from '../../../assets/icons/icon-account.svg'
 
 const SideMenu = () => {
-    return <StyledSideMenu className='_shown'>
-        <Button className='close-button' $variant='wrong' $size='big'>
+    const isMenuShown = useSelector(state => state.sideMenu.isShown)
+    const dispatch = useDispatch()
+
+    return <StyledSideMenu className={`${isMenuShown ? 'shown' : ''}`}>
+
+        <Button className='close-button' $variant='wrong' $size='big' onClick={() => dispatch(toggle(false))}>
             <img src={iconClose} alt='Zamknij menu' />
         </Button>
 
