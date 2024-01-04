@@ -1,4 +1,6 @@
-const __initialState = {
+import { initialStateType } from './contentSlice.types'
+
+const __initialState: initialStateType = {
     loadedContent: {
         folders: [
             {
@@ -10,11 +12,13 @@ const __initialState = {
                         {
                             id: 3,
                             name: 'Obrazy',
+                            star: false,
                             content: {
                                 folders: [
                                     {
                                         id: 5,
                                         name: 'Wycieczka na rowery - sierpień 2023',
+                                        star: false,
                                         content: {
                                             folders: [
                                                 {
@@ -25,6 +29,7 @@ const __initialState = {
                                                 }, {
                                                     id: 7,
                                                     name: 'Pozostałe - większość do śmieci',
+                                                    star: false,
                                                     content: {}
                                                 }
                                             ],
@@ -32,7 +37,8 @@ const __initialState = {
                                                 {
                                                     id: 100,
                                                     name: 'Wycieczka na rowery 1',
-                                                    extension: 'PNG'
+                                                    extension: 'PNG',
+                                                    star: false
                                                 }
                                             ]
                                         }
@@ -43,7 +49,8 @@ const __initialState = {
                         }, {
                             id: 4,
                             name: 'Dokumenty',
-                            content: {}
+                            content: {},
+                            star: false
                         }
                     ],
                     files: []
@@ -51,6 +58,7 @@ const __initialState = {
             }, {
                 id: 1,
                 name: 'Pozostałe',
+                star: false,
                 content: {}
             }
         ],
