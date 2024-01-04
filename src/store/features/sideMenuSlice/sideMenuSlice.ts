@@ -1,10 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export const sideMenuSlice = createSlice({
     name: 'sideMenuSlice',
     initialState: { isShown: false },
-    reducers: {}
+    reducers: {
+
+        toggle: (state, action: PayloadAction<boolean>) => {
+            if (action.payload === undefined) state.isShown = !state.isShown
+            else state.isShown = action.payload
+        }
+
+    }
 })
 
 export default sideMenuSlice.reducer
-export const { } = sideMenuSlice.actions
+export const { toggle } = sideMenuSlice.actions
