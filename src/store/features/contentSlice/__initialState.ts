@@ -1,6 +1,7 @@
 import { initialStateType } from './contentSlice.types'
 
 const __initialState: initialStateType = {
+    currentPath: [],
     loadedContent: {
         folders: [
             {

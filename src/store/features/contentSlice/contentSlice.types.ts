@@ -1,3 +1,8 @@
+export type pathType = {
+    id: number,
+    name: string
+}[]
+
 export type folderType = {
     id: number,
     name: string,
@@ -29,6 +34,7 @@ export type contentDisplayType = false | {
 }
 
 export type initialStateType = {
+    currentPath: pathType,
     loadedContent: contentType,
     currentFolder: contentDisplayType
 }
