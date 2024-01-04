@@ -1,4 +1,6 @@
-import { useSelector } from '../../../store/store'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from '../../../store/store'
+import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
 
 import StyledContentSection from './ContentSection.styles'
 import Folder from '../../elements/folder/Folder'
@@ -6,6 +8,12 @@ import File from '../../elements/file/File'
 
 const ContentSection = () => {
     const content = useSelector(state => state.content.currentFolder)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(setTreeLocation(-1))
+
+    }, [dispatch])
 
     return <StyledContentSection>
         {
