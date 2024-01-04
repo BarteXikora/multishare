@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import initialState from './__initialState'
+import initialState from './initialState'
 
 export const contentSlice = createSlice({
     name: 'contentSlice',
