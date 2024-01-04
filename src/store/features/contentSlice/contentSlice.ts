@@ -10,12 +10,17 @@ export const contentSlice = createSlice({
     reducers: {
 
         setTreeLocation: (state, action: PayloadAction<number>) => {
-            const { path, content } = getPathAndContent(state.loadedContent, action.payload)
+            if (action.payload === -1) {
+                state.currentPath = []
+                state.currentFolder = state.loadedContent
 
-            state.currentPath = path
-            state.currentFolder = content
+            } else {
+                const { path, content } = getPathAndContent(state.loadedContent, action.payload)
+
+                state.currentPath = path
+                state.currentFolder = content
+            }
         }
-
     }
 })
 
