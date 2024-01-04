@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import initialState from './initialState'
 
-import getPathToID from '../../../functions/getPathToID/getPathToID'
+import getPathAndContent from '../../../functions/getPathAndContent/getPathAndContent'
 import { pathType } from './contentSlice.types'
 
 export const contentSlice = createSlice({
@@ -11,7 +11,7 @@ export const contentSlice = createSlice({
     reducers: {
 
         setTreeLocation: (state, action: PayloadAction<number>) => {
-            const path: pathType = getPathToID(state.loadedContent, action.payload)
+            const path: pathType = getPathAndContent(state.loadedContent, action.payload)
 
             console.log(path)
         }

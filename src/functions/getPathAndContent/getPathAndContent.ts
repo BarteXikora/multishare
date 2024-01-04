@@ -1,6 +1,6 @@
 import { contentType, pathType } from "../../store/features/contentSlice/contentSlice.types"
 
-const getPathToID = (content: contentType, id: number): pathType => {
+const getPathAndContent = (content: contentType, id: number): pathType => {
     const findNext = (obj: contentType): pathType => {
         const found: pathType = []
 
@@ -25,4 +25,4 @@ const getPathToID = (content: contentType, id: number): pathType => {
     return path;
 }
 
-export default getPathToID
+export default getPathAndContent
