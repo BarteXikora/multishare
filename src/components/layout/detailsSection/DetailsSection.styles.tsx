@@ -20,6 +20,7 @@ const StyledDetailsSection = styled.div`
         position: absolute;
         width: auto;
         left: -60px;
+        margin-top: ${(props) => props.theme.margins.medium};
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
