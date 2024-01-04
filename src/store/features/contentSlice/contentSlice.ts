@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+import initialState from './__initialState'
+
 export const contentSlice = createSlice({
     name: 'contentSlice',
-    initialState: {},
+    initialState,
     reducers: {}
 })
 
