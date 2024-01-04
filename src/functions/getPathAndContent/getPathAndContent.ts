@@ -31,7 +31,7 @@ const getPathAndContent = (content: contentType, id: number): getPathAndContentT
         return found
     }
 
-    const path: pathType = findNext(content)
+    const path: pathType = findNext(content).reverse()
 
     return { path, content: currentContent }
 }
