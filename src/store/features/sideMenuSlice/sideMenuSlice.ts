@@ -5,7 +5,7 @@ export const sideMenuSlice = createSlice({
     initialState: { isShown: false },
     reducers: {
 
-        toggle: (state, action: PayloadAction<boolean>) => {
+        toggle: (state, action: PayloadAction<boolean | undefined>) => {
             if (action.payload === undefined) state.isShown = !state.isShown
             else state.isShown = action.payload
         }
