@@ -5,42 +5,50 @@ import Folder from '../../elements/folder/Folder'
 import File from '../../elements/file/File'
 
 const ContentSection = () => {
-    const currentContent = useSelector(state => state.content.currentFolder)
+    const content = useSelector(state => state.content.currentFolder)
 
     return <StyledContentSection>
-        <section className='folders-section'>
-            <h2>Foldery:</h2>
+        {
+            content && content.folders && content.folders.length > 0 && (
+                <section className='folders-section'>
+                    <h2>Foldery:</h2>
 
-            <div className="content">
-                {
-                    currentContent.folders.map(folder => {
-                        return <Folder
-                            key={folder.id}
-                            displayName={folder.name}
-                            isStar={folder.star || false}
-                        />
-                    })
-                }
-            </div>
-        </section>
+                    <div className="content">
+                        {
+                            content.folders.map(folder => {
+                                return <Folder
+                                    key={folder.id}
+                                    displayName={folder.name}
+                                    isStar={folder.star || false}
+                                />
+                            })
+                        }
+                    </div>
+                </section>
+            )
+        }
 
-        <section className='files-section'>
-            <h2>Pliki:</h2>
+        {
+            content && content.files && content.files.length > 0 && (
+                <section className='files-section'>
+                    <h2>Pliki:</h2>
 
-            <div className="content">
-                {
-                    currentContent.files.map(file => {
-                        return <File
-                            key={file.id}
-                            displayName={file.name}
-                            extension={file.extension}
-                            preview={false}
-                            isStar={file.star || false}
-                        />
-                    })
-                }
-            </div>
-        </section>
+                    <div className="content">
+                        {
+                            content.files.map(file => {
+                                return <File
+                                    key={file.id}
+                                    displayName={file.name}
+                                    extension={file.extension}
+                                    preview={false}
+                                    isStar={file.star || false}
+                                />
+                            })
+                        }
+                    </div>
+                </section>
+            )
+        }
     </StyledContentSection>
 }
 
