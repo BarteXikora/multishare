@@ -45,6 +45,11 @@ const StyledDetailsSection = styled.div`
             display: none;
         }
     }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        height: calc(100vh - (${(props) => props.theme.margins.medium} * 2));
+        margin: ${(props) => props.theme.margins.sectionMedium};
+    }
 `
 
 export default StyledDetailsSection
