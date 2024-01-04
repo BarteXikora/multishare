@@ -3,10 +3,12 @@ import StyledCollapsedPathButton from './CollapsedPathButton.styles'
 import Dropdown from '../../../ui/dropdown/Dropdown'
 import Button from '../../../ui/button/Button'
 
+import { pathType } from '../../../../store/features/contentSlice/contentSlice.types'
+
 import iconFolder from '../../../../assets/icons/icon-project.svg'
 import iconArrow from '../../../../assets/icons/icon-arrow-right.svg'
 
-const CollapsedPathButton = ({ path }: { path: string[] }) => {
+const CollapsedPathButton = ({ path }: { path: pathType }) => {
     return <StyledCollapsedPathButton>
         <Dropdown
             buttonContent='Wyświetl ścieżkę'
@@ -16,7 +18,7 @@ const CollapsedPathButton = ({ path }: { path: string[] }) => {
                     return <Button $variant='secondary'>
                         <img src={iconFolder} alt='Folder' />
 
-                        {pathelement}
+                        {pathelement.name}
                     </Button>
                 })
             }</>}
