@@ -26,6 +26,7 @@ const ContentSection = () => {
                             content.folders.map(folder => {
                                 return <Folder
                                     key={folder.id}
+                                    id={folder.id}
                                     displayName={folder.name}
                                     isStar={folder.star || false}
                                 />
