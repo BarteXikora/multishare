@@ -32,7 +32,7 @@ const PathBox = () => {
     }, [projectName, currentPath])
 
     return <StyledPathBox>
-        <BackButton isHome={shortenPath.length <= 1} />
+        <BackButton />
 
         <Path path={shortenPath} />
 
