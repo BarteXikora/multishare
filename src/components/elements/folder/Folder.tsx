@@ -1,3 +1,6 @@
+import { useDispatch } from '../../../store/store'
+import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
+
 import StyledFolder from './Folder.styles'
 import Button from '../../ui/button/Button'
 
@@ -6,12 +9,19 @@ import iconStar from '../../../assets/icons/icon-star-color.svg'
 import iconKebab from '../../../assets/icons/icon-kebab.svg'
 
 type FolderProps = {
+    id: number
     displayName: string
     isStar: boolean
 }
 
-const Folder = ({ displayName, isStar }: FolderProps) => {
-    return <StyledFolder $variant='secondary' $size='big'>
+const Folder = ({ id, displayName, isStar }: FolderProps) => {
+    const dispatch = useDispatch()
+
+    return <StyledFolder
+        $variant='secondary'
+        $size='big'
+        onDoubleClick={() => dispatch(setTreeLocation(id))}
+    >
         <div className="folder-name">
             <img src={iconFolder} alt='Folder' />
 

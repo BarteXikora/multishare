@@ -31,7 +31,7 @@ const Dropdown = ({ buttonContent, dropdownContent, buttonOptions, showArrow = t
             {showArrow && <img src={iconArrow} className='icon-arrow' alt='Rozwiń opcje' />}
         </Button>
 
-        <div className="dropdown-content">{dropdownContent}</div>
+        <div onClick={() => setIsOpen(false)} className="dropdown-content">{dropdownContent}</div>
     </StyledDropdown>
 }
 

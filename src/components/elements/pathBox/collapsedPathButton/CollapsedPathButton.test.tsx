@@ -4,7 +4,7 @@ import CollapsedPathButton from './CollapsedPathButton'
 describe('Collapsed Path Button', () => {
 
     test('renders correctly', () => {
-        const path = ['1', '2', '3', '4', '5', '6']
+        const path = [{ id: 1, name: '1' }, { id: 2, name: '2' }]
 
         render(<CollapsedPathButton path={path} />)
         const buttonsElements = screen.getByRole('button')

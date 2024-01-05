@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react'
+import { useSelector } from '../../../store/store'
+import { pathType } from '../../../store/features/contentSlice/contentSlice.types'
+
 import StyledPathBox from './PathBox.styles'
 import BackButton from './backButton/BackButton'
 import Path from './path/Path'
@@ -8,18 +11,28 @@ import getShortenName from '../../../functions/getShortenName/getShortenName'
 
 const MAX_FOLDER_NAME_LENGTH = 30
 
-const __currentPath = ['Moje pliki', 'Prywatne', 'Obrazy', 'Wycieczka na rowery 2023']
-
 const PathBox = () => {
-    const [shortenPath, setShortenPath] = useState<string[]>([])
+    const projectName = useSelector(state => state.content.projectName)
+    const currentPath = useSelector(state => state.content.currentPath)
+
+    const [shortenPath, setShortenPath] = useState<pathType>([])
 
     useEffect(() => {
-        setShortenPath(__currentPath.map(name => getShortenName(name, MAX_FOLDER_NAME_LENGTH)))
+        setShortenPath([
+            { id: -1, name: getShortenName(projectName, MAX_FOLDER_NAME_LENGTH) },
 
-    }, [])
+            ...currentPath.map(pathElement => {
+                return {
+                    id: pathElement.id,
+                    name: getShortenName(pathElement.name, MAX_FOLDER_NAME_LENGTH)
+                }
+            })
+        ])
+
+    }, [projectName, currentPath])
 
     return <StyledPathBox>
-        <BackButton isHome={shortenPath.length <= 1} />
+        <BackButton />
 
         <Path path={shortenPath} />
 
