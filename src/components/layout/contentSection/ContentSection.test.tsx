@@ -9,4 +9,14 @@ describe('Content Section', () => {
         expect(mainElement).toBeInTheDocument()
     })
 
+    test('renders folders section', () => {
+        render(<ContentSection />)
+
+        const headerElement = screen.getByRole('heading', { level: 2, name: 'Foldery:' })
+        const buttonsElements = screen.getAllByRole('button')
+
+        expect(headerElement).toBeInTheDocument()
+        expect(buttonsElements).toHaveLength(4)
+    })
+
 })
