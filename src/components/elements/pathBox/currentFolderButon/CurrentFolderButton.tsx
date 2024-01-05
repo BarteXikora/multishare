@@ -1,3 +1,6 @@
+import { useDispatch } from '../../../../store/store'
+import { setTreeLocation } from '../../../../store/features/contentSlice/contentSlice'
+
 import StyledCurrentFolderButton from './CurrentFolderButton.styles'
 import Button from '../../../ui/button/Button'
 
@@ -6,6 +9,8 @@ import { pathType } from '../../../../store/features/contentSlice/contentSlice.t
 import iconFolder from '../../../../assets/icons/icon-project.svg'
 
 const CurrentFolderButton = ({ path }: { path: pathType }) => {
+    const dispatch = useDispatch()
+
     return <StyledCurrentFolderButton
         buttonOptions={{ $variant: 'tertiary' }}
         showArrow={false}
@@ -14,7 +19,11 @@ const CurrentFolderButton = ({ path }: { path: pathType }) => {
 
         dropdownContent={<>{
             path.map((pathElement, n) => {
-                return <Button key={n} $variant='secondary'>
+                return <Button
+                    key={n}
+                    $variant='secondary'
+                    onClick={() => dispatch(setTreeLocation(pathElement.id))}
+                >
                     <img src={iconFolder} alt='Folder' />
 
                     {pathElement.name}
