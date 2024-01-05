@@ -5,6 +5,7 @@ import { setTreeLocation } from '../../../store/features/contentSlice/contentSli
 import StyledContentSection from './ContentSection.styles'
 import Folder from '../../elements/folder/Folder'
 import File from '../../elements/file/File'
+import EmptyFolder from '../../elements/emptyFolder/EmptyFolder'
 
 const ContentSection = () => {
     const content = useSelector(state => state.content.currentFolder)
@@ -57,6 +58,10 @@ const ContentSection = () => {
                     </div>
                 </section>
             )
+        }
+
+        {
+            (!content || (!content.folders && !content.files)) && <EmptyFolder />
         }
     </StyledContentSection>
 }
