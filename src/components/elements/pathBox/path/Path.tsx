@@ -1,3 +1,5 @@
+import { Fragment } from 'react'
+
 import { useDispatch } from '../../../../store/store'
 import { setTreeLocation } from '../../../../store/features/contentSlice/contentSlice'
 
@@ -16,23 +18,28 @@ const Path = ({ path }: { path: pathType }) => {
         {path.length > 4 && <CollapsedPathButton path={path} />}
 
         {
-            path.map((pathElement, n) => {
-                if (path.length <= 4 || (path.length > 4 && n > path.length - 3))
-                    return <>
-                        <Button
-                            key={n}
-                            $variant='tertiary'
-                            className='path-button'
-                            onClick={() => dispatch(setTreeLocation(pathElement.id))}
-                        >
-                            {pathElement.name}
-                        </Button>
+            path.map((pathElement, n) => (
+                <Fragment key={n}>
+                    {
+                        (path.length <= 4 || (path.length > 4 && n > path.length - 3)) ?
+                            <Fragment key={n}>
+                                <Button
+                                    $variant='tertiary'
+                                    className='path-button'
+                                    onClick={() => dispatch(setTreeLocation(pathElement.id))}
+                                >
+                                    {pathElement.name}
+                                </Button>
 
-                        {n < path.length - 1 && <img src={iconArrow} alt="/" />}
-                    </>
+                                {n < path.length - 1 && <img src={iconArrow} alt="/" />}
+                            </Fragment>
 
-                return <></>
-            })
+                            :
+
+                            <></>
+                    }
+                </Fragment>
+            ))
         }
     </StyledPath>
 }
