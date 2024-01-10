@@ -1,7 +1,10 @@
-import { render, screen } from '../../../test-utils'
+import { render, screen, act } from '../../../test-utils'
 import user from '@testing-library/user-event'
 
 import ContentSection from './ContentSection'
+
+import { store } from '../../../store/store'
+import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
 
 describe('Content Section', () => {
 
@@ -31,6 +34,18 @@ describe('Content Section', () => {
 
         const picturesFolderButtonElement = screen.getByRole('button', { name: /Obrazy/ })
         expect(picturesFolderButtonElement).toBeInTheDocument()
+    })
+
+    test('renders files section', () => {
+        render(<ContentSection />)
+
+        act(() => {
+            store.dispatch(setTreeLocation(5))
+        })
+
+        const headerElement = screen.getByRole('heading', { level: 2, name: 'Pliki:' })
+
+        expect(headerElement).toBeInTheDocument()
     })
 
 })
