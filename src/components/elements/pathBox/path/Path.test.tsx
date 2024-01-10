@@ -1,5 +1,10 @@
-import { render, screen } from '../../../../test-utils'
+import { render, screen, act } from '../../../../test-utils'
+import user from '@testing-library/user-event'
+
 import Path from './Path'
+
+import { store } from '../../../../store/store'
+import { setTreeLocation } from '../../../../store/features/contentSlice/contentSlice'
 
 describe('Path', () => {
 
@@ -17,6 +22,22 @@ describe('Path', () => {
         render(<Path path={path} />)
         const buttonsElements = screen.getAllByRole('button')
         expect(buttonsElements).toHaveLength(3)
+    })
+
+    test('changes stored location on click', async () => {
+        user.setup()
+
+        act(() => {
+            store.dispatch(setTreeLocation(5))
+        })
+
+        render(<Path path={store.getState().content.currentPath} />)
+
+        const picturesButtonElement = screen.getByRole('button', { name: /Obrazy/ })
+
+        await user.click(picturesButtonElement)
+
+        expect(store.getState().content.currentPath).toHaveLength(2)
     })
 
 })
