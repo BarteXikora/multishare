@@ -1,4 +1,6 @@
 import { render, screen } from '../../../test-utils'
+import user from '@testing-library/user-event'
+
 import ContentSection from './ContentSection'
 
 describe('Content Section', () => {
@@ -17,6 +19,18 @@ describe('Content Section', () => {
 
         expect(headerElement).toBeInTheDocument()
         expect(buttonsElements).toHaveLength(4)
+    })
+
+    test('changes location after double click on folder', async () => {
+        user.setup()
+
+        render(<ContentSection />)
+
+        const privateFolderButtonElement = screen.getByRole('button', { name: /Prywatne/ })
+        await user.dblClick(privateFolderButtonElement)
+
+        const picturesFolderButtonElement = screen.getByRole('button', { name: /Obrazy/ })
+        expect(picturesFolderButtonElement).toBeInTheDocument()
     })
 
 })
