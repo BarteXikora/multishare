@@ -6,7 +6,8 @@ const initialState: initialStateType = {
     project: { id: 0, name: 'Moje pliki' },
     currentPath: [],
     currentFolder: {},
-    loadedContent: __exampleContent
+    loadedContent: __exampleContent,
+    selected: {}
 }
 
 export default initialState

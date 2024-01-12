@@ -38,9 +38,15 @@ export type contentDisplayType = false | {
     files?: fileType[]
 }
 
+export type selectedType = {
+    files?: number[],
+    folders?: number[]
+}
+
 export type initialStateType = {
     project: projectType,
     currentPath: pathType,
     loadedContent: contentType,
-    currentFolder: contentDisplayType
+    currentFolder: contentDisplayType,
+    selected: selectedType
 }
