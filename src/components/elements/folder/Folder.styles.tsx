@@ -42,6 +42,19 @@ const StyledFolder = styled(Button)`
     &:hover .star {
         background-color: ${(props) => props.theme.colors.gray3};
     }
+
+    &.selected {
+        background-color: ${(props) => props.theme.colors.primary2};
+        outline: 1px solid ${(props) => props.theme.colors.black};
+
+        button {
+            background-color: ${(props) => props.theme.colors.primary2};
+        }
+
+        .star {
+            background-color: ${(props) => props.theme.colors.primary2};
+        }
+    }
 `
 
 export default StyledFolder
