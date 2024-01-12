@@ -12,7 +12,7 @@ import getShortenName from '../../../functions/getShortenName/getShortenName'
 const MAX_FOLDER_NAME_LENGTH = 30
 
 const PathBox = () => {
-    const projectName = useSelector(state => state.content.projectName)
+    const projectName = useSelector(state => state.content.project.name)
     const currentPath = useSelector(state => state.content.currentPath)
 
     const [shortenPath, setShortenPath] = useState<pathType>([])

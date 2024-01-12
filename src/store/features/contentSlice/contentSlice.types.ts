@@ -1,3 +1,8 @@
+export type projectType = {
+    id: number,
+    name: string
+}
+
 export type pathType = {
     id: number,
     name: string
@@ -34,7 +39,7 @@ export type contentDisplayType = false | {
 }
 
 export type initialStateType = {
-    projectName: string,
+    project: projectType,
     currentPath: pathType,
     loadedContent: contentType,
     currentFolder: contentDisplayType
