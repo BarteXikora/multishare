@@ -22,7 +22,9 @@ const File = ({ displayName, extension, preview, isStar }: FileProps) => {
 
     }, [preview, extension])
 
-    return <StyledFile $variant='secondary' $size='big'>
+    const __isSelected = true
+
+    return <StyledFile $variant='secondary' $size='big' className={__isSelected ? 'selected' : ''}>
         <div
             className={`preview ${preview && 'preview-img'}`}
             style={{ backgroundImage: `url('${previewImage}')` }}
