@@ -13,16 +13,19 @@ type FolderProps = {
     displayName: string
     isStar: boolean
     isSelected: boolean
+    onClick: (e: React.MouseEvent<HTMLElement>) => void
 }
 
-const Folder = ({ id, displayName, isStar, isSelected }: FolderProps) => {
+const Folder = ({ id, displayName, isStar, isSelected, onClick }: FolderProps) => {
     const dispatch = useDispatch()
 
     return <StyledFolder
         $variant='secondary'
         $size='big'
-        onDoubleClick={() => dispatch(setTreeLocation(id))}
         className={isSelected ? 'selected' : ''}
+
+        onClick={onClick}
+        onDoubleClick={() => dispatch(setTreeLocation(id))}
     >
         <div className="folder-name">
             <img src={iconFolder} alt='Folder' />

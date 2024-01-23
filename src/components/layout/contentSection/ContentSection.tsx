@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
 
+import useContentEvents from '../../../functions/useContentEvents/useContentEvents'
+
 import StyledContentSection from './ContentSection.styles'
 import Folder from '../../elements/folder/Folder'
 import File from '../../elements/file/File'
@@ -11,6 +13,8 @@ const ContentSection = () => {
     const content = useSelector(state => state.content.currentFolder)
     const selected = useSelector(state => state.content.selected)
     const dispatch = useDispatch()
+
+    const { folderEvents, filesEvents } = useContentEvents()
 
     useEffect(() => {
         dispatch(setTreeLocation(-1))
@@ -32,6 +36,8 @@ const ContentSection = () => {
                                     displayName={folder.name}
                                     isStar={folder.star || false}
                                     isSelected={selected.folders ? selected.folders.includes(folder.id) : false}
+
+                                    onClick={e => folderEvents.onClick(e, folder.id)}
                                 />
                             })
                         }
@@ -55,6 +61,8 @@ const ContentSection = () => {
                                     preview={false}
                                     isStar={file.star || false}
                                     isSelected={selected.files ? selected.files.includes(file.id) : false}
+
+                                    onClick={e => filesEvents.onClick(e, file.id)}
                                 />
                             })
                         }
