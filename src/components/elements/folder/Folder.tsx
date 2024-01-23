@@ -12,18 +12,17 @@ type FolderProps = {
     id: number
     displayName: string
     isStar: boolean
+    isSelected: boolean
 }
 
-const Folder = ({ id, displayName, isStar }: FolderProps) => {
+const Folder = ({ id, displayName, isStar, isSelected }: FolderProps) => {
     const dispatch = useDispatch()
-
-    const __isSelected = true
 
     return <StyledFolder
         $variant='secondary'
         $size='big'
         onDoubleClick={() => dispatch(setTreeLocation(id))}
-        className={__isSelected ? 'selected' : ''}
+        className={isSelected ? 'selected' : ''}
     >
         <div className="folder-name">
             <img src={iconFolder} alt='Folder' />

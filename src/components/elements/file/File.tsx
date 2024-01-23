@@ -12,9 +12,10 @@ type FileProps = {
     extension: string
     preview: string | false
     isStar: boolean
+    isSelected: boolean
 }
 
-const File = ({ displayName, extension, preview, isStar }: FileProps) => {
+const File = ({ displayName, extension, preview, isStar, isSelected }: FileProps) => {
     const [previewImage, setPreviewImage] = useState<string>('')
 
     useEffect(() => {
@@ -22,9 +23,7 @@ const File = ({ displayName, extension, preview, isStar }: FileProps) => {
 
     }, [preview, extension])
 
-    const __isSelected = true
-
-    return <StyledFile $variant='secondary' $size='big' className={__isSelected ? 'selected' : ''}>
+    return <StyledFile $variant='secondary' $size='big' className={isSelected ? 'selected' : ''}>
         <div
             className={`preview ${preview && 'preview-img'}`}
             style={{ backgroundImage: `url('${previewImage}')` }}

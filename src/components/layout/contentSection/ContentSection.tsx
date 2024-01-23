@@ -9,6 +9,7 @@ import EmptyFolder from '../../elements/emptyFolder/EmptyFolder'
 
 const ContentSection = () => {
     const content = useSelector(state => state.content.currentFolder)
+    const selected = useSelector(state => state.content.selected)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -30,6 +31,7 @@ const ContentSection = () => {
                                     id={folder.id}
                                     displayName={folder.name}
                                     isStar={folder.star || false}
+                                    isSelected={selected.folders ? selected.folders.includes(folder.id) : false}
                                 />
                             })
                         }
@@ -52,6 +54,7 @@ const ContentSection = () => {
                                     extension={file.extension}
                                     preview={false}
                                     isStar={file.star || false}
+                                    isSelected={selected.files ? selected.files.includes(file.id) : false}
                                 />
                             })
                         }
