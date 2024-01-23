@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from '../../store/store'
 import { setSelected } from '../../store/features/contentSlice/contentSlice'
 
 import getRangeOfElements from '../getRangeOfElements/getRangeOfElements'
+import click from './click/click'
 
 import { ElementType, selectedType } from '../../store/features/contentSlice/contentSlice.types'
 
@@ -17,17 +18,10 @@ const useContentEvents = () => {
 
     }, [dispatch, currentPath])
 
-    const select = (
-        event: React.MouseEvent<HTMLElement>,
-        type: ElementType,
-        id: number
-
-    ) => {
-        let newSelected: selectedType = { selectionStart: null }
+    const select = (event: React.MouseEvent<HTMLElement>, type: ElementType, id: number) => {
+        let newSelected: selectedType = { ...selected }
 
         if (event.shiftKey) {
-            newSelected = { ...selected }
-
             if (selected.selectionStart === null) {
                 switch (type) {
                     case 'FOLDER':
@@ -52,8 +46,6 @@ const useContentEvents = () => {
             }
 
         } else if (event.ctrlKey) {
-            newSelected = { ...selected }
-
             switch (type) {
                 case 'FOLDER':
                     if (!newSelected.folders) newSelected.folders = []
@@ -75,20 +67,10 @@ const useContentEvents = () => {
             }
 
         } else {
-            switch (type) {
-                case 'FOLDER':
-                    newSelected.folders = [id]
-                    newSelected.selectionStart = { type: 'FOLDER', id }
-
-                    break
-
-                case 'FILE':
-                    newSelected.files = [id]
-                    newSelected.selectionStart = { type: 'FILE', id }
-            }
+            dispatch(setSelected(click(type, id)))
         }
 
-        dispatch(setSelected(newSelected))
+        // dispatch(setSelected(newSelected))
     }
 
     return {
