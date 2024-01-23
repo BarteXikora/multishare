@@ -2,46 +2,9 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import { setSelected } from '../../store/features/contentSlice/contentSlice'
 
-import { ElementType, selectedType, contentDisplayType } from '../../store/features/contentSlice/contentSlice.types'
+import getRangeOfElements from '../getRangeOfElements/getRangeOfElements'
 
-const getRangeOfElements =
-    (
-        currentFolder: contentDisplayType,
-        first: { type: ElementType, id: number },
-        last: { type: ElementType, id: number }
-
-    ): { folders?: number[], files?: number[] } => {
-
-        const flatContent: { type: ElementType, id: number }[] = []
-
-        if (currentFolder) {
-            if (currentFolder.folders)
-                currentFolder.folders.forEach(folder => flatContent.push({ type: 'FOLDER', id: folder.id }))
-
-            if (currentFolder.files)
-                currentFolder.files.forEach(file => flatContent.push({ type: 'FILE', id: file.id }))
-        }
-
-        let firstIndex = flatContent.findIndex(element => element.type === first.type && element.id === first.id)
-        let lastIndex = flatContent.findIndex(element => element.type === last.type && element.id === last.id)
-
-        if (firstIndex === -1 || lastIndex === -1) return {}
-
-        if (lastIndex < firstIndex) {
-            const _last = lastIndex
-
-            lastIndex = firstIndex
-            firstIndex = _last
-        }
-
-        const elementsOfRange = flatContent.slice(firstIndex, lastIndex + 1)
-
-        const result: { folders: number[], files: number[] } = { folders: [], files: [] }
-
-        elementsOfRange.forEach(element => element.type === 'FOLDER' ? result.folders.push(element.id) : result.files.push(element.id))
-
-        return result
-    }
+import { ElementType, selectedType } from '../../store/features/contentSlice/contentSlice.types'
 
 const useContentEvents = () => {
     const currentFolder = useSelector(state => state.content.currentFolder)
@@ -79,7 +42,11 @@ const useContentEvents = () => {
                 }
 
             } else {
-                const range = getRangeOfElements({ ...currentFolder }, selected.selectionStart, { type, id })
+                const range = getRangeOfElements({
+                    currentFolder: { ...currentFolder },
+                    first: selected.selectionStart,
+                    last: { type, id }
+                })
 
                 newSelected = { ...newSelected, ...range }
             }
