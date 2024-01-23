@@ -6,7 +6,9 @@ import click from './click/click'
 import controlClick from './controlClick/controlClick'
 import shiftClick from './shiftClick/shiftClick'
 
-import { ElementType } from '../../store/features/contentSlice/contentSlice.types'
+import { ElementType, selectedType } from '../../store/features/contentSlice/contentSlice.types'
+
+const emptySelect: selectedType = { selectionStart: null }
 
 const useContentEvents = () => {
     const currentFolder = useSelector(state => state.content.currentFolder)
@@ -15,7 +17,7 @@ const useContentEvents = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(setSelected({ selectionStart: null }))
+        dispatch(setSelected(emptySelect))
 
     }, [dispatch, currentPath])
 
@@ -25,6 +27,8 @@ const useContentEvents = () => {
         else dispatch(setSelected(click(type, id)))
     }
 
+    const unselectAll = () => dispatch(setSelected(emptySelect))
+
     return {
         folderEvents: {
             onClick: (event: React.MouseEvent<HTMLElement>, folderId: number) => select(event, 'FOLDER', folderId),
@@ -32,7 +36,9 @@ const useContentEvents = () => {
 
         filesEvents: {
             onClick: (event: React.MouseEvent<HTMLElement>, folderId: number) => select(event, 'FILE', folderId),
-        }
+        },
+
+        unselectAll
     }
 }
 
