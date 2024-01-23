@@ -2,14 +2,17 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import { setSelected } from '../../store/features/contentSlice/contentSlice'
 
+import { selectedType } from '../../store/features/contentSlice/contentSlice.types'
+
 type ElementType = 'FOLDER' | 'FILE'
 
 const useContentEvents = () => {
+    const selected = useSelector(state => state.content.selected)
     const currentPath = useSelector(state => state.content.currentPath)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(setSelected({}))
+        dispatch(setSelected({ selectionStart: null }))
 
     }, [dispatch, currentPath])
 
@@ -19,18 +22,49 @@ const useContentEvents = () => {
         id: number
 
     ) => {
-        switch (type) {
-            case 'FOLDER':
-                dispatch(setSelected({ folders: [id] }))
-                break
+        let newSelected: selectedType = { selectionStart: null }
 
-            case 'FILE':
-                dispatch(setSelected({ files: [id] }))
-                break
+        if (event.shiftKey) {
+            return
 
-            default:
-                return
+        } else if (event.ctrlKey) {
+            newSelected = { ...selected }
+
+            switch (type) {
+                case 'FOLDER':
+                    if (!newSelected.folders) newSelected.folders = []
+
+                    if (newSelected.folders.includes(id)) newSelected.folders = newSelected.folders.filter(folder => folder !== id)
+                    else newSelected.folders = [...newSelected.folders, id]
+
+                    newSelected.selectionStart = { type: 'FOLDER', id }
+
+                    break
+
+                case 'FILE':
+                    if (!newSelected.files) newSelected.files = []
+
+                    if (newSelected.files.includes(id)) newSelected.files = newSelected.files.filter(file => file !== id)
+                    else newSelected.files = [...newSelected.files, id]
+
+                    newSelected.selectionStart = { type: 'FILE', id }
+            }
+
+        } else {
+            switch (type) {
+                case 'FOLDER':
+                    newSelected.folders = [id]
+                    newSelected.selectionStart = { type: 'FOLDER', id }
+
+                    break
+
+                case 'FILE':
+                    newSelected.files = [id]
+                    newSelected.selectionStart = { type: 'FILE', id }
+            }
         }
+
+        dispatch(setSelected(newSelected))
     }
 
     return {
