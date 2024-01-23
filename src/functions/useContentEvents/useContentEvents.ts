@@ -4,6 +4,7 @@ import { setSelected } from '../../store/features/contentSlice/contentSlice'
 
 import getRangeOfElements from '../getRangeOfElements/getRangeOfElements'
 import click from './click/click'
+import controlClick from './controlClick/controlClick'
 
 import { ElementType, selectedType } from '../../store/features/contentSlice/contentSlice.types'
 
@@ -45,32 +46,9 @@ const useContentEvents = () => {
                 newSelected = { ...newSelected, ...range }
             }
 
-        } else if (event.ctrlKey) {
-            switch (type) {
-                case 'FOLDER':
-                    if (!newSelected.folders) newSelected.folders = []
+        } else if (event.ctrlKey) dispatch(setSelected(controlClick({ ...selected }, type, id)))
+        else dispatch(setSelected(click(type, id)))
 
-                    if (newSelected.folders.includes(id)) newSelected.folders = newSelected.folders.filter(folder => folder !== id)
-                    else newSelected.folders = [...newSelected.folders, id]
-
-                    newSelected.selectionStart = { type: 'FOLDER', id }
-
-                    break
-
-                case 'FILE':
-                    if (!newSelected.files) newSelected.files = []
-
-                    if (newSelected.files.includes(id)) newSelected.files = newSelected.files.filter(file => file !== id)
-                    else newSelected.files = [...newSelected.files, id]
-
-                    newSelected.selectionStart = { type: 'FILE', id }
-            }
-
-        } else {
-            dispatch(setSelected(click(type, id)))
-        }
-
-        // dispatch(setSelected(newSelected))
     }
 
     return {
