@@ -7,7 +7,9 @@ const initialState: initialStateType = {
     currentPath: [],
     currentFolder: {},
     loadedContent: __exampleContent,
-    selected: {}
+    selected: {
+        selectionStart: null
+    }
 }
 
 export default initialState

@@ -40,7 +40,8 @@ export type contentDisplayType = false | {
 
 export type selectedType = {
     files?: number[],
-    folders?: number[]
+    folders?: number[],
+    selectionStart: { type: 'FOLDER' | 'FILE', id: number } | null
 }
 
 export type initialStateType = {
