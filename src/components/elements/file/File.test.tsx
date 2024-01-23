@@ -9,6 +9,7 @@ describe('File', () => {
             extension='PNG'
             preview={false}
             isStar={false}
+            isSelected={false}
         />)
 
         const buttonElements = screen.getAllByRole('button')
@@ -21,6 +22,7 @@ describe('File', () => {
             extension='PNG'
             preview={false}
             isStar={false}
+            isSelected={false}
         />)
 
         const nameElement = screen.getByText('Test')
