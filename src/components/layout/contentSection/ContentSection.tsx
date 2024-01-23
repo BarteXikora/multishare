@@ -1,8 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
 
 import useContentEvents from '../../../functions/useContentEvents/useContentEvents'
+import useClickOutside from '../../../functions/useClickOutside/useClickOutside'
 
 import StyledContentSection from './ContentSection.styles'
 import Folder from '../../elements/folder/Folder'
@@ -14,12 +15,22 @@ const ContentSection = () => {
     const selected = useSelector(state => state.content.selected)
     const dispatch = useDispatch()
 
-    const { folderEvents, filesEvents } = useContentEvents()
+    const { folderEvents, filesEvents, unselectAll } = useContentEvents()
 
     useEffect(() => {
         dispatch(setTreeLocation(-1))
 
     }, [dispatch])
+
+    const foldersSectionRef = useRef<HTMLDivElement>(null)
+    const filesSectionRef = useRef<HTMLDivElement>(null)
+
+    const unselectOnSectionClick = (event: React.MouseEvent) => {
+        if (event.target === foldersSectionRef.current) unselectAll()
+        if (event.target === filesSectionRef.current) unselectAll()
+    }
+
+    useClickOutside([foldersSectionRef, filesSectionRef], unselectAll)
 
     return <StyledContentSection>
         {
@@ -27,7 +38,7 @@ const ContentSection = () => {
                 <section className='folders-section'>
                     <h2>Foldery:</h2>
 
-                    <div className="content">
+                    <div className="content" ref={foldersSectionRef} onClick={e => unselectOnSectionClick(e)}>
                         {
                             content.folders.map(folder => {
                                 return <Folder
@@ -51,7 +62,7 @@ const ContentSection = () => {
                 <section className='files-section'>
                     <h2>Pliki:</h2>
 
-                    <div className="content">
+                    <div className="content" ref={filesSectionRef} onClick={e => unselectOnSectionClick(e)}>
                         {
                             content.files.map(file => {
                                 return <File
