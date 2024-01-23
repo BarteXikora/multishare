@@ -2,19 +2,17 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import { setSelected } from '../../store/features/contentSlice/contentSlice'
 
-import { selectedType, contentDisplayType } from '../../store/features/contentSlice/contentSlice.types'
-
-type ElementType = 'FOLDER' | 'FILE'
+import { ElementType, selectedType, contentDisplayType } from '../../store/features/contentSlice/contentSlice.types'
 
 const getRangeOfElements =
     (
         currentFolder: contentDisplayType,
-        first: { type: 'FOLDER' | 'FILE', id: number },
-        last: { type: 'FOLDER' | 'FILE', id: number }
+        first: { type: ElementType, id: number },
+        last: { type: ElementType, id: number }
 
     ): { folders?: number[], files?: number[] } => {
 
-        const flatContent: { type: 'FOLDER' | 'FILE', id: number }[] = []
+        const flatContent: { type: ElementType, id: number }[] = []
 
         if (currentFolder) {
             if (currentFolder.folders)

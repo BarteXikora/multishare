@@ -1,3 +1,5 @@
+export type ElementType = 'FOLDER' | 'FILE'
+
 export type projectType = {
     id: number,
     name: string
