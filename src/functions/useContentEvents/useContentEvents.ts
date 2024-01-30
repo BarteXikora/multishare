@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
-import { setSelected } from '../../store/features/contentSlice/contentSlice'
+import { setSelected, setTreeLocation } from '../../store/features/contentSlice/contentSlice'
 
 import click from './click/click'
 import controlClick from './controlClick/controlClick'
@@ -27,11 +27,14 @@ const useContentEvents = () => {
         else dispatch(setSelected(click(type, id)))
     }
 
+    const openFolder = (folderId: number) => dispatch(setTreeLocation(folderId))
+
     const unselectAll = () => dispatch(setSelected(emptySelect))
 
     return {
         folderEvents: {
             onClick: (event: React.MouseEvent<HTMLElement>, folderId: number) => select(event, 'FOLDER', folderId),
+            onDoubleClick: (folderId: number) => openFolder(folderId)
         },
 
         filesEvents: {
