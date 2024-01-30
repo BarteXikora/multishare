@@ -1,6 +1,3 @@
-import { useDispatch } from '../../../store/store'
-import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
-
 import StyledFolder from './Folder.styles'
 import Button from '../../ui/button/Button'
 
@@ -12,15 +9,19 @@ type FolderProps = {
     id: number
     displayName: string
     isStar: boolean
+    isSelected: boolean
+    onClick: (e: React.MouseEvent<HTMLElement>) => void
+    onDoubleClick: () => void
 }
 
-const Folder = ({ id, displayName, isStar }: FolderProps) => {
-    const dispatch = useDispatch()
-
+const Folder = ({ id, displayName, isStar, isSelected, onClick, onDoubleClick }: FolderProps) => {
     return <StyledFolder
         $variant='secondary'
         $size='big'
-        onDoubleClick={() => dispatch(setTreeLocation(id))}
+        className={isSelected ? 'selected' : ''}
+
+        onClick={onClick}
+        onDoubleClick={onDoubleClick}
     >
         <div className="folder-name">
             <img src={iconFolder} alt='Folder' />

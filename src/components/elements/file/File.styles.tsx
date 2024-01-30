@@ -14,6 +14,7 @@ const StyledFile = styled(Button)`
         aspect-ratio: 7 / 3;
         background-position: center;
         background-size: cover;
+        z-index: 1;
 
         &.preview-img {
             box-shadow: inset 0px 0px 47px -10px ${(props) => props.theme.colors.black};
@@ -76,6 +77,24 @@ const StyledFile = styled(Button)`
 
         .star {
             background-color: ${(props) => props.theme.colors.gray3};
+        }
+    }
+
+    &.selected {
+        background-color: ${(props) => props.theme.colors.primary2};
+        outline: 1px solid ${(props) => props.theme.colors.black};
+
+        .extension {
+            background-color: ${(props) => props.theme.colors.primary2};
+            outline: 1px solid ${(props) => props.theme.colors.black};
+        }
+
+        .preview {
+            outline: 1px solid ${(props) => props.theme.colors.black};
+        }
+
+        .star {
+            background-color: ${(props) => props.theme.colors.primary2};
         }
     }
 `

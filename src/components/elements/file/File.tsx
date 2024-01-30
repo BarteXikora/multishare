@@ -12,9 +12,11 @@ type FileProps = {
     extension: string
     preview: string | false
     isStar: boolean
+    isSelected: boolean
+    onClick: (e: React.MouseEvent<HTMLElement>) => void
 }
 
-const File = ({ displayName, extension, preview, isStar }: FileProps) => {
+const File = ({ displayName, extension, preview, isStar, isSelected, onClick }: FileProps) => {
     const [previewImage, setPreviewImage] = useState<string>('')
 
     useEffect(() => {
@@ -22,7 +24,13 @@ const File = ({ displayName, extension, preview, isStar }: FileProps) => {
 
     }, [preview, extension])
 
-    return <StyledFile $variant='secondary' $size='big'>
+    return <StyledFile
+        $variant='secondary'
+        $size='big'
+        className={isSelected ? 'selected' : ''}
+
+        onClick={onClick}
+    >
         <div
             className={`preview ${preview && 'preview-img'}`}
             style={{ backgroundImage: `url('${previewImage}')` }}
