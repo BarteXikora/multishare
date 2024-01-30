@@ -49,6 +49,7 @@ const ContentSection = () => {
                                     isSelected={selected.folders ? selected.folders.includes(folder.id) : false}
 
                                     onClick={e => folderEvents.onClick(e, folder.id)}
+                                    onDoubleClick={() => folderEvents.onDoubleClick(folder.id)}
                                 />
                             })
                         }
