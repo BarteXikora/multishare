@@ -1,5 +1,10 @@
 import { fileType, folderType } from '../contentSlice/contentSlice.types'
 
+export type multipleDataType = {
+    folders: folderType[]
+    files: fileType[]
+}
+
 type contentEmptyType = {
     type: 'EMPTY'
 }
@@ -16,10 +21,7 @@ type contentFileType = {
 
 type contentMultipleType = {
     type: 'MULTIPLE',
-    data: {
-        folders?: folderType[]
-        files?: fileType[]
-    }
+    data: multipleDataType
 }
 
 type contentType = contentEmptyType | contentFolderType | contentFileType | contentMultipleType
