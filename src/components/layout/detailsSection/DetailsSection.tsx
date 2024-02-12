@@ -5,7 +5,7 @@ import useInvokeDetails from '../../../functions/useInvokeDetails/useInvokeDetai
 import StyledDetailsSection from './DetailsSection.styles'
 import Button from '../../ui/button/Button'
 
-import DropSection from '../../elements/dropSection/DropSection'
+import DropSection from './dropSection/DropSection'
 import ProcessPill from '../../elements/processPill/ProcessPill'
 
 import iconClose from '../../../assets/icons/icon-close.svg'

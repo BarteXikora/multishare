@@ -1,4 +1,4 @@
-import { render, screen } from '../../../test-utils'
+import { render, screen } from '../../../../test-utils'
 import DropSection from './DropSection'
 
 describe('Drop Section', () => {
