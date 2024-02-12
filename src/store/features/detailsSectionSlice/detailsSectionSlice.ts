@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import initialState from './initialState'
 
 export const detailsSectionSlice = createSlice({
     name: 'detailsSectionSlice',
-    initialState: { isShown: false },
+    initialState,
     reducers: {
 
         toggle: (state, action: PayloadAction<boolean | undefined>) => {
