@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from '../../../store/store'
 import { toggle } from '../../../store/features/detailsSectionSlice/detailsSectionSlice'
+import useInvokeDetails from '../../../functions/useInvokeDetails/useInvokeDetails'
 
 import StyledDetailsSection from './DetailsSection.styles'
 import Button from '../../ui/button/Button'
@@ -12,6 +13,8 @@ import iconClose from '../../../assets/icons/icon-close.svg'
 const DetailsSection = () => {
     const isShown = useSelector(state => state.detailsSection.isShown)
     const dispatch = useDispatch()
+
+    useInvokeDetails()
 
     return <StyledDetailsSection className={`${isShown ? 'shown' : ''}`}>
 
