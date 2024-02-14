@@ -6,12 +6,14 @@ import StyledDetailsSection from './DetailsSection.styles'
 import Button from '../../ui/button/Button'
 
 import DropSection from './dropSection/DropSection'
+import SingleFolderDetails from './singleFolderDetails/SingleFolderDetails'
 import ProcessPill from '../../elements/processPill/ProcessPill'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
 
 const DetailsSection = () => {
     const isShown = useSelector(state => state.detailsSection.isShown)
+    const content = useSelector(state => state.detailsSection.content)
     const dispatch = useDispatch()
 
     useInvokeDetails()
@@ -23,7 +25,15 @@ const DetailsSection = () => {
         </Button>
 
         <section className="main-content">
-            <DropSection />
+            {
+                content.type === 'EMPTY' ?
+                    <DropSection />
+                    :
+                    content.type === 'FOLDER' ?
+                        <SingleFolderDetails data={content.data} />
+                        :
+                        null
+            }
         </section>
 
         <div className="process-pill">

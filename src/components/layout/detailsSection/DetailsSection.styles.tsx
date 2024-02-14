@@ -12,7 +12,6 @@ const StyledDetailsSection = styled.div`
 
     .main-content {
         height: 100%;
-        padding: ${(props) => props.theme.margins.big};
     }
 
     .close-button {
