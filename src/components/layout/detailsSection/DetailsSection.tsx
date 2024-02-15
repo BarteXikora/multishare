@@ -7,6 +7,7 @@ import Button from '../../ui/button/Button'
 
 import DropSection from './dropSection/DropSection'
 import SingleFolderDetails from './singleFolderDetails/SingleFolderDetails'
+import SingleFileDetails from './singleFileDetails/SingleFileDetails'
 import ProcessPill from '../../elements/processPill/ProcessPill'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
@@ -32,7 +33,10 @@ const DetailsSection = () => {
                     content.type === 'FOLDER' ?
                         <SingleFolderDetails data={content.data} />
                         :
-                        null
+                        content.type === 'FILE' ?
+                            <SingleFileDetails data={content.data} />
+                            :
+                            null
             }
         </section>
 
