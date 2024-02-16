@@ -1,6 +1,6 @@
 import StyledDropSection from './DropSection.styles'
 
-import imgDropHere from '../../../assets/images/img-drop.svg'
+import imgDropHere from '../../../../assets/images/img-drop.svg'
 
 const DropSection = () => {
     return <StyledDropSection>

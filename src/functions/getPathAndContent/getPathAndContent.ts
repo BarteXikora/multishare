@@ -16,7 +16,18 @@ const getPathAndContent = (content: contentType, id: number): getPathAndContentT
                 if (folder.id === id) {
                     found.push({ id: folder.id, name: folder.name })
 
-                    currentContent = folder.content
+                    currentContent = folder.content && {
+                        folders: folder.content.folders?.map(f => {
+                            return ({
+                                ...f,
+                                insideContent: {
+                                    folders: (f.content && f.content.folders) ? f.content.folders.length : 0,
+                                    files: (f.content && f.content.files) ? f.content.files.length : 0
+                                }
+                            })
+                        }),
+                        files: folder.content.files
+                    }
 
                 } else {
                     const next = findNext(folder.content)

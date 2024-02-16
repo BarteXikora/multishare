@@ -10,16 +10,28 @@ export type pathType = {
     name: string
 }[]
 
+export type folderDetailsType = {
+    createdDate?: Date,
+    lastModificationDate?: Date,
+}
+
+export type fileDetailsType = folderDetailsType & {
+    fileSizeBites?: number
+}
+
 export type folderType = {
     id: number,
     name: string,
     content: contentType,
+    details: folderDetailsType,
     star: boolean
 }
 
 export type folderDisplayType = {
     id: number,
     name: string,
+    insideContent: { folders: number, files: number },
+    details: folderDetailsType,
     star: boolean
 }
 
@@ -27,6 +39,7 @@ export type fileType = {
     id: number,
     name: string,
     extension: string,
+    details: fileDetailsType,
     star: boolean
 }
 

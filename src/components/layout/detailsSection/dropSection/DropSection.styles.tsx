@@ -7,7 +7,6 @@ const StyledDropSection = styled.div`
     width: 100%;
     height: 100%;
     border-radius: ${(props) => props.theme.borderRadiuses.small};
-    border: 2px dashed ${(props) => props.theme.colors.black};
 
     .content {
         display: flex;
@@ -17,6 +16,9 @@ const StyledDropSection = styled.div`
         padding: ${(props) => props.theme.margins.sectionBig};
         margin-bottom: ${(props) => props.theme.margins.extraBig};
         font-size: ${(props) => props.theme.fontSizes.subtitle};
+
+        color: ${(props) => props.theme.colors.gray4};
+        font-weight: bold;
     }
 
     img {
