@@ -11,6 +11,10 @@ const StyledSingleFileDetails = styled.div`
         background-repeat: no-repeat;
     }
 
+    .section {
+        padding: ${(props) => props.theme.margins.small} ${(props) => props.theme.margins.big};
+    }
+
     .section-name {
         padding: ${(props) => props.theme.margins.medium} ${(props) => props.theme.margins.big};
 
@@ -20,6 +24,14 @@ const StyledSingleFileDetails = styled.div`
             display: flex;
             align-items: start;
             gap: ${(props) => props.theme.margins.medium};
+        }
+    }
+
+    .detail-row {
+        margin-bottom: ${(props) => props.theme.margins.medium};
+
+        .detail-name {
+            font-weight: bold;
         }
     }
 `
