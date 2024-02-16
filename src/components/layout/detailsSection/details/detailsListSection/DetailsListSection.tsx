@@ -1,4 +1,5 @@
 import Moment from 'react-moment'
+import getFileTypeName from '../../../../../functions/getFileTypeName/getFileTypeName'
 import getDataWithUnit from '../../../../../functions/getDataWithUnit/getDataWithUnit'
 
 import { contentType } from '../../../../../store/features/detailsSectionSlice/initialState.types'
@@ -15,7 +16,14 @@ const DetailsListSection = ({ content }: { content: contentType }) => {
             <div className="detail-row">
                 <div className="detail-name">Typ:</div>
 
-                <div className="detail-value">__WIP...</div>
+                <div className="detail-value">
+                    {
+                        type === 'FOLDER' ?
+                            'Folder plików'
+                            :
+                            getFileTypeName(data.extension)
+                    }
+                </div>
             </div>
 
             {
