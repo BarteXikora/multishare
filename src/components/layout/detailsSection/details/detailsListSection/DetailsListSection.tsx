@@ -1,4 +1,5 @@
 import Moment from 'react-moment'
+import getDataWithUnit from '../../../../../functions/getDataWithUnit/getDataWithUnit'
 
 import { contentType } from '../../../../../store/features/detailsSectionSlice/initialState.types'
 
@@ -22,7 +23,7 @@ const DetailsListSection = ({ content }: { content: contentType }) => {
                     <div className="detail-name">Rozmiar pliku:</div>
 
                     <div className="detail-value">
-                        {data.details.fileSizeBites} B
+                        {getDataWithUnit(data.details.fileSizeBites)}
                     </div>
                 </div>
             }
