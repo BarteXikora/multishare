@@ -4,6 +4,7 @@ import { contentType } from "../../../../../store/features/detailsSectionSlice/i
 
 import imgFolder from '../../../../../assets/images/img-folder.svg'
 import imgEmptyFolder from '../../../../../assets/images/img-empty-folder.svg'
+import imgMultiple from '../../../../../assets/images/img-multiple-selection.svg'
 import iconStar from '../../../../../assets/icons/icon-star-color.svg'
 
 const PreviewSection = ({ content }: { content: contentType }) => {
@@ -34,6 +35,12 @@ const PreviewSection = ({ content }: { content: contentType }) => {
                 className="preview-image"
                 style={{ backgroundImage: `url(${getPreviewImage(false, data.extension)})` }}
             ></div>
+        }
+
+        {
+            type === 'MULTIPLE' && <div className="icon-section">
+                <img src={imgMultiple} alt="Zaznaczono wiele elementów." />
+            </div>
         }
     </div>
 }
