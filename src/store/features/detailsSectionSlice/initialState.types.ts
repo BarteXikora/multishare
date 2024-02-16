@@ -24,7 +24,7 @@ type contentMultipleType = {
     data: multipleDataType
 }
 
-type contentType = contentEmptyType | contentFolderType | contentFileType | contentMultipleType
+export type contentType = contentEmptyType | contentFolderType | contentFileType | contentMultipleType
 
 type initialStateType = {
     isShown: boolean
