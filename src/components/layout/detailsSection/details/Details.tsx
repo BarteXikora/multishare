@@ -2,6 +2,7 @@ import StyledDetails from './Details.styles'
 import Moment from 'react-moment'
 
 import PreviewSection from './previewSection/PreviewSection'
+import NameSection from './nameSection/NameSection'
 
 import { contentType } from '../../../../store/features/detailsSectionSlice/initialState.types'
 
@@ -13,22 +14,7 @@ const Details = ({ content }: { content: contentType }) => {
     return <StyledDetails>
         <PreviewSection content={content} />
 
-        <div className="section-name">
-            <h3>
-                {
-                    (type === 'FOLDER' || type === 'FILE') ?
-                        data.name
-                        :
-                        'Zaznaczono wiele elementów'
-                }
-            </h3>
-        </div>
-
-
-
-
-
-
+        <NameSection content={content} />
 
 
         {
