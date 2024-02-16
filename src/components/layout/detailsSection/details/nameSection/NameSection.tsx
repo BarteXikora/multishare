@@ -5,13 +5,13 @@ const NameSection = ({ content }: { content: contentType }) => {
 
     const { type, data } = content
 
-    return <div className="section-name">
+    return <div className="section section-name">
         <h3>
             {
                 (type === 'FOLDER' || type === 'FILE') ?
-                    data.name
+                    `${data.name}${type === 'FILE' ? '.' + data.extension.toLowerCase() : ''}`
                     :
-                    'Zaznaczono wiele elementów'
+                    'Zaznaczono wiele elementów.'
             }
         </h3>
     </div>
