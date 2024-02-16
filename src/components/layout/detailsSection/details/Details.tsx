@@ -3,6 +3,7 @@ import Moment from 'react-moment'
 
 import PreviewSection from './previewSection/PreviewSection'
 import NameSection from './nameSection/NameSection'
+import InsideContentSection from './insideContentSection/InsideContentSection'
 
 import { contentType } from '../../../../store/features/detailsSectionSlice/initialState.types'
 
@@ -16,31 +17,8 @@ const Details = ({ content }: { content: contentType }) => {
 
         <NameSection content={content} />
 
+        <InsideContentSection content={content} />
 
-        {
-            type === 'FOLDER' && <div className="section section-content">
-                <h4>Zawartość:</h4>
-
-                {
-                    data.insideContent.folders + data.insideContent.files === 0 ?
-                        <div className="info-pill info-pill-zero">Pusty folder</div>
-                        :
-                        <>
-                            <div className={`info-pill ${data.insideContent.folders > 0 ? '' : 'info-pill-zero'}`}>
-                                <span>Podfoldery:</span>
-
-                                {data.insideContent.folders}
-                            </div>
-
-                            <div className={`info-pill ${data.insideContent.files > 0 ? '' : 'info-pill-zero'}`}>
-                                <span>Pliki:</span>
-
-                                {data.insideContent.files}
-                            </div>
-                        </>
-                }
-            </div>
-        }
 
 
 
