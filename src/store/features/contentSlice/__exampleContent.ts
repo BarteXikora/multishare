@@ -43,6 +43,11 @@ const __exampleContent = {
                                                 id: 100,
                                                 name: 'Wycieczka na rowery 1',
                                                 extension: 'PNG',
+                                                details: {
+                                                    createdDate: new Date(),
+                                                    lastModificationDate: new Date(),
+                                                    fileSizeBites: 25000
+                                                },
                                                 star: false
                                             }
                                         ]

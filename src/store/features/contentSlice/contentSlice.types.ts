@@ -15,6 +15,10 @@ export type folderDetailsType = {
     lastModificationDate?: Date,
 }
 
+export type fileDetailsType = folderDetailsType & {
+    fileSizeBites?: number
+}
+
 export type folderType = {
     id: number,
     name: string,
@@ -35,6 +39,7 @@ export type fileType = {
     id: number,
     name: string,
     extension: string,
+    details: fileDetailsType,
     star: boolean
 }
 
