@@ -20,6 +20,7 @@ export type folderType = {
 export type folderDisplayType = {
     id: number,
     name: string,
+    insideContent: { folders: number, files: number },
     star: boolean
 }
 
