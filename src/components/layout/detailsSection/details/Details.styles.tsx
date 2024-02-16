@@ -65,6 +65,16 @@ const StyledDetails = styled.div`
             }
         }
     }
+
+    .section-details-list {
+        .detail-row {
+            margin-bottom: ${(props) => props.theme.margins.medium};
+
+            .detail-name {
+                font-weight: bold;
+            }
+        }
+    }
 `
 
 export default StyledDetails
