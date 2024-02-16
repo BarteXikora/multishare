@@ -7,13 +7,11 @@ import iconFolder from '../../../../assets/icons/icon-project.svg'
 import iconStar from '../../../../assets/icons/icon-star-color.svg'
 
 const SingleFolderDetails = ({ data }: { data: folderDisplayType }) => {
-    const __contentInfo = { folders: 0, files: 0 }
-
     return <StyledSingleFolderDetails>
         <div className="section-icon">
             <div className="icon">
                 {
-                    __contentInfo.folders + __contentInfo.files === 0 ?
+                    data.insideContent.folders + data.insideContent.files === 0 ?
                         <img className='icon-folder' src={imgEmptyFolder} alt='Folder' />
                         :
                         <img className='icon-folder' src={imgFolder} alt='Folder' />
@@ -37,20 +35,20 @@ const SingleFolderDetails = ({ data }: { data: folderDisplayType }) => {
             <h4>Zawartość:</h4>
 
             {
-                __contentInfo.folders + __contentInfo.files === 0 ?
+                data.insideContent.folders + data.insideContent.files === 0 ?
                     <div className="info-pill info-pill-zero">Pusty folder</div>
                     :
                     <>
-                        <div className={`info-pill ${__contentInfo.folders > 0 ? '' : 'info-pill-zero'}`}>
+                        <div className={`info-pill ${data.insideContent.folders > 0 ? '' : 'info-pill-zero'}`}>
                             <span>Podfoldery:</span>
 
-                            {__contentInfo.folders}
+                            {data.insideContent.folders}
                         </div>
 
-                        <div className={`info-pill ${__contentInfo.files > 0 ? '' : 'info-pill-zero'}`}>
+                        <div className={`info-pill ${data.insideContent.files > 0 ? '' : 'info-pill-zero'}`}>
                             <span>Pliki:</span>
 
-                            {__contentInfo.files}
+                            {data.insideContent.files}
                         </div>
                     </>
             }
