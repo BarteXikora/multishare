@@ -60,6 +60,14 @@ const StyledSingleFolderDetails = styled.div`
             color: ${(props) => props.theme.colors.gray5};
         }
     }
+
+    .detail-row {
+        margin-bottom: ${(props) => props.theme.margins.medium};
+
+        .detail-name {
+            font-weight: bold;
+        }
+    }
 `
 
 export default StyledSingleFolderDetails

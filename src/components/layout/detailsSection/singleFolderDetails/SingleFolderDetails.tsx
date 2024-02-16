@@ -53,6 +53,34 @@ const SingleFolderDetails = ({ data }: { data: folderDisplayType }) => {
                     </>
             }
         </div>
+
+        <div className="section section-details">
+            <h4>Szczegóły:</h4>
+
+            <div className="details-table">
+                <div className="detail-row">
+                    <div className="detail-name">Typ:</div>
+
+                    <div className="detail-value">Folder plików</div>
+                </div>
+
+                {
+                    data.details.createdDate && <div className="detail-row">
+                        <div className="detail-name">Data utworzenia:</div>
+
+                        <div className="detail-value">{data.details.createdDate.toDateString()}</div>
+                    </div>
+                }
+
+                {
+                    data.details.lastModificationDate && <div className="detail-row">
+                        <div className="detail-name">Data ostatniej modyfikacji:</div>
+
+                        <div className="detail-value">{data.details.lastModificationDate.toDateString()}</div>
+                    </div>
+                }
+            </div>
+        </div>
     </StyledSingleFolderDetails>
 }
 
