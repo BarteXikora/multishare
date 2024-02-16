@@ -48,6 +48,23 @@ const StyledDetails = styled.div`
         background-size: cover;
         background-repeat: no-repeat;
     }
+
+    .section-inside-content {
+        .info-pill {
+            display: inline-flex;
+            padding: ${(props) => props.theme.margins.sectionSmall};
+            background-color: ${(props) => props.theme.colors.gray3};
+            border-radius: ${(props) => props.theme.borderRadiuses.small};
+            margin: 0 ${(props) => props.theme.margins.small} ${(props) => props.theme.margins.small} 0;
+            font-weight: bold;
+            gap: ${(props) => props.theme.margins.medium};
+
+            &.info-pill-zero {
+                font-weight: normal;
+                color: ${(props) => props.theme.colors.gray5};
+            }
+        }
+    }
 `
 
 export default StyledDetails

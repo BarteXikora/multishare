@@ -5,7 +5,7 @@ const InsideContentSection = ({ content }: { content: contentType }) => {
 
     const { data } = content
 
-    return <div className="section section-content">
+    return <div className="section section-inside-content">
         <h4>Zawartość:</h4>
 
         {
