@@ -1,23 +1,13 @@
 import { useState, useEffect } from 'react'
 
+import getDataWithUnit from '../../../functions/getDataWithUnit/getDataWithUnit'
+
 import StyledUsedSpace from './UsedSpace.styles'
 import Button from '../../ui/button/Button'
 
 const __usedSpaceData = {
     currentValue: 9126805504, // 8.5 GB in B
     wholeSpace: 26843545600 // 25 GB in B
-}
-
-const getDataWithUnit = (data: number): string => {
-    const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
-    let currentUnit = 0
-
-    while (data / 1024 >= 1) {
-        data = Math.round(data / 1024 * 10) / 10
-        currentUnit++
-    }
-
-    return data + ' ' + (currentUnit <= units.length && units[currentUnit])
 }
 
 const UsedSpace = () => {
