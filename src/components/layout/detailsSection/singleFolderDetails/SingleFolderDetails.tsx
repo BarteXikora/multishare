@@ -1,4 +1,5 @@
 import StyledSingleFolderDetails from './SingleFolderDetails.styles'
+import Moment from 'react-moment'
 import { folderDisplayType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 import imgFolder from '../../../../assets/images/img-folder.svg'
@@ -68,7 +69,11 @@ const SingleFolderDetails = ({ data }: { data: folderDisplayType }) => {
                     data.details.createdDate && <div className="detail-row">
                         <div className="detail-name">Data utworzenia:</div>
 
-                        <div className="detail-value">{data.details.createdDate.toDateString()}</div>
+                        <div className="detail-value">
+                            <Moment format='D.MM.yyyy, HH:mm.ss'>
+                                {data.details.createdDate}
+                            </Moment>
+                        </div>
                     </div>
                 }
 
@@ -76,7 +81,11 @@ const SingleFolderDetails = ({ data }: { data: folderDisplayType }) => {
                     data.details.lastModificationDate && <div className="detail-row">
                         <div className="detail-name">Data ostatniej modyfikacji:</div>
 
-                        <div className="detail-value">{data.details.lastModificationDate.toDateString()}</div>
+                        <div className="detail-value">
+                            <Moment format='D.MM.yyyy, HH:mm.ss'>
+                                {data.details.lastModificationDate}
+                            </Moment>
+                        </div>
                     </div>
                 }
             </div>
