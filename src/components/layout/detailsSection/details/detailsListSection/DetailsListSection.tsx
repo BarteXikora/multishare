@@ -32,7 +32,7 @@ const DetailsListSection = ({ content }: { content: contentType }) => {
                     <div className="detail-name">Data utworzenia:</div>
 
                     <div className="detail-value">
-                        <Moment format='D.MM.yyyy, HH:mm.ss'>
+                        <Moment format='D.MM.yyyy, HH:mm:ss'>
                             {data.details.createdDate}
                         </Moment>
                     </div>
@@ -44,7 +44,7 @@ const DetailsListSection = ({ content }: { content: contentType }) => {
                     <div className="detail-name">Data ostatniej modyfikacji:</div>
 
                     <div className="detail-value">
-                        <Moment format='D.MM.yyyy, HH:mm.ss'>
+                        <Moment format='D.MM.yyyy, HH:mm:ss'>
                             {data.details.lastModificationDate}
                         </Moment>
                     </div>
