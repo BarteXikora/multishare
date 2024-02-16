@@ -13,23 +13,25 @@ const PreviewSection = ({ content }: { content: contentType }) => {
 
     return <div className="preview-section">
         {
-            type === 'FOLDER' && <div className="icon">
-                {
-                    data.insideContent.folders + data.insideContent.files === 0 ?
-                        <img className='icon-folder' src={imgEmptyFolder} alt='Folder' />
-                        :
-                        <img className='icon-folder' src={imgFolder} alt='Folder' />
-                }
+            type === 'FOLDER' && <div className="icon-section">
+                <div className="icon">
+                    {
+                        data.insideContent.folders + data.insideContent.files === 0 ?
+                            <img className='icon-folder' src={imgEmptyFolder} alt='Folder' />
+                            :
+                            <img className='icon-folder' src={imgFolder} alt='Folder' />
+                    }
 
-                {
-                    data.star && <img className='icon-star' src={iconStar} alt='Oznaczony gwiazdką' />
-                }
+                    {
+                        data.star && <img className='icon-star' src={iconStar} alt='Oznaczony gwiazdką' />
+                    }
+                </div>
             </div>
         }
 
         {
             type === 'FILE' && <div
-                className="preview-section"
+                className="preview-image"
                 style={{ backgroundImage: `url(${getPreviewImage(false, data.extension)})` }}
             ></div>
         }
