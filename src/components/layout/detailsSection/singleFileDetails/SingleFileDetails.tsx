@@ -3,8 +3,6 @@ import getPreviewImage from '../../../../functions/getPreviewImage/getPreviewIma
 import Moment from 'react-moment'
 import { fileType } from '../../../../store/features/contentSlice/contentSlice.types'
 
-import iconFile from '../../../../assets/icons/icon-file.svg'
-
 const SingleFileDetails = ({ data }: { data: fileType }) => {
     return <StyledSingleFileDetails>
         <div
@@ -13,11 +11,7 @@ const SingleFileDetails = ({ data }: { data: fileType }) => {
         ></div>
 
         <div className="section-name">
-            <h3>
-                <img src={iconFile} alt='Plik' />
-
-                <span>{`${data.name}.${data.extension.toLocaleLowerCase()}`}</span>
-            </h3>
+            <h3>{`${data.name}.${data.extension.toLocaleLowerCase()}`}</h3>
         </div>
 
         <div className="section section-details">
