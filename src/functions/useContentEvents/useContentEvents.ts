@@ -5,6 +5,7 @@ import { setSelected, setTreeLocation } from '../../store/features/contentSlice/
 import click from './click/click'
 import controlClick from './controlClick/controlClick'
 import shiftClick from './shiftClick/shiftClick'
+import selectAllClick from './selectAllClick/selectAllClick'
 
 import { ElementType, selectedType } from '../../store/features/contentSlice/contentSlice.types'
 
@@ -29,6 +30,10 @@ const useContentEvents = () => {
 
     const openFolder = (folderId: number) => dispatch(setTreeLocation(folderId))
 
+    const selectAll = (unselectAllOnSecondClick: boolean = true) => dispatch(
+        setSelected(selectAllClick(currentFolder, selected, unselectAllOnSecondClick))
+    )
+
     const unselectAll = () => dispatch(setSelected(emptySelect))
 
     return {
@@ -41,6 +46,7 @@ const useContentEvents = () => {
             onClick: (event: React.MouseEvent<HTMLElement>, folderId: number) => select(event, 'FILE', folderId),
         },
 
+        selectAll,
         unselectAll
     }
 }
