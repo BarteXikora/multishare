@@ -1,5 +1,6 @@
 import { useDispatch } from '../../../../store/store'
 import { toggle } from '../../../../store/features/detailsSectionSlice/detailsSectionSlice'
+import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
 import Button from '../../../ui/button/Button'
 
@@ -12,8 +13,10 @@ import iconDetails from '../../../../assets/icons/icon-details.svg'
 const ListTools = () => {
     const dispatch = useDispatch()
 
+    const { selectAll } = useContentEvents()
+
     return <section className="list-tools">
-        <Button $variant='secondary'>
+        <Button $variant='secondary' onClick={() => selectAll()}>
             <img src={iconSelect} alt="Zaznacz wszystko" />
 
             Zaznacz wszystko
