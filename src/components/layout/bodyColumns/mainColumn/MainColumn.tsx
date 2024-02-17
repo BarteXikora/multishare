@@ -1,9 +1,20 @@
+import { useRef } from 'react'
+import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
+
 type ChildrenProps = {
     children?: string | JSX.Element | JSX.Element[] | undefined
 }
 
 const MainColumn = ({ children }: ChildrenProps) => {
-    return <section className='main-column'>
+    const sectionRef = useRef<HTMLElement>(null)
+
+    const { unselectAll } = useContentEvents()
+
+    const handleClick = (event: React.MouseEvent, ref: React.RefObject<HTMLElement>) => {
+        if (event.target === ref.current) unselectAll()
+    }
+
+    return <section className='main-column' ref={sectionRef} onClick={e => handleClick(e, sectionRef)}>
         {children}
     </section>
 }
