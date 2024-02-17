@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const StyledContentSection = styled.main`
     margin-top: ${(props) => props.theme.margins.big};
     margin-bottom: ${(props) => props.theme.margins.extraBig};
+    pointer-events: none;
 
     h2 {
         margin: 0;
