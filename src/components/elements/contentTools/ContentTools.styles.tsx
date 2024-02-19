@@ -20,12 +20,22 @@ const StyledContentTools = styled.div`
         display: none;
     }
 
-    .general-tools {
-        /* display: none; */
+    .list-tools {
+        display: flex;
     }
 
     .selected-tools {
         display: none;
+    }
+
+    &.selected-tools-shown {
+        .list-tools {
+            display: none;
+        }
+
+        .selected-tools {
+            display: flex;
+        }
     }
 
     .tools-buttons {
