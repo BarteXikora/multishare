@@ -16,13 +16,13 @@ const ListTools = () => {
     const { selectAll } = useContentEvents()
 
     return <section className="list-tools">
-        <Button $variant='secondary' onClick={() => selectAll()}>
-            <img src={iconSelect} alt="Zaznacz wszystko" />
-
-            Zaznacz wszystko
-        </Button>
-
         <div className="tools-buttons">
+            <Button $variant='secondary' onClick={() => selectAll()}>
+                <img src={iconSelect} alt="Zaznacz wszystko" />
+
+                Zaznacz wszystko
+            </Button>
+
             <Button $variant='secondary'>
                 <img src={iconSort} alt="Sortuj..." />
 

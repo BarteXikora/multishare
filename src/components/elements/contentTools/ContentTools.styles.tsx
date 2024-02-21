@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const StyledContentTools = styled.div`
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     gap: ${(props) => props.theme.margins.small};
     background-color: ${(props) => props.theme.colors.white};
     padding-bottom: ${(props) => props.theme.margins.medium};
@@ -14,6 +14,10 @@ const StyledContentTools = styled.div`
     section {
         display: flex;
         gap: ${(props) => props.theme.margins.small};
+    }
+
+    .general-tools {
+        margin-right: auto;
     }
 
     .details-button {
@@ -29,7 +33,7 @@ const StyledContentTools = styled.div`
     }
 
     &.selected-tools-shown {
-        .list-tools {
+        .list-tools .tools-buttons {
             display: none;
         }
 
