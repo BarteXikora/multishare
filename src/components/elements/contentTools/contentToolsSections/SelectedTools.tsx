@@ -40,6 +40,8 @@ const SelectedTools = () => {
 
         <Button className='details-button' onClick={() => dispatch(toggle())}>
             <img src={iconDetails} alt="Pokaż szczegóły" />
+
+            Sczegóły
         </Button>
     </section>
 }
