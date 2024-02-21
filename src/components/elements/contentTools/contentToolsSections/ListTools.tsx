@@ -1,18 +1,12 @@
-import { useDispatch } from '../../../../store/store'
-import { toggle } from '../../../../store/features/detailsSectionSlice/detailsSectionSlice'
-import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
-
 import Button from '../../../ui/button/Button'
+import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
 import iconSelect from '../../../../assets/icons/icon-ok.svg'
 import iconSort from '../../../../assets/icons/icon-sort.svg'
 import iconFilter from '../../../../assets/icons/icon-filter.svg'
 import iconDisplay from '../../../../assets/icons/icon-display.svg'
-import iconDetails from '../../../../assets/icons/icon-details.svg'
 
 const ListTools = () => {
-    const dispatch = useDispatch()
-
     const { selectAll } = useContentEvents()
 
     return <section className="list-tools">
@@ -41,10 +35,6 @@ const ListTools = () => {
                 Wyświetl...
             </Button>
         </div>
-
-        <Button className='details-button' onClick={() => dispatch(toggle())}>
-            <img src={iconDetails} alt="Pokaż szczegóły" />
-        </Button>
     </section>
 }
 
