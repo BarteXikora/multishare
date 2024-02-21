@@ -10,31 +10,29 @@ const ListTools = () => {
     const { selectAll } = useContentEvents()
 
     return <section className="list-tools">
-        <div className="tools-buttons">
-            <Button $variant='secondary' onClick={() => selectAll()}>
-                <img src={iconSelect} alt="Zaznacz wszystko" />
+        <Button $variant='secondary' onClick={() => selectAll()}>
+            <img src={iconSelect} alt="Zaznacz wszystko" />
 
-                Zaznacz wszystko
-            </Button>
+            Zaznacz wszystko
+        </Button>
 
-            <Button $variant='secondary'>
-                <img src={iconSort} alt="Sortuj..." />
+        <Button $variant='secondary'>
+            <img src={iconSort} alt="Sortuj..." />
 
-                Sortuj...
-            </Button>
+            Sortuj...
+        </Button>
 
-            <Button $variant='secondary'>
-                <img src={iconFilter} alt="Filtruj..." />
+        <Button $variant='secondary'>
+            <img src={iconFilter} alt="Filtruj..." />
 
-                Filtruj...
-            </Button>
+            Filtruj...
+        </Button>
 
-            <Button $variant='secondary'>
-                <img src={iconDisplay} alt="Wyświetl..." />
+        <Button $variant='secondary'>
+            <img src={iconDisplay} alt="Wyświetl..." />
 
-                Wyświetl...
-            </Button>
-        </div>
+            Wyświetl...
+        </Button>
     </section>
 }
 
