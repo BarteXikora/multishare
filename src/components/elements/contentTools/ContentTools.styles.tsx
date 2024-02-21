@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 const StyledContentTools = styled.div`
     display: flex;
-    /* justify-content: space-between; */
     gap: ${(props) => props.theme.margins.small};
     background-color: ${(props) => props.theme.colors.white};
     padding-bottom: ${(props) => props.theme.margins.medium};
@@ -16,32 +15,6 @@ const StyledContentTools = styled.div`
         gap: ${(props) => props.theme.margins.small};
     }
 
-    .general-tools {
-        margin-right: auto;
-    }
-
-    .details-button {
-        display: none;
-    }
-
-    .list-tools {
-        display: flex;
-    }
-
-    .selected-tools {
-        display: none;
-    }
-
-    &.selected-tools-shown {
-        .list-tools .tools-buttons {
-            display: none;
-        }
-
-        .selected-tools {
-            display: flex;
-        }
-    }
-
     .tools-buttons {
         display: flex;
         gap: ${(props) => props.theme.margins.small};
@@ -51,19 +24,56 @@ const StyledContentTools = styled.div`
         display: none;
     }
 
-    @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
-        .details-button {
+    .list-tools {
+        margin-left: auto;
+    }
+
+    .selected-tools {
+        margin-left: auto;
+        display: none;
+    }
+
+    .details-button {
+        display: none;
+    }
+
+    &.selected-tools-shown {
+        .list-tools {
+            display: none;
+        }
+
+        .selected-tools {
             display: flex;
         }
     }
 
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
+        .details-button {
+            display: flex;
+            margin-left: auto;
+        }
+
+        &.selected-tools-shown .general-tools {
+            display: none;
+        }
+
+        .selected-tools {
+            margin-left: 0;
+            width: 100%;
+        }
+    }
+
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
-        .tools-buttons {
+        .general-tools .tools-buttons {
             display: none;
         }
 
         .open-tools-buttons {
             display: flex;
+        }
+
+        .list-tools {
+            display: none;
         }
     }
 `
