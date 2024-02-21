@@ -12,29 +12,31 @@ const SelectedTools = () => {
     const dispatch = useDispatch()
 
     return <section className="selected-tools">
-        <Button>
-            <img src={iconDownload} alt="Pobierz" />
+        <div className="tools-buttons">
+            <Button>
+                <img src={iconDownload} alt="Pobierz" />
 
-            Pobierz
-        </Button>
+                Pobierz
+            </Button>
 
-        <Button $variant='secondary'>
-            <img src={iconMove} alt="Przenieś do..." />
+            <Button $variant='secondary'>
+                <img src={iconMove} alt="Przenieś do..." />
 
-            Przenieś do...
-        </Button>
+                Przenieś do...
+            </Button>
 
-        <Button $variant='secondary'>
-            <img src={iconStar} alt="Oznacz gwiazdką" />
+            <Button $variant='secondary'>
+                <img src={iconStar} alt="Oznacz gwiazdką" />
 
-            Oznacz gwiazdką
-        </Button>
+                Oznacz gwiazdką
+            </Button>
 
-        <Button $variant='wrong'>
-            <img src={iconTrash} alt="Usuń" />
+            <Button $variant='wrong'>
+                <img src={iconTrash} alt="Usuń" />
 
-            Usuń
-        </Button>
+                Usuń
+            </Button>
+        </div>
 
         <Button className='details-button' onClick={() => dispatch(toggle())}>
             <img src={iconDetails} alt="Pokaż szczegóły" />
