@@ -12,6 +12,8 @@ const StyledBodyColumns = styled.div`
         padding: ${(props) => props.theme.margins.sectionBig};
         padding-top: 0;
         padding-right: 0;
+        min-height: calc(100vh - 98px);
+        box-sizing: border-box;
     }
 
     .aside-column {
@@ -41,6 +43,7 @@ const StyledBodyColumns = styled.div`
         
         .main-column {
             padding: ${(props) => props.theme.margins.sectionMedium};
+            min-height: calc(100vh - 74px);
         }
     }
 `
