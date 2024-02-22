@@ -3,6 +3,7 @@ import Button from '../../ui/button/Button'
 
 const StyledFolder = styled(Button)`
     position: relative;
+    pointer-events: all;
 
     div {
         display: flex;

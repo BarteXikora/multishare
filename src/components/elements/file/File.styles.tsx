@@ -3,6 +3,7 @@ import Button from '../../ui/button/Button'
 
 const StyledFile = styled(Button)`
     position: relative;
+    pointer-events: all;
     flex-direction: column;
     gap: 0;
     padding: 0;
