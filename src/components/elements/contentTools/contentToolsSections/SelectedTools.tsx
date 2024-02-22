@@ -16,32 +16,32 @@ const SelectedTools = () => {
             <Button>
                 <img src={iconDownload} alt="Pobierz" />
 
-                Pobierz
+                <span className="label">Pobierz</span>
             </Button>
 
             <Button $variant='secondary'>
                 <img src={iconMove} alt="Przenieś do..." />
 
-                Przenieś do...
+                <span className="label">Przenieś do...</span>
             </Button>
 
             <Button $variant='secondary'>
                 <img src={iconStar} alt="Oznacz gwiazdką" />
 
-                Oznacz gwiazdką
+                <span className="label">Oznacz gwiazdką</span>
             </Button>
 
             <Button $variant='wrong'>
                 <img src={iconTrash} alt="Usuń" />
 
-                Usuń
+                <span className="label">Usuń</span>
             </Button>
         </div>
 
         <Button className='details-button' onClick={() => dispatch(toggle())}>
             <img src={iconDetails} alt="Pokaż szczegóły" />
 
-            Sczegóły
+            <span className="label">Sczegóły</span>
         </Button>
     </section>
 }

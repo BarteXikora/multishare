@@ -64,15 +64,42 @@ const StyledContentTools = styled.div`
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
-        .general-tools .tools-buttons {
-            display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        box-sizing: border-box;
+        background-color: ${(props) => props.theme.colors.black};
+        border-radius: ${(props) => props.theme.borderRadiuses.small};
+        padding: ${(props) => props.theme.margins.small};
+
+        &.selected-tools-shown {
+            width: 100%;
+        }
+
+        .general-tools {
+            margin-left: auto;
+
+            .tools-buttons {
+                display: none;
+            }
         }
 
         .open-tools-buttons {
             display: flex;
+
+            .dropdown-content {
+                top: 30px;
+                right: 0;
+                flex-direction: column;
+                gap: ${(props) => props.theme.margins.small}
+            }
         }
 
         .list-tools {
+            display: none;
+        }
+
+        .selected-tools .label {
             display: none;
         }
     }
