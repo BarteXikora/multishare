@@ -69,7 +69,7 @@ const StyledContentTools = styled.div`
         right: 0;
         box-sizing: border-box;
         background-color: ${(props) => props.theme.colors.black};
-        border-radius: ${(props) => props.theme.borderRadiuses.small};
+        border-radius: ${(props) => props.theme.borderRadiuses.big};
         padding: ${(props) => props.theme.margins.small};
 
         &.selected-tools-shown {
