@@ -4,11 +4,11 @@ import getFileTypeName from '../../../../functions/getFileTypeName/getFileTypeNa
 import getDataWithUnit from '../../../../functions/getDataWithUnit/getDataWithUnit'
 
 import ListHeader from '../../../elements/listHeader/ListHeader'
+import ListFolderElement from '../../../elements/listFolderElement/ListFolderElement'
 
 import { useSelector } from '../../../../store/store'
 import EmptyFolder from '../../../elements/emptyFolder/EmptyFolder'
 
-import iconFolder from '../../../../assets/icons/icon-project.svg'
 import iconStar from '../../../../assets/icons/icon-star-color.svg'
 
 const ContentListView = () => {
@@ -21,25 +21,13 @@ const ContentListView = () => {
 
                 {
                     content && content.folders && content.folders.length > 0 && content.folders.map(folder => (
-                        <div key={folder.id} className="list-element list-grid">
-                            <div>
-                                <img src={iconFolder} alt='Folder:' />
-
-                                <b>{folder.name}</b>
-                            </div>
-
-                            <div>
-                                {folder.star && <img src={iconStar} alt='Oznaczono gwiazdką' />}
-                            </div>
-
-                            <div>
-                                <Moment format='D.MM.yyyy, HH:mm:ss'>{folder.details.lastModificationDate}</Moment>
-                            </div>
-
-                            <div>
-                                {folder.insideContent.folders + folder.insideContent.files > 0 ? 'Folder plików' : 'Pusty folder'}
-                            </div>
-                        </div>
+                        <ListFolderElement
+                            key={folder.id}
+                            name={folder.name}
+                            isStar={folder.star}
+                            lastModificationDate={folder.details.lastModificationDate}
+                            isEmpty={folder.insideContent.folders + folder.insideContent.files > 0}
+                        />
                     ))
                 }
 
