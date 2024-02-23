@@ -1,5 +1,6 @@
 import Button from '../../../ui/button/Button'
 import Dropdown from '../../../ui/dropdown/Dropdown'
+import ToolsDropdown from './ToolsDropdown'
 
 import iconUpload from '../../../../assets/icons/icon-upload.svg'
 import iconCreate from '../../../../assets/icons/icon-create.svg'
@@ -25,19 +26,7 @@ const GeneralTools = () => {
             className='open-tools-buttons'
             showArrow={false}
             buttonContent={<><img src={iconTools} alt="Wyświetl narzędzia" /></>}
-            dropdownContent={<>
-                <Button>
-                    <img src={iconUpload} alt="Prześlij pliki tutaj" />
-
-                    Prześlij pliki tutaj
-                </Button>
-
-                <Button $variant='secondary'>
-                    <img src={iconCreate} alt="Utwórz..." />
-
-                    Utwórz...
-                </Button>
-            </>}
+            dropdownContent={<ToolsDropdown />}
         />
     </section>
 }

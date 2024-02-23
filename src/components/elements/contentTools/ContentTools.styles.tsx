@@ -65,6 +65,23 @@ const StyledContentTools = styled.div`
         }
     }
 
+    .open-tools-buttons .dropdown-content {
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+
+            &:first-of-type {
+                gap: ${(props) => props.theme.margins.small};
+            }
+        }
+
+        hr {
+            width: 100%;
+            margin: ${(props) => props.theme.margins.medium} 0;
+        }
+    }
+
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
         .details-button {
             display: flex;
