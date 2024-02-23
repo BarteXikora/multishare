@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useDispatch } from '../../../store/store'
+import { useSelector, useDispatch } from '../../../store/store'
 import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
 
 import StyledContentSection from './ContentSection.styles'
@@ -8,6 +8,7 @@ import ContentIconsView from './contentIconsView/ContentIconsView'
 import ContentListView from './contentListView/ContentListView'
 
 const ContentSection = () => {
+    const contentViewStyle = useSelector(state => state.view.contentViewStyle)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -16,8 +17,12 @@ const ContentSection = () => {
     }, [dispatch])
 
     return <StyledContentSection>
-        {/* <ContentIconsView /> */}
-        <ContentListView />
+        {
+            contentViewStyle === 'ICONS' ?
+                <ContentIconsView />
+                :
+                <ContentListView />
+        }
     </StyledContentSection>
 }
 
