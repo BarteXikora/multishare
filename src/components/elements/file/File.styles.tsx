@@ -34,6 +34,7 @@ const StyledFile = styled(Button)`
     }
 
     .file-bar {
+        position: relative;
         display: flex;
         width: 100%;
     }
@@ -44,22 +45,19 @@ const StyledFile = styled(Button)`
         height: 50px;
         box-sizing: border-box;
         padding: ${(props) => props.theme.margins.sectionMedium};
-    }
-
-    .file-options {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        bottom: 0;
-        right: 0;
+        overflow: hidden;
     }
 
     .star {
+        position: absolute;
         display: flex;
         align-items: center;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        box-sizing: border-box;
         background-color: ${(props) => props.theme.colors.gray2};
-        padding: ${(props) => props.theme.margins.small};
-        padding-right: 0;
+        padding: ${(props) => props.theme.margins.small + ' ' + props.theme.margins.medium};
         transition: ${(props) => props.theme.transition};
     }
 
