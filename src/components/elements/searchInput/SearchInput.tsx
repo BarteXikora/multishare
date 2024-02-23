@@ -13,8 +13,6 @@ const SearchInput = () => {
 
         <Button className='open-search-button' $variant='secondary' $size='big'>
             <img src={iconSearch} alt="Szukaj" />
-
-            Wyszukaj...
         </Button>
     </StyledSeachInput>
 }

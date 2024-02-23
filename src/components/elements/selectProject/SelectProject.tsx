@@ -20,9 +20,11 @@ const SelectProject = () => {
         </Button>
 
         <Button className='mobile-button' $variant='secondary' $size='big'>
-            Moje pliki
+            <div className="project-name">Moje pliki</div>
 
-            <img src={iconArrowBig} alt="Wybierz projekt" />
+            <div className="icon-arrow">
+                <img src={iconArrowBig} alt="Wybierz projekt" />
+            </div>
         </Button>
     </StyledSelectProject>
 }

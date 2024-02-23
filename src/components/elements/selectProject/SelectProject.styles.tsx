@@ -21,6 +21,24 @@ const StyledSelectProject = styled.section`
 
     .mobile-button {
         display: none;
+        white-space: nowrap;
+        width: 100%;
+        max-width: 50vw;
+        overflow: hidden;
+        padding: 0;
+        height: 100%;
+
+        .project-name {
+            width: 100%;
+            padding: ${(props) => props.theme.margins.sectionMedium}; 
+        }
+
+        .icon-arrow {
+            display: flex;
+            background-color: ${(props) => props.theme.colors.gray2}; 
+            height: 100%;
+            padding: 0 ${(props) => props.theme.margins.medium}; 
+        }
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.tablet}) {
@@ -34,7 +52,11 @@ const StyledSelectProject = styled.section`
             display: flex;
             font-weight: bold;
             font-size: ${(props) => props.theme.fontSizes.subtitle};
-            flex-shrink: 0;
+
+            .project-name {
+                width: auto;
+                overflow: hidden;
+            }
         }
     }
 
@@ -43,7 +65,14 @@ const StyledSelectProject = styled.section`
 
         .mobile-button {
             width: 100%;
+            max-width: 100%;
             justify-content: space-between;
+
+            .project-name {
+                width: 0;
+                padding: ${(props) => props.theme.margins.sectionMedium}; 
+                overflow: visible;
+            }
         }
     }
 `
