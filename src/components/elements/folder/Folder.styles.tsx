@@ -12,17 +12,14 @@ const StyledFolder = styled(Button)`
 
     .folder-name {
         gap: ${(props) => props.theme.margins.medium};
-    }
-
-    .folder-options {
-        position: absolute;
-        right: 0;
+        overflow: hidden;
     }
 
     .star {
+        position: absolute;
+        right: 0;
         background-color: ${(props) => props.theme.colors.gray2};
-        padding: ${(props) => props.theme.margins.small};
-        padding-right: 0;
+        padding: ${(props) => props.theme.margins.small + ' ' + props.theme.margins.medium};
         transition: ${(props) => props.theme.transition};
     }
 
