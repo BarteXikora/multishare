@@ -1,3 +1,5 @@
+import StyledContentIconsView from './ContentIconsView.styles'
+
 import { useSelector } from '../../../../store/store'
 import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
@@ -11,7 +13,7 @@ const ContentIconsView = () => {
 
     const { folderEvents, filesEvents } = useContentEvents()
 
-    return <>
+    return <StyledContentIconsView>
         {
             content && content.folders && content.folders.length > 0 && (
                 <section className='folders-section'>
@@ -65,7 +67,7 @@ const ContentIconsView = () => {
         {
             (!content || (!content.folders && !content.files)) && <EmptyFolder />
         }
-    </>
+    </StyledContentIconsView>
 
 }
 
