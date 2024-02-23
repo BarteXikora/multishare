@@ -47,13 +47,15 @@ const ListTools = () => {
             </>}
 
             dropdownContent={<>
-                <Button $variant='secondary' onClick={() => dispatch(setContentViewStyle('ICONS'))}>
+                <h2>Wyświetl jako:</h2>
+
+                <Button $variant='quaternary' $active={viewStyle === 'ICONS'} onClick={() => dispatch(setContentViewStyle('ICONS'))}>
                     <img src={iconDisplay} alt="Ikony" />
 
                     Ikony
                 </Button>
 
-                <Button $variant='secondary' onClick={() => dispatch(setContentViewStyle('LIST'))}>
+                <Button $variant='quaternary' $active={viewStyle === 'LIST'} onClick={() => dispatch(setContentViewStyle('LIST'))}>
                     <img src={iconList} alt="Lista" />
 
                     Lista

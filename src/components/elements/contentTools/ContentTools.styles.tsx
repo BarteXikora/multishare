@@ -50,7 +50,19 @@ const StyledContentTools = styled.div`
     .button-view .dropdown-content {
         right: 0;
         flex-direction: column;
-        gap: ${(props) => props.theme.margins.small};
+        padding: ${(props) => props.theme.margins.sectionMedium};
+
+        h2 {
+            font-size: ${(props) => props.theme.fontSizes.subtitle};
+            padding: ${(props) => props.theme.margins.sectionMedium};
+            padding-right: ${(props) => props.theme.margins.big};
+            white-space: nowrap;
+            margin: 0;
+        }
+
+        button {
+            font-weight: bold;
+        }
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
