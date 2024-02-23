@@ -81,6 +81,36 @@ const StyledContentListView = styled.div`
             border-radius: 0 0 ${(props) => props.theme.borderRadiuses.big + ' ' + props.theme.borderRadiuses.big};
         }
     }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
+        .list-grid {
+            grid-template-columns: 4fr 1fr 3fr 3fr 1fr;
+        }
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        .list-grid {
+            grid-template-columns: 4fr 1fr 3fr 2fr;
+
+            .date-column {
+                display: none;
+            }
+        }
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.smallerMobile}) {
+        .list-grid {
+            grid-template-columns: 5fr 1fr;
+
+            div {
+                display: none;
+
+                &.name-column, &.star-column, .icon-placeholder {
+                    display: flex;
+                }
+            }
+        }
+    }
 `
 
 export default StyledContentListView
