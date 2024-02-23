@@ -73,7 +73,7 @@ const StyledContentListView = styled.div`
             background-color: ${(props) => props.theme.colors.gray4} !important;
         }
 
-        &:nth-of-type(odd) {
+        &:nth-of-type(even) {
             background-color: ${(props) => props.theme.colors.gray3};
         }
 
