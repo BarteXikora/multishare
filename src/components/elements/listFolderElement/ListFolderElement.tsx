@@ -19,21 +19,21 @@ const ListFolderElement = ({ name, isStar, lastModificationDate, isEmpty, isSele
         onClick={onClick}
         onDoubleClick={onDoubleClick}
     >
-        <div>
+        <div className='name-column'>
             <img src={iconFolder} alt='Folder:' />
 
             <b>{name}</b>
         </div>
 
-        <div>
+        <div className='star-column'>
             {isStar && <img src={iconStar} alt='Oznaczono gwiazdką' />}
         </div>
 
-        <div>
+        <div className='date-column'>
             <Moment format='D.MM.yyyy, HH:mm:ss'>{lastModificationDate}</Moment>
         </div>
 
-        <div>
+        <div className='type-column'>
             {isEmpty ? 'Pusty folder' : 'Folder plików'}
         </div>
     </button>

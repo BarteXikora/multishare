@@ -19,25 +19,25 @@ const ListFileElement = ({ name, isStar, lastModificationDate, extension, fileSi
         className={`list-element list-grid ${isSelected ? 'selected' : ''}`}
         onClick={onClick}
     >
-        <div>
+        <div className='name-column'>
             <div className="icon-placeholder"></div>
 
             <b>{name}</b>
         </div>
 
-        <div>
+        <div className='star-column'>
             {isStar && <img src={iconStar} alt='Oznaczono gwiazdką' />}
         </div>
 
-        <div>
+        <div className='date-column'>
             <Moment format='D.MM.yyyy, HH:mm:ss'>{lastModificationDate}</Moment>
         </div>
 
-        <div>
+        <div className='type-column'>
             {getFileTypeName(extension)}
         </div>
 
-        <div>
+        <div className='size-column'>
             {fileSizeBites ? getDataWithUnit(fileSizeBites) : 'Brak danych'}
         </div>
     </button>
