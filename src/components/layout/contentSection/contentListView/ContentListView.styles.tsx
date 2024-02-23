@@ -14,6 +14,8 @@ const StyledContentListView = styled.div`
         div {
             display: flex;
             align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
         }
     }
 
