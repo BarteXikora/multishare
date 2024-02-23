@@ -8,10 +8,11 @@ type ListFolderElementType = {
     isStar: boolean
     lastModificationDate?: Date
     isEmpty: boolean
+    isSelected: boolean
 }
 
-const ListFolderElement = ({ name, isStar, lastModificationDate, isEmpty }: ListFolderElementType) => {
-    return <div className="list-element list-grid" role='button'>
+const ListFolderElement = ({ name, isStar, lastModificationDate, isEmpty, isSelected }: ListFolderElementType) => {
+    return <div className={`list-element list-grid ${isSelected ? 'selected' : ''}`} role='button'>
         <div>
             <img src={iconFolder} alt='Folder:' />
 

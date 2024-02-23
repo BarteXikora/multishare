@@ -10,10 +10,11 @@ type ListFileElementType = {
     lastModificationDate?: Date
     extension: string
     fileSizeBites?: number
+    isSelected: boolean
 }
 
-const ListFileElement = ({ name, isStar, lastModificationDate, extension, fileSizeBites }: ListFileElementType) => {
-    return <div className="list-element list-grid">
+const ListFileElement = ({ name, isStar, lastModificationDate, extension, fileSizeBites, isSelected }: ListFileElementType) => {
+    return <div className={`list-element list-grid ${isSelected ? 'selected' : ''}`}>
         <div>
             <div className="icon-placeholder"></div>
 

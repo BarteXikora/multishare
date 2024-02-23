@@ -8,6 +8,7 @@ import EmptyFolder from '../../../elements/emptyFolder/EmptyFolder'
 
 const ContentListView = () => {
     const content = useSelector(state => state.content.currentFolder)
+    const selected = useSelector(state => state.content.selected)
 
     return <StyledContentListView>
         {
@@ -22,6 +23,7 @@ const ContentListView = () => {
                             isStar={folder.star}
                             lastModificationDate={folder.details.lastModificationDate}
                             isEmpty={folder.insideContent.folders + folder.insideContent.files > 0}
+                            isSelected={selected.folders ? selected.folders.includes(folder.id) : false}
                         />
                     ))
                 }
@@ -35,6 +37,7 @@ const ContentListView = () => {
                             lastModificationDate={file.details.lastModificationDate}
                             extension={file.extension}
                             fileSizeBites={file.details.fileSizeBites}
+                            isSelected={selected.files ? selected.files.includes(file.id) : false}
                         />
                     ))
                 }
