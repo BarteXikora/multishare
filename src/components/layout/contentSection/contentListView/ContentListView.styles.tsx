@@ -35,7 +35,10 @@ const StyledContentListView = styled.div`
         background-color: ${(props) => props.theme.colors.gray2};
         transition: ${(props) => props.theme.transition};
         pointer-events: all;
+        width: 100%;
         cursor: pointer;
+        border: none;
+        outline: none;
 
         div {
             gap: ${(props) => props.theme.margins.medium};

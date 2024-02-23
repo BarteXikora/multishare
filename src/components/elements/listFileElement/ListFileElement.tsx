@@ -15,7 +15,7 @@ type ListFileElementType = {
 }
 
 const ListFileElement = ({ name, isStar, lastModificationDate, extension, fileSizeBites, isSelected, onClick }: ListFileElementType) => {
-    return <div
+    return <button
         className={`list-element list-grid ${isSelected ? 'selected' : ''}`}
         onClick={onClick}
     >
@@ -40,7 +40,7 @@ const ListFileElement = ({ name, isStar, lastModificationDate, extension, fileSi
         <div>
             {fileSizeBites ? getDataWithUnit(fileSizeBites) : 'Brak danych'}
         </div>
-    </div>
+    </button>
 }
 
 export default ListFileElement

@@ -14,9 +14,8 @@ type ListFolderElementType = {
 }
 
 const ListFolderElement = ({ name, isStar, lastModificationDate, isEmpty, isSelected, onClick, onDoubleClick }: ListFolderElementType) => {
-    return <div
+    return <button
         className={`list-element list-grid ${isSelected ? 'selected' : ''}`}
-        role='button'
         onClick={onClick}
         onDoubleClick={onDoubleClick}
     >
@@ -37,7 +36,7 @@ const ListFolderElement = ({ name, isStar, lastModificationDate, isEmpty, isSele
         <div>
             {isEmpty ? 'Pusty folder' : 'Folder plików'}
         </div>
-    </div>
+    </button>
 }
 
 export default ListFolderElement
