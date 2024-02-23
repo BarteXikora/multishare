@@ -7,6 +7,7 @@ const StyledEmptyFolder = styled.div`
     background-color: ${(props) => props.theme.colors.gray2};
     padding: ${(props) => props.theme.margins.sectionBig};
     border-radius: ${(props) => props.theme.borderRadiuses.big};
+    pointer-events: all;
 
     p {
         margin: ${(props) => `0 0 ${props.theme.margins.big} 0`}
