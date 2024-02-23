@@ -44,6 +44,7 @@ const ContentListView = () => {
                             extension={file.extension}
                             fileSizeBites={file.details.fileSizeBites}
                             isSelected={selected.files ? selected.files.includes(file.id) : false}
+                            isFolderIconOffset={!!(content && content.folders && content.folders.length)}
 
                             onClick={e => filesEvents.onClick(e, file.id)}
                         />

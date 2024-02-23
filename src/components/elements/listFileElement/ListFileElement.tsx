@@ -11,16 +11,20 @@ type ListFileElementType = {
     extension: string
     fileSizeBites?: number
     isSelected: boolean
+    isFolderIconOffset: boolean
     onClick: (e: React.MouseEvent<HTMLElement>) => void
 }
 
-const ListFileElement = ({ name, isStar, lastModificationDate, extension, fileSizeBites, isSelected, onClick }: ListFileElementType) => {
+const ListFileElement = ({
+    name, isStar, lastModificationDate, extension, fileSizeBites, isSelected, onClick, isFolderIconOffset
+}: ListFileElementType) => {
+
     return <button
         className={`list-element list-grid ${isSelected ? 'selected' : ''}`}
         onClick={onClick}
     >
         <div className='name-column'>
-            <div className="icon-placeholder"></div>
+            {isFolderIconOffset && <div className="icon-placeholder"></div>}
 
             <b>{name}</b>
         </div>
