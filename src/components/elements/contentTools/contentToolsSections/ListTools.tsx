@@ -1,12 +1,20 @@
+import { useSelector, useDispatch } from '../../../../store/store'
+import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSlice'
+
 import Button from '../../../ui/button/Button'
+import Dropdown from '../../../ui/dropdown/Dropdown'
 import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
 import iconSelect from '../../../../assets/icons/icon-ok.svg'
 import iconSort from '../../../../assets/icons/icon-sort.svg'
 import iconFilter from '../../../../assets/icons/icon-filter.svg'
 import iconDisplay from '../../../../assets/icons/icon-display.svg'
+import iconList from '../../../../assets/icons/icon-list.svg'
 
 const ListTools = () => {
+    const viewStyle = useSelector(state => state.view.contentViewStyle)
+    const dispatch = useDispatch()
+
     const { selectAll } = useContentEvents()
 
     return <section className="list-tools">
@@ -28,11 +36,30 @@ const ListTools = () => {
             Filtruj...
         </Button>
 
-        <Button $variant='secondary'>
-            <img src={iconDisplay} alt="Wyświetl..." />
+        <Dropdown
+            className='button-view'
+            buttonOptions={{ $variant: 'secondary' }}
+            showArrow={false}
+            buttonContent={<>
+                <img src={viewStyle === 'ICONS' ? iconDisplay : iconList} alt="Wyświetl..." />
 
-            Wyświetl...
-        </Button>
+                Wyświetl...
+            </>}
+
+            dropdownContent={<>
+                <Button $variant='secondary' onClick={() => dispatch(setContentViewStyle('ICONS'))}>
+                    <img src={iconDisplay} alt="Ikony" />
+
+                    Ikony
+                </Button>
+
+                <Button $variant='secondary' onClick={() => dispatch(setContentViewStyle('LIST'))}>
+                    <img src={iconList} alt="Lista" />
+
+                    Lista
+                </Button>
+            </>}
+        />
     </section>
 }
 

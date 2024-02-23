@@ -47,6 +47,12 @@ const StyledContentTools = styled.div`
         }
     }
 
+    .button-view .dropdown-content {
+        right: 0;
+        flex-direction: column;
+        gap: ${(props) => props.theme.margins.small};
+    }
+
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
         .details-button {
             display: flex;
