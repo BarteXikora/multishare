@@ -11,10 +11,14 @@ type ListFileElementType = {
     extension: string
     fileSizeBites?: number
     isSelected: boolean
+    onClick: (e: React.MouseEvent<HTMLElement>) => void
 }
 
-const ListFileElement = ({ name, isStar, lastModificationDate, extension, fileSizeBites, isSelected }: ListFileElementType) => {
-    return <div className={`list-element list-grid ${isSelected ? 'selected' : ''}`}>
+const ListFileElement = ({ name, isStar, lastModificationDate, extension, fileSizeBites, isSelected, onClick }: ListFileElementType) => {
+    return <div
+        className={`list-element list-grid ${isSelected ? 'selected' : ''}`}
+        onClick={onClick}
+    >
         <div>
             <div className="icon-placeholder"></div>
 

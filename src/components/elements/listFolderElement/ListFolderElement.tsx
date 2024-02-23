@@ -9,10 +9,17 @@ type ListFolderElementType = {
     lastModificationDate?: Date
     isEmpty: boolean
     isSelected: boolean
+    onClick: (e: React.MouseEvent<HTMLElement>) => void
+    onDoubleClick: () => void
 }
 
-const ListFolderElement = ({ name, isStar, lastModificationDate, isEmpty, isSelected }: ListFolderElementType) => {
-    return <div className={`list-element list-grid ${isSelected ? 'selected' : ''}`} role='button'>
+const ListFolderElement = ({ name, isStar, lastModificationDate, isEmpty, isSelected, onClick, onDoubleClick }: ListFolderElementType) => {
+    return <div
+        className={`list-element list-grid ${isSelected ? 'selected' : ''}`}
+        role='button'
+        onClick={onClick}
+        onDoubleClick={onDoubleClick}
+    >
         <div>
             <img src={iconFolder} alt='Folder:' />
 

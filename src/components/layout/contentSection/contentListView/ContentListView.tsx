@@ -1,5 +1,6 @@
 import StyledContentListView from './ContentListView.styles'
 import { useSelector } from '../../../../store/store'
+import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
 import ListHeader from '../../../elements/listHeader/ListHeader'
 import ListFolderElement from '../../../elements/listFolderElement/ListFolderElement'
@@ -9,6 +10,8 @@ import EmptyFolder from '../../../elements/emptyFolder/EmptyFolder'
 const ContentListView = () => {
     const content = useSelector(state => state.content.currentFolder)
     const selected = useSelector(state => state.content.selected)
+
+    const { folderEvents, filesEvents } = useContentEvents()
 
     return <StyledContentListView>
         {
@@ -24,6 +27,9 @@ const ContentListView = () => {
                             lastModificationDate={folder.details.lastModificationDate}
                             isEmpty={folder.insideContent.folders + folder.insideContent.files > 0}
                             isSelected={selected.folders ? selected.folders.includes(folder.id) : false}
+
+                            onClick={e => folderEvents.onClick(e, folder.id)}
+                            onDoubleClick={() => folderEvents.onDoubleClick(folder.id)}
                         />
                     ))
                 }
@@ -38,6 +44,8 @@ const ContentListView = () => {
                             extension={file.extension}
                             fileSizeBites={file.details.fileSizeBites}
                             isSelected={selected.files ? selected.files.includes(file.id) : false}
+
+                            onClick={e => filesEvents.onClick(e, file.id)}
                         />
                     ))
                 }
