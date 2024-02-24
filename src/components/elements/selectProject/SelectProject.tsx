@@ -1,3 +1,6 @@
+import { useDispatch } from '../../../store/store'
+import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
+
 import StyledSelectProject from './SelectProject.styles'
 import Button from '../../ui/button/Button'
 
@@ -7,12 +10,16 @@ import iconArrow from '../../../assets/icons/icon-arrow-down.svg'
 import iconArrowBig from '../../../assets/icons/icon-arrow-down-big.svg'
 
 const SelectProject = () => {
-    return <StyledSelectProject>
-        <h1>
-            <img src={iconFolder} alt="Wybrany projekt" />
+    const dispatch = useDispatch()
 
-            Moje pliki:
-        </h1>
+    return <StyledSelectProject>
+        <Button className='current-project-button' $variant='quaternary' onClick={() => dispatch(setTreeLocation(-1))}>
+            <h1>
+                <img src={iconFolder} alt="Wybrany projekt" />
+
+                Moje pliki:
+            </h1>
+        </Button>
 
         <Button className='desktop-button' $size='big'>
             <img src={iconSelectProject} alt="Projekty" />

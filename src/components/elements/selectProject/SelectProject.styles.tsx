@@ -12,11 +12,16 @@ const StyledSelectProject = styled.section`
         gap: ${(props) => props.theme.margins.medium};
         font-size: ${(props) => props.theme.fontSizes.title};
         margin: 0;
+        height: 100%;
 
         img {
             width: 38px;
             height: 38px;
         }
+    }
+
+    .current-project-button {
+        transform: translateX(${(props) => '-' + props.theme.margins.medium});
     }
 
     .mobile-button {
@@ -49,7 +54,7 @@ const StyledSelectProject = styled.section`
     @media (max-width: ${(props) => props.theme.screenBreakpoints.tablet}) {
         width: auto;
 
-        h1, .desktop-button {
+        .current-project-button, .desktop-button {
             display: none;
         }
 
