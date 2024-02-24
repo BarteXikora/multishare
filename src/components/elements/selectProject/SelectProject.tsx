@@ -1,4 +1,4 @@
-import { useDispatch } from '../../../store/store'
+import { useSelector, useDispatch } from '../../../store/store'
 import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
 
 import StyledSelectProject from './SelectProject.styles'
@@ -12,12 +12,14 @@ import iconArrowBig from '../../../assets/icons/icon-arrow-down-big.svg'
 const SelectProject = () => {
     const dispatch = useDispatch()
 
+    const projectName = useSelector(state => state.content.project.name)
+
     return <StyledSelectProject>
         <Button className='current-project-button' $variant='quaternary' onClick={() => dispatch(setTreeLocation(-1))}>
             <h1>
                 <img src={iconFolder} alt="Wybrany projekt" />
 
-                Moje pliki:
+                {`${projectName}:`}
             </h1>
         </Button>
 
@@ -30,7 +32,7 @@ const SelectProject = () => {
         </Button>
 
         <Button className='mobile-button' $variant='secondary' $size='big'>
-            <div className="project-name">Moje pliki</div>
+            <div className="project-name">{projectName}</div>
 
             <div className="icon-arrow">
                 <img src={iconArrowBig} alt="Wybierz projekt" />
