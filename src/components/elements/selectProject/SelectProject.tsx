@@ -1,7 +1,7 @@
 import StyledSelectProject from './SelectProject.styles'
 import Button from '../../ui/button/Button'
 
-import iconProject from '../../../assets/icons/icon-project.svg'
+import iconFolder from '../../../assets/icons/icon-folder-dark.svg'
 import iconSelectProject from '../../../assets/icons/icon-projects.svg'
 import iconArrow from '../../../assets/icons/icon-arrow-down.svg'
 import iconArrowBig from '../../../assets/icons/icon-arrow-down-big.svg'
@@ -9,7 +9,7 @@ import iconArrowBig from '../../../assets/icons/icon-arrow-down-big.svg'
 const SelectProject = () => {
     return <StyledSelectProject>
         <h1>
-            <img src={iconProject} alt="Wybrany projekt" />
+            <img src={iconFolder} alt="Wybrany projekt" />
 
             Moje pliki:
         </h1>
