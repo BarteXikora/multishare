@@ -28,6 +28,10 @@ const StyledSelectProject = styled.section`
         padding: 0;
         height: 100%;
 
+        &:hover .icon-arrow {
+            background-color: ${(props) => props.theme.colors.gray3};
+        }
+
         .project-name {
             width: 100%;
             padding: ${(props) => props.theme.margins.sectionMedium}; 
@@ -37,7 +41,8 @@ const StyledSelectProject = styled.section`
             display: flex;
             background-color: ${(props) => props.theme.colors.gray2}; 
             height: 100%;
-            padding: 0 ${(props) => props.theme.margins.medium}; 
+            padding: 0 ${(props) => props.theme.margins.medium};
+            transition: ${(props) => props.theme.transition};
         }
     }
 
