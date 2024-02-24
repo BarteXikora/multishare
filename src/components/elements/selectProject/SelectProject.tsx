@@ -2,6 +2,7 @@ import StyledSelectProject from './SelectProject.styles'
 import Button from '../../ui/button/Button'
 
 import iconProject from '../../../assets/icons/icon-project.svg'
+import iconSelectProject from '../../../assets/icons/icon-projects.svg'
 import iconArrow from '../../../assets/icons/icon-arrow-down.svg'
 import iconArrowBig from '../../../assets/icons/icon-arrow-down-big.svg'
 
@@ -14,6 +15,8 @@ const SelectProject = () => {
         </h1>
 
         <Button className='desktop-button' $size='big'>
+            <img src={iconSelectProject} alt="Projekty" />
+
             Wszystkie projekty
 
             <img src={iconArrow} alt="Wybierz projekt" />
