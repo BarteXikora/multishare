@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from '../../../store/store'
 import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
+import getShortenName from '../../../functions/getShortenName/getShortenName'
 
 import StyledSelectProject from './SelectProject.styles'
 import Button from '../../ui/button/Button'
@@ -19,7 +20,7 @@ const SelectProject = () => {
             <h1>
                 <img src={iconFolder} alt="Wybrany projekt" />
 
-                {`${projectName}:`}
+                {getShortenName(projectName, 30)}:
             </h1>
         </Button>
 
@@ -32,7 +33,7 @@ const SelectProject = () => {
         </Button>
 
         <Button className='mobile-button' $variant='secondary' $size='big'>
-            <div className="project-name">{projectName}</div>
+            <div className="project-name">{getShortenName(projectName, 30)}</div>
 
             <div className="icon-arrow">
                 <img src={iconArrowBig} alt="Wybierz projekt" />

@@ -13,6 +13,7 @@ const StyledSelectProject = styled.section`
         font-size: ${(props) => props.theme.fontSizes.title};
         margin: 0;
         height: 100%;
+        
 
         img {
             width: 38px;
@@ -22,6 +23,13 @@ const StyledSelectProject = styled.section`
 
     .current-project-button {
         transform: translateX(${(props) => '-' + props.theme.margins.medium});
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 30vw;
+    }
+
+    .desktop-button {
+        white-space: nowrap;
     }
 
     .mobile-button {
