@@ -1,9 +1,7 @@
 import StyledFolder from './Folder.styles'
-import Button from '../../ui/button/Button'
 
-import iconFolder from '../../../assets/icons/icon-project.svg'
+import iconFolder from '../../../assets/icons/icon-folder-dark.svg'
 import iconStar from '../../../assets/icons/icon-star-color.svg'
-import iconKebab from '../../../assets/icons/icon-kebab.svg'
 
 type FolderProps = {
     id: number
@@ -29,17 +27,11 @@ const Folder = ({ id, displayName, isStar, isSelected, onClick, onDoubleClick }:
             {displayName}
         </div>
 
-        <div className="folder-options">
-            {
-                isStar && <div className="star">
-                    <img src={iconStar} alt='Oznaczono gwiazdką' />
-                </div>
-            }
-
-            <Button $variant='tertiary' $size='big'>
-                <img src={iconKebab} alt='Wyświetl opcje' />
-            </Button>
-        </div>
+        {
+            isStar && <div className="star">
+                <img src={iconStar} alt='Oznaczono gwiazdką' />
+            </div>
+        }
     </StyledFolder>
 }
 

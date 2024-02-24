@@ -6,7 +6,7 @@ import Button from '../../../ui/button/Button'
 
 import { pathType } from '../../../../store/features/contentSlice/contentSlice.types'
 
-import iconFolder from '../../../../assets/icons/icon-project.svg'
+import iconFolder from '../../../../assets/icons/icon-folder-dark.svg'
 
 const CurrentFolderButton = ({ path }: { path: pathType }) => {
     const dispatch = useDispatch()

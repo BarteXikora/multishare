@@ -12,6 +12,8 @@ const StyledSelectProject = styled.section`
         gap: ${(props) => props.theme.margins.medium};
         font-size: ${(props) => props.theme.fontSizes.title};
         margin: 0;
+        height: 100%;
+        
 
         img {
             width: 38px;
@@ -19,14 +21,48 @@ const StyledSelectProject = styled.section`
         }
     }
 
+    .current-project-button {
+        transform: translateX(${(props) => '-' + props.theme.margins.medium});
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 30vw;
+    }
+
+    .desktop-button {
+        white-space: nowrap;
+    }
+
     .mobile-button {
         display: none;
+        white-space: nowrap;
+        width: 100%;
+        max-width: 50vw;
+        overflow: hidden;
+        padding: 0;
+        height: 100%;
+
+        &:hover .icon-arrow {
+            background-color: ${(props) => props.theme.colors.gray3};
+        }
+
+        .project-name {
+            width: 100%;
+            padding: ${(props) => props.theme.margins.sectionMedium}; 
+        }
+
+        .icon-arrow {
+            display: flex;
+            background-color: ${(props) => props.theme.colors.gray2}; 
+            height: 100%;
+            padding: 0 ${(props) => props.theme.margins.medium};
+            transition: ${(props) => props.theme.transition};
+        }
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.tablet}) {
         width: auto;
 
-        h1, .desktop-button {
+        .current-project-button, .desktop-button {
             display: none;
         }
 
@@ -34,7 +70,11 @@ const StyledSelectProject = styled.section`
             display: flex;
             font-weight: bold;
             font-size: ${(props) => props.theme.fontSizes.subtitle};
-            flex-shrink: 0;
+
+            .project-name {
+                width: auto;
+                overflow: hidden;
+            }
         }
     }
 
@@ -43,7 +83,14 @@ const StyledSelectProject = styled.section`
 
         .mobile-button {
             width: 100%;
+            max-width: 100%;
             justify-content: space-between;
+
+            .project-name {
+                width: 0;
+                padding: ${(props) => props.theme.margins.sectionMedium}; 
+                overflow: visible;
+            }
         }
     }
 `

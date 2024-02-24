@@ -1,6 +1,6 @@
 import Moment from 'react-moment'
 
-import iconFolder from '../../../assets/icons/icon-project.svg'
+import iconFolder from '../../../assets/icons/icon-folder-dark.svg'
 import iconStar from '../../../assets/icons/icon-star-color.svg'
 
 type ListFolderElementType = {

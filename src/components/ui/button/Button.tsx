@@ -18,11 +18,17 @@ type ButtonTertiary = {
     $active?: boolean
 }
 
+type ButtonQuaternary = {
+    $variant: 'quaternary'
+    $size?: ButtonSizes
+    $active?: boolean
+}
+
 type ButtonWrong = {
     $variant: 'wrong'
     $size?: ButtonSizes
 }
 
-export type ButtonProps = ButtonPrimary | ButtonSecondary | ButtonTertiary | ButtonWrong
+export type ButtonProps = ButtonPrimary | ButtonSecondary | ButtonTertiary | ButtonQuaternary | ButtonWrong
 
 export default StyledButton

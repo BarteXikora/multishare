@@ -8,7 +8,7 @@ import Button from '../../../ui/button/Button'
 
 import { pathType } from '../../../../store/features/contentSlice/contentSlice.types'
 
-import iconFolder from '../../../../assets/icons/icon-project.svg'
+import iconFolder from '../../../../assets/icons/icon-folder-dark.svg'
 import iconArrow from '../../../../assets/icons/icon-arrow-right.svg'
 
 const CollapsedPathButton = ({ path }: { path: pathType }) => {
