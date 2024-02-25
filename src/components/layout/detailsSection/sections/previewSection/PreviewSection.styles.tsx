@@ -6,6 +6,7 @@ const StyledPreviewSection = styled.div`
     aspect-ratio: 2/1;
     background-color: ${(props) => props.theme.colors.black};
     border-radius: ${(props) => props.theme.borderRadiuses.big + ' ' + props.theme.borderRadiuses.big} 0 0;
+    flex-shrink: 0;
 
     .icon-section {
         display: flex;
