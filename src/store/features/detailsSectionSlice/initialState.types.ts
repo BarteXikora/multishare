@@ -5,21 +5,21 @@ export type multipleDataType = {
     files: fileType[]
 }
 
-type contentEmptyType = {
+export type contentEmptyType = {
     type: 'EMPTY'
 }
 
-type contentFolderType = {
+export type contentFolderType = {
     type: 'FOLDER'
     data: folderDisplayType
 }
 
-type contentFileType = {
+export type contentFileType = {
     type: 'FILE',
     data: fileType
 }
 
-type contentMultipleType = {
+export type contentMultipleType = {
     type: 'MULTIPLE',
     data: multipleDataType
 }
