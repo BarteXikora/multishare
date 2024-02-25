@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const StyledInsideContentSection = styled.div`
     padding: ${(props) => props.theme.margins.small} ${(props) => props.theme.margins.big};
-    padding-top: 0;
+    /* padding-top: 0; */
 
     h4 {
         margin: 0;

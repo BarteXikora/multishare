@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 const StyledNameSection = styled.div`
-    padding: ${(props) => props.theme.margins.small} ${(props) => props.theme.margins.big};
-    padding-top: 0;
+    padding: 0 ${(props) => props.theme.margins.big};
     font-weight: bold;
 
     .extension {
