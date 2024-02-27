@@ -30,6 +30,8 @@ const ContentListView = () => {
 
                             onClick={e => folderEvents.onClick(e, folder.id)}
                             onDoubleClick={() => folderEvents.onDoubleClick(folder.id)}
+                            onTouchStart={e => folderEvents.onTouchStart(e, folder.id)}
+                            onTouchEnd={e => folderEvents.onTouchEnd(e, folder.id)}
                         />
                     ))
                 }
