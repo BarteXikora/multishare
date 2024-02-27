@@ -30,6 +30,8 @@ const ContentListView = () => {
 
                             onClick={e => folderEvents.onClick(e, folder.id)}
                             onDoubleClick={() => folderEvents.onDoubleClick(folder.id)}
+                            onTouchStart={e => folderEvents.onTouchStart(e, folder.id)}
+                            onTouchEnd={e => folderEvents.onTouchEnd(e, folder.id)}
                         />
                     ))
                 }
@@ -47,6 +49,8 @@ const ContentListView = () => {
                             isFolderIconOffset={!!(content && content.folders && content.folders.length)}
 
                             onClick={e => filesEvents.onClick(e, file.id)}
+                            onTouchStart={e => filesEvents.onTouchStart(e, file.id)}
+                            onTouchEnd={e => filesEvents.onTouchEnd(e, file.id)}
                         />
                     ))
                 }

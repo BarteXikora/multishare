@@ -31,6 +31,8 @@ const ContentIconsView = () => {
 
                                     onClick={e => folderEvents.onClick(e, folder.id)}
                                     onDoubleClick={() => folderEvents.onDoubleClick(folder.id)}
+                                    onTouchStart={e => folderEvents.onTouchStart(e, folder.id)}
+                                    onTouchEnd={e => folderEvents.onTouchEnd(e, folder.id)}
                                 />
                             })
                         }
@@ -56,6 +58,8 @@ const ContentIconsView = () => {
                                     isSelected={selected.files ? selected.files.includes(file.id) : false}
 
                                     onClick={e => filesEvents.onClick(e, file.id)}
+                                    onTouchStart={e => filesEvents.onTouchStart(e, file.id)}
+                                    onTouchEnd={e => filesEvents.onTouchEnd(e, file.id)}
                                 />
                             })
                         }

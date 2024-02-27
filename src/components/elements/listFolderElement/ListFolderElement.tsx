@@ -11,13 +11,21 @@ type ListFolderElementType = {
     isSelected: boolean
     onClick: (e: React.MouseEvent<HTMLElement>) => void
     onDoubleClick: () => void
+    onTouchStart: (e: React.TouchEvent<HTMLElement>) => void
+    onTouchEnd: (e: React.TouchEvent<HTMLElement>) => void
 }
 
-const ListFolderElement = ({ name, isStar, lastModificationDate, isEmpty, isSelected, onClick, onDoubleClick }: ListFolderElementType) => {
+const ListFolderElement = ({
+    name, isStar, lastModificationDate, isEmpty, isSelected, onClick, onDoubleClick, onTouchStart, onTouchEnd
+
+}: ListFolderElementType) => {
+
     return <button
         className={`list-element list-grid ${isSelected ? 'selected' : ''}`}
         onClick={onClick}
         onDoubleClick={onDoubleClick}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
     >
         <div className='name-column'>
             <img src={iconFolder} alt='Folder:' />

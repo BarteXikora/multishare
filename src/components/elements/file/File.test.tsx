@@ -10,7 +10,9 @@ describe('File', () => {
             preview={false}
             isStar={false}
             isSelected={false}
-            onClick={e => { }}
+            onClick={() => null}
+            onTouchStart={() => null}
+            onTouchEnd={() => null}
         />)
 
         const buttonElements = screen.getAllByRole('button')
@@ -24,7 +26,9 @@ describe('File', () => {
             preview={false}
             isStar={false}
             isSelected={false}
-            onClick={e => { }}
+            onClick={() => { }}
+            onTouchStart={() => null}
+            onTouchEnd={() => null}
         />)
 
         const nameElement = screen.getByText('Test')
