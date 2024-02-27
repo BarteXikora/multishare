@@ -58,6 +58,8 @@ const ContentIconsView = () => {
                                     isSelected={selected.files ? selected.files.includes(file.id) : false}
 
                                     onClick={e => filesEvents.onClick(e, file.id)}
+                                    onTouchStart={e => filesEvents.onTouchStart(e, file.id)}
+                                    onTouchEnd={e => filesEvents.onTouchEnd(e, file.id)}
                                 />
                             })
                         }
