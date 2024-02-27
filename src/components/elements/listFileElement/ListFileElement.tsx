@@ -13,15 +13,21 @@ type ListFileElementType = {
     isSelected: boolean
     isFolderIconOffset: boolean
     onClick: (e: React.MouseEvent<HTMLElement>) => void
+    onTouchStart: (e: React.TouchEvent<HTMLElement>) => void
+    onTouchEnd: (e: React.TouchEvent<HTMLElement>) => void
 }
 
 const ListFileElement = ({
-    name, isStar, lastModificationDate, extension, fileSizeBites, isSelected, onClick, isFolderIconOffset
+    name, isStar, lastModificationDate, extension, fileSizeBites,
+    isSelected, onClick, onTouchStart, onTouchEnd, isFolderIconOffset
+
 }: ListFileElementType) => {
 
     return <button
         className={`list-element list-grid ${isSelected ? 'selected' : ''}`}
         onClick={onClick}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
     >
         <div className='name-column'>
             {isFolderIconOffset && <div className="icon-placeholder"></div>}

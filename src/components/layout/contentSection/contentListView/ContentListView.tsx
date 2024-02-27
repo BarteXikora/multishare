@@ -49,6 +49,8 @@ const ContentListView = () => {
                             isFolderIconOffset={!!(content && content.folders && content.folders.length)}
 
                             onClick={e => filesEvents.onClick(e, file.id)}
+                            onTouchStart={e => filesEvents.onTouchStart(e, file.id)}
+                            onTouchEnd={e => filesEvents.onTouchEnd(e, file.id)}
                         />
                     ))
                 }
