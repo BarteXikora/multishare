@@ -1,4 +1,6 @@
 import Moment from 'react-moment'
+import moment from 'moment'
+
 import getFileTypeName from '../../../functions/getFileTypeName/getFileTypeName'
 import getDataWithUnit from '../../../functions/getDataWithUnit/getDataWithUnit'
 
@@ -40,7 +42,9 @@ const ListFileElement = ({
         </div>
 
         <div className='date-column'>
-            <Moment format='DD.MM.yyyy, HH:mm:ss'>{lastModificationDate}</Moment>
+            {
+                moment(lastModificationDate).isValid() && <Moment format='DD.MM.yyyy, HH:mm:ss'>{lastModificationDate}</Moment>
+            }
         </div>
 
         <div className='type-column'>
