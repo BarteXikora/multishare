@@ -40,7 +40,7 @@ const ListFileElement = ({
         </div>
 
         <div className='date-column'>
-            <Moment format='D.MM.yyyy, HH:mm:ss'>{lastModificationDate}</Moment>
+            <Moment format='DD.MM.yyyy, HH:mm:ss'>{lastModificationDate}</Moment>
         </div>
 
         <div className='type-column'>
