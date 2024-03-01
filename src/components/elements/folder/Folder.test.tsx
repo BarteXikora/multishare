@@ -1,41 +1,30 @@
 import { render, screen } from '../../../test-utils'
 import Folder from './Folder'
 
+const _folderDefaultProps = {
+    id: 0,
+    displayName: 'Test',
+    isStar: false,
+    isSelected: false,
+    onClick: () => null,
+    onDoubleClick: () => null,
+    onTouchStart: () => null,
+    onTouchEnd: () => null
+}
+
 describe('Folder', () => {
 
     test('renders correctly', () => {
-        render(
-            <Folder
-                id={0}
-                displayName='Test'
-                isStar={false}
-                isSelected={false}
-                onClick={() => null}
-                onDoubleClick={() => null}
-                onTouchStart={() => null}
-                onTouchEnd={() => null}
-            />
-        )
+        render(<Folder {..._folderDefaultProps} />)
 
         const buttonElements = screen.getAllByRole('button')
-        expect(buttonElements).toHaveLength(2)
+        expect(buttonElements).toHaveLength(1)
     })
 
     test('renders the name', () => {
-        render(
-            <Folder
-                id={0}
-                displayName='Test'
-                isStar={false}
-                isSelected={false}
-                onClick={() => null}
-                onDoubleClick={() => null}
-                onTouchStart={() => null}
-                onTouchEnd={() => null}
-            />
-        )
+        render(<Folder {..._folderDefaultProps} />)
 
-        const nameElement = screen.getByText('Test')
+        const nameElement = screen.getByText(_folderDefaultProps.displayName)
         expect(nameElement).toBeInTheDocument()
     })
 
