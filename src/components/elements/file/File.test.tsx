@@ -1,38 +1,31 @@
 import { render, screen } from '../../../test-utils'
 import File from './File'
 
+const _fileDefaultProps = {
+    displayName: 'Test',
+    extension: 'TEST',
+    preview: '',
+    isStar: false,
+    isSelected: false,
+    onClick: () => null,
+    onTouchStart: () => null,
+    onTouchEnd: () => null
+}
+
 describe('File', () => {
 
     test('renders correctly', () => {
-        render(<File
-            displayName='Test'
-            extension='PNG'
-            preview={false}
-            isStar={false}
-            isSelected={false}
-            onClick={() => null}
-            onTouchStart={() => null}
-            onTouchEnd={() => null}
-        />)
+        render(<File {..._fileDefaultProps} />)
 
         const buttonElements = screen.getAllByRole('button')
-        expect(buttonElements).toHaveLength(2)
+        expect(buttonElements).toHaveLength(1)
     })
 
     test('renders name and extension', () => {
-        render(<File
-            displayName='Test'
-            extension='PNG'
-            preview={false}
-            isStar={false}
-            isSelected={false}
-            onClick={() => { }}
-            onTouchStart={() => null}
-            onTouchEnd={() => null}
-        />)
+        render(<File {..._fileDefaultProps} />)
 
         const nameElement = screen.getByText('Test')
-        const extensionElement = screen.getByText('PNG')
+        const extensionElement = screen.getByText('TEST')
 
         expect(nameElement).toBeInTheDocument()
         expect(extensionElement).toBeInTheDocument()

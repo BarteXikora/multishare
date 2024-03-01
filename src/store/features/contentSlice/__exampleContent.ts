@@ -5,8 +5,8 @@ const __exampleContent = {
             name: 'Prywatne',
             star: true,
             details: {
-                createdDate: new Date(),
-                lastModificationDate: new Date()
+                createdDate: new Date().toLocaleString(),
+                lastModificationDate: new Date().toLocaleString()
             },
             content: {
                 folders: [
@@ -44,8 +44,8 @@ const __exampleContent = {
                                                 name: 'Wycieczka na rowery 1',
                                                 extension: 'PNG',
                                                 details: {
-                                                    createdDate: new Date(),
-                                                    lastModificationDate: new Date(),
+                                                    createdDate: new Date().toLocaleString(),
+                                                    lastModificationDate: new Date().toLocaleString(),
                                                     fileSizeBites: 25000
                                                 },
                                                 star: false

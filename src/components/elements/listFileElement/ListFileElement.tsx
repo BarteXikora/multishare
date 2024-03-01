@@ -1,4 +1,6 @@
 import Moment from 'react-moment'
+import moment from 'moment'
+
 import getFileTypeName from '../../../functions/getFileTypeName/getFileTypeName'
 import getDataWithUnit from '../../../functions/getDataWithUnit/getDataWithUnit'
 
@@ -7,7 +9,7 @@ import iconStar from '../../../assets/icons/icon-star-color.svg'
 type ListFileElementType = {
     name: string
     isStar: boolean
-    lastModificationDate?: Date
+    lastModificationDate?: string
     extension: string
     fileSizeBites?: number
     isSelected: boolean
@@ -40,7 +42,9 @@ const ListFileElement = ({
         </div>
 
         <div className='date-column'>
-            <Moment format='D.MM.yyyy, HH:mm:ss'>{lastModificationDate}</Moment>
+            {
+                moment(lastModificationDate).isValid() && <Moment format='DD.MM.yyyy, HH:mm:ss'>{lastModificationDate}</Moment>
+            }
         </div>
 
         <div className='type-column'>
