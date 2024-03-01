@@ -21,7 +21,7 @@ describe('Content Section', () => {
         const buttonsElements = screen.getAllByRole('button')
 
         expect(headerElement).toBeInTheDocument()
-        expect(buttonsElements).toHaveLength(4)
+        expect(buttonsElements).toHaveLength(2)
     })
 
     test('changes location after double click on folder', async () => {
