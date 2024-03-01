@@ -54,17 +54,17 @@ const StyledContentListView = styled.div`
         }
 
         &.selected {
-            background-color: ${(props) => props.theme.colors.primary2};
+            background-color: ${(props) => props.theme.colors.primary3} !important;
 
             &:nth-of-type(odd) {
-                background-color: ${(props) => props.theme.colors.primary3};
+                background-color: ${(props) => props.theme.colors.primary2} !important;
             }
 
             &:hover {
-                background-color: ${(props) => props.theme.colors.primary2} !important;
+                background-color: ${(props) => props.theme.colors.primary5} !important;
 
                 &:nth-of-type(odd) {
-                    background-color: ${(props) => props.theme.colors.primary3} !important;
+                    background-color: ${(props) => props.theme.colors.primary4} !important;
                 }
             }
         }
