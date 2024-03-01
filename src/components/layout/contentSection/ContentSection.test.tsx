@@ -5,6 +5,7 @@ import ContentSection from './ContentSection'
 
 import { store } from '../../../store/store'
 import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
+import { setContentViewStyle } from '../../../store/features/viewSlice/viewSlice'
 
 describe('Content Section', () => {
 
@@ -46,6 +47,16 @@ describe('Content Section', () => {
         const headerElement = screen.getByRole('heading', { level: 2, name: 'Pliki:' })
 
         expect(headerElement).toBeInTheDocument()
+    })
+
+    test('renders the list view correctly', () => {
+        render(<ContentSection />)
+
+        act(() => {
+            store.dispatch(setContentViewStyle('LIST'))
+        })
+
+        expect(screen.getByText('Nazwa:')).toBeInTheDocument()
     })
 
 })
