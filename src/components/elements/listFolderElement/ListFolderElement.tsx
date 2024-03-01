@@ -1,4 +1,5 @@
 import Moment from 'react-moment'
+import moment from 'moment'
 
 import iconFolder from '../../../assets/icons/icon-folder-dark.svg'
 import iconStar from '../../../assets/icons/icon-star-color.svg'
@@ -38,7 +39,9 @@ const ListFolderElement = ({
         </div>
 
         <div className='date-column'>
-            <Moment format='DD.MM.yyyy, HH:mm:ss'>{lastModificationDate}</Moment>
+            {
+                moment(lastModificationDate).isValid() && <Moment format='DD.MM.yyyy, HH:mm:ss'>{lastModificationDate}</Moment>
+            }
         </div>
 
         <div className='type-column'>
