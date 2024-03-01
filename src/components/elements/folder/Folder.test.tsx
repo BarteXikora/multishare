@@ -28,4 +28,15 @@ describe('Folder', () => {
         expect(nameElement).toBeInTheDocument()
     })
 
+    test('renders star icon', () => {
+        render(<>
+            <Folder {..._folderDefaultProps} isStar={false} />
+            <Folder {..._folderDefaultProps} isStar={true} />
+        </>)
+
+        const starElements = screen.getAllByAltText(/Oznaczono gwiazdką/)
+
+        expect(starElements).toHaveLength(1)
+    })
+
 })
