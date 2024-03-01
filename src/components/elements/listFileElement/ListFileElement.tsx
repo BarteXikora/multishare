@@ -7,7 +7,7 @@ import iconStar from '../../../assets/icons/icon-star-color.svg'
 type ListFileElementType = {
     name: string
     isStar: boolean
-    lastModificationDate?: Date
+    lastModificationDate?: string
     extension: string
     fileSizeBites?: number
     isSelected: boolean

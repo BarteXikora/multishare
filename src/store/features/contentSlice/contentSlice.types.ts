@@ -11,8 +11,8 @@ export type pathType = {
 }[]
 
 export type folderDetailsType = {
-    createdDate?: Date,
-    lastModificationDate?: Date,
+    createdDate?: string,
+    lastModificationDate?: string,
 }
 
 export type fileDetailsType = folderDetailsType & {

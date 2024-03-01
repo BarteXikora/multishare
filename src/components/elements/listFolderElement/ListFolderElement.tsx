@@ -6,7 +6,7 @@ import iconStar from '../../../assets/icons/icon-star-color.svg'
 type ListFolderElementType = {
     name: string
     isStar: boolean
-    lastModificationDate?: Date
+    lastModificationDate?: string
     isEmpty: boolean
     isSelected: boolean
     onClick: (e: React.MouseEvent<HTMLElement>) => void

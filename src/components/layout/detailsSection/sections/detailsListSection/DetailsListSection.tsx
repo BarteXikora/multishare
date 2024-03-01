@@ -6,8 +6,8 @@ import getDataWithUnit from '../../../../../functions/getDataWithUnit/getDataWit
 type DetailsListSectionType = {
     type: string
     fileSizeBites?: number
-    createdDate?: Date
-    lastModificationDate?: Date
+    createdDate?: string
+    lastModificationDate?: string
 }
 
 const DetailsListSection = ({ type, fileSizeBites, createdDate, lastModificationDate }: DetailsListSectionType) => {
