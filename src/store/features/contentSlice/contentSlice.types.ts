@@ -10,6 +10,11 @@ export type pathType = {
     name: string
 }[]
 
+export type loadedContentType = {
+    loadedFolders: number[]
+    content: contentType
+}
+
 export type folderDetailsType = {
     createdDate?: string,
     lastModificationDate?: string,
@@ -43,26 +48,26 @@ export type fileType = {
     star: boolean
 }
 
-export type contentType = false | {
-    folders?: folderType[],
-    files?: fileType[]
+export type contentType = {
+    folders: folderType[],
+    files: fileType[]
 }
 
-export type contentDisplayType = false | {
-    folders?: folderDisplayType[],
-    files?: fileType[]
+export type contentDisplayType = {
+    folders: folderDisplayType[],
+    files: fileType[]
 }
 
 export type selectedType = {
-    files?: number[],
-    folders?: number[],
+    files: number[],
+    folders: number[],
     selectionStart: { type: 'FOLDER' | 'FILE', id: number } | null
 }
 
 export type initialStateType = {
     project: projectType,
     currentPath: pathType,
-    loadedContent: contentType,
+    loadedContent: loadedContentType,
     currentFolder: contentDisplayType,
     selected: selectedType
 }
