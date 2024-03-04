@@ -15,11 +15,11 @@ const ContentListView = () => {
 
     return <StyledContentListView>
         {
-            (content && (content.folders || content.files)) && <div className="content-list">
+            (content.folders.length > 0 || content.files.length > 0) && <div className="content-list">
                 <ListHeader />
 
                 {
-                    content && content.folders && content.folders.length > 0 && content.folders.map(folder => (
+                    content.folders.length > 0 && content.folders.map(folder => (
                         <ListFolderElement
                             key={folder.id}
                             name={folder.name}
@@ -37,7 +37,7 @@ const ContentListView = () => {
                 }
 
                 {
-                    content && content.files && content.files.length > 0 && content.files.map(file => (
+                    content.files.length > 0 && content.files.map(file => (
                         <ListFileElement
                             key={file.id}
                             name={file.name}
@@ -57,7 +57,7 @@ const ContentListView = () => {
             </div>
         }
 
-        {(!content || (!content.folders && !content.files)) && <EmptyFolder />}
+        {(content.folders.length === 0 && content.files.length === 0) && <EmptyFolder />}
     </StyledContentListView>
 }
 
