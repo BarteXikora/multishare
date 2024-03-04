@@ -6,23 +6,23 @@ type getPathAndContentType = {
 }
 
 const getPathAndContent = (content: contentType, id: number): getPathAndContentType => {
-    let currentContent: contentDisplayType = false
+    let currentContent: contentDisplayType = { folders: [], files: [] }
 
     const findNext = (obj: contentType): pathType => {
         const found: pathType = []
 
-        if (obj && obj.folders && obj.folders.length > 0) {
+        if (obj.folders.length > 0) {
             for (const folder of obj.folders) {
                 if (folder.id === id) {
                     found.push({ id: folder.id, name: folder.name })
 
                     currentContent = folder.content && {
-                        folders: folder.content.folders?.map(f => {
+                        folders: folder.content.folders.map(f => {
                             return ({
                                 ...f,
                                 insideContent: {
-                                    folders: (f.content && f.content.folders) ? f.content.folders.length : 0,
-                                    files: (f.content && f.content.files) ? f.content.files.length : 0
+                                    folders: f.content.folders ? f.content.folders.length : 0,
+                                    files: f.content.files ? f.content.files.length : 0
                                 }
                             })
                         }),
