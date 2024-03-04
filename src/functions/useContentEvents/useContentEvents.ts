@@ -9,7 +9,7 @@ import selectAllClick from './selectAllClick/selectAllClick'
 
 import { ElementType, selectedType } from '../../store/features/contentSlice/contentSlice.types'
 
-const emptySelect: selectedType = { selectionStart: null }
+const emptySelect: selectedType = { folders: [], files: [], selectionStart: null }
 
 const selectedCnt = (selected: selectedType): number => {
     let cnt = 0
