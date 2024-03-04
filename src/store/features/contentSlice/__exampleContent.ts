@@ -1,4 +1,6 @@
-const __exampleContent = {
+import { contentType } from "./contentSlice.types"
+
+const __exampleContent: contentType = {
     folders: [
         {
             id: 0,
@@ -29,13 +31,13 @@ const __exampleContent = {
                                                 name: 'Nieobrobione',
                                                 star: true,
                                                 details: {},
-                                                content: {}
+                                                content: { folders: [], files: [] }
                                             }, {
                                                 id: 7,
                                                 name: 'Pozostałe - większość do śmieci',
                                                 star: false,
                                                 details: {},
-                                                content: {}
+                                                content: { folders: [], files: [] }
                                             }
                                         ],
                                         files: [
@@ -59,7 +61,7 @@ const __exampleContent = {
                     }, {
                         id: 4,
                         name: 'Dokumenty',
-                        content: {},
+                        content: { folders: [], files: [] },
                         details: {},
                         star: false
                     }
@@ -71,7 +73,7 @@ const __exampleContent = {
             name: 'Pozostałe',
             star: false,
             details: {},
-            content: {}
+            content: { folders: [], files: [] }
         }
     ],
     files: []
