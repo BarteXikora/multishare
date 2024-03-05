@@ -1,6 +1,4 @@
-import { contentType } from "./contentSlice.types"
-
-const __exampleContent: contentType = {
+const exampleContent = {
     folders: [
         {
             id: 0,
@@ -79,4 +77,4 @@ const __exampleContent: contentType = {
     files: []
 }
 
-export default __exampleContent
+module.exports = exampleContent
