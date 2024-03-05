@@ -11,13 +11,17 @@ import detailsSectionSlice from './features/detailsSectionSlice/detailsSectionSl
 import contentSlice from './features/contentSlice/contentSlice'
 import viewSlice from './features/viewSlice/viewSlice'
 
+import contentMiddleware from './middleware/contentMiddleware'
+
 export const store = configureStore({
     reducer: {
         sideMenu: sideMenuSlice,
         detailsSection: detailsSectionSlice,
         content: contentSlice,
         view: viewSlice
-    }
+    },
+
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(contentMiddleware())
 })
 
 export const useSelector: TypedUseSelectorHook<ReturnType<typeof store.getState>> = useDefaultSelector
