@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { initialize } from '../../../store/features/contentSlice/contentSlice'
+import useUpdateContent from '../../../functions/useUpdateContent/useUpdateContent'
 
 import StyledContentSection from './ContentSection.styles'
 
@@ -15,6 +16,8 @@ const ContentSection = () => {
         dispatch(initialize())
 
     }, [dispatch])
+
+    useUpdateContent()
 
     return <StyledContentSection>
         {
