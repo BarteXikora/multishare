@@ -10,11 +10,6 @@ export type pathType = {
     name: string
 }[]
 
-export type loadedContentType = {
-    loadedFolders: number[]
-    content: contentType
-}
-
 export type folderDetailsType = {
     createdDate?: string,
     lastModificationDate?: string,
@@ -67,7 +62,7 @@ export type selectedType = {
 export type initialStateType = {
     project: projectType,
     currentPath: pathType,
-    loadedContent: loadedContentType,
+    loadedContent: contentType,
     currentFolder: contentDisplayType,
     selected: selectedType
 }

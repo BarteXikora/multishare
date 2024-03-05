@@ -6,7 +6,7 @@ const setTreeLocation = (state: initialStateType, action: PayloadAction<number>)
     if (action.payload === -1) {
         state.currentPath = []
         state.currentFolder = {
-            folders: state.loadedContent.content.folders.map(f => {
+            folders: state.loadedContent.folders.map(f => {
                 return ({
                     ...f,
                     insideContent: {
@@ -15,11 +15,11 @@ const setTreeLocation = (state: initialStateType, action: PayloadAction<number>)
                     }
                 })
             }),
-            files: state.loadedContent.content.files
+            files: state.loadedContent.files
         }
 
     } else {
-        const { path, content } = getPathAndContent(state.loadedContent.content, action.payload)
+        const { path, content } = getPathAndContent(state.loadedContent, action.payload)
 
         state.currentPath = path
         state.currentFolder = content
