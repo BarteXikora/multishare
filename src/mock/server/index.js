@@ -1,11 +1,18 @@
 const express = require('express')
+const app = express()
 
-const server = express()
-const router = express.Router()
+const cors = require('cors')
+app.use(cors())
 
-router.get('/', (req, res) => {
-    res.status(200).json({ ok: true })
+const http = require('http')
+const server = http.createServer(app)
+
+const { Server } = require('socket.io')
+
+const io = new Server(server, { cors: { origin: 'http://localhost:3000' } })
+
+io.on('connection', (socket) => {
+    console.log('user logged in, id:', socket.id)
 })
 
-server.use('/api', router)
-server.listen(3001, () => { console.log('Server is listening on port 3001.') })
+server.listen(3001, () => console.log('server is listening on port 3001'))
