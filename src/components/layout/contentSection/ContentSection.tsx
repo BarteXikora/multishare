@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
-import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
+import { initialize } from '../../../store/features/contentSlice/contentSlice'
 
 import StyledContentSection from './ContentSection.styles'
 
@@ -12,7 +12,7 @@ const ContentSection = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(setTreeLocation(-1))
+        dispatch(initialize())
 
     }, [dispatch])
 
