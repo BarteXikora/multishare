@@ -9,6 +9,7 @@ import ContentIconsView from './contentIconsView/ContentIconsView'
 import ContentListView from './contentListView/ContentListView'
 
 const ContentSection = () => {
+    const status = useSelector(state => state.content.status)
     const contentViewStyle = useSelector(state => state.view.contentViewStyle)
     const dispatch = useDispatch()
 
@@ -21,10 +22,15 @@ const ContentSection = () => {
 
     return <StyledContentSection>
         {
-            contentViewStyle === 'ICONS' ?
-                <ContentIconsView />
+            status === 'LOADING' ?
+                'wczytywanie'
+
                 :
-                <ContentListView />
+
+                contentViewStyle === 'ICONS' ?
+                    <ContentIconsView />
+                    :
+                    <ContentListView />
         }
     </StyledContentSection>
 }
