@@ -5,6 +5,7 @@ import useUpdateContent from '../../../functions/useUpdateContent/useUpdateConte
 
 import StyledContentSection from './ContentSection.styles'
 
+import LoadingContent from '../../elements/loadingContent/LoadingContent'
 import ContentIconsView from './contentIconsView/ContentIconsView'
 import ContentListView from './contentListView/ContentListView'
 
@@ -21,7 +22,7 @@ const ContentSection = () => {
     useUpdateContent()
 
     return <StyledContentSection>
-        {status === 'LOADING' && <>wczytywanie...</>}
+        {status === 'LOADING' && <LoadingContent />}
 
         {status === 'ERROR' && <>wystąpił błąd!</>}
 
