@@ -1,7 +1,8 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import socket from '../../api/socket'
 import { contentType } from '../features/contentSlice/contentSlice.types'
-import { setContent } from '../features/contentSlice/contentSlice'
+
+import { setContent, setError } from '../features/contentSlice/contentSlice'
 
 type paramsType = {
     dispatch: Dispatch
@@ -18,6 +19,10 @@ const contentMiddleware = () => {
                     }
 
                     params.dispatch(setContent(recivedContent))
+                })
+
+                socket.on('connect_error', () => {
+                    params.dispatch(setError())
                 })
 
                 socket.emit('get_content')
