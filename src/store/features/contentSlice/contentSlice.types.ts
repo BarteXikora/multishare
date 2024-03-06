@@ -1,6 +1,20 @@
 export type ElementType = 'FOLDER' | 'FILE'
 
-export type statusType = 'LOADING' | 'LOADED'
+type loadedContentLoadingType = {
+    status: 'LOADING'
+}
+
+type loadedContentReadyType = {
+    status: 'READY'
+    content: contentType
+}
+
+type loadedContentErrorType = {
+    status: 'ERROR'
+    error: string
+}
+
+export type loadedContentType = loadedContentLoadingType | loadedContentReadyType | loadedContentErrorType
 
 export type projectType = {
     id: number,
@@ -62,10 +76,9 @@ export type selectedType = {
 }
 
 export type initialStateType = {
-    status: statusType,
     project: projectType,
     currentPath: pathType,
-    loadedContent: contentType,
+    loadedContent: loadedContentType,
     currentFolder: contentDisplayType,
     selected: selectedType
 }
