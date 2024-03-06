@@ -3,8 +3,6 @@ import { ElementType, selectedType } from '../../../store/features/contentSlice/
 const controlClick = (selected: selectedType, type: ElementType, id: number): selectedType => {
     switch (type) {
         case 'FOLDER':
-            if (!selected.folders) selected.folders = []
-
             if (selected.folders.includes(id)) selected.folders = selected.folders.filter(folder => folder !== id)
             else selected.folders = [...selected.folders, id]
 
@@ -13,8 +11,6 @@ const controlClick = (selected: selectedType, type: ElementType, id: number): se
             break
 
         case 'FILE':
-            if (!selected.files) selected.files = []
-
             if (selected.files.includes(id)) selected.files = selected.files.filter(file => file !== id)
             else selected.files = [...selected.files, id]
 

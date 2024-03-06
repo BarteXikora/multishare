@@ -12,14 +12,12 @@ const useInvokeDetails = () => {
     useEffect(() => {
         const data: multipleDataType = { folders: [], files: [] }
 
-        if (content) {
-            if (content.folders) for (const folder of content.folders) {
-                if (selected.folders) if (selected.folders.includes(folder.id)) data.folders.push(folder)
-            }
+        for (const folder of content.folders) {
+            if (selected.folders.includes(folder.id)) data.folders.push(folder)
+        }
 
-            if (content.files) for (const file of content.files) {
-                if (selected.files) if (selected.files.includes(file.id)) data.files.push(file)
-            }
+        for (const file of content.files) {
+            if (selected.files.includes(file.id)) data.files.push(file)
         }
 
         dispatch(setDetails(data))

@@ -15,7 +15,7 @@ const ContentIconsView = () => {
 
     return <StyledContentIconsView>
         {
-            content && content.folders && content.folders.length > 0 && (
+            content.folders.length > 0 && (
                 <section className='folders-section'>
                     <h2>Foldery:</h2>
 
@@ -42,7 +42,7 @@ const ContentIconsView = () => {
         }
 
         {
-            content && content.files && content.files.length > 0 && (
+            content.files.length > 0 && (
                 <section className='files-section'>
                     <h2>Pliki:</h2>
 
@@ -69,7 +69,7 @@ const ContentIconsView = () => {
         }
 
         {
-            (!content || (!content.folders && !content.files)) && <EmptyFolder />
+            (content.folders.length === 0 && content.files.length === 0) && <EmptyFolder />
         }
     </StyledContentIconsView>
 

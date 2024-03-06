@@ -1,15 +1,13 @@
 import { initialStateType } from './contentSlice.types'
 
-import __exampleContent from './__exampleContent'
+const emptyContent = { folders: [], files: [] }
 
 const initialState: initialStateType = {
     project: { id: 0, name: 'Moje pliki' },
     currentPath: [],
-    currentFolder: {},
-    loadedContent: __exampleContent,
-    selected: {
-        selectionStart: null
-    }
+    currentFolder: emptyContent,
+    loadedContent: { status: 'LOADING' },
+    selected: { ...emptyContent, selectionStart: null }
 }
 
 export default initialState
