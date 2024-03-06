@@ -9,7 +9,7 @@ import ContentIconsView from './contentIconsView/ContentIconsView'
 import ContentListView from './contentListView/ContentListView'
 
 const ContentSection = () => {
-    const status = useSelector(state => state.content.status)
+    const status = useSelector(state => state.content.loadedContent.status)
     const contentViewStyle = useSelector(state => state.view.contentViewStyle)
     const dispatch = useDispatch()
 
@@ -21,16 +21,15 @@ const ContentSection = () => {
     useUpdateContent()
 
     return <StyledContentSection>
+        {status === 'LOADING' && <>wczytywanie...</>}
+
+        {status === 'ERROR' && <>wystąpił błąd!</>}
+
         {
-            status === 'LOADING' ?
-                'wczytywanie'
-
+            status === 'READY' && contentViewStyle === 'ICONS' ?
+                <ContentIconsView />
                 :
-
-                contentViewStyle === 'ICONS' ?
-                    <ContentIconsView />
-                    :
-                    <ContentListView />
+                <ContentListView />
         }
     </StyledContentSection>
 }
