@@ -6,11 +6,12 @@ import useUpdateContent from '../../../functions/useUpdateContent/useUpdateConte
 import StyledContentSection from './ContentSection.styles'
 
 import LoadingContent from '../../elements/loadingContent/LoadingContent'
+import ContentError from '../../elements/contentError/ContentError'
 import ContentIconsView from './contentIconsView/ContentIconsView'
 import ContentListView from './contentListView/ContentListView'
 
 const ContentSection = () => {
-    const status = useSelector(state => state.content.loadedContent.status)
+    const loaded = useSelector(state => state.content.loadedContent)
     const contentViewStyle = useSelector(state => state.view.contentViewStyle)
     const dispatch = useDispatch()
 
@@ -22,12 +23,12 @@ const ContentSection = () => {
     useUpdateContent()
 
     return <StyledContentSection>
-        {status === 'LOADING' && <LoadingContent />}
+        {loaded.status === 'LOADING' && <LoadingContent />}
 
-        {status === 'ERROR' && <>wystąpił błąd!</>}
+        {loaded.status === 'ERROR' && <ContentError error={loaded.error} />}
 
         {
-            status === 'READY' && (
+            loaded.status === 'READY' && (
                 contentViewStyle === 'ICONS' ?
                     <ContentIconsView />
                     :
