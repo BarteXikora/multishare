@@ -22,7 +22,7 @@ const contentMiddleware = () => {
                 })
 
                 socket.on('connect_error', () => {
-                    params.dispatch(setError())
+                    params.dispatch(setError('Nie udało się połączyć z serwerem.'))
                 })
 
                 socket.emit('get_content')
