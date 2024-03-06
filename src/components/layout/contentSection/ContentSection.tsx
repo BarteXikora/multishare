@@ -26,10 +26,12 @@ const ContentSection = () => {
         {status === 'ERROR' && <>wystąpił błąd!</>}
 
         {
-            status === 'READY' && contentViewStyle === 'ICONS' ?
-                <ContentIconsView />
-                :
-                <ContentListView />
+            status === 'READY' && (
+                contentViewStyle === 'ICONS' ?
+                    <ContentIconsView />
+                    :
+                    <ContentListView />
+            )
         }
     </StyledContentSection>
 }
