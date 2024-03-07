@@ -12,6 +12,8 @@ const socketMiddleware = () => {
 
         switch (action.type) {
             case 'projectSlice/initialize': {
+                socket.emit('get_projects')
+
                 socket.on('projects', (data: any) => {
                     if (!Array.isArray(data)) dispatch(setProjectsError('Nie udało się wczytać listy projektów.'))
                     else dispatch(setProjects(data))
