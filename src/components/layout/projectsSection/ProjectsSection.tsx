@@ -31,7 +31,12 @@ const ProjectsSection = () => {
                 <div className="content">
                     {
                         projects.content.map(project => (
-                            <Project key={project.id} name={project.name} onClick={() => handleClick(project)} />
+                            <Project
+                                key={project.id}
+                                name={project.name}
+                                description={project.description}
+                                onClick={() => handleClick(project)}
+                            />
                         ))
                     }
                 </div>
