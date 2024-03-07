@@ -3,9 +3,13 @@ import Input from '../../ui/input/Input'
 import Button from '../../ui/button/Button'
 import iconSearch from '../../../assets/icons/icon-search.svg'
 
-const SearchInput = () => {
+type SearchInputType = {
+    placeholder?: string
+}
+
+const SearchInput = ({ placeholder }: SearchInputType) => {
     return <StyledSeachInput>
-        <Input placeholder='Szukaj plików i folderów...' />
+        <Input placeholder={placeholder || ''} />
 
         <Button className='search-button' $variant='secondary' type='submit'>
             <img src={iconSearch} alt="Szukaj" />
