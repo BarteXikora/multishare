@@ -13,7 +13,7 @@ import ProcessPill from '../../elements/processPill/ProcessPill'
 import iconClose from '../../../assets/icons/icon-close.svg'
 
 const DetailsSection = () => {
-    const project = useSelector(state => state.content.project)
+    const project = useSelector(state => state.project.selectedProject)
     const isHomeFolder = useSelector(state => state.content.currentPath.length === 0)
     const isShown = useSelector(state => state.detailsSection.isShown)
     const content = useSelector(state => state.detailsSection.content)

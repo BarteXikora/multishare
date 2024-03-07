@@ -13,7 +13,7 @@ import iconArrowBig from '../../../assets/icons/icon-arrow-down-big.svg'
 const SelectProject = () => {
     const dispatch = useDispatch()
 
-    const projectName = useSelector(state => state.content.project.name)
+    const projectName = useSelector(state => state.project.selectedProject ? state.project.selectedProject.name : '')
 
     return <StyledSelectProject>
         <Button className='current-project-button' $variant='quaternary' onClick={() => dispatch(setTreeLocation(-1))}>
