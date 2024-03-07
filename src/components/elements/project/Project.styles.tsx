@@ -5,19 +5,28 @@ const StyledProject = styled(Button)`
     padding: 0;
     border-radius: ${(props) => props.theme.borderRadiuses.big};
 
-    .icon {
+    .preview {
         display: flex;
-        align-items: center;
-        justify-content: center;
         width: 180px;
         flex-shrink: 0;
         height: 100%;
         background-color: ${(props) => props.theme.colors.black};
         border-radius: ${(props) => props.theme.borderRadiuses.big + ' 0 0 ' + props.theme.borderRadiuses.big};
+    }
+
+    .icon {
+        align-items: center;
+        justify-content: center;
 
         img {
             padding: ${(props) => props.theme.margins.sectionSmall};
         }
+    }
+
+    .image {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 
     .name {
