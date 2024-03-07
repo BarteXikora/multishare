@@ -1,5 +1,6 @@
 import StyledProjectsSection from './ProjectsSection.styles'
 import Project from '../../elements/project/Project'
+import LoadingContent from '../../elements/loadingContent/LoadingContent'
 
 import { useSelector, useDispatch } from '../../../store/store'
 import { useNavigate } from 'react-router-dom'
@@ -18,7 +19,7 @@ const ProjectsSection = () => {
     }
 
     return <StyledProjectsSection>
-        {projects.status === 'LOADING' && <>wczytywanie...</>}
+        {projects.status === 'LOADING' && <LoadingContent text='Wczytywanie projektów...' />}
 
         {projects.status === 'ERROR' && <>wystąpił błąd</>}
 
