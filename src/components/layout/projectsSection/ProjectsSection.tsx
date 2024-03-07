@@ -25,9 +25,17 @@ const ProjectsSection = () => {
         {projects.status === 'ERROR' && <ContentError error={projects.error} />}
 
         {
-            projects.status === 'READY' && projects.content.map(project => (
-                <Project key={project.id} name={project.name} onClick={() => handleClick(project)} />
-            ))
+            projects.status === 'READY' && <>
+                <h2>Dostępne projekty:</h2>
+
+                <div className="content">
+                    {
+                        projects.content.map(project => (
+                            <Project key={project.id} name={project.name} onClick={() => handleClick(project)} />
+                        ))
+                    }
+                </div>
+            </>
         }
     </StyledProjectsSection>
 }
