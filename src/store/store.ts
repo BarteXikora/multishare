@@ -12,7 +12,7 @@ import projectSlice from './features/projectSlice/projectSlice'
 import contentSlice from './features/contentSlice/contentSlice'
 import viewSlice from './features/viewSlice/viewSlice'
 
-import contentMiddleware from './middleware/contentMiddleware'
+import socketMiddleware from './middleware/socketMiddleware'
 
 export const store = configureStore({
     reducer: {
@@ -23,7 +23,7 @@ export const store = configureStore({
         view: viewSlice
     },
 
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(contentMiddleware())
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(socketMiddleware())
 })
 
 export const useSelector: TypedUseSelectorHook<ReturnType<typeof store.getState>> = useDefaultSelector
