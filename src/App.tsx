@@ -5,6 +5,7 @@ import AppTheme from './theme/AppTheme'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+import MainView from './components/layout/mainView/MainView'
 import AppPage from './pages/appPage/AppPage'
 import NotFoundPage from './pages/notFoundPage/NotFoundPage'
 
@@ -18,7 +19,9 @@ const App = () => {
 
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<AppPage />} />
+            <Route element={<MainView />}>
+              <Route path='/' element={<AppPage />} />
+            </Route>
 
             <Route path='*' element={<NotFoundPage />} />
           </Routes>
