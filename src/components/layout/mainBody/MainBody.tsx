@@ -1,8 +1,5 @@
 import StyledMainBody from './MainBody.styles'
-
-type ChildrenProps = {
-    children?: string | JSX.Element | JSX.Element[] | undefined
-}
+import { ChildrenProps } from '../../../utilities/types'
 
 const MainBody = ({ children }: ChildrenProps) => {
     return <StyledMainBody>{children}</StyledMainBody>

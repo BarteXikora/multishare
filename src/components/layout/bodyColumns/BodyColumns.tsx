@@ -1,8 +1,5 @@
 import StyledBodyColumns from './BodyColumns.styles'
-
-type ChildrenProps = {
-    children?: string | JSX.Element | JSX.Element[] | undefined
-}
+import { ChildrenProps } from '../../../utilities/types'
 
 const BodyColumns = ({ children }: ChildrenProps) => {
     return <StyledBodyColumns>{children}</StyledBodyColumns>
