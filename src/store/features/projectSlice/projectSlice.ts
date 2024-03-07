@@ -4,6 +4,7 @@ import initialState from './initialState'
 import initializeReducer from './reducers/initialize/initialize'
 import setProjectsReducer from './reducers/setProjects/setProjects'
 import setProjectsErrorReducer from './reducers/setProjectsError/setProjectsError'
+import selectProjectReducer from './reducers/selectProject/selectProject'
 
 const projectSlice = createSlice({
     name: 'projectSlice',
@@ -11,9 +12,10 @@ const projectSlice = createSlice({
     reducers: {
         initialize: initializeReducer,
         setProjects: setProjectsReducer,
-        setProjectsError: setProjectsErrorReducer
+        setProjectsError: setProjectsErrorReducer,
+        selectProject: selectProjectReducer
     }
 })
 
 export default projectSlice.reducer
-export const { initialize, setProjects, setProjectsError } = projectSlice.actions
+export const { initialize, setProjects, setProjectsError, selectProject } = projectSlice.actions
