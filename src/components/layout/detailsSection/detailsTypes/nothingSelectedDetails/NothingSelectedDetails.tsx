@@ -2,9 +2,8 @@ import StyledNothingSelectedDetails from './NothingSelectedDetails.styles'
 import PreviewSection from '../../sections/previewSection/PreviewSection'
 import NameSection from '../../sections/nameSection/NameSection'
 import DropSection from '../../sections/dropSection/DropSection'
-
+import getProjectIcon from '../../../../../functions/getProjectIcon/getProjectIcon'
 import { projectType } from '../../../../../store/features/projectSlice/projectSlice.types'
-import imgProject from '../../../../../assets/images/img-project.svg'
 
 type NothingSelectedDetailsType = {
     isHomeFolder: boolean
@@ -16,8 +15,8 @@ const NothingSelectedDetails = ({ isHomeFolder, project }: NothingSelectedDetail
         {
             (isHomeFolder && project) && <>
                 <PreviewSection
-                    type='ICON'
-                    image={imgProject}
+                    type={getProjectIcon(project.icon).type}
+                    image={getProjectIcon(project.icon).content}
                     imageAltText='Projekt'
                     isStar={false}
                 />

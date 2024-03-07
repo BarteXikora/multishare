@@ -35,6 +35,7 @@ const ProjectsSection = () => {
                                 key={project.id}
                                 name={project.name}
                                 description={project.description}
+                                icon={project.icon}
                                 onClick={() => handleClick(project)}
                             />
                         ))
