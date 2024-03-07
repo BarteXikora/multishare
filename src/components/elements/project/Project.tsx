@@ -5,10 +5,11 @@ type ProjectType = {
     name: string
     icon?: string
     description?: string
+    onClick: () => void
 }
 
-const Project = ({ name, icon, description }: ProjectType) => {
-    return <StyledProject $variant='secondary'>
+const Project = ({ name, icon, description, onClick }: ProjectType) => {
+    return <StyledProject $variant='secondary' onClick={onClick}>
         <div className="icon">
             <img src={icon || imgProject} alt={`Projekt: ${name}`} />
         </div>
