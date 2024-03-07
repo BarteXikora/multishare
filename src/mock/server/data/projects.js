@@ -7,3 +7,5 @@ const projects = [
         name: 'Inny projekt'
     }
 ]
+
+module.exports = projects
