@@ -1,9 +1,6 @@
 import { useRef } from 'react'
 import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
-
-type ChildrenProps = {
-    children?: string | JSX.Element | JSX.Element[] | undefined
-}
+import { ChildrenProps } from '../../../../utilities/types'
 
 const MainColumn = ({ children }: ChildrenProps) => {
     const sectionRef = useRef<HTMLElement>(null)

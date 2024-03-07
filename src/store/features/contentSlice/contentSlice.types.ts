@@ -16,11 +16,6 @@ type loadedContentErrorType = {
 
 export type loadedContentType = loadedContentLoadingType | loadedContentReadyType | loadedContentErrorType
 
-export type projectType = {
-    id: number,
-    name: string
-}
-
 export type pathType = {
     id: number,
     name: string
@@ -76,7 +71,6 @@ export type selectedType = {
 }
 
 export type initialStateType = {
-    project: projectType,
     currentPath: pathType,
     loadedContent: loadedContentType,
     currentFolder: contentDisplayType,

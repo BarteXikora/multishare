@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const StyledLoadingContent = styled.div`
-    margin-top: ${(props) => props.theme.margins.big};
     display: inline-flex;
     align-items: center;
     gap: ${(props) => props.theme.margins.big};

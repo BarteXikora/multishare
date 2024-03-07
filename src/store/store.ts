@@ -8,20 +8,22 @@ import {
 
 import sideMenuSlice from './features/sideMenuSlice/sideMenuSlice'
 import detailsSectionSlice from './features/detailsSectionSlice/detailsSectionSlice'
+import projectSlice from './features/projectSlice/projectSlice'
 import contentSlice from './features/contentSlice/contentSlice'
 import viewSlice from './features/viewSlice/viewSlice'
 
-import contentMiddleware from './middleware/contentMiddleware'
+import socketMiddleware from './middleware/socketMiddleware'
 
 export const store = configureStore({
     reducer: {
         sideMenu: sideMenuSlice,
         detailsSection: detailsSectionSlice,
+        project: projectSlice,
         content: contentSlice,
         view: viewSlice
     },
 
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(contentMiddleware())
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(socketMiddleware())
 })
 
 export const useSelector: TypedUseSelectorHook<ReturnType<typeof store.getState>> = useDefaultSelector

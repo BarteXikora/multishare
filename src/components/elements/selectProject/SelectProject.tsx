@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from '../../../store/store'
-import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
+import { useNavigate } from 'react-router-dom'
+import { resetContent, setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
 import getShortenName from '../../../functions/getShortenName/getShortenName'
 
 import StyledSelectProject from './SelectProject.styles'
@@ -12,8 +13,14 @@ import iconArrowBig from '../../../assets/icons/icon-arrow-down-big.svg'
 
 const SelectProject = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
-    const projectName = useSelector(state => state.content.project.name)
+    const projectName = useSelector(state => state.project.selectedProject ? state.project.selectedProject.name : '')
+
+    const handleClick = () => {
+        dispatch(resetContent())
+        navigate('/projects')
+    }
 
     return <StyledSelectProject>
         <Button className='current-project-button' $variant='quaternary' onClick={() => dispatch(setTreeLocation(-1))}>
@@ -24,7 +31,7 @@ const SelectProject = () => {
             </h1>
         </Button>
 
-        <Button className='desktop-button' $size='big'>
+        <Button className='desktop-button' $size='big' onClick={handleClick}>
             <img src={iconSelectProject} alt="Projekty" />
 
             Wszystkie projekty
@@ -32,7 +39,7 @@ const SelectProject = () => {
             <img src={iconArrow} alt="Wybierz projekt" />
         </Button>
 
-        <Button className='mobile-button' $variant='secondary' $size='big'>
+        <Button className='mobile-button' $variant='secondary' $size='big' onClick={handleClick}>
             <div className="project-name">{getShortenName(projectName, 30)}</div>
 
             <div className="icon-arrow">

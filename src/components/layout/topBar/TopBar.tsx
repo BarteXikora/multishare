@@ -20,7 +20,7 @@ const TopBar = () => {
         <SelectProject />
 
         <div className="search">
-            <SearchInput />
+            <SearchInput placeholder='Szukaj folderów i plików...' />
         </div>
     </StyledTopBar>
 }
