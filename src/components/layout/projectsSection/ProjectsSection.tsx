@@ -1,4 +1,4 @@
-import StyledProjectsSection from './ProjectsSection.tyles'
+import StyledProjectsSection from './ProjectsSection.styles'
 import Project from '../../elements/project/Project'
 
 import { useSelector } from '../../../store/store'
