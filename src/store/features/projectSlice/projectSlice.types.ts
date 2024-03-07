@@ -1,7 +1,20 @@
+type iconSystemType = {
+    type: 'ICON',
+    icon: 'PERSONAL_PROJECT' | 'NEW_PROJECT'
+}
+
+type iconLinkType = {
+    type: 'LINK',
+    link: string
+}
+
+export type iconType = iconSystemType | iconLinkType
+
 export type projectType = {
     id: number
     name: string
     description?: string
+    icon?: iconType
 }
 
 type allProjectsLoadingType = {
