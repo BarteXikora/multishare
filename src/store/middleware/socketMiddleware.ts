@@ -15,6 +15,10 @@ const socketMiddleware = () => {
             case 'projectSlice/initialize': {
                 socket.emit('get_projects')
 
+                socket.on('connect_error', () => {
+                    dispatch(setProjectsError('Nie udało się nawiązać połączenia z serwerem.'))
+                })
+
                 socket.on('projects', (data: any) => {
                     if (!Array.isArray(data)) dispatch(setProjectsError('Nie udało się wczytać listy projektów.'))
                     else dispatch(setProjects(data))
