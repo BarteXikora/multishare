@@ -1,6 +1,4 @@
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from '../../../store/store'
-import { initialize } from '../../../store/features/contentSlice/contentSlice'
+import { useSelector } from '../../../store/store'
 import useUpdateContent from '../../../functions/useUpdateContent/useUpdateContent'
 
 import StyledContentSection from './ContentSection.styles'
@@ -13,12 +11,6 @@ import ContentListView from './contentListView/ContentListView'
 const ContentSection = () => {
     const loaded = useSelector(state => state.content.loadedContent)
     const contentViewStyle = useSelector(state => state.view.contentViewStyle)
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(initialize())
-
-    }, [dispatch])
 
     useUpdateContent()
 
