@@ -1,5 +1,9 @@
+import ProjectsTopBar from '../../components/layout/projectsTopBar/ProjectsTopBar'
+
 const ProjectsPage = () => {
-    return <>projekty</>
+    return <>
+        <ProjectsTopBar />
+    </>
 }
 
 export default ProjectsPage
