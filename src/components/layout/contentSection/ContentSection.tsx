@@ -15,9 +15,13 @@ const ContentSection = () => {
     useUpdateContent()
 
     return <StyledContentSection>
-        {loaded.status === 'LOADING' && <LoadingContent />}
+        {
+            loaded.status !== 'READY' && <div className="content-margin">
+                {loaded.status === 'LOADING' && <LoadingContent />}
 
-        {loaded.status === 'ERROR' && <ContentError error={loaded.error} />}
+                {loaded.status === 'ERROR' && <ContentError error={loaded.error} />}
+            </div>
+        }
 
         {
             loaded.status === 'READY' && (
