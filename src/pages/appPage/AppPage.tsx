@@ -1,6 +1,3 @@
-import SideMenu from '../../components/layout/sideMenu/SideMenu'
-import Courtain from '../../components/layout/courtain/Courtain'
-import MainBody from '../../components/layout/mainBody/MainBody'
 import TopBar from '../../components/layout/topBar/TopBar'
 import BodyColumns from '../../components/layout/bodyColumns/BodyColumns'
 import MainColumn from '../../components/layout/bodyColumns/mainColumn/MainColumn'
@@ -11,25 +8,19 @@ import DetailsSection from '../../components/layout/detailsSection/DetailsSectio
 
 const AppPage = () => {
     return <>
-        <SideMenu />
+        <TopBar />
 
-        <Courtain />
+        <BodyColumns>
+            <MainColumn>
+                <Header />
 
-        <MainBody>
-            <TopBar />
+                <ContentSection />
+            </MainColumn>
 
-            <BodyColumns>
-                <MainColumn>
-                    <Header />
-
-                    <ContentSection />
-                </MainColumn>
-
-                <AsideColumn>
-                    <DetailsSection />
-                </AsideColumn>
-            </BodyColumns>
-        </MainBody>
+            <AsideColumn>
+                <DetailsSection />
+            </AsideColumn>
+        </BodyColumns>
     </>
 }
 
