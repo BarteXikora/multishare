@@ -1,6 +1,7 @@
 import StyledProjectsSection from './ProjectsSection.styles'
 import Project from '../../elements/project/Project'
 import LoadingContent from '../../elements/loadingContent/LoadingContent'
+import ContentError from '../../elements/contentError/ContentError'
 
 import { useSelector, useDispatch } from '../../../store/store'
 import { useNavigate } from 'react-router-dom'
@@ -21,7 +22,7 @@ const ProjectsSection = () => {
     return <StyledProjectsSection>
         {projects.status === 'LOADING' && <LoadingContent text='Wczytywanie projektów...' />}
 
-        {projects.status === 'ERROR' && <>wystąpił błąd</>}
+        {projects.status === 'ERROR' && <ContentError error={projects.error} />}
 
         {
             projects.status === 'READY' && projects.content.map(project => (
