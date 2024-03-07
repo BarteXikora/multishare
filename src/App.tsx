@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import MainView from './components/layout/mainView/MainView'
 import AppPage from './pages/appPage/AppPage'
+import ProjectsPage from './pages/projectsPage/ProjectsPage'
 import NotFoundPage from './pages/notFoundPage/NotFoundPage'
 
 import ScreenSize from './components/__dev/__ScreenSize'
@@ -21,6 +22,8 @@ const App = () => {
           <Routes>
             <Route element={<MainView />}>
               <Route path='/' element={<AppPage />} />
+
+              <Route path='/projects' element={<ProjectsPage />} />
             </Route>
 
             <Route path='*' element={<NotFoundPage />} />
