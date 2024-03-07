@@ -6,6 +6,7 @@ import setContentReducer from './reducers/setContent/setContent'
 import setErrorReducer from './reducers/setError/setError'
 import setTreeLocationReducer from './reducers/setTreeLocation/setTreeLocation'
 import setSelectedReducer from './reducers/setSelected/setSelected'
+import resetContentReducer from './reducers/resetContent/resetContent'
 
 export const contentSlice = createSlice({
     name: 'contentSlice',
@@ -14,9 +15,10 @@ export const contentSlice = createSlice({
         setContent: setContentReducer,
         setError: setErrorReducer,
         setTreeLocation: setTreeLocationReducer,
-        setSelected: setSelectedReducer
+        setSelected: setSelectedReducer,
+        resetContent: resetContentReducer
     }
 })
 
 export default contentSlice.reducer
-export const { setContent, setError, setTreeLocation, setSelected } = contentSlice.actions
+export const { setContent, setError, setTreeLocation, setSelected, resetContent } = contentSlice.actions
