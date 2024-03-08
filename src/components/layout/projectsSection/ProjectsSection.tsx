@@ -16,7 +16,7 @@ const ProjectsSection = () => {
 
     const handleClick = (project: projectType) => {
         dispatch(selectProject(project))
-        navigate('/')
+        navigate('/project')
     }
 
     return <StyledProjectsSection>
