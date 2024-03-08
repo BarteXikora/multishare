@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import { setTreeLocation } from '../../store/features/contentSlice/contentSlice'
+import getCurrentFolderId from '../getCurrentFolderId/getCurrentFolderId'
 
 const useUpdateContent = () => {
     const dispatch = useDispatch()
@@ -8,13 +9,8 @@ const useUpdateContent = () => {
     const path = useSelector(state => state.content.currentPath)
     const content = useSelector(state => state.content.loadedContent)
 
-    const getCurrentFolderId = (): number => {
-        if (path.length === 0) return -1
-        return path[path.length].id
-    }
-
     useEffect(() => {
-        const currentFolderId: number = getCurrentFolderId()
+        const currentFolderId: number = getCurrentFolderId(path)
 
         dispatch(setTreeLocation(currentFolderId))
 
