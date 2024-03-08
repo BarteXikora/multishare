@@ -1,7 +1,7 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import socket from '../../api/socket'
 import { setProjects, setProjectsError } from '../features/projectSlice/projectSlice'
-import { setContent, setError } from '../features/contentSlice/contentSlice'
+import { resetContent, setContent, setError } from '../features/contentSlice/contentSlice'
 
 type paramsType = {
     dispatch: Dispatch
@@ -34,6 +34,12 @@ const socketMiddleware = () => {
 
             case 'projectSlice/selectProject': {
                 socket.emit('enter_project', action.payload.id)
+
+                break
+            }
+
+            case 'projectSlice/resetProject': {
+                dispatch(resetContent())
             }
         }
 
