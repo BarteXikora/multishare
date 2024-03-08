@@ -1,21 +1,24 @@
 import { useSelector, useDispatch } from '../../../store/store'
 import { toggle } from '../../../store/features/sideMenuSlice/sideMenuSlice'
+import { useLocation } from 'react-router-dom'
 
 import StyledSideMenu from './SideMenu.styles'
+import ProjectsButtons from './projectsButtons/ProjectsButtons'
+import ContentButtons from './contentButtons/ContentButtons'
 import Button from '../../ui/button/Button'
 import UsedSpace from '../../elements/usedSpace/UsedSpace'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
 import logo from '../../../assets/images/img-logo.svg'
-import iconFolder from '../../../assets/icons/icon-folder.svg'
-import iconFiles from '../../../assets/icons/icon-files.svg'
-import iconStar from '../../../assets/icons/icon-star.svg'
-import iconTrash from '../../../assets/icons/icon-trash.svg'
 import iconAccount from '../../../assets/icons/icon-account.svg'
+import iconManageProject from '../../../assets/icons/icon-manage-project.svg'
 
 const SideMenu = () => {
     const isMenuShown = useSelector(state => state.sideMenu.isShown)
     const dispatch = useDispatch()
+
+    const location = useLocation().pathname
+    const isProjectSelected = useSelector(state => state.project.selectedProject !== null)
 
     return <StyledSideMenu className={`${isMenuShown ? 'shown' : ''}`}>
 
@@ -30,29 +33,12 @@ const SideMenu = () => {
         </section>
 
         <section className='nav-menu'>
-            <Button $variant='tertiary' $active>
-                <img src={iconFolder} alt='Dysk' />
-
-                Dysk
-            </Button>
-
-            <Button $variant='tertiary'>
-                <img src={iconFiles} alt='Wszystkie pliki' />
-
-                Wszystkie pliki
-            </Button>
-
-            <Button $variant='tertiary'>
-                <img src={iconStar} alt='Oznaczone gwiazdką' />
-
-                Oznaczone gwiazdką
-            </Button>
-
-            <Button $variant='tertiary'>
-                <img src={iconTrash} alt='Kosz' />
-
-                Kosz
-            </Button>
+            {
+                location === '/projects' ?
+                    <ProjectsButtons />
+                    :
+                    <ContentButtons />
+            }
         </section>
 
         <section className='used-space'>
@@ -60,6 +46,14 @@ const SideMenu = () => {
         </section>
 
         <section>
+            {
+                isProjectSelected && <Button $variant='tertiary'>
+                    <img src={iconManageProject} alt='Zarządzaj projektem' />
+
+                    Zarządzaj projektem
+                </Button>
+            }
+
             <Button $variant='tertiary'>
                 <img src={iconAccount} alt='Moje konto' />
 
