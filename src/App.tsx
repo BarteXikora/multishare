@@ -3,7 +3,7 @@ import { store } from './store/store'
 
 import AppTheme from './theme/AppTheme'
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 import MainView from './components/layout/mainView/MainView'
 import AppPage from './pages/appPage/AppPage'
@@ -21,7 +21,9 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route element={<MainView />}>
-              <Route path='/' element={<AppPage />} />
+              <Route path='/' element={<Navigate to={'/project'} />} />
+
+              <Route path='/project/*' element={<AppPage />} />
 
               <Route path='/projects' element={<ProjectsPage />} />
             </Route>
