@@ -31,7 +31,7 @@ const NotFoundPage = () => {
 
             <p>Przekierowywanie na stronę główną za <b>{time}</b> s.</p>
 
-            <Button $size='big'>
+            <Button $size='big' onClick={() => navigate('/')}>
                 <img src={iconHome} alt='Strona główna' />
 
                 Wróć na stronę główną
