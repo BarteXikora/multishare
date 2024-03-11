@@ -1,7 +1,9 @@
 import { Dispatch } from '@reduxjs/toolkit'
+import { rootStateType } from '../rootReducer.types'
 
 type paramsType = {
     dispatch: Dispatch
+    getState: () => rootStateType
 }
 
 const socketMiddleware = () => {
