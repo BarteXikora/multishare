@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import initialStateType from '../../projectSlice.types'
+import { projectStateType } from '../../projectSlice.types'
 
-const initialize = (state: initialStateType, action: PayloadAction) => {
+const initialize = (state: projectStateType, action: PayloadAction) => {
     // do nothing
 }
 

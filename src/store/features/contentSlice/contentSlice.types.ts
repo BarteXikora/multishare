@@ -70,7 +70,7 @@ export type selectedType = {
     selectionStart: { type: 'FOLDER' | 'FILE', id: number } | null
 }
 
-export type initialStateType = {
+export type contentStateType = {
     currentPath: pathType,
     loadedContent: loadedContentType,
     currentFolder: contentDisplayType,

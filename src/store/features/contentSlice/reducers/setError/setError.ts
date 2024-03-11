@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import { initialStateType } from '../../contentSlice.types'
+import { contentStateType } from '../../contentSlice.types'
 
-const setError = (state: initialStateType, action: PayloadAction<string>) => {
+const setError = (state: contentStateType, action: PayloadAction<string>) => {
     state.loadedContent = { status: 'ERROR', error: action.payload }
 }
 

@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import initialStateType from '../../projectSlice.types'
+import { projectStateType } from '../../projectSlice.types'
 
-const setProjectsError = (state: initialStateType, action: PayloadAction<string>) => {
+const setProjectsError = (state: projectStateType, action: PayloadAction<string>) => {
     state.allProjects = {
         status: 'ERROR',
         error: action.payload

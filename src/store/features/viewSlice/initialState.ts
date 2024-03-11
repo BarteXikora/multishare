@@ -1,6 +1,6 @@
-import initialStateType from './initialState.types'
+import { viewStateType } from './initialState.types'
 
-const initialState: initialStateType = {
+const initialState: viewStateType = {
     contentViewStyle: 'ICONS'
 }
 

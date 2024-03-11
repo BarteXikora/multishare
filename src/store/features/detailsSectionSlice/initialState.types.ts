@@ -26,9 +26,7 @@ export type contentMultipleType = {
 
 export type contentType = contentEmptyType | contentFolderType | contentFileType | contentMultipleType
 
-type initialStateType = {
+export type detailsSectionStateType = {
     isShown: boolean
     content: contentType
 }
-
-export default initialStateType

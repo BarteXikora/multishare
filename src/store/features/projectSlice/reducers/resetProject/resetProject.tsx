@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import initialStateType from '../../projectSlice.types'
+import { projectStateType } from '../../projectSlice.types'
 
-const resetProject = (state: initialStateType, action: PayloadAction) => {
+const resetProject = (state: projectStateType, action: PayloadAction) => {
     state.selectedProject = null
 }
 

@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import { contentType, initialStateType } from '../../contentSlice.types'
+import { contentType, contentStateType } from '../../contentSlice.types'
 
-const setContent = (state: initialStateType, action: PayloadAction<contentType>) => {
+const setContent = (state: contentStateType, action: PayloadAction<contentType>) => {
     state.loadedContent = {
         status: 'READY',
         content: action.payload

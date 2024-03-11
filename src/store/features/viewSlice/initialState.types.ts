@@ -1,7 +1,5 @@
 export type contentViewStyleType = 'ICONS' | 'LIST'
 
-type initialStateType = {
+export type viewStateType = {
     contentViewStyle: contentViewStyleType
 }
-
-export default initialStateType

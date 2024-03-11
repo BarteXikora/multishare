@@ -1,6 +1,6 @@
-import initialStateType from './projectSlice.types'
+import { projectStateType } from './projectSlice.types'
 
-const initialState: initialStateType = {
+const initialState: projectStateType = {
     allProjects: { status: 'LOADING' },
     selectedProject: null
 }

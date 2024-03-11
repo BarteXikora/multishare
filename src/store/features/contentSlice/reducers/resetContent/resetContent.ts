@@ -1,8 +1,8 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import { initialStateType } from '../../contentSlice.types'
+import { contentStateType } from '../../contentSlice.types'
 import initialState from '../../initialState'
 
-const resetContent = (state: initialStateType, action: PayloadAction) => {
+const resetContent = (state: contentStateType, action: PayloadAction) => {
     state.currentFolder = initialState.currentFolder
     state.loadedContent = initialState.loadedContent
     state.currentPath = initialState.currentPath
