@@ -45,7 +45,7 @@ const getPathAndContent = (content: contentType, id: number): getPathAndContentT
 
     const path: pathType = findNext(content).reverse()
 
-    if (currentContent.notFound) path.push({ id: -2, name: 'Nie znaleziono folderu' })
+    if (currentContent.notFound) path.push({ id, name: 'Nie znaleziono folderu', notFound: true })
 
     return { path, content: currentContent }
 }
