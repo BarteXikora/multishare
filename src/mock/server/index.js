@@ -28,9 +28,14 @@ io.on('connection', (socket) => {
     })
 
     socket.on('enter_project', data => {
-        socket.join(data)
+        let response = {
+            project: data === 0 ? projects[0] : data === 1 ? projects[1] : null,
+            content: data === 0 ? contentDefault : data === 1 ? contentProject1 : null
+        }
 
-        socket.emit('content', data === 0 ? contentDefault : data === 1 ? contentProject1 : null)
+        if (data === 0 || data === 1) socket.join(data)
+
+        socket.emit('content', response)
     })
 })
 
