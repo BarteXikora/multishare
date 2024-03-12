@@ -6,7 +6,7 @@ type getPathAndContentType = {
 }
 
 const getPathAndContent = (content: contentType, id: number): getPathAndContentType => {
-    let currentContent: contentDisplayType = { folders: [], files: [] }
+    let currentContent: contentDisplayType = { folders: [], files: [], notFound: true }
 
     const findNext = (obj: contentType): pathType => {
         const found: pathType = []
@@ -26,7 +26,8 @@ const getPathAndContent = (content: contentType, id: number): getPathAndContentT
                                 }
                             })
                         }),
-                        files: folder.content.files
+                        files: folder.content.files,
+                        notFound: false
                     }
 
                 } else {
@@ -43,6 +44,8 @@ const getPathAndContent = (content: contentType, id: number): getPathAndContentT
     }
 
     const path: pathType = findNext(content).reverse()
+
+    if (currentContent.notFound) path.push({ id: -2, name: 'Nie znaleziono folderu' })
 
     return { path, content: currentContent }
 }
