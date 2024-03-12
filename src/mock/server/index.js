@@ -22,8 +22,6 @@ io.on('connection', (socket) => {
     console.log('user logged in, id:', socket.id)
 
     socket.on('get_projects', () => {
-        console.log('get_projects')
-
         socket.emit('projects', projects)
     })
 
