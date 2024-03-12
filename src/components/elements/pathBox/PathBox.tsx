@@ -24,7 +24,8 @@ const PathBox = () => {
             ...currentPath.map(pathElement => {
                 return {
                     id: pathElement.id,
-                    name: getShortenName(pathElement.name, MAX_FOLDER_NAME_LENGTH)
+                    name: getShortenName(pathElement.name, MAX_FOLDER_NAME_LENGTH),
+                    notFound: pathElement.notFound
                 }
             })
         ])
