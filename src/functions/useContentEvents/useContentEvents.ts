@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import { setSelected, setTreeLocation } from '../../store/features/contentSlice/contentSlice'
+import { useNavigate } from 'react-router-dom'
 
 import click from './click/click'
 import controlClick from './controlClick/controlClick'
@@ -25,6 +26,7 @@ const useContentEvents = () => {
     const selected = useSelector(state => state.content.selected)
     const currentPath = useSelector(state => state.content.currentPath)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [touchHoldTimeout, setTouchHoldTimeout] = useState<ReturnType<typeof setTimeout> | null>(null)
 
@@ -83,6 +85,7 @@ const useContentEvents = () => {
 
         filesEvents: {
             onClick: (event: React.MouseEvent<HTMLElement>, fileId: number) => select(event, 'FILE', fileId),
+            onDoubleClick: (fileId: number) => navigate('/file/' + fileId.toString()),
             onTouchStart: (event: React.TouchEvent<HTMLElement>, fileId: number) => selectMobile(event, true, 'FILE', fileId),
             onTouchEnd: (event: React.TouchEvent<HTMLElement>, fileId: number) => selectMobile(event, false, 'FILE', fileId)
         },
