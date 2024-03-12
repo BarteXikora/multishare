@@ -2,6 +2,7 @@ import StyledContentListView from './ContentListView.styles'
 import { useSelector } from '../../../../store/store'
 import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
+import FolderNotFound from '../../../elements/folderNotFound/FolderNotFound'
 import ListHeader from '../../../elements/listHeader/ListHeader'
 import ListFolderElement from '../../../elements/listFolderElement/ListFolderElement'
 import ListFileElement from '../../../elements/listFileElement/ListFileElement'
@@ -12,6 +13,8 @@ const ContentListView = () => {
     const selected = useSelector(state => state.content.selected)
 
     const { folderEvents, filesEvents } = useContentEvents()
+
+    if (content.notFound) return <StyledContentListView><FolderNotFound /></StyledContentListView>
 
     return <StyledContentListView>
         {

@@ -3,6 +3,7 @@ import StyledContentIconsView from './ContentIconsView.styles'
 import { useSelector } from '../../../../store/store'
 import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
+import FolderNotFound from '../../../elements/folderNotFound/FolderNotFound'
 import Folder from '../../../elements/folder/Folder'
 import File from '../../../elements/file/File'
 import EmptyFolder from '../../../elements/emptyFolder/EmptyFolder'
@@ -12,6 +13,8 @@ const ContentIconsView = () => {
     const selected = useSelector(state => state.content.selected)
 
     const { folderEvents, filesEvents } = useContentEvents()
+
+    if (content.notFound) return <StyledContentIconsView><FolderNotFound /></StyledContentIconsView>
 
     return <StyledContentIconsView>
         {
