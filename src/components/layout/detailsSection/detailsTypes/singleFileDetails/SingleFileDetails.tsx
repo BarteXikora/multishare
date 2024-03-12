@@ -7,12 +7,12 @@ import getPreviewImage from '../../../../../functions/getPreviewImage/getPreview
 import getFileTypeName from '../../../../../functions/getFileTypeName/getFileTypeName'
 
 const SingleFileDetails = ({ content }: { content: contentFileType }) => {
-    const { name, extension, star, details } = content.data
+    const { name, extension, star, details, preview } = content.data
 
     return <>
         <PreviewSection
             type='IMAGE'
-            image={getPreviewImage(false, extension)}
+            image={getPreviewImage(preview, extension)}
             imageAltText='Podgląd'
             isStar={star}
         />
