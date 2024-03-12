@@ -4,8 +4,8 @@ import LoadingContent from '../../elements/loadingContent/LoadingContent'
 
 import { useSelector, useDispatch } from '../../../store/store'
 import { useNavigate } from 'react-router-dom'
-import { selectProject } from '../../../store/features/projectSlice/projectSlice'
 import { projectType } from '../../../store/features/projectSlice/projectSlice.types'
+import { resetContent } from '../../../store/features/contentSlice/contentSlice'
 
 const ProjectsSection = () => {
     const dispatch = useDispatch()
@@ -14,8 +14,8 @@ const ProjectsSection = () => {
     const projects = useSelector(state => state.project.allProjects)
 
     const handleClick = (project: projectType) => {
-        dispatch(selectProject(project))
-        navigate('/project')
+        dispatch(resetContent())
+        navigate('/project/' + project.id)
     }
 
     return <StyledProjectsSection>
