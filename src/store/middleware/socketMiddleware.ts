@@ -28,7 +28,7 @@ const socketMiddleware = () => {
                     dispatch(selectProject(data.project))
                     dispatch(setContent(data.content))
 
-                    if (folderId) dispatch(setTreeLocation(Number(folderId)))
+                    if (folderId) dispatch(setTreeLocation(folderId !== 'home' ? Number(folderId) : -1))
                 }
 
                 socket.once('content', loadContent)
