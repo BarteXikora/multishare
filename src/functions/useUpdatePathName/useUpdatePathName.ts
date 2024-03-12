@@ -14,7 +14,13 @@ const useUpdatePathName = () => {
 
         if (project) newPathName += project.id
 
-        if (path.length > 0) newPathName += '/' + path[path.length - 1].id
+        if (path.length > 0) {
+            newPathName += '/'
+
+            if (Number.isNaN(path[path.length - 1].id)) newPathName += 'not-found'
+            else newPathName += path[path.length - 1].id
+
+        }
         else newPathName += '/home'
 
         navigate(newPathName)
