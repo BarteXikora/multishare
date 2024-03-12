@@ -6,6 +6,11 @@ const StyledCurrentFolderButton = styled(Dropdown)`
     white-space: nowrap;
     max-width: 100%;
 
+    .path-button-not-found  {
+        color: ${(props) => props.theme.colors.wrong6};
+        font-weight: bold !important;
+    }
+
     button {
         font-size: ${(props) => props.theme.fontSizes.subtitle};
         font-weight: bold;

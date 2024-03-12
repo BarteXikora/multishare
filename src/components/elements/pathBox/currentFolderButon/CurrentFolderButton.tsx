@@ -7,6 +7,7 @@ import Button from '../../../ui/button/Button'
 import { pathType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 import iconFolder from '../../../../assets/icons/icon-folder-dark.svg'
+import iconFolderWrong from '../../../../assets/icons/icon-folder-wrong.svg'
 
 const CurrentFolderButton = ({ path }: { path: pathType }) => {
     const dispatch = useDispatch()
@@ -14,8 +15,11 @@ const CurrentFolderButton = ({ path }: { path: pathType }) => {
     return <StyledCurrentFolderButton
         buttonOptions={{ $variant: 'tertiary' }}
         showArrow={false}
+        className={`${path[path.length - 1]?.id === -2 ? 'path-button-not-found' : ''}`}
 
-        buttonContent={path[path.length - 1]?.name || ''}
+        buttonContent={<span className={path[path.length - 1]?.id === -2 ? 'path-button-not-found' : ''}>
+            {path[path.length - 1]?.name || ''}
+        </span>}
 
         dropdownContent={<>{
             path.map((pathElement, n) => {
@@ -23,8 +27,9 @@ const CurrentFolderButton = ({ path }: { path: pathType }) => {
                     key={n}
                     $variant='secondary'
                     onClick={() => dispatch(setTreeLocation(pathElement.id))}
+                    className={`${pathElement.id === -2 ? 'path-button-not-found' : ''}`}
                 >
-                    <img src={iconFolder} alt='Folder' />
+                    <img src={pathElement.id === -2 ? iconFolderWrong : iconFolder} alt='Folder' />
 
                     {pathElement.name}
                 </Button>
