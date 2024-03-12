@@ -2,7 +2,7 @@ import { Dispatch } from '@reduxjs/toolkit'
 import { rootStateType } from '../rootReducer.types'
 import socket from '../../api/socket'
 import { setContent, setError, setTreeLocation } from '../features/contentSlice/contentSlice'
-import { selectProject } from '../features/projectSlice/projectSlice'
+import { selectProject, setProjects, setProjectsError } from '../features/projectSlice/projectSlice'
 
 type paramsType = {
     dispatch: Dispatch
@@ -32,6 +32,20 @@ const socketMiddleware = () => {
                 }
 
                 socket.once('content', loadContent)
+
+                break
+            }
+
+            case 'projectSlice/initializeProjects': {
+                socket.emit('get_projects')
+
+                socket.once('projects', (data: any) => {
+                    if (data === null) return dispatch(setProjectsError('Nie udało się wczytać dostępnych projektów.'))
+
+                    dispatch(setProjects(data))
+                })
+
+                break
             }
         }
 
