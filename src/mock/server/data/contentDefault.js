@@ -23,7 +23,7 @@ const exampleContent = {
                 ],
                 files: [
                     {
-                        id: 6535674655366735463567,
+                        id: 6535674655366,
                         name: 'Wycieczka na rowery 1',
                         extension: 'PNG',
                         preview: 'https://picsum.photos/seed/wycieczkaa/200/300',
@@ -34,7 +34,7 @@ const exampleContent = {
                         },
                         star: false
                     }, {
-                        id: 456753456456753467536767,
+                        id: 4567534564654,
                         name: 'Wycieczka na rowery 2',
                         extension: 'PNG',
                         preview: 'https://picsum.photos/seed/wycieczkab/200/300',
@@ -45,7 +45,7 @@ const exampleContent = {
                         },
                         star: false
                     }, {
-                        id: 34564567654356345632563,
+                        id: 3456456765435,
                         name: 'Wycieczka na rowery 3',
                         extension: 'JPG',
                         preview: 'https://picsum.photos/seed/wycieczkac/200/300',
@@ -56,7 +56,7 @@ const exampleContent = {
                         },
                         star: false
                     }, {
-                        id: 3456367566245634563463,
+                        id: 34563675662456,
                         name: 'Do zrobienia',
                         extension: 'TXT',
                         details: {
