@@ -61,7 +61,8 @@ export type contentType = {
 
 export type contentDisplayType = {
     folders: folderDisplayType[],
-    files: fileType[]
+    files: fileType[],
+    notFound?: boolean
 }
 
 export type selectedType = {
