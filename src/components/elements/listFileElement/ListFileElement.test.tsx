@@ -10,6 +10,7 @@ const _listFileElementProps = {
     isSelected: false,
     isFolderIconOffset: false,
     onClick: () => null,
+    onDoubleClick: () => null,
     onTouchStart: () => null,
     onTouchEnd: () => null
 }
