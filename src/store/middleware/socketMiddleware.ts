@@ -3,6 +3,7 @@ import { rootStateType } from '../rootReducer.types'
 import socket from '../../api/socket'
 import { setContent, setError, setTreeLocation } from '../features/contentSlice/contentSlice'
 import { selectProject, setProjects, setProjectsError } from '../features/projectSlice/projectSlice'
+import { defaultProject } from '../../utilities/userData'
 
 type paramsType = {
     dispatch: Dispatch
@@ -17,7 +18,7 @@ const socketMiddleware = () => {
             case 'contentSlice/initializeContent': {
                 let [projectId, folderId] = action.payload.substring(9, action.payload.length).split('/')
 
-                if (projectId === '' || projectId === undefined) projectId = 0
+                if (projectId === '' || projectId === undefined) projectId = defaultProject
 
                 socket.emit('enter_project', Number(projectId))
 
