@@ -18,7 +18,8 @@ export type loadedContentType = loadedContentLoadingType | loadedContentReadyTyp
 
 export type pathType = {
     id: number,
-    name: string
+    name: string,
+    notFound?: boolean
 }[]
 
 export type folderDetailsType = {
