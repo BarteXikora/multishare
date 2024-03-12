@@ -56,7 +56,7 @@ const ContentIconsView = () => {
                                     key={file.id}
                                     displayName={file.name}
                                     extension={file.extension}
-                                    preview={false}
+                                    preview={file.preview}
                                     isStar={file.star || false}
                                     isSelected={selected.files ? selected.files.includes(file.id) : false}
 
