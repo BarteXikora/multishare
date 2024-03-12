@@ -25,7 +25,7 @@ const Path = ({ path }: { path: pathType }) => {
                             <Fragment key={n}>
                                 <Button
                                     $variant='tertiary'
-                                    className='path-button'
+                                    className={`path-button ${pathElement.id === -2 ? 'path-button-not-found' : ''}`}
                                     onClick={() => dispatch(setTreeLocation(pathElement.id))}
                                 >
                                     {pathElement.name}
