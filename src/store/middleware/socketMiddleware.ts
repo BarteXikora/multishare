@@ -1,10 +1,13 @@
 import { Dispatch } from '@reduxjs/toolkit'
+import { rootStateType } from '../rootReducer.types'
 import socket from '../../api/socket'
-import { setProjects, setProjectsError } from '../features/projectSlice/projectSlice'
-import { resetContent, setContent, setError } from '../features/contentSlice/contentSlice'
+import { setContent, setError, setTreeLocation } from '../features/contentSlice/contentSlice'
+import { selectProject, setProjects, setProjectsError } from '../features/projectSlice/projectSlice'
+import { defaultProject } from '../../utilities/userData'
 
 type paramsType = {
     dispatch: Dispatch
+    getState: () => rootStateType
 }
 
 const socketMiddleware = () => {
@@ -12,34 +15,38 @@ const socketMiddleware = () => {
         const { dispatch } = params
 
         switch (action.type) {
-            case 'projectSlice/initialize': {
+            case 'contentSlice/initializeContent': {
+                let [projectId, folderId] = action.payload.substring(9, action.payload.length).split('/')
+
+                if (projectId === '' || projectId === undefined) projectId = defaultProject
+
+                socket.emit('enter_project', Number(projectId))
+
+                const loadContent = (data: any) => {
+                    if (data === null) return dispatch(setError('Nie udało się wczytać projektu!'))
+                    if (!data.project || !data.content) return dispatch(setError('Nie udało się wczytać projektu!'))
+
+                    dispatch(selectProject(data.project))
+                    dispatch(setContent(data.content))
+
+                    if (folderId) dispatch(setTreeLocation(folderId !== 'home' ? Number(folderId) : -1))
+                }
+
+                socket.once('content', loadContent)
+
+                break
+            }
+
+            case 'projectSlice/initializeProjects': {
                 socket.emit('get_projects')
 
-                socket.on('connect_error', () => {
-                    dispatch(setProjectsError('Nie udało się nawiązać połączenia z serwerem.'))
-                })
+                socket.once('projects', (data: any) => {
+                    if (data === null) return dispatch(setProjectsError('Nie udało się wczytać dostępnych projektów.'))
 
-                socket.on('projects', (data: any) => {
-                    if (!Array.isArray(data)) dispatch(setProjectsError('Nie udało się wczytać listy projektów.'))
-                    else dispatch(setProjects(data))
-                })
-
-                socket.on('content', (data: any) => {
-                    if (data === null || data === undefined) dispatch(setError('Nie udało się wczytać projektu.'))
-                    else dispatch(setContent(data))
+                    dispatch(setProjects(data))
                 })
 
                 break
-            }
-
-            case 'projectSlice/selectProject': {
-                socket.emit('enter_project', action.payload.id)
-
-                break
-            }
-
-            case 'projectSlice/resetProject': {
-                dispatch(resetContent())
             }
         }
 

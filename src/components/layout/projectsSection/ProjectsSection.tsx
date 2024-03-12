@@ -1,12 +1,11 @@
 import StyledProjectsSection from './ProjectsSection.styles'
 import Project from '../../elements/project/Project'
 import LoadingContent from '../../elements/loadingContent/LoadingContent'
-import ContentError from '../../elements/contentError/ContentError'
 
 import { useSelector, useDispatch } from '../../../store/store'
 import { useNavigate } from 'react-router-dom'
-import { selectProject } from '../../../store/features/projectSlice/projectSlice'
 import { projectType } from '../../../store/features/projectSlice/projectSlice.types'
+import { resetContent } from '../../../store/features/contentSlice/contentSlice'
 
 const ProjectsSection = () => {
     const dispatch = useDispatch()
@@ -15,14 +14,12 @@ const ProjectsSection = () => {
     const projects = useSelector(state => state.project.allProjects)
 
     const handleClick = (project: projectType) => {
-        dispatch(selectProject(project))
-        navigate('/')
+        dispatch(resetContent())
+        navigate('/project/' + project.id)
     }
 
     return <StyledProjectsSection>
         {projects.status === 'LOADING' && <LoadingContent text='Wczytywanie projektów...' />}
-
-        {projects.status === 'ERROR' && <ContentError error={projects.error} />}
 
         {
             projects.status === 'READY' && <>

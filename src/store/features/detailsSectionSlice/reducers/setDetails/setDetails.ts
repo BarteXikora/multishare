@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import initialStateType, { multipleDataType } from '../../initialState.types'
+import { detailsSectionStateType, multipleDataType } from '../../initialState.types'
 
-const setDetails = (state: initialStateType, action: PayloadAction<multipleDataType>) => {
+const setDetails = (state: detailsSectionStateType, action: PayloadAction<multipleDataType>) => {
     if (action.payload.folders.length === 0 && action.payload.files.length === 0)
         state.content = { type: 'EMPTY' }
 

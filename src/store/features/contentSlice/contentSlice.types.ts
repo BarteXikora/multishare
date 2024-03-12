@@ -18,7 +18,8 @@ export type loadedContentType = loadedContentLoadingType | loadedContentReadyTyp
 
 export type pathType = {
     id: number,
-    name: string
+    name: string,
+    notFound?: boolean
 }[]
 
 export type folderDetailsType = {
@@ -61,7 +62,8 @@ export type contentType = {
 
 export type contentDisplayType = {
     folders: folderDisplayType[],
-    files: fileType[]
+    files: fileType[],
+    notFound?: boolean
 }
 
 export type selectedType = {
@@ -70,7 +72,7 @@ export type selectedType = {
     selectionStart: { type: 'FOLDER' | 'FILE', id: number } | null
 }
 
-export type initialStateType = {
+export type contentStateType = {
     currentPath: pathType,
     loadedContent: loadedContentType,
     currentFolder: contentDisplayType,

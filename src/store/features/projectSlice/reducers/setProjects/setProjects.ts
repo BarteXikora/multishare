@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import initialStateType, { projectType } from '../../projectSlice.types'
+import { projectStateType, projectType } from '../../projectSlice.types'
 
-const setProjects = (state: initialStateType, action: PayloadAction<projectType[]>) => {
+const setProjects = (state: projectStateType, action: PayloadAction<projectType[]>) => {
     state.allProjects = {
         status: 'READY',
         content: action.payload

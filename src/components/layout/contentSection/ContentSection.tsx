@@ -1,35 +1,23 @@
 import { useSelector } from '../../../store/store'
 import useUpdateContent from '../../../functions/useUpdateContent/useUpdateContent'
+import useUpdatePathName from '../../../functions/useUpdatePathName/useUpdatePathName'
 
 import StyledContentSection from './ContentSection.styles'
-
-import LoadingContent from '../../elements/loadingContent/LoadingContent'
-import ContentError from '../../elements/contentError/ContentError'
 import ContentIconsView from './contentIconsView/ContentIconsView'
 import ContentListView from './contentListView/ContentListView'
 
 const ContentSection = () => {
-    const loaded = useSelector(state => state.content.loadedContent)
     const contentViewStyle = useSelector(state => state.view.contentViewStyle)
 
+    useUpdatePathName()
     useUpdateContent()
 
     return <StyledContentSection>
         {
-            loaded.status !== 'READY' && <div className="content-margin">
-                {loaded.status === 'LOADING' && <LoadingContent />}
-
-                {loaded.status === 'ERROR' && <ContentError error={loaded.error} />}
-            </div>
-        }
-
-        {
-            loaded.status === 'READY' && (
-                contentViewStyle === 'ICONS' ?
-                    <ContentIconsView />
-                    :
-                    <ContentListView />
-            )
+            contentViewStyle === 'ICONS' ?
+                <ContentIconsView />
+                :
+                <ContentListView />
         }
     </StyledContentSection>
 }

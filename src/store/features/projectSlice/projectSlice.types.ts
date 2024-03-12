@@ -33,9 +33,7 @@ type allProjectsErrorType = {
 
 export type allProjectsType = allProjectsLoadingType | allProjectsReadyType | allProjectsErrorType
 
-type initialStateType = {
+export type projectStateType = {
     allProjects: allProjectsType,
     selectedProject: projectType | null
 }
-
-export default initialStateType

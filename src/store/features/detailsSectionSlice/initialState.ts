@@ -1,6 +1,6 @@
-import initialStateType from './initialState.types'
+import { detailsSectionStateType } from './initialState.types'
 
-const initialState: initialStateType = {
+const initialState: detailsSectionStateType = {
     isShown: false,
     content: { type: 'EMPTY' }
 }

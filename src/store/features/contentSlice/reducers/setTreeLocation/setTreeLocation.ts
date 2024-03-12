@@ -1,8 +1,8 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import { initialStateType } from '../../contentSlice.types'
+import { contentStateType } from '../../contentSlice.types'
 import getPathAndContent from '../../../../../functions/getPathAndContent/getPathAndContent'
 
-const setTreeLocation = (state: initialStateType, action: PayloadAction<number>) => {
+const setTreeLocation = (state: contentStateType, action: PayloadAction<number>) => {
     if (state.loadedContent.status !== 'READY') return
 
     if (action.payload === -1) {

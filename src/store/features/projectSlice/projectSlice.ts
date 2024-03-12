@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import initialState from './initialState'
 
-import initializeReducer from './reducers/initialize/initialize'
+import initializeProjectsReducer from './reducers/initializeProjects/initializeProjects'
 import setProjectsReducer from './reducers/setProjects/setProjects'
 import setProjectsErrorReducer from './reducers/setProjectsError/setProjectsError'
 import selectProjectReducer from './reducers/selectProject/selectProject'
@@ -11,7 +11,7 @@ const projectSlice = createSlice({
     name: 'projectSlice',
     initialState: initialState,
     reducers: {
-        initialize: initializeReducer,
+        initializeProjects: initializeProjectsReducer,
         setProjects: setProjectsReducer,
         setProjectsError: setProjectsErrorReducer,
         selectProject: selectProjectReducer,
@@ -20,4 +20,4 @@ const projectSlice = createSlice({
 })
 
 export default projectSlice.reducer
-export const { initialize, setProjects, setProjectsError, selectProject, resetProject } = projectSlice.actions
+export const { initializeProjects, setProjects, setProjectsError, selectProject, resetProject } = projectSlice.actions

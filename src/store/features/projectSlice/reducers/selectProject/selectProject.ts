@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import initialStateType, { projectType } from '../../projectSlice.types'
+import { projectStateType, projectType } from '../../projectSlice.types'
 
-const selectProject = (state: initialStateType, action: PayloadAction<projectType>) => {
+const selectProject = (state: projectStateType, action: PayloadAction<projectType>) => {
     state.selectedProject = action.payload
 }
 

@@ -6,23 +6,11 @@ import {
 
 } from 'react-redux'
 
-import sideMenuSlice from './features/sideMenuSlice/sideMenuSlice'
-import detailsSectionSlice from './features/detailsSectionSlice/detailsSectionSlice'
-import projectSlice from './features/projectSlice/projectSlice'
-import contentSlice from './features/contentSlice/contentSlice'
-import viewSlice from './features/viewSlice/viewSlice'
-
+import rootReducer from './rootReducer'
 import socketMiddleware from './middleware/socketMiddleware'
 
 export const store = configureStore({
-    reducer: {
-        sideMenu: sideMenuSlice,
-        detailsSection: detailsSectionSlice,
-        project: projectSlice,
-        content: contentSlice,
-        view: viewSlice
-    },
-
+    reducer: rootReducer,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(socketMiddleware())
 })
 

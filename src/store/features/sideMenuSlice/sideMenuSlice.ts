@@ -1,5 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+export type sideMenuStateType = {
+    isShown: boolean
+}
+
 export const sideMenuSlice = createSlice({
     name: 'sideMenuSlice',
     initialState: { isShown: false },
