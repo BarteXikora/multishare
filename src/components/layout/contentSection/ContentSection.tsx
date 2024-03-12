@@ -2,9 +2,6 @@ import { useSelector } from '../../../store/store'
 import useUpdateContent from '../../../functions/useUpdateContent/useUpdateContent'
 
 import StyledContentSection from './ContentSection.styles'
-
-import LoadingContent from '../../elements/loadingContent/LoadingContent'
-import ContentError from '../../elements/contentError/ContentError'
 import ContentIconsView from './contentIconsView/ContentIconsView'
 import ContentListView from './contentListView/ContentListView'
 
@@ -15,14 +12,6 @@ const ContentSection = () => {
     useUpdateContent()
 
     return <StyledContentSection>
-        {
-            loaded.status !== 'READY' && <div className="content-margin">
-                {loaded.status === 'LOADING' && <LoadingContent />}
-
-                {loaded.status === 'ERROR' && <ContentError error={loaded.error} />}
-            </div>
-        }
-
         {
             loaded.status === 'READY' && (
                 contentViewStyle === 'ICONS' ?
