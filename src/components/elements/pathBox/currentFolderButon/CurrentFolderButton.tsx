@@ -15,9 +15,8 @@ const CurrentFolderButton = ({ path }: { path: pathType }) => {
     return <StyledCurrentFolderButton
         buttonOptions={{ $variant: 'tertiary' }}
         showArrow={false}
-        className={`${path[path.length - 1]?.id === -2 ? 'path-button-not-found' : ''}`}
 
-        buttonContent={<span className={path[path.length - 1]?.id === -2 ? 'path-button-not-found' : ''}>
+        buttonContent={<span className={path[path.length - 1]?.notFound ? 'path-button-not-found' : ''}>
             {path[path.length - 1]?.name || ''}
         </span>}
 
@@ -27,9 +26,9 @@ const CurrentFolderButton = ({ path }: { path: pathType }) => {
                     key={n}
                     $variant='secondary'
                     onClick={() => dispatch(setTreeLocation(pathElement.id))}
-                    className={`${pathElement.id === -2 ? 'path-button-not-found' : ''}`}
+                    className={`${pathElement.notFound ? 'path-button-not-found' : ''}`}
                 >
-                    <img src={pathElement.id === -2 ? iconFolderWrong : iconFolder} alt='Folder' />
+                    <img src={pathElement.notFound ? iconFolderWrong : iconFolder} alt='Folder' />
 
                     {pathElement.name}
                 </Button>

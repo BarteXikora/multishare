@@ -14,6 +14,9 @@ import iconArrow from '../../../../assets/icons/icon-arrow-right.svg'
 const Path = ({ path }: { path: pathType }) => {
     const dispatch = useDispatch()
 
+    console.log(path)
+
+
     return <StyledPath>
         {path.length > 4 && <CollapsedPathButton path={path} />}
 
@@ -25,7 +28,7 @@ const Path = ({ path }: { path: pathType }) => {
                             <Fragment key={n}>
                                 <Button
                                     $variant='tertiary'
-                                    className={`path-button ${pathElement.id === -2 ? 'path-button-not-found' : ''}`}
+                                    className={`path-button ${pathElement.notFound ? 'path-button-not-found' : ''}`}
                                     onClick={() => dispatch(setTreeLocation(pathElement.id))}
                                 >
                                     {pathElement.name}
