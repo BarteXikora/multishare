@@ -26,9 +26,9 @@ const App = () => {
               <Route path='/project/*' element={<AppPage />} />
 
               <Route path='/projects' element={<ProjectsPage />} />
-            </Route>
 
-            <Route path='*' element={<NotFoundPage />} />
+              <Route path='*' element={<NotFoundPage />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </AppTheme>
