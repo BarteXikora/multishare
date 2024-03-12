@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import initialState from './initialState'
 
+import initializeContentReducer from './reducers/initializeContent/initializeContent'
 import setContentReducer from './reducers/setContent/setContent'
 import setErrorReducer from './reducers/setError/setError'
 import setTreeLocationReducer from './reducers/setTreeLocation/setTreeLocation'
@@ -12,6 +13,7 @@ export const contentSlice = createSlice({
     name: 'contentSlice',
     initialState,
     reducers: {
+        initializeContent: initializeContentReducer,
         setContent: setContentReducer,
         setError: setErrorReducer,
         setTreeLocation: setTreeLocationReducer,
@@ -21,4 +23,4 @@ export const contentSlice = createSlice({
 })
 
 export default contentSlice.reducer
-export const { setContent, setError, setTreeLocation, setSelected, resetContent } = contentSlice.actions
+export const { initializeContent, setContent, setError, setTreeLocation, setSelected, resetContent } = contentSlice.actions
