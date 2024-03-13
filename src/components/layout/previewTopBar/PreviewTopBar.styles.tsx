@@ -1,14 +1,21 @@
 import styled from 'styled-components'
 
-const StyledPreviewTopBar = styled.header`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: ${(props) => props.theme.margins.medium};
-    padding: ${(props) => props.theme.margins.sectionMedium};
-    background-color: ${(props) => props.theme.colors.black};
-    border-radius: ${(props) => props.theme.borderRadiuses.big};
-    color: ${(props) => props.theme.colors.white};
+const StyledPreviewTopBar = styled.div`
+    position: sticky;
+    top: 0;
+    padding: ${(props) => props.theme.margins.big} 0;
+    background-color: ${(props) => props.theme.colors.white};
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: ${(props) => props.theme.margins.medium};
+        padding: ${(props) => props.theme.margins.sectionMedium};
+        background-color: ${(props) => props.theme.colors.black};
+        border-radius: ${(props) => props.theme.borderRadiuses.big};
+        color: ${(props) => props.theme.colors.white};
+    }
 
     div {
         display: flex;
@@ -40,6 +47,8 @@ const StyledPreviewTopBar = styled.header`
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        padding: ${(props) => props.theme.margins.medium} 0;
+
         .tools-buttons {
             gap: ${(props) => props.theme.margins.small};
 
