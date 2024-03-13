@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const StyledImagePreviewSection = styled.div`
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,13 +12,27 @@ const StyledImagePreviewSection = styled.div`
     }
 
     img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
+        max-width: 100%;
         margin: 0;
         padding: 0;
         border-radius: ${(props) => props.theme.borderRadiuses.big};
+    }
+
+    .error {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: ${(props) => props.theme.margins.sectionBig};
+        padding: ${(props) => props.theme.margins.sectionBig};
+
+        .icon {
+            width: 50px;
+        }
+
+        h3 {
+            color: ${(props) => props.theme.colors.wrong6};
+            font-size: ${(props) => props.theme.fontSizes.subtitle};
+        }
     }
 `
 
