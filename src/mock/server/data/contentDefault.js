@@ -65,6 +65,16 @@ const exampleContent = {
                             fileSizeBites: 25000
                         },
                         star: false
+                    }, {
+                        id: 37657546476577,
+                        name: 'Wszystkie zdjęcia',
+                        extension: 'XLSX',
+                        details: {
+                            createdDate: new Date().toLocaleString(),
+                            lastModificationDate: new Date().toLocaleString(),
+                            fileSizeBites: 25000
+                        },
+                        star: false
                     }
                 ]
             }
