@@ -12,11 +12,12 @@ type FileProps = {
     isStar: boolean
     isSelected: boolean
     onClick: (e: React.MouseEvent<HTMLElement>) => void
+    onDoubleClick: () => void
     onTouchStart: (e: React.TouchEvent<HTMLElement>) => void
     onTouchEnd: (e: React.TouchEvent<HTMLElement>) => void
 }
 
-const File = ({ displayName, extension, preview, isStar, isSelected, onClick, onTouchStart, onTouchEnd }: FileProps) => {
+const File = ({ displayName, extension, preview, isStar, isSelected, onClick, onDoubleClick, onTouchStart, onTouchEnd }: FileProps) => {
     const [previewImage, setPreviewImage] = useState<string>('')
 
     useEffect(() => {
@@ -30,6 +31,7 @@ const File = ({ displayName, extension, preview, isStar, isSelected, onClick, on
         className={isSelected ? 'selected' : ''}
 
         onClick={onClick}
+        onDoubleClick={onDoubleClick}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
     >

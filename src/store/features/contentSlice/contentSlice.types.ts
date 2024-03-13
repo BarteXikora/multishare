@@ -51,6 +51,7 @@ export type fileType = {
     id: number,
     name: string,
     extension: string,
+    preview: string | false,
     details: fileDetailsType,
     star: boolean
 }

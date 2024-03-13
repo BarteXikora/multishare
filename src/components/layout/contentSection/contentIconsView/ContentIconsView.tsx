@@ -56,11 +56,12 @@ const ContentIconsView = () => {
                                     key={file.id}
                                     displayName={file.name}
                                     extension={file.extension}
-                                    preview={false}
+                                    preview={file.preview}
                                     isStar={file.star || false}
                                     isSelected={selected.files ? selected.files.includes(file.id) : false}
 
                                     onClick={e => filesEvents.onClick(e, file.id)}
+                                    onDoubleClick={() => filesEvents.onDoubleClick(file.id)}
                                     onTouchStart={e => filesEvents.onTouchStart(e, file.id)}
                                     onTouchEnd={e => filesEvents.onTouchEnd(e, file.id)}
                                 />
