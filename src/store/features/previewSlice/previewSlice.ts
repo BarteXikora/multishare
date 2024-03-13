@@ -4,6 +4,7 @@ import initialState from './initialState'
 import initializePreviewReducer from './reducers/initializePreview/initializePreview'
 import setPreviewReducer from './reducers/setPreview/setPreview'
 import setPreviewErrorReducer from './reducers/setPreviewError/setPreviewError'
+import resetPreviewReducer from './reducers/resetPreview/resetPreview'
 
 export const previewSlice = createSlice({
     name: 'previewSlice',
@@ -11,9 +12,10 @@ export const previewSlice = createSlice({
     reducers: {
         initializePreview: initializePreviewReducer,
         setPreview: setPreviewReducer,
-        setPreviewError: setPreviewErrorReducer
+        setPreviewError: setPreviewErrorReducer,
+        resetPreview: resetPreviewReducer
     }
 })
 
 export default previewSlice.reducer
-export const { initializePreview, setPreview, setPreviewError } = previewSlice.actions 
+export const { initializePreview, setPreview, setPreviewError, resetPreview } = previewSlice.actions 
