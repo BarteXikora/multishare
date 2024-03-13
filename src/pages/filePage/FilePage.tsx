@@ -6,6 +6,7 @@ import { initializePreview } from '../../store/features/previewSlice/previewSlic
 import StyledFilePage from './FilePage.styles'
 import LoadingPage from '../loadingPage/LoadingPage'
 import ErrorPage from '../errorPage/ErrorPage'
+import PreviewTopBar from '../../components/layout/previewTopBar/PreviewTopBar'
 
 const FilePage = () => {
     const dispatch = useDispatch()
@@ -25,7 +26,7 @@ const FilePage = () => {
     if (preview.status === 'ERROR') return <ErrorPage error={preview.error} />
 
     return <StyledFilePage>
-        {preview.file.name}
+        <PreviewTopBar name={preview.file.name} extension={preview.file.extension} />
     </StyledFilePage>
 }
 
