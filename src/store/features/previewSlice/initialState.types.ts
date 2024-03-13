@@ -9,15 +9,14 @@ type previewError = {
     error: string
 }
 
-type previewReadyImage = { type: 'IMAGE', image: string }
+export type setPreviewType = {
+    file: fileType,
+    type: 'IMAGE' | 'TEXT' | 'NO_PREVIEW',
+    data: string
+}
 
-type previewReadyText = { type: 'TEXT', text: string }
-
-type previewReadyNoPreview = { type: 'NO_PREVIEW' }
-
-type previewReady = (previewReadyImage | previewReadyText | previewReadyNoPreview) & {
+export type previewReady = setPreviewType & {
     status: 'READY',
-    file: fileType
 }
 
 export type previewStateType = {
