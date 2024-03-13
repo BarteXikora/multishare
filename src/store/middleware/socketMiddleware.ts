@@ -4,6 +4,7 @@ import socket from '../../api/socket'
 import { setContent, setError, setTreeLocation } from '../features/contentSlice/contentSlice'
 import { selectProject, setProjects, setProjectsError } from '../features/projectSlice/projectSlice'
 import { defaultProject } from '../../utilities/userData'
+import { resetPreview, setPreview, setPreviewError } from '../features/previewSlice/previewSlice'
 
 type paramsType = {
     dispatch: Dispatch
@@ -44,6 +45,24 @@ const socketMiddleware = () => {
                     if (data === null) return dispatch(setProjectsError('Nie udało się wczytać dostępnych projektów.'))
 
                     dispatch(setProjects(data))
+                })
+
+                break
+            }
+
+            case 'previewSlice/initializePreview': {
+                dispatch(resetPreview())
+
+                let fileId = action.payload
+
+                if (Number.isNaN(fileId)) return dispatch(setPreviewError('Wybrany plik nie istnieje.'))
+
+                socket.emit('get_file', fileId)
+
+                socket.once('file', (data: any) => {
+                    if (data === null) dispatch(setPreviewError('Wybrany plik nie istnieje.'))
+
+                    dispatch(setPreview(data))
                 })
 
                 break
