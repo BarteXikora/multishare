@@ -5,7 +5,7 @@ import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSl
 import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
 import iconUpload from '../../../../assets/icons/icon-upload.svg'
-import iconNewFolder from '../../../../assets/icons/icon-new-folder.svg'
+import iconNewFolder from '../../../../assets/icons/icon-new-folder-dark.svg'
 import iconSelect from '../../../../assets/icons/icon-ok.svg'
 import iconSort from '../../../../assets/icons/icon-sort.svg'
 import iconFilter from '../../../../assets/icons/icon-filter.svg'

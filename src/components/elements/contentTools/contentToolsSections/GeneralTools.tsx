@@ -4,16 +4,17 @@ import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import Button from '../../../ui/button/Button'
 import Dropdown from '../../../ui/dropdown/Dropdown'
 import ToolsDropdown from './ToolsDropdown'
+import NewFolderWindow from '../../../windows/newFolderWindow/NewFolderWindow'
 
 import iconUpload from '../../../../assets/icons/icon-upload.svg'
-import iconNewFolder from '../../../../assets/icons/icon-new-folder.svg'
+import iconNewFolder from '../../../../assets/icons/icon-new-folder-dark.svg'
 import iconTools from '../../../../assets/icons/icon-tools.svg'
 
 const GeneralTools = () => {
     const dispatch = useDispatch()
 
     const handleCreateFolderWindow = () => {
-        dispatch(showWindow(null))
+        dispatch(showWindow({ title: 'Utwórz nowy folder', content: <NewFolderWindow /> }))
     }
 
     return <section className="general-tools">
