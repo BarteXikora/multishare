@@ -1,6 +1,6 @@
-import { ChildrenProps } from '../../../utilities/types'
+import { ReactNode } from 'react'
 
 export type windowStateType = {
     isShown: boolean
-    content: ChildrenProps | null
+    content: ReactNode | null
 }
