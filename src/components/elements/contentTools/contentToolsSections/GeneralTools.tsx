@@ -1,3 +1,6 @@
+import { useDispatch } from '../../../../store/store'
+import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
+
 import Button from '../../../ui/button/Button'
 import Dropdown from '../../../ui/dropdown/Dropdown'
 import ToolsDropdown from './ToolsDropdown'
@@ -7,6 +10,12 @@ import iconNewFolder from '../../../../assets/icons/icon-new-folder.svg'
 import iconTools from '../../../../assets/icons/icon-tools.svg'
 
 const GeneralTools = () => {
+    const dispatch = useDispatch()
+
+    const handleCreateFolderWindow = () => {
+        dispatch(showWindow(null))
+    }
+
     return <section className="general-tools">
         <div className="tools-buttons">
             <Button>
@@ -15,7 +24,7 @@ const GeneralTools = () => {
                 Prześlij pliki
             </Button>
 
-            <Button $variant='secondary'>
+            <Button $variant='secondary' onClick={handleCreateFolderWindow}>
                 <img src={iconNewFolder} alt="Nowy folder" />
 
                 Nowy folder...
