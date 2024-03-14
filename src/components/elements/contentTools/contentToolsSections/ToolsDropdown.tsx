@@ -5,7 +5,7 @@ import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSl
 import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
 import iconUpload from '../../../../assets/icons/icon-upload.svg'
-import iconCreate from '../../../../assets/icons/icon-create.svg'
+import iconNewFolder from '../../../../assets/icons/icon-new-folder.svg'
 import iconSelect from '../../../../assets/icons/icon-ok.svg'
 import iconSort from '../../../../assets/icons/icon-sort.svg'
 import iconFilter from '../../../../assets/icons/icon-filter.svg'
@@ -23,13 +23,13 @@ const ToolsDropdown = () => {
             <Button>
                 <img src={iconUpload} alt="Prześlij pliki tutaj" />
 
-                Prześlij pliki tutaj
+                Prześlij pliki
             </Button>
 
             <Button $variant='secondary'>
-                <img src={iconCreate} alt="Utwórz..." />
+                <img src={iconNewFolder} alt="Nowy folder" />
 
-                Utwórz...
+                Nowy folder...
             </Button>
         </section>
 

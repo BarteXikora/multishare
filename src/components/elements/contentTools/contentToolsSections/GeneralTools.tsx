@@ -3,7 +3,7 @@ import Dropdown from '../../../ui/dropdown/Dropdown'
 import ToolsDropdown from './ToolsDropdown'
 
 import iconUpload from '../../../../assets/icons/icon-upload.svg'
-import iconCreate from '../../../../assets/icons/icon-create.svg'
+import iconNewFolder from '../../../../assets/icons/icon-new-folder.svg'
 import iconTools from '../../../../assets/icons/icon-tools.svg'
 
 const GeneralTools = () => {
@@ -12,13 +12,13 @@ const GeneralTools = () => {
             <Button>
                 <img src={iconUpload} alt="Prześlij pliki tutaj" />
 
-                Prześlij pliki tutaj
+                Prześlij pliki
             </Button>
 
             <Button $variant='secondary'>
-                <img src={iconCreate} alt="Utwórz..." />
+                <img src={iconNewFolder} alt="Nowy folder" />
 
-                Utwórz...
+                Nowy folder...
             </Button>
         </div>
 
