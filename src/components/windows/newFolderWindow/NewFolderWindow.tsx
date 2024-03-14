@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector } from '../../../store/store'
 import getShortenName from '../../../functions/getShortenName/getShortenName'
 
@@ -11,8 +11,30 @@ import iconNewFolder from '../../../assets/icons/icon-new-folder.svg'
 const NewFolderWindow = () => {
     const projectName = useSelector(state => state.project.selectedProject?.name)
     const path = useSelector(state => state.content.currentPath)
+    const currentFolders = useSelector(state => state.content.currentFolder.folders)
 
     const [folderName, setFolderName] = useState<string>('Nowy folder')
+    const [usedFolderNames, setUsedFolderNames] = useState<string[]>([])
+    const [validation, setValidation] = useState<string | false>(false)
+
+    useEffect(() => {
+        let names: string[] = []
+        currentFolders.forEach(f => names.push(f.name))
+
+        setUsedFolderNames(names)
+
+    }, [currentFolders])
+
+    useEffect(() => {
+        let currentValidation: string | false = false
+
+        if (folderName.length === 0) currentValidation = 'Należy podać nazwę folderu.'
+        else if (folderName.length > 50) currentValidation = 'Wybrana nazwa jest zbyt długa.'
+        else if (usedFolderNames.includes(folderName)) currentValidation = 'Wybrana nazwa jest już zajęta.'
+
+        setValidation(currentValidation)
+
+    }, [folderName])
 
     const handleCreateFolder = (e: React.FormEvent) => {
         e.preventDefault()
@@ -48,8 +70,11 @@ const NewFolderWindow = () => {
                 buttonContent={<><img src={iconNewFolder} alt='Utwórz nowy folder' /> Utwórz folder</>}
                 inputState={[folderName, setFolderName]}
                 onSubmit={handleCreateFolder}
+                buttonOptions={{ $disabled: !!validation }}
                 autoSelect
             />
+
+            {validation && <div className="validation-info">{validation}</div>}
         </section>
     </StyledNewFolderWindow>
 }

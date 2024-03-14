@@ -22,6 +22,13 @@ const StyledNewFolderWindow = styled.div`
             }
         }
     }
+
+    .validation-info {
+        margin-top: ${(props) => props.theme.margins.small};
+        margin-left: 5px;
+        font-weight: bold;
+        color: ${(props) => props.theme.colors.wrong6};
+    }
 `
 
 export default StyledNewFolderWindow
