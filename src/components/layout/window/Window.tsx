@@ -16,7 +16,7 @@ const Window = () => {
     return <StyledWindow>
         <div className="container">
             <div className="bar">
-                <h2>Tytuł okna</h2>
+                <h2>{window.title}</h2>
 
                 <Button $variant='wrong' className='close-button' onClick={() => dispatch(closeWindow())}>
                     <img src={iconClose} alt='Zamknij okno' />
