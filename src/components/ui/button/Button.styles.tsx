@@ -71,6 +71,15 @@ const buttonSmallStyles = css`
     border-radius: ${(props) => props.theme.borderRadiuses.small};
 `
 
+const buttonDisabled = css`
+    background-color: ${(props) => props.theme.colors.gray3};
+    cursor: default !important;
+
+    &:hover {
+        background-color: ${(props) => props.theme.colors.gray3};
+    }
+`
+
 const StyledButton = styled.button<ButtonProps>`
     display: flex;
     align-items: center;
@@ -90,6 +99,7 @@ const StyledButton = styled.button<ButtonProps>`
     ${(props) => props.$variant === 'tertiary' && (props.$active ? buttonTertiaryActiveStyles : buttonTertiaryStyles)}
     ${(props) => props.$variant === 'quaternary' && (props.$active ? buttonQuaternaryActiveStyles : buttonQuaternaryStyles)}
     ${(props) => props.$variant === 'wrong' && buttonWrongStyles}
+    ${(props) => props.$disabled && buttonDisabled}
 `
 
 export default StyledButton
