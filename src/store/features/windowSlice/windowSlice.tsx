@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { windowStateType } from './windowSlice.types'
 
@@ -11,12 +12,17 @@ export const windowSlice = createSlice({
     initialState,
     reducers: {
 
-        toggle: (state, action: PayloadAction<boolean>) => {
-            state.isShown = action.payload
+        showWindow: (state, action: PayloadAction<ReactNode | null>) => {
+            state.content = action.payload
+            state.isShown = true
+        },
+
+        closeWindow: (state) => {
+            state.isShown = false
         }
 
     }
 })
 
 export default windowSlice.reducer
-export const { toggle } = windowSlice.actions
+export const { showWindow, closeWindow } = windowSlice.actions
