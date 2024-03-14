@@ -6,6 +6,7 @@ import projectSlice from './features/projectSlice/projectSlice'
 import contentSlice from './features/contentSlice/contentSlice'
 import previewSlice from './features/previewSlice/previewSlice'
 import viewSlice from './features/viewSlice/viewSlice'
+import windowSlice from './features/windowSlice/windowSlice'
 
 const rootReducer = combineReducers({
     sideMenu: sideMenuSlice,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     project: projectSlice,
     content: contentSlice,
     preview: previewSlice,
-    view: viewSlice
+    view: viewSlice,
+    window: windowSlice
 })
 
 export default rootReducer
