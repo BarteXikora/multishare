@@ -18,7 +18,7 @@ const Window = () => {
             <div className="bar">
                 <h2>{window.title}</h2>
 
-                <Button $variant='wrong' className='close-button' onClick={() => dispatch(closeWindow())}>
+                <Button $variant='wrong' $size='big' className='close-button' onClick={() => dispatch(closeWindow())}>
                     <img src={iconClose} alt='Zamknij okno' />
                 </Button>
             </div>

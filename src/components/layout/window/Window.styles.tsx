@@ -33,9 +33,11 @@ const StyledWindow = styled.div`
 
         h2 {
             margin: 0;
-            padding: ${(props) => props.theme.margins.sectionSmall};
+            padding: ${(props) => props.theme.margins.medium + ' ' + props.theme.margins.big};
             font-size: ${(props) => props.theme.fontSizes.subtitle};
             color: ${(props) => props.theme.colors.black};
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         .close-button {
@@ -44,7 +46,54 @@ const StyledWindow = styled.div`
     }
 
     .content {
-        padding: ${(props) => props.theme.margins.sectionMedium};
+        margin: ${(props) => props.theme.margins.sectionSmall};
+        padding: ${(props) => props.theme.margins.sectionSmall};
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
+        .container {
+            min-width: 40vw;
+            max-width: 75vw;
+        }
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.tablet}) {
+        .container {
+            min-width: 65vw;
+            max-width: 90vw;
+        }
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        align-items: start;
+
+        .container {
+            min-width: 90vw;
+            max-width: 90vw;
+            margin-top: ${(props) => props.theme.margins.big};
+        }
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.smallerMobile}) {
+        .container {
+            min-width: 100%;
+            max-width: 100%;
+            height: 100%;
+            margin-top: 0;
+            border-radius: 0;
+        } 
+
+        .bar, .bar .close-button {
+            border-radius: 0;
+        }
+
+        .content {
+            box-sizing: border-box;
+            max-height: calc(100vh - 60px);
+            height: calc(100vh - 60px);
+        }
     }
 `
 
