@@ -1,11 +1,13 @@
 import Button from '../../../ui/button/Button'
+import NewFolderWindow from '../../../windows/newFolderWindow/NewFolderWindow'
 
 import { useSelector, useDispatch } from '../../../../store/store'
 import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSlice'
+import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
 import iconUpload from '../../../../assets/icons/icon-upload.svg'
-import iconCreate from '../../../../assets/icons/icon-create.svg'
+import iconNewFolder from '../../../../assets/icons/icon-new-folder-dark.svg'
 import iconSelect from '../../../../assets/icons/icon-ok.svg'
 import iconSort from '../../../../assets/icons/icon-sort.svg'
 import iconFilter from '../../../../assets/icons/icon-filter.svg'
@@ -18,18 +20,22 @@ const ToolsDropdown = () => {
 
     const viewStyle = useSelector(state => state.view.contentViewStyle)
 
+    const handleCreateFolderWindow = () => {
+        dispatch(showWindow({ title: 'Utwórz nowy folder', content: <NewFolderWindow /> }))
+    }
+
     return <>
         <section>
             <Button>
                 <img src={iconUpload} alt="Prześlij pliki tutaj" />
 
-                Prześlij pliki tutaj
+                Prześlij pliki
             </Button>
 
-            <Button $variant='secondary'>
-                <img src={iconCreate} alt="Utwórz..." />
+            <Button $variant='secondary' onClick={handleCreateFolderWindow}>
+                <img src={iconNewFolder} alt="Nowy folder" />
 
-                Utwórz...
+                Nowy folder...
             </Button>
         </section>
 

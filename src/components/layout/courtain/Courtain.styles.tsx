@@ -11,6 +11,11 @@ const StyledCourtain = styled.div`
     opacity: .85;
     display: none;
 
+    &.shown-window {
+        display: flex;
+        z-index: 2000;
+    }
+
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
         &.shown-details-section {
             display: flex;
