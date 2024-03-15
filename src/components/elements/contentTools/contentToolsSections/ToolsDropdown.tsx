@@ -1,7 +1,9 @@
 import Button from '../../../ui/button/Button'
+import NewFolderWindow from '../../../windows/newFolderWindow/NewFolderWindow'
 
 import { useSelector, useDispatch } from '../../../../store/store'
 import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSlice'
+import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
 import iconUpload from '../../../../assets/icons/icon-upload.svg'
@@ -18,6 +20,10 @@ const ToolsDropdown = () => {
 
     const viewStyle = useSelector(state => state.view.contentViewStyle)
 
+    const handleCreateFolderWindow = () => {
+        dispatch(showWindow({ title: 'Utwórz nowy folder', content: <NewFolderWindow /> }))
+    }
+
     return <>
         <section>
             <Button>
@@ -26,7 +32,7 @@ const ToolsDropdown = () => {
                 Prześlij pliki
             </Button>
 
-            <Button $variant='secondary'>
+            <Button $variant='secondary' onClick={handleCreateFolderWindow}>
                 <img src={iconNewFolder} alt="Nowy folder" />
 
                 Nowy folder...
