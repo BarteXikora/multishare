@@ -34,7 +34,7 @@ const NewFolderWindow = () => {
 
         setValidation(currentValidation)
 
-    }, [folderName])
+    }, [folderName, usedFolderNames])
 
     const handleCreateFolder = (e: React.FormEvent) => {
         e.preventDefault()
