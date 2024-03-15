@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useSelector } from '../../../store/store'
+import { useSelector, useDispatch } from '../../../store/store'
+import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 import getShortenName from '../../../functions/getShortenName/getShortenName'
 
 import StyledNewFolderWindow from './NewFolderWindow.styles'
@@ -9,6 +10,8 @@ import iconSeparator from '../../../assets/icons/icon-arrow-right-dark.svg'
 import iconNewFolder from '../../../assets/icons/icon-new-folder.svg'
 
 const NewFolderWindow = () => {
+    const dispatch = useDispatch()
+
     const projectName = useSelector(state => state.project.selectedProject?.name)
     const path = useSelector(state => state.content.currentPath)
     const currentFolders = useSelector(state => state.content.currentFolder.folders)
@@ -38,6 +41,9 @@ const NewFolderWindow = () => {
 
     const handleCreateFolder = (e: React.FormEvent) => {
         e.preventDefault()
+        if (validation) return
+
+        dispatch(closeWindow())
     }
 
     return <StyledNewFolderWindow>
