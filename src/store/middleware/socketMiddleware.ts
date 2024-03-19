@@ -23,6 +23,17 @@ const socketMiddleware = () => {
                     dispatch(setPreviewError('Nie udało się nawiązać połączenia z serwerem.'))
                 })
 
+                const handleNewFolder = (data: any) => {
+                    if (data === null) return alert('error')
+
+                    const action = { type: 'contentSlice/addFolder', payload: data }
+                    next(action)
+
+                    return
+                }
+
+                socket.on('new_folder', (data: any) => handleNewFolder(data))
+
                 break
             }
 
@@ -46,6 +57,12 @@ const socketMiddleware = () => {
                 socket.once('content', loadContent)
 
                 break
+            }
+
+            case 'contentSlice/addFolder': {
+                socket.emit('add_folder', action.payload)
+
+                return
             }
 
             case 'projectSlice/initializeProjects': {
