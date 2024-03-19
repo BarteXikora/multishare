@@ -1,13 +1,11 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import { rootStateType } from '../rootReducer.types'
-import socket from '../../api/socket'
-import { setProjects, setProjectsError } from '../features/projectSlice/projectSlice'
-import { resetPreview, setPreview, setPreviewError } from '../features/previewSlice/previewSlice'
 
 import onInitializeUser from './features/onInitializeUser/onInitializeUser'
 import onInitializeContent from './features/onInitializeContent/onInitializeContent'
 import onAddFolder from './features/onAddFolder/onAddFolder'
 import onInitializeProjects from './features/onInitializeProjects/onInitializeProjects'
+import onInitializePreview from './features/onInitializePreview/onInitializePreview'
 
 type paramsType = {
     dispatch: Dispatch
@@ -23,24 +21,7 @@ const socketMiddleware = () => {
             case 'contentSlice/initializeContent': onInitializeContent(dispatch, getState, action); break
             case 'contentSlice/addFolder': onAddFolder(action); return
             case 'projectSlice/initializeProjects': onInitializeProjects(dispatch); break
-
-            case 'previewSlice/initializePreview': {
-                dispatch(resetPreview())
-
-                let fileId = action.payload
-
-                if (Number.isNaN(fileId)) return dispatch(setPreviewError('Wybrany plik nie istnieje.'))
-
-                socket.emit('get_file', fileId)
-
-                socket.once('file', (data: any) => {
-                    if (data === null) dispatch(setPreviewError('Wybrany plik nie istnieje.'))
-
-                    dispatch(setPreview(data))
-                })
-
-                break
-            }
+            case 'previewSlice/initializePreview': onInitializePreview(dispatch, action)
         }
 
         next(action)
