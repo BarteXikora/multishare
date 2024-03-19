@@ -15,7 +15,7 @@ const PathBox = () => {
     const projectName = useSelector(state => state.project.selectedProject ? state.project.selectedProject.name : '')
     const currentPath = useSelector(state => state.content.currentPath)
 
-    const [shortenPath, setShortenPath] = useState<pathType>([])
+    const [shortenPath, setShortenPath] = useState<pathType[]>([])
 
     useEffect(() => {
         setShortenPath([
