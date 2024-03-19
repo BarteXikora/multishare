@@ -8,6 +8,8 @@ import InputButton from '../../ui/inputButton/InputButton'
 
 import iconSeparator from '../../../assets/icons/icon-arrow-right-dark.svg'
 import iconNewFolder from '../../../assets/icons/icon-new-folder.svg'
+import { addFolder } from '../../../store/features/contentSlice/contentSlice'
+import { folderType } from '../../../store/features/contentSlice/contentSlice.types'
 
 const NewFolderWindow = () => {
     const dispatch = useDispatch()
@@ -43,6 +45,15 @@ const NewFolderWindow = () => {
         e.preventDefault()
         if (validation) return
 
+        const newFolder: folderType = {
+            id: -2,
+            parentFolder: path.length > 0 ? path[path.length - 1].id : -1,
+            name: folderName,
+            details: {},
+            star: false
+        }
+
+        dispatch(addFolder(newFolder))
         dispatch(closeWindow())
     }
 
