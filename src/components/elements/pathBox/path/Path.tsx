@@ -11,7 +11,7 @@ import { pathType } from '../../../../store/features/contentSlice/contentSlice.t
 
 import iconArrow from '../../../../assets/icons/icon-arrow-right.svg'
 
-const Path = ({ path }: { path: pathType }) => {
+const Path = ({ path }: { path: pathType[] }) => {
     const dispatch = useDispatch()
 
     console.log(path)

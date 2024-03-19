@@ -11,7 +11,7 @@ import { pathType } from '../../../../store/features/contentSlice/contentSlice.t
 import iconFolder from '../../../../assets/icons/icon-folder-dark.svg'
 import iconArrow from '../../../../assets/icons/icon-arrow-right.svg'
 
-const CollapsedPathButton = ({ path }: { path: pathType }) => {
+const CollapsedPathButton = ({ path }: { path: pathType[] }) => {
     const dispatch = useDispatch()
 
     return <StyledCollapsedPathButton>

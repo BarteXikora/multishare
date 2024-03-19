@@ -9,7 +9,7 @@ import { pathType } from '../../../../store/features/contentSlice/contentSlice.t
 import iconFolder from '../../../../assets/icons/icon-folder-dark.svg'
 import iconFolderWrong from '../../../../assets/icons/icon-folder-wrong.svg'
 
-const CurrentFolderButton = ({ path }: { path: pathType }) => {
+const CurrentFolderButton = ({ path }: { path: pathType[] }) => {
     const dispatch = useDispatch()
 
     return <StyledCurrentFolderButton

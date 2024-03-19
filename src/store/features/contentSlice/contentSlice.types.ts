@@ -1,4 +1,50 @@
-export type ElementType = 'FOLDER' | 'FILE'
+export type elementType = 'FOLDER' | 'FILE'
+
+export type folderDetailsType = {
+    createdDate?: string,
+    lastModificationDate?: string,
+}
+
+export type fileDetailsType = folderDetailsType & {
+    fileSizeBites?: number
+}
+
+export type folderType = {
+    id: number,
+    parentFolder: number,
+    name: string,
+    details: folderDetailsType,
+    star: boolean
+}
+
+export type folderDisplayType = {
+    id: number,
+    name: string,
+    insideContent: { folders: number, files: number },
+    details: folderDetailsType,
+    star: boolean
+}
+
+export type fileType = {
+    id: number,
+    parentFolder: number,
+    name: string,
+    extension: string,
+    preview: string | false,
+    details: fileDetailsType,
+    star: boolean
+}
+
+export type contentType = {
+    folders: folderType[],
+    files: fileType[]
+}
+
+export type contentDisplayType = {
+    folders: folderDisplayType[],
+    files: fileType[],
+    notFound?: boolean
+}
 
 type loadedContentLoadingType = {
     status: 'LOADING'
@@ -20,62 +66,17 @@ export type pathType = {
     id: number,
     name: string,
     notFound?: boolean
-}[]
-
-export type folderDetailsType = {
-    createdDate?: string,
-    lastModificationDate?: string,
-}
-
-export type fileDetailsType = folderDetailsType & {
-    fileSizeBites?: number
-}
-
-export type folderType = {
-    id: number,
-    name: string,
-    content: contentType,
-    details: folderDetailsType,
-    star: boolean
-}
-
-export type folderDisplayType = {
-    id: number,
-    name: string,
-    insideContent: { folders: number, files: number },
-    details: folderDetailsType,
-    star: boolean
-}
-
-export type fileType = {
-    id: number,
-    name: string,
-    extension: string,
-    preview: string | false,
-    details: fileDetailsType,
-    star: boolean
-}
-
-export type contentType = {
-    folders: folderType[],
-    files: fileType[]
-}
-
-export type contentDisplayType = {
-    folders: folderDisplayType[],
-    files: fileType[],
-    notFound?: boolean
 }
 
 export type selectedType = {
     files: number[],
     folders: number[],
-    selectionStart: { type: 'FOLDER' | 'FILE', id: number } | null
+    selectionStart: { type: elementType, id: number } | null
 }
 
 export type contentStateType = {
-    currentPath: pathType,
     loadedContent: loadedContentType,
     currentFolder: contentDisplayType,
+    currentPath: pathType[],
     selected: selectedType
 }

@@ -1,6 +1,6 @@
-import { ElementType, contentDisplayType } from '../../store/features/contentSlice/contentSlice.types'
+import { elementType, contentDisplayType } from '../../store/features/contentSlice/contentSlice.types'
 
-type flatElement = { type: ElementType, id: number }
+type flatElement = { type: elementType, id: number }
 
 type getRangeOfElementsType = {
     currentFolder: contentDisplayType

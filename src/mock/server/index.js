@@ -38,7 +38,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('get_file', data => {
-        let files = contentDefaultCopy.folders[0].content.files
+        let files = contentDefaultCopy.files
 
         let foundFile = files.filter(f => f.id === data)
         if (foundFile.length === 0) foundFile = null

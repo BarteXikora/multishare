@@ -1,31 +1,21 @@
 import { PayloadAction } from '@reduxjs/toolkit'
 import { contentStateType } from '../../contentSlice.types'
-import getPathAndContent from '../../../../../functions/getPathAndContent/getPathAndContent'
+
+import getCurrentPath from '../../../../../functions/getCurrentPath/getCurrentPath'
+import getCurrentContent from '../../../../../functions/getCurrentContent/getCurrentContent'
 
 const setTreeLocation = (state: contentStateType, action: PayloadAction<number>) => {
     if (state.loadedContent.status !== 'READY') return
 
-    if (action.payload === -1) {
-        state.currentPath = []
-        state.currentFolder = {
-            folders: state.loadedContent.content.folders.map(f => {
-                return ({
-                    ...f,
-                    insideContent: {
-                        folders: f.content.folders ? f.content.folders.length : 0,
-                        files: f.content.files ? f.content.files.length : 0
-                    }
-                })
-            }),
-            files: state.loadedContent.content.files
-        }
+    const newPath = getCurrentPath(state.loadedContent.content.folders, action.payload)
 
-    } else {
-        const { path, content } = getPathAndContent(state.loadedContent.content, action.payload)
-
-        state.currentPath = path
-        state.currentFolder = content
+    if (!newPath) {
+        state.loadedContent = { status: 'ERROR', error: 'Wystąpił błąd!' }
+        return
     }
+
+    state.currentPath = newPath
+    state.currentFolder = getCurrentContent(state.loadedContent.content, action.payload)
 }
 
 export default setTreeLocation
