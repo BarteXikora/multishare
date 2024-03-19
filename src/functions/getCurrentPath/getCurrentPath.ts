@@ -5,20 +5,19 @@ const getCurrentPath = (folders: folderType[], folderId: number): pathType[] | f
     let lastFolder = folderId
 
     while (lastFolder !== -1) {
+        /* eslint no-loop-func: "off" */
         const folderFound = folders.filter(f => f.id === lastFolder)
 
         if (folderFound.length !== 1) {
-            path.push({ id: lastFolder, name: '', notFound: true })
+            path.push({ id: lastFolder, name: 'Nie znaleziono folderu', notFound: true })
             break
         }
 
-        if (path.includes({ id: folderFound[0].id, name: '' })) return false
+        if (path.filter(p => p.id === folderFound[0].id).length !== 0) return false
 
-        path.push({ id: folderFound[0].parentFolder, name: '' })
+        path.push({ id: folderFound[0].id, name: folderFound[0].name })
         lastFolder = folderFound[0].parentFolder
     }
-
-    path.forEach(p => p.name = folders.filter(f => f.id === p.id)[0].name || '')
 
     return path.reverse()
 }
