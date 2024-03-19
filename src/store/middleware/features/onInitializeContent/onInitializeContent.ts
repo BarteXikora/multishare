@@ -22,6 +22,7 @@ const onInitializeContent = (dispatch: Dispatch, getState: () => rootStateType, 
         dispatch(setContent(data.content))
 
         if (folderId) dispatch(setTreeLocation(folderId !== 'home' ? Number(folderId) : -1))
+        else dispatch(setTreeLocation(-1))
     }
 
     socket.once('content', loadContent)
