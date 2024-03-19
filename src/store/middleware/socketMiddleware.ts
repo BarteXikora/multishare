@@ -7,6 +7,7 @@ import { resetPreview, setPreview, setPreviewError } from '../features/previewSl
 import onInitializeUser from './features/onInitializeUser/onInitializeUser'
 import onInitializeContent from './features/onInitializeContent/onInitializeContent'
 import onAddFolder from './features/onAddFolder/onAddFolder'
+import onInitializeProjects from './features/onInitializeProjects/onInitializeProjects'
 
 type paramsType = {
     dispatch: Dispatch
@@ -21,18 +22,7 @@ const socketMiddleware = () => {
             case 'userSlice/initializeUser': onInitializeUser(dispatch, next); break
             case 'contentSlice/initializeContent': onInitializeContent(dispatch, getState, action); break
             case 'contentSlice/addFolder': onAddFolder(action); return
-
-            case 'projectSlice/initializeProjects': {
-                socket.emit('get_projects')
-
-                socket.once('projects', (data: any) => {
-                    if (data === null) return dispatch(setProjectsError('Nie udało się wczytać dostępnych projektów.'))
-
-                    dispatch(setProjects(data))
-                })
-
-                break
-            }
+            case 'projectSlice/initializeProjects': onInitializeProjects(dispatch); break
 
             case 'previewSlice/initializePreview': {
                 dispatch(resetPreview())
