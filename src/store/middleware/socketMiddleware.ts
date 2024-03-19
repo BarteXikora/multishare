@@ -16,6 +16,16 @@ const socketMiddleware = () => {
         const { dispatch } = params
 
         switch (action.type) {
+            case 'userSlice/initializeUser': {
+                socket.on('connect_error', () => {
+                    dispatch(setContentError('Nie udało się nawiązać połączenia z serwerem.'))
+                    dispatch(setProjectsError('Nie udało się nawiązać połączenia z serwerem.'))
+                    dispatch(setPreviewError('Nie udało się nawiązać połączenia z serwerem.'))
+                })
+
+                break
+            }
+
             case 'contentSlice/initializeContent': {
                 let [projectId, folderId] = action.payload.substring(9, action.payload.length).split('/')
 
