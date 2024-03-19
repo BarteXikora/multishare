@@ -1,7 +1,7 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import { rootStateType } from '../rootReducer.types'
 import socket from '../../api/socket'
-import { setContent, setError, setTreeLocation } from '../features/contentSlice/contentSlice'
+import { setContent, setContentError, setTreeLocation } from '../features/contentSlice/contentSlice'
 import { selectProject, setProjects, setProjectsError } from '../features/projectSlice/projectSlice'
 import { defaultProject } from '../../utilities/userData'
 import { resetPreview, setPreview, setPreviewError } from '../features/previewSlice/previewSlice'
@@ -24,8 +24,8 @@ const socketMiddleware = () => {
                 socket.emit('enter_project', Number(projectId))
 
                 const loadContent = (data: any) => {
-                    if (data === null) return dispatch(setError('Nie udało się wczytać projektu!'))
-                    if (!data.project || !data.content) return dispatch(setError('Nie udało się wczytać projektu!'))
+                    if (data === null) return dispatch(setContentError('Nie udało się wczytać projektu!'))
+                    if (!data.project || !data.content) return dispatch(setContentError('Nie udało się wczytać projektu!'))
 
                     dispatch(selectProject(data.project))
                     dispatch(setContent(data.content))
