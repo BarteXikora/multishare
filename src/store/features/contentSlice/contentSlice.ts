@@ -6,6 +6,7 @@ import initializeContentReducer from './reducers/initializeContent/initializeCon
 import setContentReducer from './reducers/setContent/setContent'
 import setContentErrorRducer from './reducers/setContentError/setContentError'
 import resetContentReducer from './reducers/resetContent/resetContent'
+import setSelectedReducer from './reducers/setSelected/setSelected'
 
 export const contentSlice = createSlice({
     name: 'contentSlice',
@@ -14,9 +15,10 @@ export const contentSlice = createSlice({
         initializeContent: initializeContentReducer,
         setContent: setContentReducer,
         setContentError: setContentErrorRducer,
-        resetContent: resetContentReducer
+        resetContent: resetContentReducer,
+        setSelected: setSelectedReducer
     }
 })
 
 export default contentSlice.reducer
-export const { initializeContent, setContent, setContentError, resetContent } = contentSlice.actions
+export const { initializeContent, setContent, setContentError, resetContent, setSelected } = contentSlice.actions
