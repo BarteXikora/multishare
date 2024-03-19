@@ -3,7 +3,8 @@ import { contentDisplayType, contentType } from '../../store/features/contentSli
 const getCurrentContent = (content: contentType, folderId: number): contentDisplayType => {
     const response: contentDisplayType = { folders: [], files: [] }
 
-    if (content.folders.filter(f => f.id === folderId).length === 0) return { ...response, notFound: true }
+    if (folderId !== -1 && content.folders.filter(f => f.id === folderId).length === 0)
+        return { ...response, notFound: true }
 
     const foldersFound = content.folders.filter(f => f.parentFolder === folderId)
     foldersFound.forEach(f => {
