@@ -6,6 +6,8 @@ import { selectProject, setProjects, setProjectsError } from '../features/projec
 import { defaultProject } from '../../utilities/userData'
 import { resetPreview, setPreview, setPreviewError } from '../features/previewSlice/previewSlice'
 
+import onInitializeUser from './features/onInitializeUser/onInitializeUser'
+
 type paramsType = {
     dispatch: Dispatch
     getState: () => rootStateType
@@ -16,26 +18,8 @@ const socketMiddleware = () => {
         const { dispatch } = params
 
         switch (action.type) {
-            case 'userSlice/initializeUser': {
-                socket.on('connect_error', () => {
-                    dispatch(setContentError('Nie udało się nawiązać połączenia z serwerem.'))
-                    dispatch(setProjectsError('Nie udało się nawiązać połączenia z serwerem.'))
-                    dispatch(setPreviewError('Nie udało się nawiązać połączenia z serwerem.'))
-                })
+            case 'userSlice/initializeUser': onInitializeUser(dispatch, next); break
 
-                const handleNewFolder = (data: any) => {
-                    if (data === null) return alert('error')
-
-                    const action = { type: 'contentSlice/addFolder', payload: data }
-                    next(action)
-
-                    return
-                }
-
-                socket.on('new_folder', (data: any) => handleNewFolder(data))
-
-                break
-            }
 
             case 'contentSlice/initializeContent': {
                 let [projectId, folderId] = action.payload.substring(9, action.payload.length).split('/')
