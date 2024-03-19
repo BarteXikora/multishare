@@ -8,7 +8,7 @@ import controlClick from './controlClick/controlClick'
 import shiftClick from './shiftClick/shiftClick'
 import selectAllClick from './selectAllClick/selectAllClick'
 
-import { ElementType, selectedType } from '../../store/features/contentSlice/contentSlice.types'
+import { elementType, selectedType } from '../../store/features/contentSlice/contentSlice.types'
 
 const emptySelect: selectedType = { folders: [], files: [], selectionStart: null }
 
@@ -35,7 +35,7 @@ const useContentEvents = () => {
 
     }, [dispatch, currentPath])
 
-    const select = (event: React.MouseEvent<HTMLElement>, type: ElementType, id: number) => {
+    const select = (event: React.MouseEvent<HTMLElement>, type: elementType, id: number) => {
         event.preventDefault()
 
         if (event.shiftKey) dispatch(setSelected(shiftClick(currentFolder, selected, type, id)))
@@ -43,7 +43,7 @@ const useContentEvents = () => {
         else dispatch(setSelected(click(type, id)))
     }
 
-    const selectMobile = (event: React.TouchEvent<HTMLElement>, isTouchStart: boolean, type: ElementType, id: number) => {
+    const selectMobile = (event: React.TouchEvent<HTMLElement>, isTouchStart: boolean, type: elementType, id: number) => {
         event.preventDefault()
 
         if (isTouchStart) setTouchHoldTimeout(setTimeout(() => {
