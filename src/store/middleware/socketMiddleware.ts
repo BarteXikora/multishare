@@ -6,6 +6,7 @@ import { resetPreview, setPreview, setPreviewError } from '../features/previewSl
 
 import onInitializeUser from './features/onInitializeUser/onInitializeUser'
 import onInitializeContent from './features/onInitializeContent/onInitializeContent'
+import onAddFolder from './features/onAddFolder/onAddFolder'
 
 type paramsType = {
     dispatch: Dispatch
@@ -19,13 +20,7 @@ const socketMiddleware = () => {
         switch (action.type) {
             case 'userSlice/initializeUser': onInitializeUser(dispatch, next); break
             case 'contentSlice/initializeContent': onInitializeContent(dispatch, getState, action); break
-
-
-            case 'contentSlice/addFolder': {
-                socket.emit('add_folder', action.payload)
-
-                return
-            }
+            case 'contentSlice/addFolder': onAddFolder(action); return
 
             case 'projectSlice/initializeProjects': {
                 socket.emit('get_projects')
