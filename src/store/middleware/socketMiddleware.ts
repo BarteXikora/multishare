@@ -1,12 +1,11 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import { rootStateType } from '../rootReducer.types'
 import socket from '../../api/socket'
-import { setContent, setContentError, setTreeLocation } from '../features/contentSlice/contentSlice'
-import { selectProject, setProjects, setProjectsError } from '../features/projectSlice/projectSlice'
-import { defaultProject } from '../../utilities/userData'
+import { setProjects, setProjectsError } from '../features/projectSlice/projectSlice'
 import { resetPreview, setPreview, setPreviewError } from '../features/previewSlice/previewSlice'
 
 import onInitializeUser from './features/onInitializeUser/onInitializeUser'
+import onInitializeContent from './features/onInitializeContent/onInitializeContent'
 
 type paramsType = {
     dispatch: Dispatch
@@ -15,33 +14,12 @@ type paramsType = {
 
 const socketMiddleware = () => {
     return (params: paramsType) => (next: any) => (action: any) => {
-        const { dispatch } = params
+        const { dispatch, getState } = params
 
         switch (action.type) {
             case 'userSlice/initializeUser': onInitializeUser(dispatch, next); break
+            case 'contentSlice/initializeContent': onInitializeContent(dispatch, getState, action); break
 
-
-            case 'contentSlice/initializeContent': {
-                let [projectId, folderId] = action.payload.substring(9, action.payload.length).split('/')
-
-                if (projectId === '' || projectId === undefined) projectId = defaultProject
-
-                socket.emit('enter_project', Number(projectId))
-
-                const loadContent = (data: any) => {
-                    if (data === null) return dispatch(setContentError('Nie udało się wczytać projektu!'))
-                    if (!data.project || !data.content) return dispatch(setContentError('Nie udało się wczytać projektu!'))
-
-                    dispatch(selectProject(data.project))
-                    dispatch(setContent(data.content))
-
-                    if (folderId) dispatch(setTreeLocation(folderId !== 'home' ? Number(folderId) : -1))
-                }
-
-                socket.once('content', loadContent)
-
-                break
-            }
 
             case 'contentSlice/addFolder': {
                 socket.emit('add_folder', action.payload)
