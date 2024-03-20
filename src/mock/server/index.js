@@ -27,12 +27,15 @@ io.on('connection', (socket) => {
     })
 
     socket.on('enter_project', data => {
+        socket.leaveAll()
+
         let response = {
             project: data === 0 ? projects[0] : data === 1 ? projects[1] : null,
             content: data === 0 ? contentDefault : data === 1 ? contentProject1 : null
         }
 
         if (data === 0 || data === 1) socket.join(data)
+        console.log('joined', socket.rooms)
 
         socket.emit('content', response)
     })
@@ -55,6 +58,21 @@ io.on('connection', (socket) => {
         }
 
         socket.emit('file', response)
+    })
+
+    socket.on('add_folder', data => {
+        data.id = Math.floor(Math.random() * 999999999)
+        data.details = {
+            createdDate: new Date().toLocaleString(),
+            lastModificationDate: new Date().toLocaleString()
+        }
+
+        const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
+
+        if (room === 0) contentDefault.folders.push(data)
+        else if (room === 1) contentProject1.folders.push(data)
+
+        socket.to(room).emit('new_folder', data)
     })
 })
 

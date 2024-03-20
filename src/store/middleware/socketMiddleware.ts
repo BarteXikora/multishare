@@ -1,10 +1,11 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import { rootStateType } from '../rootReducer.types'
-import socket from '../../api/socket'
-import { setContent, setContentError, setTreeLocation } from '../features/contentSlice/contentSlice'
-import { selectProject, setProjects, setProjectsError } from '../features/projectSlice/projectSlice'
-import { defaultProject } from '../../utilities/userData'
-import { resetPreview, setPreview, setPreviewError } from '../features/previewSlice/previewSlice'
+
+import onInitializeUser from './features/onInitializeUser/onInitializeUser'
+import onInitializeContent from './features/onInitializeContent/onInitializeContent'
+import onAddFolder from './features/onAddFolder/onAddFolder'
+import onInitializeProjects from './features/onInitializeProjects/onInitializeProjects'
+import onInitializePreview from './features/onInitializePreview/onInitializePreview'
 
 type paramsType = {
     dispatch: Dispatch
@@ -13,60 +14,14 @@ type paramsType = {
 
 const socketMiddleware = () => {
     return (params: paramsType) => (next: any) => (action: any) => {
-        const { dispatch } = params
+        const { dispatch, getState } = params
 
         switch (action.type) {
-            case 'contentSlice/initializeContent': {
-                let [projectId, folderId] = action.payload.substring(9, action.payload.length).split('/')
-
-                if (projectId === '' || projectId === undefined) projectId = defaultProject
-
-                socket.emit('enter_project', Number(projectId))
-
-                const loadContent = (data: any) => {
-                    if (data === null) return dispatch(setContentError('Nie udało się wczytać projektu!'))
-                    if (!data.project || !data.content) return dispatch(setContentError('Nie udało się wczytać projektu!'))
-
-                    dispatch(selectProject(data.project))
-                    dispatch(setContent(data.content))
-
-                    if (folderId) dispatch(setTreeLocation(folderId !== 'home' ? Number(folderId) : -1))
-                }
-
-                socket.once('content', loadContent)
-
-                break
-            }
-
-            case 'projectSlice/initializeProjects': {
-                socket.emit('get_projects')
-
-                socket.once('projects', (data: any) => {
-                    if (data === null) return dispatch(setProjectsError('Nie udało się wczytać dostępnych projektów.'))
-
-                    dispatch(setProjects(data))
-                })
-
-                break
-            }
-
-            case 'previewSlice/initializePreview': {
-                dispatch(resetPreview())
-
-                let fileId = action.payload
-
-                if (Number.isNaN(fileId)) return dispatch(setPreviewError('Wybrany plik nie istnieje.'))
-
-                socket.emit('get_file', fileId)
-
-                socket.once('file', (data: any) => {
-                    if (data === null) dispatch(setPreviewError('Wybrany plik nie istnieje.'))
-
-                    dispatch(setPreview(data))
-                })
-
-                break
-            }
+            case 'userSlice/initializeUser': onInitializeUser(dispatch, next); break
+            case 'contentSlice/initializeContent': onInitializeContent(dispatch, getState, action); break
+            case 'contentSlice/addFolder': onAddFolder(action); return
+            case 'projectSlice/initializeProjects': onInitializeProjects(dispatch); break
+            case 'previewSlice/initializePreview': onInitializePreview(dispatch, action)
         }
 
         next(action)

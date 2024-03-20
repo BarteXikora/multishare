@@ -8,6 +8,8 @@ import InputButton from '../../ui/inputButton/InputButton'
 
 import iconSeparator from '../../../assets/icons/icon-arrow-right-dark.svg'
 import iconNewFolder from '../../../assets/icons/icon-new-folder.svg'
+import { addFolder } from '../../../store/features/contentSlice/contentSlice'
+import { folderType } from '../../../store/features/contentSlice/contentSlice.types'
 
 const NewFolderWindow = () => {
     const dispatch = useDispatch()
@@ -16,7 +18,21 @@ const NewFolderWindow = () => {
     const path = useSelector(state => state.content.currentPath)
     const currentFolders = useSelector(state => state.content.currentFolder.folders)
 
-    const [folderName, setFolderName] = useState<string>('Nowy folder')
+    const getSuggestedFolerName = (): string => {
+        if (currentFolders.filter(f => f.name === 'Nowy folder').length === 0) return 'Nowy folder'
+        else {
+            const defaultNamedFolders = currentFolders.filter(f => /Nowy folder \(\d+\)/.test(f.name))
+            const defaultNamedFoldersNumbers = defaultNamedFolders.map(f => Number(f.name.substring(13, f.name.length - 1).split(')')[0]))
+
+            let max = 0
+
+            defaultNamedFoldersNumbers.forEach(f => f > max ? max = f : null)
+
+            return 'Nowy folder (' + Number(max + 1) + ')'
+        }
+    }
+
+    const [folderName, setFolderName] = useState<string>(getSuggestedFolerName())
     const [usedFolderNames, setUsedFolderNames] = useState<string[]>([])
     const [validation, setValidation] = useState<string | false>(false)
 
@@ -43,6 +59,15 @@ const NewFolderWindow = () => {
         e.preventDefault()
         if (validation) return
 
+        const newFolder: folderType = {
+            id: -2,
+            parentFolder: path.length > 0 ? path[path.length - 1].id : -1,
+            name: folderName,
+            details: {},
+            star: false
+        }
+
+        dispatch(addFolder(newFolder))
         dispatch(closeWindow())
     }
 
