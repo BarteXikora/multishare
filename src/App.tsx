@@ -24,7 +24,11 @@ const App = () => {
             <Route element={<MainView />}>
               <Route path='/' element={<Navigate to={'/project'} />} />
 
-              <Route path='/project/*' element={<AppPage />} />
+              <Route element={<AppPage />}>
+                <Route path='/project/*' />
+
+                <Route path='/files' />
+              </Route>
 
               <Route path='/projects' element={<ProjectsPage />} />
 
