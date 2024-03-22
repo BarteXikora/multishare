@@ -1,14 +1,18 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import { rootStateType } from '../../../rootReducer.types'
-import { setContentError, setContent, setTreeLocation } from '../../../features/contentSlice/contentSlice'
+import { setContentError, setContent, setTreeLocation, setDisplayType } from '../../../features/contentSlice/contentSlice'
 import { selectProject } from '../../../features/projectSlice/projectSlice'
+import { displayTypeType } from '../../../features/contentSlice/contentSlice.types'
 
 import socket from '../../../../api/socket'
 
 const onInitializeContent = (dispatch: Dispatch, getState: () => rootStateType, action: any) => {
-    let [projectId, folderId] = action.payload.substring(9, action.payload.length).split('/')
+    const displayType: displayTypeType = /\/files/.test(action.payload) ? 'FILES' : 'TREE'
 
-    if (projectId === '' || projectId === undefined) projectId = getState().user.defaultProject
+    let [projectId, folderId]: [string, string]
+        = action.payload.substring(displayType === 'TREE' ? 9 : 7, action.payload.length).split('/')
+
+    if (projectId === '' || projectId === undefined) projectId = getState().user.defaultProject.toString()
 
     socket.emit('enter_project', Number(projectId))
 
@@ -21,7 +25,9 @@ const onInitializeContent = (dispatch: Dispatch, getState: () => rootStateType, 
         dispatch(selectProject(data.project))
         dispatch(setContent(data.content))
 
-        if (folderId) dispatch(setTreeLocation(folderId !== 'home' ? Number(folderId) : -1))
+        dispatch(setDisplayType(displayType))
+
+        if (displayType === 'TREE' && folderId) dispatch(setTreeLocation(folderId !== 'home' ? Number(folderId) : -1))
         else dispatch(setTreeLocation(-1))
     }
 
