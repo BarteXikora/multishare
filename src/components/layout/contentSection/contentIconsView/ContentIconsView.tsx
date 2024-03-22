@@ -11,6 +11,7 @@ import EmptyFolder from '../../../elements/emptyFolder/EmptyFolder'
 const ContentIconsView = () => {
     const content = useSelector(state => state.content.currentFolder)
     const selected = useSelector(state => state.content.selected)
+    const displayType = useSelector(state => state.content.displayType)
 
     const { folderEvents, filesEvents } = useContentEvents()
 
@@ -18,7 +19,7 @@ const ContentIconsView = () => {
 
     return <StyledContentIconsView>
         {
-            content.folders.length > 0 && (
+            displayType === 'TREE' && content.folders.length > 0 && (
                 <section className='folders-section'>
                     <h2>Foldery:</h2>
 
@@ -47,7 +48,7 @@ const ContentIconsView = () => {
         {
             content.files.length > 0 && (
                 <section className='files-section'>
-                    <h2>Pliki:</h2>
+                    <h2>{displayType === 'TREE' ? 'Pliki:' : 'Wszystkie pliki:'}</h2>
 
                     <div className="content">
                         {
