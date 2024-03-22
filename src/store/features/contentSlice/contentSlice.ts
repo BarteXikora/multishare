@@ -8,6 +8,7 @@ import setContentErrorRducer from './reducers/setContentError/setContentError'
 import resetContentReducer from './reducers/resetContent/resetContent'
 import setSelectedReducer from './reducers/setSelected/setSelected'
 import setTreeLocationReducer from './reducers/setTreeLocation/setTreeLocation'
+import setDisplayTypeReducer from './reducers/setDisplayType/setDisplayType'
 import addFolderReducer from './reducers/addFolder/addFolder'
 
 export const contentSlice = createSlice({
@@ -20,6 +21,7 @@ export const contentSlice = createSlice({
         resetContent: resetContentReducer,
         setSelected: setSelectedReducer,
         setTreeLocation: setTreeLocationReducer,
+        setDisplayType: setDisplayTypeReducer,
         addFolder: addFolderReducer
     }
 })
@@ -27,7 +29,7 @@ export const contentSlice = createSlice({
 export default contentSlice.reducer
 
 export const {
-    initializeContent, setContent, setContentError,
-    resetContent, setSelected, setTreeLocation, addFolder
+    initializeContent, setContent, setContentError, resetContent,
+    setSelected, setTreeLocation, setDisplayType, addFolder
 
 } = contentSlice.actions
