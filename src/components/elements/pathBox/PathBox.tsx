@@ -3,6 +3,7 @@ import { useSelector } from '../../../store/store'
 import { pathType } from '../../../store/features/contentSlice/contentSlice.types'
 
 import StyledPathBox from './PathBox.styles'
+import Title from './title/Title'
 import BackButton from './backButton/BackButton'
 import Path from './path/Path'
 import CurrentFolderButton from './currentFolderButon/CurrentFolderButton'
@@ -14,6 +15,7 @@ const MAX_FOLDER_NAME_LENGTH = 30
 const PathBox = () => {
     const projectName = useSelector(state => state.project.selectedProject ? state.project.selectedProject.name : '')
     const currentPath = useSelector(state => state.content.currentPath)
+    const displayType = useSelector(state => state.content.displayType)
 
     const [shortenPath, setShortenPath] = useState<pathType[]>([])
 
@@ -33,11 +35,20 @@ const PathBox = () => {
     }, [projectName, currentPath])
 
     return <StyledPathBox>
-        <BackButton isHome={shortenPath.length <= 1} />
+        {
+            displayType === 'TREE' ?
+                <>
+                    <BackButton isHome={shortenPath.length <= 1} />
 
-        <Path path={shortenPath} />
+                    <Path path={shortenPath} />
 
-        <CurrentFolderButton path={shortenPath} />
+                    <CurrentFolderButton path={shortenPath} />
+                </>
+
+                :
+
+                <Title />
+        }
     </StyledPathBox>
 }
 
