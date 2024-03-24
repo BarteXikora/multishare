@@ -72,8 +72,22 @@ const buttonSmallStyles = css`
 `
 
 const buttonDisabled = css`
+    position: relative;
     background-color: ${(props) => props.theme.colors.gray3};
+    color: ${(props) => props.theme.colors.gray6};
+    overflow: hidden;
     cursor: default !important;
+
+    &::before {
+        position: absolute;
+        content: '';
+        background-color: ${(props) => props.theme.colors.gray3};
+        opacity: .5;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 
     &:hover {
         background-color: ${(props) => props.theme.colors.gray3};
@@ -99,7 +113,7 @@ const StyledButton = styled.button<ButtonProps>`
     ${(props) => props.$variant === 'tertiary' && (props.$active ? buttonTertiaryActiveStyles : buttonTertiaryStyles)}
     ${(props) => props.$variant === 'quaternary' && (props.$active ? buttonQuaternaryActiveStyles : buttonQuaternaryStyles)}
     ${(props) => props.$variant === 'wrong' && buttonWrongStyles}
-    ${(props) => props.$disabled && buttonDisabled}
+    ${(props) => props.disabled && buttonDisabled}
 `
 
 export default StyledButton

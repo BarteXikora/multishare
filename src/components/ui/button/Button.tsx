@@ -26,7 +26,7 @@ type ButtonWrong = {
 
 export type ButtonProps = (ButtonPrimary | ButtonSecondary | ButtonTertiary | ButtonQuaternary | ButtonWrong) & {
     $size?: ButtonSizes
-    $disabled?: boolean
+    disabled?: boolean
 }
 
 export default StyledButton
