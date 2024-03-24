@@ -14,7 +14,7 @@ import iconFilter from '../../../../assets/icons/icon-filter.svg'
 import iconDisplay from '../../../../assets/icons/icon-display.svg'
 import iconList from '../../../../assets/icons/icon-list.svg'
 
-const ToolsDropdown = () => {
+const ToolsDropdown = ({ createNewFolderDisabled }: { createNewFolderDisabled: boolean }) => {
     const { selectAll } = useContentEvents()
     const dispatch = useDispatch()
 
@@ -32,11 +32,13 @@ const ToolsDropdown = () => {
                 Prześlij pliki
             </Button>
 
-            <Button $variant='secondary' onClick={handleCreateFolderWindow}>
-                <img src={iconNewFolder} alt="Nowy folder" />
+            {
+                !createNewFolderDisabled && <Button $variant='secondary' onClick={handleCreateFolderWindow}>
+                    <img src={iconNewFolder} alt="Nowy folder" />
 
-                Nowy folder...
-            </Button>
+                    Nowy folder...
+                </Button>
+            }
         </section>
 
         <hr />
