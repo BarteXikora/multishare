@@ -101,7 +101,7 @@ const NewFolderWindow = () => {
                 buttonContent={<><img src={iconNewFolder} alt='Utwórz nowy folder' /> Utwórz folder</>}
                 inputState={[folderName, setFolderName]}
                 onSubmit={handleCreateFolder}
-                buttonOptions={{ $disabled: !!validation }}
+                buttonOptions={{ disabled: !!validation }}
                 autoSelect
             />
 
