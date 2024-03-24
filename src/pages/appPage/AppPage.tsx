@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from '../../store/store'
 import { useLocation } from 'react-router-dom'
 import { initializeContent } from '../../store/features/contentSlice/contentSlice'
 
+import useUpdateContent from '../../functions/useUpdateContent/useUpdateContent'
+import useUpdatePathName from '../../functions/useUpdatePathName/useUpdatePathName'
+
 import LoadingPage from '../loadingPage/LoadingPage'
 import ErrorPage from '../errorPage/ErrorPage'
 
@@ -25,6 +28,9 @@ const AppPage = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useUpdatePathName()
+    useUpdateContent()
 
     if (contentStatus.status === 'LOADING') return <LoadingPage />
     if (contentStatus.status === 'ERROR') return <ErrorPage error={contentStatus.error} />

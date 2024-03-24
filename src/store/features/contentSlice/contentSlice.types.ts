@@ -46,6 +46,8 @@ export type contentDisplayType = {
     notFound?: boolean
 }
 
+export type displayTypeType = 'TREE' | 'FILES'
+
 type loadedContentLoadingType = {
     status: 'LOADING'
 }
@@ -76,6 +78,7 @@ export type selectedType = {
 
 export type contentStateType = {
     loadedContent: loadedContentType,
+    displayType: displayTypeType,
     currentFolder: contentDisplayType,
     currentPath: pathType[],
     selected: selectedType

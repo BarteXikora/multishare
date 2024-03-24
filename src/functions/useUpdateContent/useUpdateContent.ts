@@ -14,7 +14,8 @@ const useUpdateContent = () => {
 
         dispatch(setTreeLocation(currentFolderId))
 
-    }, [content, dispatch])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [content])
 }
 
 export default useUpdateContent

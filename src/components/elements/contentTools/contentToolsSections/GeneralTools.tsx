@@ -1,4 +1,4 @@
-import { useDispatch } from '../../../../store/store'
+import { useDispatch, useSelector } from '../../../../store/store'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 
 import Button from '../../../ui/button/Button'
@@ -13,6 +13,8 @@ import iconTools from '../../../../assets/icons/icon-tools.svg'
 const GeneralTools = () => {
     const dispatch = useDispatch()
 
+    const displayType = useSelector(state => state.content.displayType)
+
     const handleCreateFolderWindow = () => {
         dispatch(showWindow({ title: 'Utwórz nowy folder', content: <NewFolderWindow /> }))
     }
@@ -25,7 +27,7 @@ const GeneralTools = () => {
                 Prześlij pliki
             </Button>
 
-            <Button $variant='secondary' onClick={handleCreateFolderWindow}>
+            <Button $variant='secondary' disabled={displayType === 'FILES'} onClick={handleCreateFolderWindow}>
                 <img src={iconNewFolder} alt="Nowy folder" />
 
                 Nowy folder...
@@ -36,7 +38,7 @@ const GeneralTools = () => {
             className='open-tools-buttons'
             showArrow={false}
             buttonContent={<><img src={iconTools} alt="Wyświetl narzędzia" /></>}
-            dropdownContent={<ToolsDropdown />}
+            dropdownContent={<ToolsDropdown createNewFolderDisabled={displayType === 'FILES'} />}
         />
     </section>
 }

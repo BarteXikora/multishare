@@ -7,15 +7,24 @@ import getCurrentContent from '../../../../../functions/getCurrentContent/getCur
 const setTreeLocation = (state: contentStateType, action: PayloadAction<number>) => {
     if (state.loadedContent.status !== 'READY') return
 
-    const newPath = getCurrentPath(state.loadedContent.content.folders, action.payload)
+    if (state.displayType === 'TREE') {
+        const newPath = getCurrentPath(state.loadedContent.content.folders, action.payload)
 
-    if (!newPath) {
-        state.loadedContent = { status: 'ERROR', error: 'Wystąpił błąd!' }
-        return
+        if (!newPath) {
+            state.loadedContent = { status: 'ERROR', error: 'Wystąpił błąd!' }
+            return
+        }
+
+        state.currentPath = newPath
+        state.currentFolder = getCurrentContent(state.loadedContent.content, action.payload)
+
+    } else {
+        state.currentPath = []
+        state.currentFolder = {
+            folders: [],
+            files: state.loadedContent.content.files
+        }
     }
-
-    state.currentPath = newPath
-    state.currentFolder = getCurrentContent(state.loadedContent.content, action.payload)
 }
 
 export default setTreeLocation
