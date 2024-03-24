@@ -5,12 +5,14 @@ import { selectProject } from '../../../features/projectSlice/projectSlice'
 import { displayTypeType } from '../../../features/contentSlice/contentSlice.types'
 
 import socket from '../../../../api/socket'
+import getDisplayTypeFromPathname from '../../../../functions/getDisplayTypeFromPathname/getDisplayTypeFromPathname'
 
 const onInitializeContent = (dispatch: Dispatch, getState: () => rootStateType, action: any) => {
-    const displayType: displayTypeType = /\/files/.test(action.payload) ? 'FILES' : 'TREE'
+    const displayType: displayTypeType = getDisplayTypeFromPathname(action.payload)
 
-    let [projectId, folderId]: [string, string]
-        = action.payload.substring(displayType === 'TREE' ? 9 : 7, action.payload.length).split('/')
+    const pathnameData = action.payload.substring(1, action.payload.length).split('/')
+    let projectId: string | undefined = pathnameData[1]
+    let folderId: string | undefined = pathnameData[2]
 
     if (projectId === '' || projectId === undefined) projectId = getState().user.defaultProject.toString()
 
