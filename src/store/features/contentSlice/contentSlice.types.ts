@@ -46,7 +46,7 @@ export type contentDisplayType = {
     notFound?: boolean
 }
 
-export type displayTypeType = 'TREE' | 'FILES'
+export type displayTypeType = 'TREE' | 'FILES' | 'TRASH'
 
 type loadedContentLoadingType = {
     status: 'LOADING'
