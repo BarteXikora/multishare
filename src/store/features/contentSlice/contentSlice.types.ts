@@ -14,7 +14,8 @@ export type folderType = {
     parentFolder: number,
     name: string,
     details: folderDetailsType,
-    star: boolean
+    star: boolean,
+    isInTrash: false
 }
 
 export type folderDisplayType = {
@@ -32,7 +33,8 @@ export type fileType = {
     extension: string,
     preview: string | false,
     details: fileDetailsType,
-    star: boolean
+    star: boolean,
+    isInTrash: false
 }
 
 export type contentType = {
