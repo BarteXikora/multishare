@@ -5,7 +5,7 @@ import { toggle } from '../../../../store/features/detailsSectionSlice/detailsSe
 import iconDownload from '../../../../assets/icons/icon-download.svg'
 import iconMove from '../../../../assets/icons/icon-move.svg'
 import iconStar from '../../../../assets/icons/icon-star-color.svg'
-import iconTrash from '../../../../assets/icons/icon-trash.svg'
+import iconTrash from '../../../../assets/icons/icon-trash-full.svg'
 import iconDetails from '../../../../assets/icons/icon-details.svg'
 
 const SelectedTools = () => {
