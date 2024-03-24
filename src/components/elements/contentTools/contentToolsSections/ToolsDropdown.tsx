@@ -14,7 +14,12 @@ import iconFilter from '../../../../assets/icons/icon-filter.svg'
 import iconDisplay from '../../../../assets/icons/icon-display.svg'
 import iconList from '../../../../assets/icons/icon-list.svg'
 
-const ToolsDropdown = ({ createNewFolderDisabled }: { createNewFolderDisabled: boolean }) => {
+type toolsDropdownType = {
+    uploadHereDisabled: boolean,
+    createNewFolderDisabled: boolean
+}
+
+const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDropdownType) => {
     const { selectAll } = useContentEvents()
     const dispatch = useDispatch()
 
@@ -25,23 +30,29 @@ const ToolsDropdown = ({ createNewFolderDisabled }: { createNewFolderDisabled: b
     }
 
     return <>
-        <section>
-            <Button>
-                <img src={iconUpload} alt="Prześlij pliki tutaj" />
+        {
+            (!uploadHereDisabled || !createNewFolderDisabled) && <>
+                <section>
+                    {
+                        !uploadHereDisabled && <Button>
+                            <img src={iconUpload} alt="Prześlij pliki tutaj" />
 
-                Prześlij pliki
-            </Button>
+                            Prześlij pliki
+                        </Button>
+                    }
 
-            {
-                !createNewFolderDisabled && <Button $variant='secondary' onClick={handleCreateFolderWindow}>
-                    <img src={iconNewFolder} alt="Nowy folder" />
+                    {
+                        !createNewFolderDisabled && <Button $variant='secondary' onClick={handleCreateFolderWindow}>
+                            <img src={iconNewFolder} alt="Nowy folder" />
 
-                    Nowy folder...
-                </Button>
-            }
-        </section>
+                            Nowy folder...
+                        </Button>
+                    }
+                </section>
 
-        <hr />
+                <hr />
+            </>
+        }
 
         <section>
             <Button $variant='quaternary' onClick={() => selectAll()}>
