@@ -12,9 +12,10 @@ const ContentButtons = () => {
     const navigate = useNavigate()
     const displayType = useSelector(state => state.content.displayType)
 
-    const handleClick = (to: 'project' | 'files') => {
+    const handleClick = (to: 'project' | 'files' | 'trash') => {
         if (to === 'project' && displayType !== 'TREE') navigate('/project')
         if (to === 'files' && displayType !== 'FILES') navigate('/files')
+        if (to === 'trash' && displayType !== 'TRASH') navigate('/trash')
     }
 
     return <>
@@ -36,7 +37,7 @@ const ContentButtons = () => {
             Oznaczone gwiazdką
         </Button>
 
-        <Button $variant='tertiary'>
+        <Button $variant='tertiary' $active={displayType === 'TRASH'} onClick={() => handleClick('trash')}>
             <img src={iconTrash} alt='Kosz' />
 
             Kosz
