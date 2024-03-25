@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import { setSelected, setTreeLocation } from '../../store/features/contentSlice/contentSlice'
 import { useNavigate } from 'react-router-dom'
 
 import click from './click/click'
 import controlClick from './controlClick/controlClick'
-import shiftClick from './shiftClick/shiftClick'
 import selectAllClick from './selectAllClick/selectAllClick'
+
+import useSelect from './useSelect/useSelect'
 
 import { elementType, selectedType } from '../../store/features/contentSlice/contentSlice.types'
 
@@ -24,24 +25,12 @@ const selectedCnt = (selected: selectedType): number => {
 const useContentEvents = () => {
     const currentFolder = useSelector(state => state.content.currentFolder)
     const selected = useSelector(state => state.content.selected)
-    const currentPath = useSelector(state => state.content.currentPath)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const [touchHoldTimeout, setTouchHoldTimeout] = useState<ReturnType<typeof setTimeout> | null>(null)
 
-    useEffect(() => {
-        dispatch(setSelected(emptySelect))
-
-    }, [dispatch, currentPath])
-
-    const select = (event: React.MouseEvent<HTMLElement>, type: elementType, id: number) => {
-        event.preventDefault()
-
-        if (event.shiftKey) dispatch(setSelected(shiftClick(currentFolder, selected, type, id)))
-        else if (event.ctrlKey) dispatch(setSelected(controlClick({ ...selected }, type, id)))
-        else dispatch(setSelected(click(type, id)))
-    }
+    const select = useSelect()
 
     const selectMobile = (event: React.TouchEvent<HTMLElement>, isTouchStart: boolean, type: elementType, id: number) => {
         event.preventDefault()
