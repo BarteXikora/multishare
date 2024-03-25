@@ -1,8 +1,11 @@
+import { useState, useEffect, ReactNode } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
 import StyledWindow from './Window.styles'
 import Button from '../../ui/button/Button'
+
+import NewFolderWindow from '../../windows/newFolderWindow/NewFolderWindow'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
 
@@ -10,6 +13,19 @@ const Window = () => {
     const dispatch = useDispatch()
 
     const window = useSelector(state => state.window)
+
+    const [windowsBody, setWindowBody] = useState<ReactNode | null>(null)
+
+    useEffect(() => {
+        let selectedWindowBody = null
+
+        switch (window.content) {
+            case 'CREATE_NEW_FOLDER': selectedWindowBody = <NewFolderWindow />; break
+        }
+
+        setWindowBody(selectedWindowBody)
+
+    }, [window.content])
 
     if (!window.isShown) return null
 
@@ -24,7 +40,7 @@ const Window = () => {
             </div>
 
             <div className="content">
-                {window.content || <>Error</>}
+                {windowsBody || <>Error</>}
             </div>
         </div>
     </StyledWindow>
