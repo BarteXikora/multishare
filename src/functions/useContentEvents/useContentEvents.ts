@@ -1,16 +1,14 @@
-import { useNavigate } from 'react-router-dom'
-
 import useSelect from './useSelect/useSelect'
 import useOpenFolder from './useOpenFolder/useOpenFolder'
+import useOpenFile from './useOpenFile/useOpenFile'
 import useMobileEvents from './useMobileEvents/useMobileEvents'
 import useSelectAll from './useSelectAll/useSelectAll'
 import useUnselectAll from './useUnselectAll/useUnselectAll'
 
 const useContentEvents = () => {
-    const navigate = useNavigate()
-
     const select = useSelect()
     const openFolder = useOpenFolder()
+    const openFile = useOpenFile()
     const mobileEvents = useMobileEvents()
     const selectAll = useSelectAll()
     const unselectAll = useUnselectAll()
@@ -25,7 +23,7 @@ const useContentEvents = () => {
 
         filesEvents: {
             onClick: (event: React.MouseEvent<HTMLElement>, fileId: number) => select(event, 'FILE', fileId),
-            onDoubleClick: (fileId: number) => navigate('/file/' + fileId.toString()),
+            onDoubleClick: (fileId: number) => openFile(fileId),
             onTouchStart: (event: React.TouchEvent<HTMLElement>, fileId: number) => mobileEvents(event, true, 'FILE', fileId),
             onTouchEnd: (event: React.TouchEvent<HTMLElement>, fileId: number) => mobileEvents(event, false, 'FILE', fileId)
         },
