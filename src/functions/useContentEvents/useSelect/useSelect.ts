@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { setSelected } from '../../../store/features/contentSlice/contentSlice'
 import getSingleElement from '../functions/getSingleElement/getSingleElement'
-import shiftClick from '../shiftClick/shiftClick'
+import getElementsRange from '../functions/getElementsRange/getElementsRange'
 import controlClick from '../controlClick/controlClick'
 
 import { selectedType, elementType } from '../../../store/features/contentSlice/contentSlice.types'
@@ -25,7 +25,7 @@ const useSelect = () => {
     const select = (event: React.MouseEvent<HTMLElement>, type: elementType, id: number) => {
         event.preventDefault()
 
-        if (event.shiftKey) dispatch(setSelected(shiftClick(currentFolder, selected, type, id)))
+        if (event.shiftKey) dispatch(setSelected(getElementsRange(currentFolder, selected, type, id)))
         else if (event.ctrlKey) dispatch(setSelected(controlClick({ ...selected }, type, id)))
         else dispatch(setSelected(getSingleElement(type, id)))
     }
