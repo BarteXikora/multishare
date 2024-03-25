@@ -1,6 +1,6 @@
-import { elementType, selectedType } from '../../../store/features/contentSlice/contentSlice.types'
+import { elementType, selectedType } from '../../../../store/features/contentSlice/contentSlice.types'
 
-const controlClick = (selected: selectedType, type: elementType, id: number): selectedType => {
+const getSwitchedElements = (selected: selectedType, type: elementType, id: number): selectedType => {
     switch (type) {
         case 'FOLDER':
             if (selected.folders.includes(id)) selected.folders = selected.folders.filter(folder => folder !== id)
@@ -20,4 +20,4 @@ const controlClick = (selected: selectedType, type: elementType, id: number): se
     return selected
 }
 
-export default controlClick
+export default getSwitchedElements

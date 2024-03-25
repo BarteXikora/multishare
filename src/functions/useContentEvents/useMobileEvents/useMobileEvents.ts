@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from '../../../store/store'
 import { setSelected } from '../../../store/features/contentSlice/contentSlice'
 import useOpenFolder from '../useOpenFolder/useOpenFolder'
 import getSingleElement from '../functions/getSingleElement/getSingleElement'
-import controlClick from '../controlClick/controlClick'
+import getSwitchedElements from '../functions/getSwitchedElements/getSwitchedElements'
 
 import { selectedType, elementType } from '../../../store/features/contentSlice/contentSlice.types'
 
@@ -43,7 +43,7 @@ const useMobileEvents = () => {
                 if (selectedCnt(selected) === 0) {
                     if (type === 'FOLDER') openFolder(id)
                 }
-                else dispatch(setSelected(controlClick({ ...selected }, type, id)))
+                else dispatch(setSelected(getSwitchedElements({ ...selected }, type, id)))
             }
         }
     }
