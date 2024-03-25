@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { setSelected } from '../../../store/features/contentSlice/contentSlice'
 import useOpenFolder from '../useOpenFolder/useOpenFolder'
-import click from '../click/click'
+import getSingleElement from '../functions/getSingleElement/getSingleElement'
 import controlClick from '../controlClick/controlClick'
 
 import { selectedType, elementType } from '../../../store/features/contentSlice/contentSlice.types'
@@ -28,7 +28,7 @@ const useMobileEvents = () => {
         event.preventDefault()
 
         if (isTouchStart) setTouchHoldTimeout(setTimeout(() => {
-            if (selectedCnt(selected) === 0) dispatch(setSelected(click(type, id)))
+            if (selectedCnt(selected) === 0) dispatch(setSelected(getSingleElement(type, id)))
 
             if (touchHoldTimeout) clearTimeout(touchHoldTimeout)
             setTouchHoldTimeout(null)

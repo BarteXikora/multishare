@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { setSelected } from '../../../store/features/contentSlice/contentSlice'
-import click from '../click/click'
+import getSingleElement from '../functions/getSingleElement/getSingleElement'
 import shiftClick from '../shiftClick/shiftClick'
 import controlClick from '../controlClick/controlClick'
 
@@ -27,7 +27,7 @@ const useSelect = () => {
 
         if (event.shiftKey) dispatch(setSelected(shiftClick(currentFolder, selected, type, id)))
         else if (event.ctrlKey) dispatch(setSelected(controlClick({ ...selected }, type, id)))
-        else dispatch(setSelected(click(type, id)))
+        else dispatch(setSelected(getSingleElement(type, id)))
     }
 
     return select

@@ -1,5 +1,5 @@
 import getRangeOfElements from '../../getRangeOfElements/getRangeOfElements'
-import click from '../click/click'
+import click from '../functions/getSingleElement/click'
 
 import { elementType, selectedType, contentDisplayType } from '../../../store/features/contentSlice/contentSlice.types'
 
