@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
-import { setSelected, setTreeLocation } from '../../store/features/contentSlice/contentSlice'
+import { setSelected } from '../../store/features/contentSlice/contentSlice'
 import { useNavigate } from 'react-router-dom'
 
 import click from './click/click'
@@ -8,6 +8,7 @@ import controlClick from './controlClick/controlClick'
 import selectAllClick from './selectAllClick/selectAllClick'
 
 import useSelect from './useSelect/useSelect'
+import useOpenFolder from './useOpenFolder/useOpenFolder'
 
 import { elementType, selectedType } from '../../store/features/contentSlice/contentSlice.types'
 
@@ -31,6 +32,7 @@ const useContentEvents = () => {
     const [touchHoldTimeout, setTouchHoldTimeout] = useState<ReturnType<typeof setTimeout> | null>(null)
 
     const select = useSelect()
+    const openFolder = useOpenFolder()
 
     const selectMobile = (event: React.TouchEvent<HTMLElement>, isTouchStart: boolean, type: elementType, id: number) => {
         event.preventDefault()
@@ -55,8 +57,6 @@ const useContentEvents = () => {
             }
         }
     }
-
-    const openFolder = (folderId: number) => dispatch(setTreeLocation(folderId))
 
     const selectAll = (unselectAllOnSecondClick: boolean = true) => dispatch(
         setSelected(selectAllClick(currentFolder, selected, unselectAllOnSecondClick))
