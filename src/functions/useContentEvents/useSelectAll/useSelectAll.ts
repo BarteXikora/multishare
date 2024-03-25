@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from '../../../store/store'
 import { setSelected } from '../../../store/features/contentSlice/contentSlice'
-import selectAllClick from '../selectAllClick/selectAllClick'
+import getAllElements from '../functions/getAllElements/getAllElements'
 
 const useSelectAll = () => {
     const dispatch = useDispatch()
@@ -9,7 +9,7 @@ const useSelectAll = () => {
     const selected = useSelector(state => state.content.selected)
 
     const selectAll = (unselectAllOnSecondClick: boolean = true) => {
-        dispatch(setSelected(selectAllClick(currentFolder, selected, unselectAllOnSecondClick)))
+        dispatch(setSelected(getAllElements(currentFolder, selected, unselectAllOnSecondClick)))
     }
 
     return selectAll

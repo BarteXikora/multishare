@@ -1,6 +1,6 @@
-import { contentDisplayType, selectedType } from '../../../store/features/contentSlice/contentSlice.types'
+import { contentDisplayType, selectedType } from '../../../../store/features/contentSlice/contentSlice.types'
 
-const selectAllClick = (content: contentDisplayType, selected: selectedType, unselectAllOnSecondClick: boolean): selectedType => {
+const getAllElements = (content: contentDisplayType, selected: selectedType, unselectAllOnSecondClick: boolean): selectedType => {
     const result: selectedType = { folders: [], files: [], selectionStart: null }
 
     if (content.folders.length > 0) {
@@ -18,4 +18,4 @@ const selectAllClick = (content: contentDisplayType, selected: selectedType, uns
     return result
 }
 
-export default selectAllClick
+export default getAllElements
