@@ -1,5 +1,4 @@
 import Button from '../../../ui/button/Button'
-import NewFolderWindow from '../../../windows/newFolderWindow/NewFolderWindow'
 
 import { useSelector, useDispatch } from '../../../../store/store'
 import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSlice'
@@ -26,7 +25,7 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
     const viewStyle = useSelector(state => state.view.contentViewStyle)
 
     const handleCreateFolderWindow = () => {
-        dispatch(showWindow({ title: 'Utwórz nowy folder', content: <NewFolderWindow /> }))
+        dispatch(showWindow({ title: 'Utwórz nowy folder', content: 'CREATE_NEW_FOLDER' }))
     }
 
     return <>
