@@ -1,26 +1,19 @@
-import { useDispatch } from '../../store/store'
-import { setSelected } from '../../store/features/contentSlice/contentSlice'
 import { useNavigate } from 'react-router-dom'
 
 import useSelect from './useSelect/useSelect'
 import useOpenFolder from './useOpenFolder/useOpenFolder'
 import useMobileEvents from './useMobileEvents/useMobileEvents'
 import useSelectAll from './useSelectAll/useSelectAll'
-
-import { selectedType } from '../../store/features/contentSlice/contentSlice.types'
-
-const emptySelect: selectedType = { folders: [], files: [], selectionStart: null }
+import useUnselectAll from './useUnselectAll/useUnselectAll'
 
 const useContentEvents = () => {
-    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const select = useSelect()
     const openFolder = useOpenFolder()
     const mobileEvents = useMobileEvents()
     const selectAll = useSelectAll()
-
-    const unselectAll = () => dispatch(setSelected(emptySelect))
+    const unselectAll = useUnselectAll()
 
     return {
         folderEvents: {
