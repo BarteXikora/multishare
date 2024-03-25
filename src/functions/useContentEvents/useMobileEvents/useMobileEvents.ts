@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
+import { useNavigate } from 'react-router-dom'
 import { setSelected } from '../../../store/features/contentSlice/contentSlice'
 import useOpenFolder from '../useOpenFolder/useOpenFolder'
 import getSingleElement from '../functions/getSingleElement/getSingleElement'
@@ -9,6 +10,7 @@ import { selectedType, elementType } from '../../../store/features/contentSlice/
 
 const useMobileEvents = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const openFolder = useOpenFolder()
 
     const selected = useSelector(state => state.content.selected)
@@ -42,6 +44,7 @@ const useMobileEvents = () => {
 
                 if (selectedCnt(selected) === 0) {
                     if (type === 'FOLDER') openFolder(id)
+                    else navigate('/file/' + id.toString())
                 }
                 else dispatch(setSelected(getSwitchedElements({ ...selected }, type, id)))
             }
