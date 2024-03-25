@@ -22,11 +22,12 @@ const Window = () => {
 
         switch (window.content) {
             case 'CREATE_NEW_FOLDER': selectedWindowBody = <NewFolderWindow />; break
-            case 'CAN_NOT_OPEN_IN_TRASH': selectedWindowBody = <CanNotOpenInTrashWindow />
+            case 'CAN_NOT_OPEN_IN_TRASH': selectedWindowBody = <CanNotOpenInTrashWindow data={window.data} />
         }
 
         setWindowBody(selectedWindowBody)
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [window.content])
 
     if (!window.isShown) return null
