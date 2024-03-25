@@ -4,51 +4,29 @@ import { useSelector } from '../../../../store/store'
 import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
 import FolderNotFound from '../../../elements/folderNotFound/FolderNotFound'
-import Folder from '../../../elements/folder/Folder'
+import TrashWarning from '../../../elements/trashWarning/TrashWarning'
 import File from '../../../elements/file/File'
 import EmptyFolder from '../../../elements/emptyFolder/EmptyFolder'
+import FoldersSection from './foldersSection/FoldersSection'
 
 const ContentIconsView = () => {
     const content = useSelector(state => state.content.currentFolder)
     const selected = useSelector(state => state.content.selected)
     const displayType = useSelector(state => state.content.displayType)
 
-    const { folderEvents, filesEvents } = useContentEvents()
+    const { filesEvents } = useContentEvents()
 
     if (content.notFound) return <StyledContentIconsView><FolderNotFound /></StyledContentIconsView>
 
     return <StyledContentIconsView>
-        {
-            displayType === 'TREE' && content.folders.length > 0 && (
-                <section className='folders-section'>
-                    <h2>Foldery:</h2>
+        {displayType === 'TRASH' && <TrashWarning />}
 
-                    <div className="content">
-                        {
-                            content.folders.map(folder => {
-                                return <Folder
-                                    key={folder.id}
-                                    id={folder.id}
-                                    displayName={folder.name}
-                                    isStar={folder.star || false}
-                                    isSelected={selected.folders ? selected.folders.includes(folder.id) : false}
-
-                                    onClick={e => folderEvents.onClick(e, folder.id)}
-                                    onDoubleClick={() => folderEvents.onDoubleClick(folder.id)}
-                                    onTouchStart={e => folderEvents.onTouchStart(e, folder.id)}
-                                    onTouchEnd={e => folderEvents.onTouchEnd(e, folder.id)}
-                                />
-                            })
-                        }
-                    </div>
-                </section>
-            )
-        }
+        {displayType !== 'FILES' && content.folders.length > 0 && <FoldersSection content={content} selected={selected} />}
 
         {
             content.files.length > 0 && (
                 <section className='files-section'>
-                    <h2>{displayType === 'TREE' ? 'Pliki:' : 'Wszystkie pliki:'}</h2>
+                    <h2>{displayType !== 'FILES' ? 'Pliki:' : 'Wszystkie pliki:'}</h2>
 
                     <div className="content">
                         {
