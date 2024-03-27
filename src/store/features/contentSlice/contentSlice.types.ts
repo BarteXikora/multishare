@@ -15,7 +15,7 @@ export type folderType = {
     name: string,
     details: folderDetailsType,
     star: boolean,
-    isInTrash: false
+    isInTrash: boolean
 }
 
 export type folderDisplayType = {
@@ -34,7 +34,7 @@ export type fileType = {
     preview: string | false,
     details: fileDetailsType,
     star: boolean,
-    isInTrash: false
+    isInTrash: boolean
 }
 
 export type contentType = {
