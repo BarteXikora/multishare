@@ -76,6 +76,8 @@ io.on('connection', (socket) => {
     })
 
     socket.on('move_to_trash', data => {
+        console.log('move_to_trash', data)
+
         const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
 
         let currentContent = room === 0 ? contentDefault : room === 1 ? contentProject1 : null
@@ -85,7 +87,7 @@ io.on('connection', (socket) => {
             currentContent = currentContent.files.map(f => f.id === element.id ? { ...f, isInTrash: true } : f)
         })
 
-        socket.to(room).emmit('moved_to_trash', data)
+        socket.to(room).emit('moved_to_trash', data)
     })
 })
 
