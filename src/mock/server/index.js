@@ -74,6 +74,19 @@ io.on('connection', (socket) => {
 
         socket.to(room).emit('new_folder', data)
     })
+
+    socket.on('move_to_trash', data => {
+        const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
+
+        let currentContent = room === 0 ? contentDefault : room === 1 ? contentProject1 : null
+        if (currentContent === null) socket.emit('moved_to_trash', null)
+
+        data.files.forEach(element => {
+            currentContent = currentContent.files.map(f => f.id === element.id ? { ...f, isInTrash: true } : f)
+        })
+
+        socket.to(room).emmit('moved_to_trash', data)
+    })
 })
 
 server.listen(3001, () => console.log('server is listening on port 3001'))
