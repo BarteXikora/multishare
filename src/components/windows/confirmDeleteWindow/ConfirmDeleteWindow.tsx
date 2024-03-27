@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from '../../../store/store'
+import { moveToTrash } from '../../../store/features/contentSlice/contentSlice'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
 import StyledConfirmDeleteWindow from './ConfirmDeleteWindow.styles'
@@ -13,6 +14,11 @@ const ConfirmDeleteWindow = () => {
     const content = useSelector(state => state.content.loadedContent)
     const selected = useSelector(state => state.content.selected)
     const selectedCnt = selected.folders.length + selected.files.length
+
+    const handleMoveToTrash = () => {
+        dispatch(moveToTrash(selected))
+        dispatch(closeWindow())
+    }
 
     return <StyledConfirmDeleteWindow>
         <section className="info-section">
@@ -57,7 +63,7 @@ const ConfirmDeleteWindow = () => {
             </Button>
 
             {
-                selectedCnt > 0 && <Button $variant='wrong'>
+                selectedCnt > 0 && <Button $variant='wrong' onClick={handleMoveToTrash}>
                     <img src={iconTrash} alt='Kosz' />
 
                     Tak, przenieś do kosza
