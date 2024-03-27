@@ -23,6 +23,16 @@ const onInitializeUser = (dispatch: Dispatch, next: any) => {
         return
     }
     socket.on('new_folder', (data: any) => handleNewFolder(data))
+
+    const handleMoveToTrash = (data: any) => {
+        if (data === null) return alert('error')
+
+        const action = { type: 'contentSlice/moveToTrash', payload: data }
+        next(action)
+
+        return
+    }
+    socket.on('moved_to_trash', (data: any) => handleMoveToTrash(data))
 }
 
 export default onInitializeUser
