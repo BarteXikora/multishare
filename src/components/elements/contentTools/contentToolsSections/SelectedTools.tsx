@@ -1,6 +1,7 @@
 import Button from '../../../ui/button/Button'
 import { useDispatch, useSelector } from '../../../../store/store'
 import { toggle } from '../../../../store/features/detailsSectionSlice/detailsSectionSlice'
+import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 
 import iconDownload from '../../../../assets/icons/icon-download.svg'
 import iconMove from '../../../../assets/icons/icon-move.svg'
@@ -12,6 +13,13 @@ import iconDetails from '../../../../assets/icons/icon-details.svg'
 const SelectedTools = () => {
     const dispatch = useDispatch()
     const displayType = useSelector(state => state.content.displayType)
+
+    const handleDelete = () => {
+        dispatch(showWindow({
+            title: 'Czy na pewno chcesz usunąć wybrane elementy?',
+            content: 'CONFIRM_DELETE'
+        }))
+    }
 
     return <section className="selected-tools">
         {
@@ -34,7 +42,7 @@ const SelectedTools = () => {
                     <span className="label">Oznacz gwiazdką</span>
                 </Button>
 
-                <Button $variant='wrong'>
+                <Button $variant='wrong' onClick={handleDelete}>
                     <img src={iconTrash} alt="Usuń" />
 
                     <span className="label">Usuń</span>
