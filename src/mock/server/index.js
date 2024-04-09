@@ -75,16 +75,61 @@ io.on('connection', (socket) => {
         socket.to(room).emit('new_folder', data)
     })
 
+    const getPath = (content, folderId) => {
+        let path = []
+        let lastFolder = folderId
+
+        while (lastFolder !== -1) {
+            const folderFound = content.filter(element => element.id === lastFolder)
+
+            if (folderFound.length !== 1) return []
+
+            if (path.filter(p => p === folderFound[0].id).length !== 0) return []
+
+            path.push(folderFound[0].id)
+            lastFolder = folderFound[0].parentFolder
+        }
+
+        return path
+    }
+
     socket.on('move_to_trash', data => {
         console.log('move_to_trash', data)
 
         const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
 
-        let currentContent = room === 0 ? contentDefault : room === 1 ? contentProject1 : null
-        if (currentContent === null) socket.emit('moved_to_trash', null)
+        let currentContent = room === 0 ? { ...contentDefault } : room === 1 ? { ...contentProject1 } : null
+        if (currentContent === null) return socket.emit('moved_to_trash', null)
 
-        data.files.forEach(element => {
-            currentContent = currentContent.files.map(f => f.id === element.id ? { ...f, isInTrash: true } : f)
+        const allElementsToChange = { folders: data.folders, files: data.files }
+        data.folders.forEach(element => {
+            currentContent.folders.forEach(folder =>
+                getPath(currentContent.folders, folder.id).includes(element) && allElementsToChange.folders.push(folder.id)
+            )
+
+            currentContent.files.forEach(file =>
+                getPath(currentContent.folders, file.parentFolder).includes(element) && allElementsToChange.files.push(file.id)
+            )
+        })
+
+        console.log('ALL', allElementsToChange)
+
+        allElementsToChange.folders.forEach(element => {
+            let newFolders = currentContent.folders.map(f => f.id === element ? { ...f, isInTrash: true } : f)
+
+            currentContent.folders = newFolders
+
+            if (room === 0) contentDefault.folders = newFolders
+            else contentProject1.folders = newFolders
+        })
+
+        allElementsToChange.files.forEach(element => {
+            let newFiles = currentContent.files.map(f => f.id === element ? { ...f, isInTrash: true } : f)
+
+            currentContent.files = newFiles
+
+            if (room === 0) contentDefault.files = newFiles
+            else contentProject1.files = newFiles
         })
 
         socket.to(room).emit('moved_to_trash', data)
