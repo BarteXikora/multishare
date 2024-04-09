@@ -3,6 +3,7 @@ import { contentStateType } from '../../contentSlice.types'
 
 import getCurrentPath from '../../../../../functions/getCurrentPath/getCurrentPath'
 import getCurrentContent from '../../../../../functions/getCurrentContent/getCurrentContent'
+import getTrashContent from '../../../../../functions/getTrashContent/getTrashContent'
 
 const setTreeLocation = (state: contentStateType, action: PayloadAction<number>) => {
     if (state.loadedContent.status !== 'READY') return
@@ -18,12 +19,16 @@ const setTreeLocation = (state: contentStateType, action: PayloadAction<number>)
         state.currentPath = newPath
         state.currentFolder = getCurrentContent(state.loadedContent.content, action.payload)
 
-    } else {
+    } else if (state.displayType === 'FILES') {
         state.currentPath = []
         state.currentFolder = {
             folders: [],
-            files: state.loadedContent.content.files
+            files: state.loadedContent.content.files.filter(f => !f.isInTrash)
         }
+
+    } else {
+        state.currentPath = []
+        state.currentFolder = getTrashContent(state.loadedContent.content)
     }
 }
 

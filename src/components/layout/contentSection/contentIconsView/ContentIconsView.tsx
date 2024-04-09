@@ -1,11 +1,10 @@
-import StyledContentIconsView from './ContentIconsView.styles'
-
 import { useSelector } from '../../../../store/store'
-import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
+import StyledContentIconsView from './ContentIconsView.styles'
 import FolderNotFound from '../../../elements/folderNotFound/FolderNotFound'
-import Folder from '../../../elements/folder/Folder'
-import File from '../../../elements/file/File'
+import TrashWarning from '../../../elements/trashWarning/TrashWarning'
+import FoldersSection from './foldersSection/FoldersSection'
+import FilesSection from './filesSection/FilesSection'
 import EmptyFolder from '../../../elements/emptyFolder/EmptyFolder'
 
 const ContentIconsView = () => {
@@ -13,69 +12,16 @@ const ContentIconsView = () => {
     const selected = useSelector(state => state.content.selected)
     const displayType = useSelector(state => state.content.displayType)
 
-    const { folderEvents, filesEvents } = useContentEvents()
-
     if (content.notFound) return <StyledContentIconsView><FolderNotFound /></StyledContentIconsView>
 
     return <StyledContentIconsView>
-        {
-            displayType === 'TREE' && content.folders.length > 0 && (
-                <section className='folders-section'>
-                    <h2>Foldery:</h2>
+        {displayType === 'TRASH' && <TrashWarning />}
 
-                    <div className="content">
-                        {
-                            content.folders.map(folder => {
-                                return <Folder
-                                    key={folder.id}
-                                    id={folder.id}
-                                    displayName={folder.name}
-                                    isStar={folder.star || false}
-                                    isSelected={selected.folders ? selected.folders.includes(folder.id) : false}
+        {displayType !== 'FILES' && content.folders.length > 0 && <FoldersSection content={content} selected={selected} />}
 
-                                    onClick={e => folderEvents.onClick(e, folder.id)}
-                                    onDoubleClick={() => folderEvents.onDoubleClick(folder.id)}
-                                    onTouchStart={e => folderEvents.onTouchStart(e, folder.id)}
-                                    onTouchEnd={e => folderEvents.onTouchEnd(e, folder.id)}
-                                />
-                            })
-                        }
-                    </div>
-                </section>
-            )
-        }
+        {content.files.length > 0 && <FilesSection content={content} selected={selected} displayType={displayType} />}
 
-        {
-            content.files.length > 0 && (
-                <section className='files-section'>
-                    <h2>{displayType === 'TREE' ? 'Pliki:' : 'Wszystkie pliki:'}</h2>
-
-                    <div className="content">
-                        {
-                            content.files.map(file => {
-                                return <File
-                                    key={file.id}
-                                    displayName={file.name}
-                                    extension={file.extension}
-                                    preview={file.preview}
-                                    isStar={file.star || false}
-                                    isSelected={selected.files ? selected.files.includes(file.id) : false}
-
-                                    onClick={e => filesEvents.onClick(e, file.id)}
-                                    onDoubleClick={() => filesEvents.onDoubleClick(file.id)}
-                                    onTouchStart={e => filesEvents.onTouchStart(e, file.id)}
-                                    onTouchEnd={e => filesEvents.onTouchEnd(e, file.id)}
-                                />
-                            })
-                        }
-                    </div>
-                </section>
-            )
-        }
-
-        {
-            (content.folders.length === 0 && content.files.length === 0) && <EmptyFolder />
-        }
+        {(content.folders.length === 0 && content.files.length === 0) && <EmptyFolder />}
     </StyledContentIconsView>
 
 }

@@ -47,7 +47,7 @@ const PathBox = () => {
 
                 :
 
-                <Title />
+                <Title displayType={displayType} />
         }
     </StyledPathBox>
 }

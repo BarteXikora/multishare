@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { setDisplayType, setTreeLocation } from '../../store/features/contentSlice/contentSlice'
+import getDisplayTypeFromPathname from '../getDisplayTypeFromPathname/getDisplayTypeFromPathname'
 
 const useUpdatePathName = () => {
     const navigate = useNavigate()
@@ -14,7 +15,7 @@ const useUpdatePathName = () => {
     const displayType = useSelector(state => state.content.displayType)
 
     useEffect(() => {
-        let newPathName = displayType === 'TREE' ? '/project/' : '/files/'
+        let newPathName = displayType === 'TREE' ? '/project/' : displayType === 'FILES' ? '/files/' : '/trash/'
 
         if (project) newPathName += project.id
 
@@ -34,7 +35,7 @@ const useUpdatePathName = () => {
     }, [currentFolder])
 
     useEffect(() => {
-        const pathType = /\/files/.test(location.pathname) ? 'FILES' : 'TREE'
+        const pathType = getDisplayTypeFromPathname(location.pathname)
 
         if (displayType !== pathType) {
             dispatch(setDisplayType(pathType))

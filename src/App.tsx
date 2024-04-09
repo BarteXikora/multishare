@@ -28,6 +28,8 @@ const App = () => {
                 <Route path='/project/*' />
 
                 <Route path='/files/*' />
+
+                <Route path='/trash/*' />
               </Route>
 
               <Route path='/projects' element={<ProjectsPage />} />
