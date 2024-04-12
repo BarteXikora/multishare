@@ -28,7 +28,7 @@ const setTreeLocation = (state: contentStateType, action: PayloadAction<number>)
 
     } else {
         state.currentPath = []
-        state.currentFolder = getTrashContent(state.loadedContent.content)
+        state.currentFolder = getTrashContent(state.loadedContent.trash)
     }
 }
 
