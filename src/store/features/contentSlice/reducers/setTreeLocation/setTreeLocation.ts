@@ -23,7 +23,7 @@ const setTreeLocation = (state: contentStateType, action: PayloadAction<number>)
         state.currentPath = []
         state.currentFolder = {
             folders: [],
-            files: state.loadedContent.content.files.filter(f => !f.isInTrash)
+            files: state.loadedContent.content.files
         }
 
     } else {
