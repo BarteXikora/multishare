@@ -1,21 +1,26 @@
-import { contentDisplayType, contentType } from '../../store/features/contentSlice/contentSlice.types'
-// import getInsideContent from '../getInsideContent/getInsideContent'
+import { contentDisplayType, contentType, trashType } from '../../store/features/contentSlice/contentSlice.types'
+import getInsideContent from '../getInsideContent/getInsideContent'
 
-const getTrashContent = (content: contentType): contentDisplayType => {
+const getTrashContent = (content: trashType): contentDisplayType => {
     const response: contentDisplayType = { folders: [], files: [] }
 
-    // const foldersFound = content.folders.filter(f => f.isInTrash)
-    // foldersFound.forEach(f => {
-    //     response.folders.push({
-    //         id: f.id,
-    //         name: f.name,
-    //         insideContent: getInsideContent(content, f.id),
-    //         details: f.details,
-    //         star: f.star
-    //     })
-    // })
+    const allTrash: contentType = {
+        folders: [...content.view.folders, ...content.contained.folders],
+        files: [...content.view.files, ...content.contained.files]
+    }
 
-    // response.files = content.files.filter(f => f.isInTrash)
+    const foldersFound = content.view.folders
+    foldersFound.forEach(f => {
+        response.folders.push({
+            id: f.id,
+            name: f.name,
+            details: f.details,
+            insideContent: getInsideContent(allTrash, f.id),
+            star: f.star
+        })
+    })
+
+    response.files = content.view.files
 
     return response
 }
