@@ -40,6 +40,11 @@ export type contentType = {
     files: fileType[]
 }
 
+export type trashType = {
+    view: contentType,
+    contained: contentType
+}
+
 export type contentDisplayType = {
     folders: folderDisplayType[],
     files: fileType[],
@@ -55,6 +60,7 @@ type loadedContentLoadingType = {
 type loadedContentReadyType = {
     status: 'READY'
     content: contentType
+    trash: trashType
 }
 
 type loadedContentErrorType = {
