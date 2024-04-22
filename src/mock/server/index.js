@@ -71,8 +71,8 @@ io.on('connection', (socket) => {
 
         const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
 
-        if (room === 0) contentDefault.folders.push(data)
-        else if (room === 1) contentProject1.folders.push(data)
+        if (room === 0) contentDefault.content.folders.push(data)
+        else if (room === 1) contentProject1.content.folders.push(data)
 
         socket.to(room).emit('new_folder', data)
     })
