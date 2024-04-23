@@ -16,8 +16,15 @@ const SelectedTools = () => {
 
     const handleDelete = () => {
         dispatch(showWindow({
-            title: 'Czy na pewno chcesz usunąć wybrane elementy?',
+            title: 'Czy na pewno chcesz przenieść wybrane elementy do kosza?',
             content: 'CONFIRM_DELETE'
+        }))
+    }
+
+    const handleDeleteForever = () => {
+        dispatch(showWindow({
+            title: 'Czy na pewno chcesz trwale usunąć wybrane elementy?',
+            content: 'CONFIRM_DELETE_FOREVER'
         }))
     }
 
@@ -58,7 +65,7 @@ const SelectedTools = () => {
                     <span className="label">Przywróć...</span>
                 </Button>
 
-                <Button $variant='wrong'>
+                <Button $variant='wrong' onClick={handleDeleteForever}>
                     <img src={iconTrash} alt="Usuń" />
 
                     <span className="label">Usuń na zawsze</span>
