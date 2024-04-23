@@ -16,7 +16,7 @@ const ConfirmDeleteWindow = () => {
     const selectedCnt = selected.folders.length + selected.files.length
 
     const handleMoveToTrash = () => {
-        dispatch(moveToTrash({ folders: selected.folders, files: selected.files }))
+        dispatch(moveToTrash({ view: { folders: selected.folders, files: selected.files }, contained: { folders: [], files: [] } }))
         dispatch(closeWindow())
     }
 
