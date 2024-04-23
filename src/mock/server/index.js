@@ -147,7 +147,7 @@ io.on('connection', (socket) => {
         if (room === 0) contentDefault = currentContent
         else contentProject1 = currentContent
 
-        socket.emit('moved_to_trash', allToTrash)
+        socket.to(room).emit('moved_to_trash', allToTrash)
     })
 })
 
