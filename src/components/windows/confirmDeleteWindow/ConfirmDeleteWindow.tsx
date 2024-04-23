@@ -37,7 +37,7 @@ const ConfirmDeleteWindow = () => {
 
                 <div className="elements">
                     {
-                        selected.folders.map(folder => <div className="element">
+                        selected.folders.map(folder => <div key={folder} className="element">
                             <img src={iconFolder} alt='Folder' />
 
                             {
@@ -47,7 +47,7 @@ const ConfirmDeleteWindow = () => {
                     }
 
                     {
-                        selected.files.map(file => <div className="element">
+                        selected.files.map(file => <div key={file} className="element">
                             {
                                 content.status === 'READY' && content.content.files.filter(f => f.id === file)[0]?.name
                             }
