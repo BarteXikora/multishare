@@ -1,3 +1,5 @@
+const util = require('util')
+
 const express = require('express')
 const app = express()
 
@@ -148,6 +150,62 @@ io.on('connection', (socket) => {
         else contentProject1 = currentContent
 
         socket.to(room).emit('moved_to_trash', allToTrash)
+    })
+
+    socket.on('delete_forever', data => {
+        console.log('delete_forever', data)
+
+        const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
+        if (room === -1) return socket.emit('deleted_forever', null)
+
+        let currentContent = room === 0 ? { ...contentDefault } : { ...contentProject1 }
+
+        const allContent = {
+            folders: [...currentContent.content.folders, ...currentContent.trash.contained.folders],
+            files: [...currentContent.content.files, ...currentContent.trash.contained.files]
+        }
+
+        data.folders.forEach(folder => {
+            allContent.folders.forEach(element => {
+                let path = getPath([...allContent.folders, ...currentContent.trash.view.folders], element.id)
+                path.shift()
+
+                if (path.includes(folder)) data.folders.push(element.id)
+            })
+
+            allContent.files.forEach(element => {
+                let path = getPath([...allContent.folders, ...currentContent.trash.view.folders], element.parentFolder)
+
+                if (path.includes(folder)) data.files.push(element.id)
+            })
+        })
+
+        data.folders.forEach(folder => {
+            let found = currentContent.content.folders.find(f => f.id === folder)
+            if (found) return currentContent.content.folders.splice(currentContent.content.folders.indexOf(found), 1)
+
+            found = currentContent.trash.view.folders.find(f => f.id === folder)
+            if (found) return currentContent.trash.view.folders.splice(currentContent.trash.view.folders.indexOf(found), 1)
+
+            found = currentContent.trash.contained.folders.find(f => f.id === folder)
+            if (found) currentContent.trash.contained.folders.splice(currentContent.trash.contained.folders.indexOf(found), 1)
+        })
+
+        data.files.forEach(file => {
+            let found = currentContent.content.files.find(f => f.id === file)
+            if (found) return currentContent.content.files.splice(currentContent.content.files.indexOf(found), 1)
+
+            found = currentContent.trash.view.files.find(f => f.id === file)
+            if (found) return currentContent.trash.view.files.splice(currentContent.trash.view.files.indexOf(found), 1)
+
+            found = currentContent.trash.contained.files.find(f => f.id === file)
+            if (found) currentContent.trash.contained.files.splice(currentContent.trash.contained.files.indexOf(found), 1)
+        })
+
+        if (room === 0) contentDefault = currentContent
+        else contentProject1 = currentContent
+
+        socket.to(room).emit('deleted_forever', data)
     })
 })
 
