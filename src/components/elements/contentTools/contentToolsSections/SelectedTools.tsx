@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from '../../../../store/store'
 import { toggle } from '../../../../store/features/detailsSectionSlice/detailsSectionSlice'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import { restoreFromTrash } from '../../../../store/features/contentSlice/contentSlice'
-import { restoreFromTrashType } from '../../../../store/features/contentSlice/reducers/restoreFromTrash/restorFromTrash'
+import { restoreFromTrashType } from '../../../../store/features/contentSlice/reducers/restoreFromTrash/restoreFromTrash'
 
 import iconDownload from '../../../../assets/icons/icon-download.svg'
 import iconMove from '../../../../assets/icons/icon-move.svg'
