@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-const StyledConfirmDeleteWindow = styled.div`
-    h2 {
+const StyledConfirmDeleteForeverWindow = styled.div`
+     h2 {
         margin: 0;
         font-size: ${(props) => props.theme.fontSizes.subtitle};
     }
@@ -35,4 +35,4 @@ const StyledConfirmDeleteWindow = styled.div`
     }
 `
 
-export default StyledConfirmDeleteWindow
+export default StyledConfirmDeleteForeverWindow

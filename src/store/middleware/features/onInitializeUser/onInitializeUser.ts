@@ -33,6 +33,27 @@ const onInitializeUser = (dispatch: Dispatch, next: any) => {
         return
     }
     socket.on('moved_to_trash', (data: any) => handleMoveToTrash(data))
+
+    const handleDeleteForever = (data: any) => {
+        if (data === null) return alert('error')
+
+        const action = { type: 'contentSlice/deleteForever', payload: data }
+        next(action)
+
+        return
+
+    }
+    socket.on('deleted_forever', (data: any) => handleDeleteForever(data))
+
+    const handleRestoreFromTrash = (data: any) => {
+        if (data == null) return alert('error')
+
+        const action = { type: 'contentSlice/restoreFromTrash', payload: data }
+        next(action)
+
+        return
+    }
+    socket.on('restored_from_trash', (data: any) => handleRestoreFromTrash(data))
 }
 
 export default onInitializeUser

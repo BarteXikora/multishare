@@ -15,7 +15,7 @@ const ContentIconsView = () => {
     if (content.notFound) return <StyledContentIconsView><FolderNotFound /></StyledContentIconsView>
 
     return <StyledContentIconsView>
-        {displayType === 'TRASH' && <TrashWarning />}
+        {displayType === 'TRASH' && <TrashWarning isTrashEmpty={content.folders.length + content.files.length === 0} />}
 
         {displayType !== 'FILES' && content.folders.length > 0 && <FoldersSection content={content} selected={selected} />}
 

@@ -64,8 +64,7 @@ const NewFolderWindow = () => {
             parentFolder: path.length > 0 ? path[path.length - 1].id : -1,
             name: folderName,
             details: {},
-            star: false,
-            isInTrash: false
+            star: false
         }
 
         dispatch(addFolder(newFolder))

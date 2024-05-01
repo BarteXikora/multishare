@@ -14,8 +14,7 @@ export type folderType = {
     parentFolder: number,
     name: string,
     details: folderDetailsType,
-    star: boolean,
-    isInTrash: boolean
+    star: boolean
 }
 
 export type folderDisplayType = {
@@ -33,13 +32,17 @@ export type fileType = {
     extension: string,
     preview: string | false,
     details: fileDetailsType,
-    star: boolean,
-    isInTrash: boolean
+    star: boolean
 }
 
 export type contentType = {
     folders: folderType[],
     files: fileType[]
+}
+
+export type trashType = {
+    view: contentType,
+    contained: contentType
 }
 
 export type contentDisplayType = {
@@ -57,6 +60,7 @@ type loadedContentLoadingType = {
 type loadedContentReadyType = {
     status: 'READY'
     content: contentType
+    trash: trashType
 }
 
 type loadedContentErrorType = {

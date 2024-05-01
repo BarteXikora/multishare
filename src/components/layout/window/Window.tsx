@@ -7,6 +7,7 @@ import Button from '../../ui/button/Button'
 
 import NewFolderWindow from '../../windows/newFolderWindow/NewFolderWindow'
 import ConfirmDeleteWindow from '../../windows/confirmDeleteWindow/ConfirmDeleteWindow'
+import ConfirmDeleteForeverWindow from '../../windows/confirmDeleteForeverWindow/ConfirmDeleteForeverWindow'
 import CanNotOpenInTrashWindow from '../../windows/canNotOpenInTrashWindow/CanNotOpenInTrashWindow'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
@@ -24,6 +25,7 @@ const Window = () => {
         switch (window.content) {
             case 'CREATE_NEW_FOLDER': selectedWindowBody = <NewFolderWindow />; break
             case 'CONFIRM_DELETE': selectedWindowBody = <ConfirmDeleteWindow />; break
+            case 'CONFIRM_DELETE_FOREVER': selectedWindowBody = <ConfirmDeleteForeverWindow />; break
             case 'CAN_NOT_OPEN_IN_TRASH': selectedWindowBody = <CanNotOpenInTrashWindow data={window.data} />
         }
 

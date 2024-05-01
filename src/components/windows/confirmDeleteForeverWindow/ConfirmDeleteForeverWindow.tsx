@@ -1,29 +1,29 @@
 import { useSelector, useDispatch } from '../../../store/store'
-import { moveToTrash } from '../../../store/features/contentSlice/contentSlice'
+import { deleteForever } from '../../../store/features/contentSlice/contentSlice'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
-import StyledConfirmDeleteWindow from './ConfirmDeleteWindow.styles'
+import StyledConfirmDeleteForeverWindow from './ConfirmDeleteForeverWindow.styles'
 import Button from '../../ui/button/Button'
 import ElementsPills from '../../elements/elementsPills/ElementsPills'
 
 import iconTrash from '../../../assets/icons/icon-trash-full.svg'
 
-const ConfirmDeleteWindow = () => {
+const ConfirmDeleteForeverWindow = () => {
     const dispatch = useDispatch()
 
     const selected = useSelector(state => state.content.selected)
     const selectedCnt = selected.folders.length + selected.files.length
 
-    const handleMoveToTrash = () => {
-        dispatch(moveToTrash({ view: { folders: selected.folders, files: selected.files }, contained: { folders: [], files: [] } }))
+    const handleDeleteForever = () => {
+        dispatch(deleteForever({ folders: selected.folders, files: selected.files }))
         dispatch(closeWindow())
     }
 
-    return <StyledConfirmDeleteWindow>
+    return <StyledConfirmDeleteForeverWindow>
         <section className="info-section">
-            <h2>{`Czy na pewno chcesz przenieść ${selectedCnt === 1 ? 'wybrany element' : 'wybrane elementy'} do kosza?`}</h2>
+            <h2>{`Czy na pewno chcesz trwale usunąć ${selectedCnt === 1 ? 'wybrany element' : 'wybrane elementy'}?`}</h2>
 
-            <p>Elementy znajdujące się w koszu będą automatycznie usuwane na zawsze po upływie 30 dni.</p>
+            <p>Usunięte trwale elementów nie będzie można odzyskać.</p>
         </section>
 
         {
@@ -44,14 +44,14 @@ const ConfirmDeleteWindow = () => {
             </Button>
 
             {
-                selectedCnt > 0 && <Button $variant='wrong' onClick={handleMoveToTrash}>
+                selectedCnt > 0 && <Button $variant='wrong' onClick={handleDeleteForever}>
                     <img src={iconTrash} alt='Kosz' />
 
-                    Tak, przenieś do kosza
+                    Tak, usuń trwale
                 </Button>
             }
         </section>
-    </StyledConfirmDeleteWindow>
+    </StyledConfirmDeleteForeverWindow>
 }
 
-export default ConfirmDeleteWindow
+export default ConfirmDeleteForeverWindow
