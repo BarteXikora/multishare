@@ -6,7 +6,7 @@ import FolderNotFound from '../../../elements/folderNotFound/FolderNotFound'
 import ListHeader from '../../../elements/listHeader/ListHeader'
 import ListFolderElement from '../../../elements/listFolderElement/ListFolderElement'
 import ListFileElement from '../../../elements/listFileElement/ListFileElement'
-import EmptyFolder from '../../../elements/emptyFolder/EmptyFolder'
+import Empty from '../../../elements/empty/Empty'
 
 const ContentListView = () => {
     const content = useSelector(state => state.content.currentFolder)
@@ -61,7 +61,7 @@ const ContentListView = () => {
             </div>
         }
 
-        {(content.folders.length === 0 && content.files.length === 0) && <EmptyFolder />}
+        {(content.folders.length === 0 && content.files.length === 0) && <Empty />}
     </StyledContentListView>
 }
 
