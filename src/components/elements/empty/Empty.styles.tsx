@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const StyledEmptyFolder = styled.div`
+const StyledEmpty = styled.div`
     display: inline-flex;
     align-items: center;
     gap: ${(props) => props.theme.margins.extraBig};
@@ -37,4 +37,4 @@ const StyledEmptyFolder = styled.div`
     }
 `
 
-export default StyledEmptyFolder
+export default StyledEmpty

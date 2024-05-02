@@ -1,4 +1,4 @@
-import StyledEmptyFolder from './EmptyFolder.styles'
+import StyledEmpty from './Empty.styles'
 import Button from '../../ui/button/Button'
 
 import useGoBack from '../../../functions/useGoBack/useGoBack'
@@ -7,10 +7,10 @@ import imageEmptyFolder from '../../../assets/images/img-empty-folder.svg'
 import iconBack from '../../../assets/icons/icon-back.svg'
 import iconUpload from '../../../assets/icons/icon-upload.svg'
 
-const EmptyFolder = () => {
+const Empty = () => {
     const goBack = useGoBack()
 
-    return <StyledEmptyFolder>
+    return <StyledEmpty>
         <div className="image">
             <img src={imageEmptyFolder} alt="" />
         </div>
@@ -33,7 +33,7 @@ const EmptyFolder = () => {
             </div>
         </div>
 
-    </StyledEmptyFolder>
+    </StyledEmpty>
 }
 
-export default EmptyFolder
+export default Empty
