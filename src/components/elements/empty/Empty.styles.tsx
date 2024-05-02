@@ -9,6 +9,11 @@ const StyledEmpty = styled.div`
     border-radius: ${(props) => props.theme.borderRadiuses.big};
     pointer-events: all;
 
+    h2 {
+        margin: 0;
+        margin-bottom: ${(props) => props.theme.margins.small}
+    }
+
     p {
         margin: ${(props) => `0 0 ${props.theme.margins.big} 0`}
     }
