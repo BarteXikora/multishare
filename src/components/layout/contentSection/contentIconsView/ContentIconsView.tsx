@@ -5,7 +5,7 @@ import FolderNotFound from '../../../elements/folderNotFound/FolderNotFound'
 import TrashWarning from '../../../elements/trashWarning/TrashWarning'
 import FoldersSection from './foldersSection/FoldersSection'
 import FilesSection from './filesSection/FilesSection'
-import EmptyFolder from '../../../elements/emptyFolder/EmptyFolder'
+import Empty from '../../../elements/empty/Empty'
 
 const ContentIconsView = () => {
     const content = useSelector(state => state.content.currentFolder)
@@ -21,7 +21,7 @@ const ContentIconsView = () => {
 
         {content.files.length > 0 && <FilesSection content={content} selected={selected} displayType={displayType} />}
 
-        {(content.folders.length === 0 && content.files.length === 0) && <EmptyFolder />}
+        {(content.folders.length === 0 && content.files.length === 0) && <Empty />}
     </StyledContentIconsView>
 
 }

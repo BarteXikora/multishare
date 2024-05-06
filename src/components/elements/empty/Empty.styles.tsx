@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const StyledEmptyFolder = styled.div`
+const StyledEmpty = styled.div`
     display: inline-flex;
     align-items: center;
     gap: ${(props) => props.theme.margins.extraBig};
@@ -8,6 +8,11 @@ const StyledEmptyFolder = styled.div`
     padding: ${(props) => props.theme.margins.sectionBig};
     border-radius: ${(props) => props.theme.borderRadiuses.big};
     pointer-events: all;
+
+    h2 {
+        margin: 0;
+        margin-bottom: ${(props) => props.theme.margins.small}
+    }
 
     p {
         margin: ${(props) => `0 0 ${props.theme.margins.big} 0`}
@@ -37,4 +42,4 @@ const StyledEmptyFolder = styled.div`
     }
 `
 
-export default StyledEmptyFolder
+export default StyledEmpty

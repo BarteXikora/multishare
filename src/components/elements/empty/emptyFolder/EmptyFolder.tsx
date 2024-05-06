@@ -1,16 +1,14 @@
-import StyledEmptyFolder from './EmptyFolder.styles'
-import Button from '../../ui/button/Button'
+import Button from '../../../ui/button/Button'
+import useGoBack from '../../../../functions/useGoBack/useGoBack'
 
-import useGoBack from '../../../functions/useGoBack/useGoBack'
-
-import imageEmptyFolder from '../../../assets/images/img-empty-folder.svg'
-import iconBack from '../../../assets/icons/icon-back.svg'
-import iconUpload from '../../../assets/icons/icon-upload.svg'
+import imageEmptyFolder from '../../../../assets/images/img-empty-folder.svg'
+import iconBack from '../../../../assets/icons/icon-back.svg'
+import iconUpload from '../../../../assets/icons/icon-upload.svg'
 
 const EmptyFolder = () => {
     const goBack = useGoBack()
 
-    return <StyledEmptyFolder>
+    return <>
         <div className="image">
             <img src={imageEmptyFolder} alt="" />
         </div>
@@ -32,8 +30,7 @@ const EmptyFolder = () => {
                 </Button>
             </div>
         </div>
-
-    </StyledEmptyFolder>
+    </>
 }
 
 export default EmptyFolder
