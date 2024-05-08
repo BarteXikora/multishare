@@ -64,6 +64,10 @@ const buttonWrongStyles = css`
 const buttonBigStyles = css`
     padding: ${(props) => props.theme.margins.sectionMedium}; 
     border-radius: ${(props) => props.theme.borderRadiuses.big};
+
+    &::before {
+        border-radius: ${(props) => props.theme.borderRadiuses.big};
+    }
 `
 
 const buttonSmallStyles = css`
@@ -75,7 +79,6 @@ const buttonDisabled = css`
     position: relative;
     background-color: ${(props) => props.theme.colors.gray3};
     color: ${(props) => props.theme.colors.gray6};
-    overflow: hidden;
     cursor: default !important;
 
     &::before {
@@ -87,6 +90,7 @@ const buttonDisabled = css`
         left: 0;
         width: 100%;
         height: 100%;
+        border-radius: ${(props) => props.theme.borderRadiuses.small};
     }
 
     &:hover {

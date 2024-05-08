@@ -9,6 +9,7 @@ import NewFolderWindow from '../../windows/newFolderWindow/NewFolderWindow'
 import ConfirmDeleteWindow from '../../windows/confirmDeleteWindow/ConfirmDeleteWindow'
 import ConfirmDeleteForeverWindow from '../../windows/confirmDeleteForeverWindow/ConfirmDeleteForeverWindow'
 import CanNotOpenInTrashWindow from '../../windows/canNotOpenInTrashWindow/CanNotOpenInTrashWindow'
+import RenameWindow from '../../windows/renameWindow/RenameWindow'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
 
@@ -26,7 +27,8 @@ const Window = () => {
             case 'CREATE_NEW_FOLDER': selectedWindowBody = <NewFolderWindow />; break
             case 'CONFIRM_DELETE': selectedWindowBody = <ConfirmDeleteWindow />; break
             case 'CONFIRM_DELETE_FOREVER': selectedWindowBody = <ConfirmDeleteForeverWindow />; break
-            case 'CAN_NOT_OPEN_IN_TRASH': selectedWindowBody = <CanNotOpenInTrashWindow data={window.data} />
+            case 'CAN_NOT_OPEN_IN_TRASH': selectedWindowBody = <CanNotOpenInTrashWindow data={window.data} />; break
+            case 'RENAME': selectedWindowBody = <RenameWindow />
         }
 
         setWindowBody(selectedWindowBody)

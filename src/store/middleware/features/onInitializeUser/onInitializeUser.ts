@@ -54,6 +54,16 @@ const onInitializeUser = (dispatch: Dispatch, next: any) => {
         return
     }
     socket.on('restored_from_trash', (data: any) => handleRestoreFromTrash(data))
+
+    const handleUpdateContent = (data: any) => {
+        if (data === null) return alert('error')
+
+        const action = { type: 'contentSlice/updateContent', payload: data }
+        next(action)
+
+        return
+    }
+    socket.on('updated_content', (data: any) => handleUpdateContent(data))
 }
 
 export default onInitializeUser

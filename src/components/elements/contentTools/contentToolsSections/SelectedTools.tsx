@@ -7,6 +7,7 @@ import { restoreFromTrashType } from '../../../../store/features/contentSlice/re
 
 import iconDownload from '../../../../assets/icons/icon-download.svg'
 import iconMove from '../../../../assets/icons/icon-move.svg'
+import iconEdit from '../../../../assets/icons/icon-edit-dark.svg'
 import iconStar from '../../../../assets/icons/icon-star-color.svg'
 import iconTrash from '../../../../assets/icons/icon-trash-full.svg'
 import iconRestore from '../../../../assets/icons/icon-restore.svg'
@@ -22,6 +23,15 @@ const SelectedTools = () => {
         dispatch(showWindow({
             title: 'Czy na pewno chcesz przenieść wybrane elementy do kosza?',
             content: 'CONFIRM_DELETE'
+        }))
+    }
+
+    const handleRename = () => {
+        // alert(selected.folders.length + selected.files.length !== 1 ? 'Błąd' : selected.folders.length === 1 ? 'Folder' : 'Plik')
+
+        dispatch(showWindow({
+            title: 'Zmień nazwę',
+            content: 'RENAME'
         }))
     }
 
@@ -54,6 +64,16 @@ const SelectedTools = () => {
                     <img src={iconMove} alt="Przenieś do..." />
 
                     <span className="label">Przenieś do...</span>
+                </Button>
+
+                <Button
+                    $variant='secondary'
+                    disabled={selected.folders.length + selected.files.length > 1}
+                    onClick={handleRename}
+                >
+                    <img src={iconEdit} alt="Zmień nazwę..." />
+
+                    <span className="label">Zmień nazwę...</span>
                 </Button>
 
                 <Button $variant='secondary'>
