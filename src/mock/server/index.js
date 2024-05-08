@@ -325,6 +325,46 @@ io.on('connection', (socket) => {
 
         socket.to(room).emit('restored_from_trash', response)
     })
+
+    socket.on('update_content', data => {
+        console.log('update_content', data)
+
+        const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
+        if (room === -1) return socket.emit('updated_content', null)
+
+        let currentContent = room === 0 ? { ...contentDefault } : { ...contentProject1 }
+
+        // console.log('\n\n before: ', util.inspect(currentContent.content, false, null, true))
+
+        data.folders.forEach(folder => {
+            let found = currentContent.content.folders.find(f => f.id === folder.id)
+            if (!found) return
+
+            currentContent.content.folders.splice(currentContent.content.folders.indexOf(found), 1)
+
+            found = { ...found, ...folder }
+
+            currentContent.content.folders.push(found)
+        })
+
+        data.files.forEach(file => {
+            let found = currentContent.content.files.find(f => f.id === file.id)
+            if (!found) return
+
+            currentContent.content.files.splice(currentContent.content.files.indexOf(found), 1)
+
+            found = { ...found, ...file }
+
+            currentContent.content.files.push(found)
+        })
+
+        // console.log('\n\n after: ', util.inspect(currentContent.content, false, null, true))
+
+        if (room === 0) contentDefault = { ...currentContent }
+        else contentProject1 = { ...currentContent }
+
+        socket.to(room).emit('updated_content', data)
+    })
 })
 
 server.listen(3001, () => console.log('server is listening on port 3001'))
