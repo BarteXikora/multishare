@@ -2,13 +2,15 @@ import StyledRenameWindow from './RenameWindow.styles'
 import InputButton from '../../ui/inputButton/InputButton'
 
 import { useState, useEffect, FormEvent } from 'react'
-import { useSelector } from '../../../store/store'
-import { elementType, fileType, folderType, loadedContentType, selectedType }
+import { useSelector, useDispatch } from '../../../store/store'
+import { elementType, fileType, folderType, loadedContentType, selectedType, updateContentType }
     from '../../../store/features/contentSlice/contentSlice.types'
 
 import getShortenName from '../../../functions/getShortenName/getShortenName'
 
 import iconEdit from '../../../assets/icons/icon-edit.svg'
+import { updateContent } from '../../../store/features/contentSlice/contentSlice'
+import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
 type getCurrentElementType = { element: folderType | fileType | null, elementType: elementType | null }
 
@@ -31,6 +33,8 @@ const getCurrentElement = (content: loadedContentType, selected: selectedType): 
 }
 
 const RenameWindow = () => {
+    const dispatch = useDispatch()
+
     const content = useSelector(state => state.content.loadedContent)
     const selected = useSelector(state => state.content.selected)
 
@@ -58,6 +62,14 @@ const RenameWindow = () => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
+
+        if (!element) return null
+
+        let update: updateContentType = { folders: [], files: [] }
+        update[elementType === 'FOLDER' ? 'folders' : 'files'] = [{ id: element.id, name: newName }]
+
+        dispatch(updateContent(update))
+        dispatch(closeWindow())
     }
 
     return <StyledRenameWindow>
