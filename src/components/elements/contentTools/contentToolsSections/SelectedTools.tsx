@@ -26,6 +26,15 @@ const SelectedTools = () => {
         }))
     }
 
+    const handleRename = () => {
+        // alert(selected.folders.length + selected.files.length !== 1 ? 'Błąd' : selected.folders.length === 1 ? 'Folder' : 'Plik')
+
+        dispatch(showWindow({
+            title: 'Zmień nazwę',
+            content: 'RENAME'
+        }))
+    }
+
     const handleRestoreFromTrash = () => {
         const data: restoreFromTrashType = {
             folders: selected.folders.map(f => { return { id: f, parentFolder: 0 } }),
@@ -57,7 +66,11 @@ const SelectedTools = () => {
                     <span className="label">Przenieś do...</span>
                 </Button>
 
-                <Button $variant='secondary' disabled={selected.folders.length + selected.files.length > 1}>
+                <Button
+                    $variant='secondary'
+                    disabled={selected.folders.length + selected.files.length > 1}
+                    onClick={handleRename}
+                >
                     <img src={iconEdit} alt="Zmień nazwę..." />
 
                     <span className="label">Zmień nazwę...</span>
