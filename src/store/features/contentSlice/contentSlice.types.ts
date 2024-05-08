@@ -40,6 +40,11 @@ export type contentType = {
     files: fileType[]
 }
 
+export type updateContentType = {
+    folders: (Partial<folderType> & Required<Pick<folderType, 'id'>>)[],
+    files: (Partial<fileType> & Required<Pick<fileType, 'id'>>)[]
+}
+
 export type trashType = {
     view: contentType,
     contained: contentType
