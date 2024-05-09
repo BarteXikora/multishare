@@ -35,6 +35,13 @@ const SelectedTools = () => {
         }))
     }
 
+    const handleMove = () => {
+        dispatch(showWindow({
+            title: 'Przenieś do...',
+            content: 'MOVE'
+        }))
+    }
+
     const handleRestoreFromTrash = () => {
         const data: restoreFromTrashType = {
             folders: selected.folders.map(f => { return { id: f, parentFolder: 0 } }),
@@ -60,7 +67,7 @@ const SelectedTools = () => {
                     <span className="label">Pobierz</span>
                 </Button>
 
-                <Button $variant='secondary'>
+                <Button $variant='secondary' onClick={handleMove}>
                     <img src={iconMove} alt="Przenieś do..." />
 
                     <span className="label">Przenieś do...</span>
