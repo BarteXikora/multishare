@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from '../../../store/store'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
 import iconMove from '../../../assets/icons/icon-move.svg'
+import { updateContent } from '../../../store/features/contentSlice/contentSlice'
+import { updateContentType } from '../../../store/features/contentSlice/contentSlice.types'
 
 const MoveWindow = () => {
     const dispatch = useDispatch()
@@ -14,6 +16,18 @@ const MoveWindow = () => {
     const selected = useSelector(state => state.content.selected)
 
     const [selectedLocation, setSelectedLocation] = useState<number | null>(null)
+
+    const handleMove = () => {
+        if (!selectedLocation) return
+
+        let data: updateContentType = {
+            folders: selected.folders.map(f => { return { id: f, parentFolder: selectedLocation } }),
+            files: selected.files.map(f => { return { id: f, parentFolder: selectedLocation } })
+        }
+
+        dispatch(updateContent(data))
+        dispatch(closeWindow())
+    }
 
     return <StyledMoveWindow>
         <div className="info-section">
@@ -34,7 +48,7 @@ const MoveWindow = () => {
                     Anuluj
                 </Button>
 
-                <Button disabled={selectedLocation === null}>
+                <Button disabled={selectedLocation === null} onClick={handleMove}>
                     <img src={iconMove} alt='Przenieś' />
 
                     Przenieś
