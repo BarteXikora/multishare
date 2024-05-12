@@ -1,15 +1,19 @@
 import StyledMoveWindow from './MoveWindow.styles'
+import LocationSelector from '../../elements/locationSelector/LocationSelector'
 import Button from '../../ui/button/Button'
 
 import { useState } from 'react'
-import { useSelector } from '../../../store/store'
+import { useSelector, useDispatch } from '../../../store/store'
+import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
 import iconMove from '../../../assets/icons/icon-move.svg'
 
 const MoveWindow = () => {
+    const dispatch = useDispatch()
+
     const selected = useSelector(state => state.content.selected)
 
-    const [selectedLocation, setSelectedLocation] = useState<string | null>(null)
+    const [selectedLocation, setSelectedLocation] = useState<number | null>(null)
 
     return <StyledMoveWindow>
         <div className="info-section">
@@ -20,10 +24,13 @@ const MoveWindow = () => {
             }</h2>
         </div>
 
+        <LocationSelector selectionState={[selectedLocation, setSelectedLocation]} excluded={selected.folders} />
+
         <div className="actions-section">
+            <div className="warning">{selectedLocation === null && 'Należy wybrać lokalizację!'}</div>
 
             <div className="buttons">
-                <Button $variant='secondary'>
+                <Button $variant='secondary' onClick={() => dispatch(closeWindow())}>
                     Anuluj
                 </Button>
 
@@ -32,10 +39,6 @@ const MoveWindow = () => {
 
                     Przenieś
                 </Button>
-
-                {
-                    selectedLocation === null && <div className="warning">Należy wybrać lokalizację!</div>
-                }
             </div>
         </div>
     </StyledMoveWindow>
