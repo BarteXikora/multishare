@@ -38,7 +38,7 @@ const LocationSelector = (props: locationSelectorType) => {
         else setCurrentFolder({ id, name: found.name })
 
         setBody(getCurrentContent(content.content, id).folders)
-        setSelectedFolder(null)
+        setSelectedFolder(found || id === -1 ? id : null)
     }
 
     const handleGoBack = () => {
@@ -56,7 +56,6 @@ const LocationSelector = (props: locationSelectorType) => {
         }
 
         setBody(getCurrentContent(content.content, parent?.id || -1).folders)
-        setSelectedFolder(null)
     }
 
     return <StyledLocationSelector>
@@ -68,15 +67,23 @@ const LocationSelector = (props: locationSelectorType) => {
                     <Button $variant='tertiary' onClick={() => handleGoBack()}>
                         <img src={iconBack} alt="Wróć" />
                     </Button>
-            } {
-                currentFolder.id === -1 ?
-                    <h3>{project?.name || 'Folder główny'}</h3>
-                    :
-                    currentFolder.name === null ?
-                        <h3 className="wrong">Nie znaleziono folderu</h3>
-                        :
-                        <h3>{currentFolder.name}</h3>
             }
+            <Button
+                $variant='quaternary'
+                disabled={(currentFolder.name === null && currentFolder.id !== -1) || excluded.includes(currentFolder.id)}
+                className={`path-button ${currentFolder.id === selectedFolder && 'path-button-active'}`}
+                onClick={() => setSelectedFolder(currentFolder.id)}
+            >
+                {
+                    currentFolder.id === -1 ?
+                        <h3>{project?.name || 'Folder główny'}</h3>
+                        :
+                        currentFolder.name === null ?
+                            <h3 className="wrong">Nie znaleziono folderu</h3>
+                            :
+                            <h3>{currentFolder.name}</h3>
+                }
+            </Button>
         </section>
 
         <section className="body">

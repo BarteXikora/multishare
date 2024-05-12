@@ -4,7 +4,6 @@ const StyledLocationSelector = styled.div`
     h3 {
         font-size: ${(props) => props.theme.fontSizes.subtitle};
         margin: 0;
-        /* font-weight: normal; */
     }
 
     .path {
@@ -15,6 +14,19 @@ const StyledLocationSelector = styled.div`
         color: ${(props) => props.theme.colors.white};
         border-radius: ${(props) => props.theme.borderRadiuses.small};
         margin-bottom: ${(props) => props.theme.margins.small};
+
+        .path-button {
+            color: ${(props) => props.theme.colors.white};
+
+            &:hover {
+                background-color: ${(props) => props.theme.colors.gray6};
+            }
+
+            &.path-button-active {
+                background-color: ${(props) => props.theme.colors.primary4};
+                color: ${(props) => props.theme.colors.black};
+            }
+        }
     }
 
     .body {
