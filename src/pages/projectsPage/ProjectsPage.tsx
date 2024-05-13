@@ -6,6 +6,7 @@ import LoadingPage from '../loadingPage/LoadingPage'
 import ErrorPage from '../errorPage/ErrorPage'
 import ProjectsTopBar from '../../components/layout/projectsTopBar/ProjectsTopBar'
 import ProjectsSection from '../../components/layout/projectsSection/ProjectsSection'
+import { setSelected } from '../../store/features/contentSlice/contentSlice'
 
 const ProjectsPage = () => {
     const dispatch = useDispatch()
@@ -14,6 +15,7 @@ const ProjectsPage = () => {
 
     useEffect(() => {
         dispatch(initializeProjects())
+        dispatch(setSelected({ folders: [], files: [], selectionStart: null }))
 
     }, [dispatch])
 
