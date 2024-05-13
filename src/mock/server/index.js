@@ -365,6 +365,12 @@ io.on('connection', (socket) => {
 
         socket.to(room).emit('updated_content', data)
     })
+
+    socket.on('download_request', data => {
+        console.log('download_request', data)
+
+        socket.emit('download_response', { type: 'RES', data: { data: 'Work in progress...', name: 'Work in progress.txt' } })
+    })
 })
 
 server.listen(3001, () => console.log('server is listening on port 3001'))

@@ -2,7 +2,7 @@ import Button from '../../../ui/button/Button'
 import { useDispatch, useSelector } from '../../../../store/store'
 import { toggle } from '../../../../store/features/detailsSectionSlice/detailsSectionSlice'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
-import { restoreFromTrash, updateContent } from '../../../../store/features/contentSlice/contentSlice'
+import { downloadElements, restoreFromTrash, updateContent } from '../../../../store/features/contentSlice/contentSlice'
 import { restoreFromTrashType } from '../../../../store/features/contentSlice/reducers/restoreFromTrash/restoreFromTrash'
 
 import iconDownload from '../../../../assets/icons/icon-download.svg'
@@ -20,6 +20,14 @@ const SelectedTools = () => {
     const content = useSelector(state => state.content.loadedContent)
     const selected = useSelector(state => state.content.selected)
     const displayType = useSelector(state => state.content.displayType)
+
+    const handleDownload = () => {
+        dispatch(downloadElements({
+            type: 'REQ',
+            folders: selected.folders,
+            files: selected.files
+        }))
+    }
 
     const handleDelete = () => {
         dispatch(showWindow({
@@ -79,7 +87,7 @@ const SelectedTools = () => {
     return <section className="selected-tools">
         {
             displayType !== 'TRASH' && <div className="tools-buttons">
-                <Button>
+                <Button onClick={handleDownload}>
                     <img src={iconDownload} alt="Pobierz" />
 
                     <span className="label">Pobierz</span>

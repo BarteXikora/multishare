@@ -9,6 +9,7 @@ import resetContentReducer from './reducers/resetContent/resetContent'
 import setSelectedReducer from './reducers/setSelected/setSelected'
 import setTreeLocationReducer from './reducers/setTreeLocation/setTreeLocation'
 import setDisplayTypeReducer from './reducers/setDisplayType/setDisplayType'
+import downloadElementsReducer from './reducers/downloadElements/downloadElements'
 import addFolderReducer from './reducers/addFolder/addFolder'
 import updateContentReducer from './reducers/updateContent/updateContent'
 import moveToTrashReducer from './reducers/moveToTrash/moveToTrash'
@@ -26,6 +27,7 @@ export const contentSlice = createSlice({
         setSelected: setSelectedReducer,
         setTreeLocation: setTreeLocationReducer,
         setDisplayType: setDisplayTypeReducer,
+        downloadElements: downloadElementsReducer,
         addFolder: addFolderReducer,
         updateContent: updateContentReducer,
         moveToTrash: moveToTrashReducer,
@@ -38,7 +40,7 @@ export default contentSlice.reducer
 
 export const {
     initializeContent, setContent, setContentError, resetContent,
-    setSelected, setTreeLocation, setDisplayType, addFolder, updateContent,
-    moveToTrash, restoreFromTrash, deleteForever
+    setSelected, setTreeLocation, setDisplayType, downloadElements,
+    addFolder, updateContent, moveToTrash, restoreFromTrash, deleteForever
 
 } = contentSlice.actions

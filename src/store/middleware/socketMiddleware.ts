@@ -3,6 +3,7 @@ import { rootStateType } from '../rootReducer.types'
 
 import onInitializeUser from './features/onInitializeUser/onInitializeUser'
 import onInitializeContent from './features/onInitializeContent/onInitializeContent'
+import onDownloadElements from './features/onDownloadElements/onDownloadElements'
 import onAddFolder from './features/onAddFolder/onAddFolder'
 import onUpdateContent from './features/onUpdateContent/onUpdateContent'
 import onMoveToTrash from './features/onMoveToTrash/onMoveToTrash'
@@ -23,6 +24,7 @@ const socketMiddleware = () => {
         switch (action.type) {
             case 'userSlice/initializeUser': onInitializeUser(dispatch, next); break
             case 'contentSlice/initializeContent': onInitializeContent(dispatch, getState, action); break
+            case 'contentSlice/downloadElements': onDownloadElements(action); return
             case 'contentSlice/addFolder': onAddFolder(action); return
             case 'contentSlice/updateContent': onUpdateContent(action); return
             case 'contentSlice/moveToTrash': onMoveToTrash(action); return
