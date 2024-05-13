@@ -2,7 +2,7 @@ import Button from '../../../ui/button/Button'
 import { useDispatch, useSelector } from '../../../../store/store'
 import { toggle } from '../../../../store/features/detailsSectionSlice/detailsSectionSlice'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
-import { restoreFromTrash } from '../../../../store/features/contentSlice/contentSlice'
+import { restoreFromTrash, updateContent } from '../../../../store/features/contentSlice/contentSlice'
 import { restoreFromTrashType } from '../../../../store/features/contentSlice/reducers/restoreFromTrash/restoreFromTrash'
 
 import iconDownload from '../../../../assets/icons/icon-download.svg'
@@ -12,10 +12,12 @@ import iconStar from '../../../../assets/icons/icon-star-color.svg'
 import iconTrash from '../../../../assets/icons/icon-trash-full.svg'
 import iconRestore from '../../../../assets/icons/icon-restore.svg'
 import iconDetails from '../../../../assets/icons/icon-details.svg'
+import { updateContentType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 const SelectedTools = () => {
     const dispatch = useDispatch()
 
+    const content = useSelector(state => state.content.loadedContent)
     const selected = useSelector(state => state.content.selected)
     const displayType = useSelector(state => state.content.displayType)
 
@@ -40,6 +42,22 @@ const SelectedTools = () => {
             title: 'Przenieś do...',
             content: 'MOVE'
         }))
+    }
+
+    const handleMarkWithStar = () => {
+        if (content.status !== 'READY') return
+
+        let isEverythingMarked =
+            content.content.folders.filter(f => selected.folders.includes(f.id) && f.star).length +
+            content.content.files.filter(f => selected.files.includes(f.id) && f.star).length ===
+            selected.folders.length + selected.files.length
+
+        let data: updateContentType = {
+            folders: selected.folders.map(f => { return { id: f, star: !isEverythingMarked } }),
+            files: selected.files.map(f => { return { id: f, star: !isEverythingMarked } })
+        }
+
+        dispatch(updateContent(data))
     }
 
     const handleRestoreFromTrash = () => {
@@ -83,7 +101,7 @@ const SelectedTools = () => {
                     <span className="label">Zmień nazwę...</span>
                 </Button>
 
-                <Button $variant='secondary'>
+                <Button $variant='secondary' onClick={handleMarkWithStar}>
                     <img src={iconStar} alt="Oznacz gwiazdką" />
 
                     <span className="label">Oznacz gwiazdką</span>
