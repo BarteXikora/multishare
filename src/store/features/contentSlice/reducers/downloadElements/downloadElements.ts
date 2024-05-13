@@ -9,7 +9,10 @@ type downloadElemetsRequestType = {
 
 type downloadElemetsResponseType = {
     type: 'RES',
-    data: string
+    data: {
+        data: string,
+        name: string
+    }
 }
 
 type downloadElemetsType = downloadElemetsRequestType | downloadElemetsResponseType
