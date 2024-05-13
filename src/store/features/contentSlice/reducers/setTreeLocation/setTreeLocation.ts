@@ -1,9 +1,11 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import { contentStateType } from '../../contentSlice.types'
+import { contentStateType, selectedType } from '../../contentSlice.types'
 
 import getCurrentPath from '../../../../../functions/getCurrentPath/getCurrentPath'
 import getCurrentContent from '../../../../../functions/getCurrentContent/getCurrentContent'
 import getTrashContent from '../../../../../functions/getTrashContent/getTrashContent'
+
+const emptySelect: selectedType = { folders: [], files: [], selectionStart: null }
 
 const setTreeLocation = (state: contentStateType, action: PayloadAction<number>) => {
     if (state.loadedContent.status !== 'READY') return
@@ -16,7 +18,18 @@ const setTreeLocation = (state: contentStateType, action: PayloadAction<number>)
             return
         }
 
-        state.currentPath = newPath
+        let isLocationDifferent = false
+        if (action.payload === -1) {
+            if (state.currentPath.length !== 0) isLocationDifferent = true
+
+        }
+        else if (state.currentPath[state.currentPath.length - 1]?.id !== action.payload) isLocationDifferent = true
+
+        if (isLocationDifferent) {
+            state.currentPath = newPath
+            state.selected = emptySelect
+        }
+
         state.currentFolder = getCurrentContent(state.loadedContent.content, action.payload)
 
     } else if (state.displayType === 'FILES') {
@@ -25,10 +38,12 @@ const setTreeLocation = (state: contentStateType, action: PayloadAction<number>)
             folders: [],
             files: state.loadedContent.content.files
         }
+        state.selected = emptySelect
 
     } else {
         state.currentPath = []
         state.currentFolder = getTrashContent(state.loadedContent.trash)
+        state.selected = emptySelect
     }
 }
 
