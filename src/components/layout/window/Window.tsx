@@ -11,6 +11,7 @@ import ConfirmDeleteForeverWindow from '../../windows/confirmDeleteForeverWindow
 import CanNotOpenInTrashWindow from '../../windows/canNotOpenInTrashWindow/CanNotOpenInTrashWindow'
 import RenameWindow from '../../windows/renameWindow/RenameWindow'
 import MoveWindow from '../../windows/moveWindow/MoveWindow'
+import UploadWindow from '../../windows/uploadWindow/UploadWindow'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
 
@@ -30,7 +31,8 @@ const Window = () => {
             case 'CONFIRM_DELETE_FOREVER': selectedWindowBody = <ConfirmDeleteForeverWindow />; break
             case 'CAN_NOT_OPEN_IN_TRASH': selectedWindowBody = <CanNotOpenInTrashWindow data={window.data} />; break
             case 'RENAME': selectedWindowBody = <RenameWindow />; break
-            case 'MOVE': selectedWindowBody = <MoveWindow />
+            case 'MOVE': selectedWindowBody = <MoveWindow />; break
+            case 'UPLOAD': selectedWindowBody = <UploadWindow />
         }
 
         setWindowBody(selectedWindowBody)
