@@ -1,9 +1,18 @@
+import { useDispatch } from '../../../../store/store'
+import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
+
 import Button from '../../../ui/button/Button'
 
 import imageEmptyFolder from '../../../../assets/images/img-empty-folder.svg'
 import iconUpload from '../../../../assets/icons/icon-upload.svg'
 
 const EmptyFiles = () => {
+    const dispatch = useDispatch()
+
+    const handleUpload = () => {
+        dispatch(showWindow({ title: 'Prześlij pliki', content: 'UPLOAD' }))
+    }
+
     return <>
         <div className="image">
             <img src={imageEmptyFolder} alt="" />
@@ -15,10 +24,10 @@ const EmptyFiles = () => {
             <p>Możesz przesłać pliki na dysk poprzez przeciągnięcie i opuszczenie je na okno przeglądarki.</p>
 
             <div className="actions">
-                <Button>
+                <Button onClick={handleUpload}>
                     <img src={iconUpload} alt='Prześlij pliki tutaj' />
 
-                    Prześlij pliki tutaj
+                    Prześlij pliki
                 </Button>
             </div>
         </div>

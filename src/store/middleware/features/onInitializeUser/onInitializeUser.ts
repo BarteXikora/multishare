@@ -74,6 +74,16 @@ const onInitializeUser = (dispatch: Dispatch, next: any) => {
         return
     }
     socket.on('download_response', (data: any) => handleDownloadElements(data))
+
+    const handleUploadFiles = (data: any) => {
+        if (data === null) return alert('error')
+
+        const action = { type: 'contentSlice/uploadFiles', payload: data }
+        next(action)
+
+        return
+    }
+    socket.on('upload_response', (data: any) => handleUploadFiles(data))
 }
 
 export default onInitializeUser

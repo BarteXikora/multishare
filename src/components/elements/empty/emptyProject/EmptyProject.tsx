@@ -13,6 +13,10 @@ const EmptyProject = () => {
         dispatch(showWindow({ title: 'Utwórz nowy folder', content: 'CREATE_NEW_FOLDER' }))
     }
 
+    const handleUpload = () => {
+        dispatch(showWindow({ title: 'Prześlij pliki', content: 'UPLOAD' }))
+    }
+
     return <>
         <div className="image">
             <img src={imgLogo} alt='Logo multishare' />
@@ -24,7 +28,7 @@ const EmptyProject = () => {
             <p>Możesz przesłać pliki na dysk poprzez przeciągnięcie i opuszczenie je na okno przeglądarki.</p>
 
             <div className="actions">
-                <Button>
+                <Button onClick={handleUpload}>
                     <img src={iconUpload} alt='Wyślij pliki na dysk' />
 
                     Prześlij pliki

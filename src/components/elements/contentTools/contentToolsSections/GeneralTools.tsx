@@ -14,13 +14,17 @@ const GeneralTools = () => {
 
     const displayType = useSelector(state => state.content.displayType)
 
+    const handleUploadWindow = () => {
+        dispatch(showWindow({ title: 'Prześlij pliki', content: 'UPLOAD' }))
+    }
+
     const handleCreateFolderWindow = () => {
         dispatch(showWindow({ title: 'Utwórz nowy folder', content: 'CREATE_NEW_FOLDER' }))
     }
 
     return <section className="general-tools">
         <div className="tools-buttons">
-            <Button disabled={displayType === 'TRASH'}>
+            <Button disabled={displayType === 'TRASH'} onClick={handleUploadWindow}>
                 <img src={iconUpload} alt="Prześlij pliki tutaj" />
 
                 Prześlij pliki
