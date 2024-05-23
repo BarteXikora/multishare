@@ -7,10 +7,12 @@ type filesRequestType = {
     extension: string | null
 }
 
-type uploadFilesType = {
-    location: number,
-    data: filesRequestType[] | fileType[]
+type uploadFilesRequestType = {
+    location: number
+    data: filesRequestType[]
 }
+
+type uploadFilesType = uploadFilesRequestType | fileType[]
 
 const uploadFiles = (state: contentStateType, action: PayloadAction<uploadFilesType>) => { }
 
