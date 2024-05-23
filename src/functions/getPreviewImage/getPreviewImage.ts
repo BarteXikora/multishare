@@ -6,6 +6,7 @@ import imgSlides from '../../assets/images/img-file-slides.svg'
 import imgCode from '../../assets/images/img-file-code.svg'
 import imgSound from '../../assets/images/img-file-sound.svg'
 import imgFilm from '../../assets/images/img-file-film.svg'
+import imgPDF from '../../assets/images/img-file-pdf.svg'
 import imgUnknown from '../../assets/images/img-file-unknown.svg'
 
 const getPreviewImage = (preview: string | false, extension: string): string => {
@@ -26,6 +27,7 @@ const getPreviewImage = (preview: string | false, extension: string): string => 
         case 'ICO': return imgImage
 
         case 'TXT': return imgText
+        case 'PDF': return imgPDF
 
         case 'DOCM': return imgWord
         case 'DOCX': return imgWord
