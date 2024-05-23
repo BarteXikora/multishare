@@ -13,6 +13,7 @@ const getFileTypeName = (extension: string): string => {
         case 'ICO': return 'ICO'
 
         case 'TXT': return 'Plik tekstowy'
+        case 'PDF': return 'Portable Document Format'
 
         case 'DOCM': return 'Microsoft Word macro-enabled document'
         case 'DOCX': return 'Microsoft Word text document'
