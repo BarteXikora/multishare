@@ -10,7 +10,7 @@ const DropSection = () => {
 
     const currentPath = useSelector(state => state.content.currentPath)
 
-    const [files, setFiles] = useState<FileList | null>(null)
+    const [files, setFiles] = useState<File[] | null>(null)
     const [location, setLocation] = useState<number | null>(null)
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const DropSection = () => {
     const handleUpload = () => {
         if (!files || !location) return
 
-        const filesToUpload = Array.from(files).map(f => {
+        const filesToUpload = files.map(f => {
             let currentFileName = f.name.split('.').slice(0, -1).join('')
 
             return {

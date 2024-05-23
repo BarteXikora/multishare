@@ -14,7 +14,7 @@ import iconUpload from '../../../assets/icons/icon-upload.svg'
 import iconClose from '../../../assets/icons/icon-close.svg'
 
 type DropAreaType = {
-    filesState: [FileList | null, (f: FileList | null) => void]
+    filesState: [File[] | null, (f: File[] | null) => void]
     locationState: [number | null, (v: number | null) => void]
     upload: () => void
     showLocationSelector?: boolean
@@ -35,6 +35,19 @@ const DropArea = ({ filesState, locationState, upload, showLocationSelector = tr
 
     }, [filesState])
 
+    const handleSetFiles = (files: FileList | null) => {
+        if (!files) return
+
+        let acceptedFiles: File[] = []
+
+        Array.from(files).forEach(file => {
+            if (file.type !== '') acceptedFiles.push(file)
+        })
+
+        filesState[1](acceptedFiles)
+        setDropSectionActive(false)
+    }
+
     const handleUpload = () => {
         if (!filesState[0] || !locationState[0]) return
 
@@ -48,13 +61,13 @@ const DropArea = ({ filesState, locationState, upload, showLocationSelector = tr
             ref={inputRef}
             className='file-input'
             onClick={e => e.preventDefault()}
-            onChange={e => { filesState[1](e.currentTarget.files); setDropSectionActive(false) }}
+            onChange={e => handleSetFiles(e.currentTarget.files)}
             onDragEnter={() => setDropSectionActive(true)}
             onDragLeave={() => setDropSectionActive(false)}
         />
 
         {
-            filesState[0] ?
+            (filesState[0] && filesState[0].length > 0) ?
                 <section className='content selected-files'>
                     <img src={imgFiles} className='section-img' alt="Wybrano pliki" />
 
@@ -98,7 +111,7 @@ const DropArea = ({ filesState, locationState, upload, showLocationSelector = tr
                         <img src={imgDropColor} className='img img-color' alt='Przeciągnij i upuść pliki tutaj' />
                     </div>
 
-                    <h3 className='heading'>Upuść pliki i foldery tutaj, aby dodać je na dysk!</h3>
+                    <h3 className='heading'>Upuść pliki tutaj, aby dodać je na dysk!</h3>
 
                     {
                         showSelectButton && <div className='actions'>

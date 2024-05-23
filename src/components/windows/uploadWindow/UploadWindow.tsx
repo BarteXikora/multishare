@@ -9,7 +9,7 @@ import DropArea from '../../elements/dropArea/DropArea'
 const UploadWindow = () => {
     const dispatch = useDispatch()
 
-    const [files, setFiles] = useState<FileList | null>(null)
+    const [files, setFiles] = useState<File[] | null>(null)
     const [location, setLocation] = useState<number | null>(null)
 
     useEffect(() => { if (!files) setLocation(null) }, [files])
@@ -17,7 +17,7 @@ const UploadWindow = () => {
     const handleUpload = () => {
         if (!files || !location) return
 
-        const filesToUpload = Array.from(files).map(f => {
+        const filesToUpload = files.map(f => {
             let currentFileName = f.name.split('.').slice(0, -1).join('')
 
             return {
