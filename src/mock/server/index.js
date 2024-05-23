@@ -371,6 +371,37 @@ io.on('connection', (socket) => {
 
         socket.emit('download_response', { type: 'RES', data: { data: 'Work in progress...', name: 'Work in progress.txt' } })
     })
+
+    socket.on('upload_request', data => {
+        console.log('upload_request' /*, util.inspect(data, false, null, true)*/)
+
+        const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
+        if (room === -1) return socket.emit('upload_response', null)
+
+        let currentContent = room === 0 ? { ...contentDefault } : { ...contentProject1 }
+
+        let uploadedFiles = []
+
+        data.data.forEach(f => {
+            uploadedFiles.push({
+                id: Math.floor(Math.random() * 999999999),
+                parentFolder: data.location,
+                name: f.name,
+                extension: f.extension.toUpperCase(),
+                details: {},
+                star: false
+            })
+        })
+
+        // console.log(util.inspect(uploadedFiles, false, null, true))
+
+        currentContent.content.files = [...currentContent.content.files, ...uploadedFiles]
+
+        if (room === 0) contentDefault = { ...currentContent }
+        else contentProject1 = { ...currentContent }
+
+        socket.to(room).emit('upload_response', uploadedFiles)
+    })
 })
 
 server.listen(3001, () => console.log('server is listening on port 3001'))
