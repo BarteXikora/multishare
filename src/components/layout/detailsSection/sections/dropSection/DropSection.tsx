@@ -23,9 +23,11 @@ const DropSection = () => {
         if (!files || !location) return
 
         const filesToUpload = Array.from(files).map(f => {
+            let currentFileName = f.name.split('.').slice(0, -1).join('')
+
             return {
                 file: new File([f], f.name),
-                name: f.name,
+                name: currentFileName,
                 extension: f.name.split('.').pop() || null
             }
         })
