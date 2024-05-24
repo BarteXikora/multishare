@@ -5,6 +5,7 @@ const addFolder = require('./addFolder')
 const moveToTrash = require('./moveToTrash')
 const deleteForever = require('./deleteForever')
 const restoreFromTrash = require('./restoreFromTrash')
+const updateContent = require('./updateContent')
 
 const socketEvents = [
     { name: 'get_projects', callback: getProjects },
@@ -13,7 +14,8 @@ const socketEvents = [
     { name: 'add_folder', callback: addFolder },
     { name: 'move_to_trash', callback: moveToTrash },
     { name: 'delete_forever', callback: deleteForever },
-    { name: 'restore_from_trash', callback: restoreFromTrash }
+    { name: 'restore_from_trash', callback: restoreFromTrash },
+    { name: 'update_content', callback: updateContent }
 ]
 
 module.exports = socketEvents
