@@ -62,7 +62,7 @@ const moveToTrash = (socket, data) => {
         }
     })
 
-    setProjestContent(currentContent, currentContent)
+    setProjestContent(currentProject, currentContent)
 
     socket.to(currentProject).emit('moved_to_trash', allToTrash)
 }
