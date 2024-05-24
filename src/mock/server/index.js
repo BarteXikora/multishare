@@ -10,398 +10,405 @@ const http = require('http')
 const server = http.createServer(app)
 
 const { Server } = require('socket.io')
-
 const io = new Server(server, { cors: { origin: 'http://localhost:3000' } })
 
+const getUserProject = require('./functions/getUserProject')
+const setProjectContent = require('./functions/setProjectContent')
+const getProjectContent = require('./functions/getProjectContent')
 const getPath = require('./functions/getPath')
 
 const projects = require('./data/projects')
-const contentDefaultCopy = require('./data/contentDefault')
-const contentProject1Copy = require('./data/contentProject1')
-const filesCopy = require('./data/files')
+const projectsContent = []
+projectsContent.push({ id: projects[0].id, content: require('./data/contentDefault') })
+projectsContent.push({ id: projects[1].id, content: require('./data/contentProject1') })
 
-let contentDefault = contentDefaultCopy
-let contentProject1 = contentProject1Copy
+// const projects = require('./data/projects')
+// const contentDefaultCopy = require('./data/contentDefault')
+// const contentProject1Copy = require('./data/contentProject1')
+// const filesCopy = require('./data/files')
 
-io.on('connection', (socket) => {
-    console.log('user logged in, id:', socket.id)
+// let contentDefault = contentDefaultCopy
+// let contentProject1 = contentProject1Copy
 
-    socket.on('get_projects', () => {
-        socket.emit('projects', projects)
-    })
+// io.on('connection', (socket) => {
+//     console.log('user logged in, id:', socket.id)
 
-    socket.on('enter_project', data => {
-        socket.leaveAll()
+//     socket.on('get_projects', () => {
+//         socket.emit('projects', projects)
+//     })
 
-        let response = {
-            project: data === 0 ? projects[0] : data === 1 ? projects[1] : null,
-            content: data === 0 ? contentDefault : data === 1 ? contentProject1 : null
-        }
+//     socket.on('enter_project', data => {
+//         socket.leaveAll()
 
-        if (data === 0 || data === 1) socket.join(data)
-        console.log('joined', socket.rooms)
+//         let response = {
+//             project: data === 0 ? projects[0] : data === 1 ? projects[1] : null,
+//             content: data === 0 ? contentDefault : data === 1 ? contentProject1 : null
+//         }
 
-        socket.emit('content', response)
-    })
+//         if (data === 0 || data === 1) socket.join(data, { roomID: data })
+//         console.log('joined', socket.rooms)
 
-    socket.on('get_file', data => {
-        let files = contentDefaultCopy.files
+//         socket.emit('content', response)
+//     })
 
-        let foundFile = files.filter(f => f.id === data)
-        if (foundFile.length === 0) foundFile = null
+//     socket.on('get_file', data => {
+//         let files = contentDefaultCopy.files
 
-        let foundFileData = filesCopy.filter(f => f.id === data)
-        if (foundFileData.length === 0) foundFileData = null
+//         let foundFile = files.filter(f => f.id === data)
+//         if (foundFile.length === 0) foundFile = null
 
-        if (foundFile === null || foundFileData === null) return socket.emit('file', null)
+//         let foundFileData = filesCopy.filter(f => f.id === data)
+//         if (foundFileData.length === 0) foundFileData = null
 
-        let response = {
-            file: foundFile[0],
-            type: foundFileData[0].type,
-            data: foundFileData[0].data
-        }
+//         if (foundFile === null || foundFileData === null) return socket.emit('file', null)
 
-        socket.emit('file', response)
-    })
+//         let response = {
+//             file: foundFile[0],
+//             type: foundFileData[0].type,
+//             data: foundFileData[0].data
+//         }
 
-    socket.on('add_folder', data => {
-        data.id = Math.floor(Math.random() * 999999999)
-        data.details = {
-            createdDate: new Date().toLocaleString(),
-            lastModificationDate: new Date().toLocaleString()
-        }
+//         socket.emit('file', response)
+//     })
 
-        const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
+//     socket.on('add_folder', data => {
+//         data.id = Math.floor(Math.random() * 999999999)
+//         data.details = {
+//             createdDate: new Date().toLocaleString(),
+//             lastModificationDate: new Date().toLocaleString()
+//         }
 
-        if (room === 0) contentDefault.content.folders.push(data)
-        else if (room === 1) contentProject1.content.folders.push(data)
+//         const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
 
-        socket.to(room).emit('new_folder', data)
-    })
+//         if (room === 0) contentDefault.content.folders.push(data)
+//         else if (room === 1) contentProject1.content.folders.push(data)
 
-    socket.on('move_to_trash', data => {
-        console.log('move_to_trash', data)
+//         socket.to(room).emit('new_folder', data)
+//     })
 
-        const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
-        if (room === -1) return socket.emit('moved_to_trash', null)
+//     socket.on('move_to_trash', data => {
+//         console.log('move_to_trash', data)
 
-        let currentContent = room === 0 ? { ...contentDefault } : { ...contentProject1 }
+//         const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
+//         if (room === -1) return socket.emit('moved_to_trash', null)
 
-        const allToTrash = { view: { folders: data.folders, files: data.files }, contained: { folders: [], files: [] } }
+//         let currentContent = room === 0 ? { ...contentDefault } : { ...contentProject1 }
 
-        allToTrash.view.folders.forEach(element => {
-            currentContent.content.folders.forEach(folder => {
-                if (getPath(currentContent.content.folders, folder.id).includes(element))
-                    allToTrash.contained.folders.push(folder.id)
-            })
+//         const allToTrash = { view: { folders: data.folders, files: data.files }, contained: { folders: [], files: [] } }
 
-            currentContent.content.files.forEach(file => {
-                if (getPath(currentContent.content.folders, file.parentFolder).includes(element))
-                    allToTrash.contained.files.push(file.id)
-            })
-        })
+//         allToTrash.view.folders.forEach(element => {
+//             currentContent.content.folders.forEach(folder => {
+//                 if (getPath(currentContent.content.folders, folder.id).includes(element))
+//                     allToTrash.contained.folders.push(folder.id)
+//             })
 
-        allToTrash.contained.folders.forEach(element => {
-            if (allToTrash.view.folders.includes(element))
-                allToTrash.contained.folders.splice(allToTrash.contained.folders.indexOf(element), 1)
-        })
+//             currentContent.content.files.forEach(file => {
+//                 if (getPath(currentContent.content.folders, file.parentFolder).includes(element))
+//                     allToTrash.contained.files.push(file.id)
+//             })
+//         })
 
-        // ---
+//         allToTrash.contained.folders.forEach(element => {
+//             if (allToTrash.view.folders.includes(element))
+//                 allToTrash.contained.folders.splice(allToTrash.contained.folders.indexOf(element), 1)
+//         })
 
-        allToTrash.view.folders.forEach(folderId => {
-            let folder = currentContent.content.folders.find(f => f.id === folderId)
+//         // ---
 
-            if (folder) {
-                currentContent.content.folders.splice(currentContent.content.folders.indexOf(folder), 1)
-                currentContent.trash.view.folders.push(folder)
-            }
-        })
+//         allToTrash.view.folders.forEach(folderId => {
+//             let folder = currentContent.content.folders.find(f => f.id === folderId)
 
-        allToTrash.view.files.forEach(fileId => {
-            let file = currentContent.content.files.find(f => f.id === fileId)
+//             if (folder) {
+//                 currentContent.content.folders.splice(currentContent.content.folders.indexOf(folder), 1)
+//                 currentContent.trash.view.folders.push(folder)
+//             }
+//         })
 
-            if (file) {
-                currentContent.content.files.splice(currentContent.content.files.indexOf(file), 1)
-                currentContent.trash.view.files.push(file)
-            }
-        })
+//         allToTrash.view.files.forEach(fileId => {
+//             let file = currentContent.content.files.find(f => f.id === fileId)
 
-        allToTrash.contained.folders.forEach(folderId => {
-            let folder = currentContent.content.folders.find(f => f.id === folderId)
+//             if (file) {
+//                 currentContent.content.files.splice(currentContent.content.files.indexOf(file), 1)
+//                 currentContent.trash.view.files.push(file)
+//             }
+//         })
 
-            if (folder) {
-                currentContent.content.folders.splice(currentContent.content.folders.indexOf(folder), 1)
-                currentContent.trash.contained.folders.push(folder)
-            }
-        })
+//         allToTrash.contained.folders.forEach(folderId => {
+//             let folder = currentContent.content.folders.find(f => f.id === folderId)
 
-        allToTrash.contained.files.forEach(fileId => {
-            let file = currentContent.content.files.find(f => f.id === fileId)
+//             if (folder) {
+//                 currentContent.content.folders.splice(currentContent.content.folders.indexOf(folder), 1)
+//                 currentContent.trash.contained.folders.push(folder)
+//             }
+//         })
 
-            if (file) {
-                currentContent.content.files.splice(currentContent.content.files.indexOf(file), 1)
-                currentContent.trash.contained.files.push(file)
-            }
-        })
+//         allToTrash.contained.files.forEach(fileId => {
+//             let file = currentContent.content.files.find(f => f.id === fileId)
 
-        // ---
+//             if (file) {
+//                 currentContent.content.files.splice(currentContent.content.files.indexOf(file), 1)
+//                 currentContent.trash.contained.files.push(file)
+//             }
+//         })
 
-        if (room === 0) contentDefault = currentContent
-        else contentProject1 = currentContent
+//         // ---
 
-        socket.to(room).emit('moved_to_trash', allToTrash)
-    })
+//         if (room === 0) contentDefault = currentContent
+//         else contentProject1 = currentContent
 
-    socket.on('delete_forever', data => {
-        console.log('delete_forever', data)
+//         socket.to(room).emit('moved_to_trash', allToTrash)
+//     })
 
-        const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
-        if (room === -1) return socket.emit('deleted_forever', null)
+//     socket.on('delete_forever', data => {
+//         console.log('delete_forever', data)
 
-        let currentContent = room === 0 ? { ...contentDefault } : { ...contentProject1 }
+//         const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
+//         if (room === -1) return socket.emit('deleted_forever', null)
 
-        const allContent = {
-            folders: [...currentContent.content.folders, ...currentContent.trash.contained.folders],
-            files: [...currentContent.content.files, ...currentContent.trash.contained.files]
-        }
+//         let currentContent = room === 0 ? { ...contentDefault } : { ...contentProject1 }
 
-        data.folders.forEach(folder => {
-            allContent.folders.forEach(element => {
-                let path = getPath([...allContent.folders, ...currentContent.trash.view.folders], element.id)
-                path.shift()
+//         const allContent = {
+//             folders: [...currentContent.content.folders, ...currentContent.trash.contained.folders],
+//             files: [...currentContent.content.files, ...currentContent.trash.contained.files]
+//         }
 
-                if (path.includes(folder)) data.folders.push(element.id)
-            })
+//         data.folders.forEach(folder => {
+//             allContent.folders.forEach(element => {
+//                 let path = getPath([...allContent.folders, ...currentContent.trash.view.folders], element.id)
+//                 path.shift()
 
-            allContent.files.forEach(element => {
-                let path = getPath([...allContent.folders, ...currentContent.trash.view.folders], element.parentFolder)
+//                 if (path.includes(folder)) data.folders.push(element.id)
+//             })
 
-                if (path.includes(folder)) data.files.push(element.id)
-            })
-        })
+//             allContent.files.forEach(element => {
+//                 let path = getPath([...allContent.folders, ...currentContent.trash.view.folders], element.parentFolder)
 
-        data.folders.forEach(folder => {
-            let found = currentContent.content.folders.find(f => f.id === folder)
-            if (found) return currentContent.content.folders.splice(currentContent.content.folders.indexOf(found), 1)
+//                 if (path.includes(folder)) data.files.push(element.id)
+//             })
+//         })
 
-            found = currentContent.trash.view.folders.find(f => f.id === folder)
-            if (found) return currentContent.trash.view.folders.splice(currentContent.trash.view.folders.indexOf(found), 1)
+//         data.folders.forEach(folder => {
+//             let found = currentContent.content.folders.find(f => f.id === folder)
+//             if (found) return currentContent.content.folders.splice(currentContent.content.folders.indexOf(found), 1)
 
-            found = currentContent.trash.contained.folders.find(f => f.id === folder)
-            if (found) currentContent.trash.contained.folders.splice(currentContent.trash.contained.folders.indexOf(found), 1)
-        })
+//             found = currentContent.trash.view.folders.find(f => f.id === folder)
+//             if (found) return currentContent.trash.view.folders.splice(currentContent.trash.view.folders.indexOf(found), 1)
 
-        data.files.forEach(file => {
-            let found = currentContent.content.files.find(f => f.id === file)
-            if (found) return currentContent.content.files.splice(currentContent.content.files.indexOf(found), 1)
+//             found = currentContent.trash.contained.folders.find(f => f.id === folder)
+//             if (found) currentContent.trash.contained.folders.splice(currentContent.trash.contained.folders.indexOf(found), 1)
+//         })
 
-            found = currentContent.trash.view.files.find(f => f.id === file)
-            if (found) return currentContent.trash.view.files.splice(currentContent.trash.view.files.indexOf(found), 1)
+//         data.files.forEach(file => {
+//             let found = currentContent.content.files.find(f => f.id === file)
+//             if (found) return currentContent.content.files.splice(currentContent.content.files.indexOf(found), 1)
 
-            found = currentContent.trash.contained.files.find(f => f.id === file)
-            if (found) currentContent.trash.contained.files.splice(currentContent.trash.contained.files.indexOf(found), 1)
-        })
+//             found = currentContent.trash.view.files.find(f => f.id === file)
+//             if (found) return currentContent.trash.view.files.splice(currentContent.trash.view.files.indexOf(found), 1)
 
-        if (room === 0) contentDefault = currentContent
-        else contentProject1 = currentContent
+//             found = currentContent.trash.contained.files.find(f => f.id === file)
+//             if (found) currentContent.trash.contained.files.splice(currentContent.trash.contained.files.indexOf(found), 1)
+//         })
 
-        socket.to(room).emit('deleted_forever', data)
-    })
+//         if (room === 0) contentDefault = currentContent
+//         else contentProject1 = currentContent
 
-    socket.on('restore_from_trash', data => {
-        data = {
-            folders: data.folders.map(f => f.id),
-            files: data.files.map(f => f.id)
-        }
+//         socket.to(room).emit('deleted_forever', data)
+//     })
 
-        console.log('restore_from_trash', data)
+//     socket.on('restore_from_trash', data => {
+//         data = {
+//             folders: data.folders.map(f => f.id),
+//             files: data.files.map(f => f.id)
+//         }
 
-        const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
-        if (room === -1) return socket.emit('restored_from_trash', null)
+//         console.log('restore_from_trash', data)
 
-        let currentContent = room === 0 ? { ...contentDefault } : { ...contentProject1 }
+//         const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
+//         if (room === -1) return socket.emit('restored_from_trash', null)
 
-        // console.log('\n\n before: ', util.inspect(currentContent, false, null, true))
+//         let currentContent = room === 0 ? { ...contentDefault } : { ...contentProject1 }
 
-        const allFolders = [
-            ...currentContent.content.folders,
-            ...currentContent.trash.view.folders,
-            ...currentContent.trash.contained.folders
-        ]
+//         // console.log('\n\n before: ', util.inspect(currentContent, false, null, true))
 
-        let foldersBuffer = []
+//         const allFolders = [
+//             ...currentContent.content.folders,
+//             ...currentContent.trash.view.folders,
+//             ...currentContent.trash.contained.folders
+//         ]
 
-        data.folders.forEach(folderId => {
-            const found = currentContent.trash.view.folders.find(f => f.id === folderId)
+//         let foldersBuffer = []
 
-            if (found) foldersBuffer.push(found)
-        })
+//         data.folders.forEach(folderId => {
+//             const found = currentContent.trash.view.folders.find(f => f.id === folderId)
 
-        currentContent.trash.contained.folders.forEach(folder => {
-            const path = getPath(allFolders, folder.id)
-            path.shift()
+//             if (found) foldersBuffer.push(found)
+//         })
 
-            // console.log('\n\n', folder.name, 'whole path: ', path)
+//         currentContent.trash.contained.folders.forEach(folder => {
+//             const path = getPath(allFolders, folder.id)
+//             path.shift()
 
-            let isToRestore = false
+//             // console.log('\n\n', folder.name, 'whole path: ', path)
 
-            data.folders.forEach(folderId => {
-                if (!path.includes(folderId)) return
+//             let isToRestore = false
 
-                let indexOfCurrent = path.indexOf(folderId)
-                path.splice(indexOfCurrent, path.length - indexOfCurrent)
+//             data.folders.forEach(folderId => {
+//                 if (!path.includes(folderId)) return
 
-                // console.log(folder.name, 'path to current', path)
+//                 let indexOfCurrent = path.indexOf(folderId)
+//                 path.splice(indexOfCurrent, path.length - indexOfCurrent)
 
-                let includesParentInTrash = false
-                path.forEach(element => {
-                    if (currentContent.trash.view.folders.find(f => f.id === element)) includesParentInTrash = true
-                })
+//                 // console.log(folder.name, 'path to current', path)
 
-                // console.log('includesParentInTrash:', includesParentInTrash)
+//                 let includesParentInTrash = false
+//                 path.forEach(element => {
+//                     if (currentContent.trash.view.folders.find(f => f.id === element)) includesParentInTrash = true
+//                 })
 
-                if (!includesParentInTrash) isToRestore = true
-            })
+//                 // console.log('includesParentInTrash:', includesParentInTrash)
 
-            if (isToRestore) foldersBuffer.push(folder)
-        })
+//                 if (!includesParentInTrash) isToRestore = true
+//             })
 
-        // console.log('\n\nfolders effect: ', foldersBuffer, '\n\n')
+//             if (isToRestore) foldersBuffer.push(folder)
+//         })
 
-        let filesBuffer = []
+//         // console.log('\n\nfolders effect: ', foldersBuffer, '\n\n')
 
-        data.files.forEach(fileId => {
-            const found = currentContent.trash.view.files.find(f => f.id === fileId)
+//         let filesBuffer = []
 
-            if (found) filesBuffer.push(found)
-        })
+//         data.files.forEach(fileId => {
+//             const found = currentContent.trash.view.files.find(f => f.id === fileId)
 
-        currentContent.trash.contained.files.forEach(file => {
-            if (foldersBuffer.find(f => f.id === file.parentFolder)) filesBuffer.push(file)
-        })
+//             if (found) filesBuffer.push(found)
+//         })
 
-        // console.log('files effect', filesBuffer)
+//         currentContent.trash.contained.files.forEach(file => {
+//             if (foldersBuffer.find(f => f.id === file.parentFolder)) filesBuffer.push(file)
+//         })
 
-        // ====================================================================
+//         // console.log('files effect', filesBuffer)
 
-        let response = { folders: [], files: [] }
+//         // ====================================================================
 
-        foldersBuffer.forEach(folder => {
-            let found = currentContent.trash.view.folders.find(f => f.id === folder.id)
+//         let response = { folders: [], files: [] }
 
-            if (found) currentContent.trash.view.folders.splice(currentContent.trash.view.folders.indexOf(found), 1)
-            else {
-                found = currentContent.trash.contained.folders.find(f => f.id === folder.id)
+//         foldersBuffer.forEach(folder => {
+//             let found = currentContent.trash.view.folders.find(f => f.id === folder.id)
 
-                if (found) currentContent.trash.contained.folders.splice(currentContent.trash.contained.folders.indexOf(found), 1)
-            }
+//             if (found) currentContent.trash.view.folders.splice(currentContent.trash.view.folders.indexOf(found), 1)
+//             else {
+//                 found = currentContent.trash.contained.folders.find(f => f.id === folder.id)
 
-            if (![...currentContent.content.folders, ...foldersBuffer].find(f => f.id === folder.parentFolder)) folder.parentFolder = -1
-            currentContent.content.folders.push(folder)
+//                 if (found) currentContent.trash.contained.folders.splice(currentContent.trash.contained.folders.indexOf(found), 1)
+//             }
 
-            response.folders.push({ id: folder.id, parentFolder: folder.parentFolder })
-        })
+//             if (![...currentContent.content.folders, ...foldersBuffer].find(f => f.id === folder.parentFolder)) folder.parentFolder = -1
+//             currentContent.content.folders.push(folder)
 
-        filesBuffer.forEach(file => {
-            let found = currentContent.trash.view.files.find(f => f.id === file.id)
+//             response.folders.push({ id: folder.id, parentFolder: folder.parentFolder })
+//         })
 
-            if (found) currentContent.trash.view.files.splice(currentContent.trash.view.files.indexOf(found), 1)
-            else {
-                found = currentContent.trash.contained.files.find(f => f.id === file.id)
+//         filesBuffer.forEach(file => {
+//             let found = currentContent.trash.view.files.find(f => f.id === file.id)
 
-                if (found) currentContent.trash.contained.files.splice(currentContent.trash.contained.files.indexOf(found), 1)
-            }
+//             if (found) currentContent.trash.view.files.splice(currentContent.trash.view.files.indexOf(found), 1)
+//             else {
+//                 found = currentContent.trash.contained.files.find(f => f.id === file.id)
 
-            if (![...currentContent.content.folders, ...foldersBuffer].find(f => f.id === file.parentFolder)) file.parentFolder = -1
-            currentContent.content.files.push(file)
+//                 if (found) currentContent.trash.contained.files.splice(currentContent.trash.contained.files.indexOf(found), 1)
+//             }
 
-            response.files.push({ id: file.id, parentFolder: file.parentFolder })
-        })
+//             if (![...currentContent.content.folders, ...foldersBuffer].find(f => f.id === file.parentFolder)) file.parentFolder = -1
+//             currentContent.content.files.push(file)
 
-        // console.log('\n\n after: ', util.inspect(currentContent, false, null, true))
+//             response.files.push({ id: file.id, parentFolder: file.parentFolder })
+//         })
 
-        if (room === 0) contentDefault = { ...currentContent }
-        else contentProject1 = { ...currentContent }
+//         // console.log('\n\n after: ', util.inspect(currentContent, false, null, true))
 
-        socket.to(room).emit('restored_from_trash', response)
-    })
+//         if (room === 0) contentDefault = { ...currentContent }
+//         else contentProject1 = { ...currentContent }
 
-    socket.on('update_content', data => {
-        console.log('update_content', data)
+//         socket.to(room).emit('restored_from_trash', response)
+//     })
 
-        const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
-        if (room === -1) return socket.emit('updated_content', null)
+//     socket.on('update_content', data => {
+//         console.log('update_content', data)
 
-        let currentContent = room === 0 ? { ...contentDefault } : { ...contentProject1 }
+//         const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
+//         if (room === -1) return socket.emit('updated_content', null)
 
-        // console.log('\n\n before: ', util.inspect(currentContent.content, false, null, true))
+//         let currentContent = room === 0 ? { ...contentDefault } : { ...contentProject1 }
 
-        data.folders.forEach(folder => {
-            let found = currentContent.content.folders.find(f => f.id === folder.id)
-            if (!found) return
+//         // console.log('\n\n before: ', util.inspect(currentContent.content, false, null, true))
 
-            currentContent.content.folders.splice(currentContent.content.folders.indexOf(found), 1)
+//         data.folders.forEach(folder => {
+//             let found = currentContent.content.folders.find(f => f.id === folder.id)
+//             if (!found) return
 
-            found = { ...found, ...folder }
+//             currentContent.content.folders.splice(currentContent.content.folders.indexOf(found), 1)
 
-            currentContent.content.folders.push(found)
-        })
+//             found = { ...found, ...folder }
 
-        data.files.forEach(file => {
-            let found = currentContent.content.files.find(f => f.id === file.id)
-            if (!found) return
+//             currentContent.content.folders.push(found)
+//         })
 
-            currentContent.content.files.splice(currentContent.content.files.indexOf(found), 1)
+//         data.files.forEach(file => {
+//             let found = currentContent.content.files.find(f => f.id === file.id)
+//             if (!found) return
 
-            found = { ...found, ...file }
+//             currentContent.content.files.splice(currentContent.content.files.indexOf(found), 1)
 
-            currentContent.content.files.push(found)
-        })
+//             found = { ...found, ...file }
 
-        // console.log('\n\n after: ', util.inspect(currentContent.content, false, null, true))
+//             currentContent.content.files.push(found)
+//         })
 
-        if (room === 0) contentDefault = { ...currentContent }
-        else contentProject1 = { ...currentContent }
+//         // console.log('\n\n after: ', util.inspect(currentContent.content, false, null, true))
 
-        socket.to(room).emit('updated_content', data)
-    })
+//         if (room === 0) contentDefault = { ...currentContent }
+//         else contentProject1 = { ...currentContent }
 
-    socket.on('download_request', data => {
-        console.log('download_request', data)
+//         socket.to(room).emit('updated_content', data)
+//     })
 
-        socket.emit('download_response', { type: 'RES', data: { data: 'Work in progress...', name: 'Work in progress.txt' } })
-    })
+//     socket.on('download_request', data => {
+//         console.log('download_request', data)
 
-    socket.on('upload_request', data => {
-        console.log('upload_request' /*, util.inspect(data, false, null, true)*/)
+//         socket.emit('download_response', { type: 'RES', data: { data: 'Work in progress...', name: 'Work in progress.txt' } })
+//     })
 
-        const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
-        if (room === -1) return socket.emit('upload_response', null)
+//     socket.on('upload_request', data => {
+//         console.log('upload_request' /*, util.inspect(data, false, null, true)*/)
 
-        let currentContent = room === 0 ? { ...contentDefault } : { ...contentProject1 }
+//         const room = socket.rooms.has(0) ? 0 : socket.rooms.has(1) ? 1 : -1
+//         if (room === -1) return socket.emit('upload_response', null)
 
-        let uploadedFiles = []
+//         let currentContent = room === 0 ? { ...contentDefault } : { ...contentProject1 }
 
-        data.data.forEach(f => {
-            uploadedFiles.push({
-                id: Math.floor(Math.random() * 999999999),
-                parentFolder: data.location,
-                name: f.name,
-                extension: f.extension.toUpperCase(),
-                details: {},
-                star: false
-            })
-        })
+//         let uploadedFiles = []
 
-        // console.log(util.inspect(uploadedFiles, false, null, true))
+//         data.data.forEach(f => {
+//             uploadedFiles.push({
+//                 id: Math.floor(Math.random() * 999999999),
+//                 parentFolder: data.location,
+//                 name: f.name,
+//                 extension: f.extension.toUpperCase(),
+//                 details: {},
+//                 star: false
+//             })
+//         })
 
-        currentContent.content.files = [...currentContent.content.files, ...uploadedFiles]
+//         // console.log(util.inspect(uploadedFiles, false, null, true))
 
-        if (room === 0) contentDefault = { ...currentContent }
-        else contentProject1 = { ...currentContent }
+//         currentContent.content.files = [...currentContent.content.files, ...uploadedFiles]
 
-        socket.to(room).emit('upload_response', uploadedFiles)
-    })
-})
+//         if (room === 0) contentDefault = { ...currentContent }
+//         else contentProject1 = { ...currentContent }
+
+//         socket.to(room).emit('upload_response', uploadedFiles)
+//     })
+// })
 
 server.listen(3001, () => console.log('server is listening on port 3001'))
