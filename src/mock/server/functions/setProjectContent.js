@@ -1,4 +1,6 @@
-const setProjectContent = (projectsContent, projectId, newContent) => {
+const { projectsContent } = require('../storage')
+
+const setProjectContent = (projectId, newContent) => {
     const found = projectsContent.find(project => project.id === projectId)
 
     if (!found) return false
