@@ -7,6 +7,7 @@ const deleteForever = require('./deleteForever')
 const restoreFromTrash = require('./restoreFromTrash')
 const updateContent = require('./updateContent')
 const downloadRequest = require('./downloadRequest')
+const uploadRequest = require('./uploadRequest')
 
 const socketEvents = [
     { name: 'get_projects', callback: getProjects },
@@ -17,7 +18,8 @@ const socketEvents = [
     { name: 'delete_forever', callback: deleteForever },
     { name: 'restore_from_trash', callback: restoreFromTrash },
     { name: 'update_content', callback: updateContent },
-    { name: 'download_request', callback: downloadRequest }
+    { name: 'download_request', callback: downloadRequest },
+    { name: 'upload_request', callback: uploadRequest }
 ]
 
 module.exports = socketEvents
