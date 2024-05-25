@@ -8,7 +8,7 @@ import useContentEvents from '../../../../functions/useContentEvents/useContentE
 import iconUpload from '../../../../assets/icons/icon-upload.svg'
 import iconNewFolder from '../../../../assets/icons/icon-new-folder-dark.svg'
 import iconSelect from '../../../../assets/icons/icon-ok.svg'
-import iconSort from '../../../../assets/icons/icon-sort.svg'
+import iconSort from '../../../../assets/icons/icon-sort-dark.svg'
 import iconFilter from '../../../../assets/icons/icon-filter.svg'
 import iconDisplay from '../../../../assets/icons/icon-display.svg'
 import iconList from '../../../../assets/icons/icon-list.svg'
@@ -26,6 +26,10 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
 
     const handleCreateFolderWindow = () => {
         dispatch(showWindow({ title: 'Utwórz nowy folder', content: 'CREATE_NEW_FOLDER' }))
+    }
+
+    const handleSort = () => {
+        dispatch(showWindow({ title: 'Sortuj zawartość', content: 'SORT' }))
     }
 
     return <>
@@ -60,7 +64,7 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
                 Zaznacz wszystko
             </Button>
 
-            <Button $variant='quaternary'>
+            <Button $variant='quaternary' onClick={handleSort}>
                 <img src={iconSort} alt="Sortuj..." />
 
                 Sortuj...

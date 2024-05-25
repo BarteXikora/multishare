@@ -35,8 +35,8 @@ const exampleContent = {
                 extension: 'PNG',
                 preview: 'https://picsum.photos/seed/wycieczkaa/200/300',
                 details: {
-                    createdDate: new Date().toLocaleString(),
-                    lastModificationDate: new Date().toLocaleString(),
+                    createdDate: new Date().toString(),
+                    lastModificationDate: new Date('5.5.2023 12:05:36').toString(),
                     fileSizeBites: 25000
                 },
                 star: false
@@ -47,8 +47,8 @@ const exampleContent = {
                 extension: 'PNG',
                 preview: 'https://picsum.photos/seed/wycieczkab/200/300',
                 details: {
-                    createdDate: new Date().toLocaleString(),
-                    lastModificationDate: new Date().toLocaleString(),
+                    createdDate: new Date().toString(),
+                    lastModificationDate: new Date().toString(),
                     fileSizeBites: 25000
                 },
                 star: false
@@ -59,8 +59,8 @@ const exampleContent = {
                 extension: 'JPG',
                 preview: 'https://picsum.photos/seed/wycieczkac/200/300',
                 details: {
-                    createdDate: new Date().toLocaleString(),
-                    lastModificationDate: new Date().toLocaleString(),
+                    createdDate: new Date().toString(),
+                    lastModificationDate: new Date().toString(),
                     fileSizeBites: 25000
                 },
                 star: false
@@ -70,8 +70,8 @@ const exampleContent = {
                 name: 'Do zrobienia',
                 extension: 'TXT',
                 details: {
-                    createdDate: new Date().toLocaleString(),
-                    lastModificationDate: new Date().toLocaleString(),
+                    createdDate: new Date().toString(),
+                    lastModificationDate: new Date('1.1.2023 12:00:00').toString(),
                     fileSizeBites: 25000
                 },
                 star: false
@@ -96,8 +96,8 @@ const exampleContent = {
                     name: 'Wszystkie zdjęcia',
                     extension: 'XLSX',
                     details: {
-                        createdDate: new Date().toLocaleString(),
-                        lastModificationDate: new Date().toLocaleString(),
+                        createdDate: new Date().toString(),
+                        lastModificationDate: new Date().toString(),
                         fileSizeBites: 25000
                     },
                     star: false

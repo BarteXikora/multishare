@@ -4,6 +4,7 @@ import { contentStateType, selectedType } from '../../contentSlice.types'
 import getCurrentPath from '../../../../../functions/getCurrentPath/getCurrentPath'
 import getCurrentContent from '../../../../../functions/getCurrentContent/getCurrentContent'
 import getTrashContent from '../../../../../functions/getTrashContent/getTrashContent'
+import sortContent from '../../../../../functions/sortContent/sortContent'
 
 const emptySelect: selectedType = { folders: [], files: [], selectionStart: null }
 
@@ -30,19 +31,16 @@ const setTreeLocation = (state: contentStateType, action: PayloadAction<number>)
             state.selected = emptySelect
         }
 
-        state.currentFolder = getCurrentContent(state.loadedContent.content, action.payload)
+        state.currentFolder = sortContent(getCurrentContent(state.loadedContent.content, action.payload), state.sort)
 
     } else if (state.displayType === 'FILES') {
         state.currentPath = []
-        state.currentFolder = {
-            folders: [],
-            files: state.loadedContent.content.files
-        }
+        state.currentFolder = sortContent({ folders: [], files: state.loadedContent.content.files }, state.sort)
         state.selected = emptySelect
 
     } else {
         state.currentPath = []
-        state.currentFolder = getTrashContent(state.loadedContent.trash)
+        state.currentFolder = sortContent(getTrashContent(state.loadedContent.trash), state.sort)
         state.selected = emptySelect
     }
 }

@@ -58,6 +58,11 @@ export type contentDisplayType = {
 
 export type displayTypeType = 'TREE' | 'FILES' | 'TRASH'
 
+export type sortType = {
+    sortBy: 'NAME' | 'DATE' | 'TYPE',
+    method: 'ASC' | 'DESC'
+}
+
 type loadedContentLoadingType = {
     status: 'LOADING'
 }
@@ -90,6 +95,7 @@ export type selectedType = {
 export type contentStateType = {
     loadedContent: loadedContentType,
     displayType: displayTypeType,
+    sort: sortType,
     currentFolder: contentDisplayType,
     currentPath: pathType[],
     selected: selectedType

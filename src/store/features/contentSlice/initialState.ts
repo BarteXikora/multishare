@@ -5,6 +5,7 @@ const emptyContent = { folders: [], files: [] }
 const initialState: contentStateType = {
     currentPath: [],
     displayType: 'TREE',
+    sort: { sortBy: 'NAME', method: 'ASC' },
     currentFolder: emptyContent,
     loadedContent: { status: 'LOADING' },
     selected: { ...emptyContent, selectionStart: null }
