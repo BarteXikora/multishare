@@ -12,6 +12,7 @@ import CanNotOpenInTrashWindow from '../../windows/canNotOpenInTrashWindow/CanNo
 import RenameWindow from '../../windows/renameWindow/RenameWindow'
 import MoveWindow from '../../windows/moveWindow/MoveWindow'
 import UploadWindow from '../../windows/uploadWindow/UploadWindow'
+import SortWindow from '../../windows/sortWindow/SortWindow'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
 
@@ -32,7 +33,8 @@ const Window = () => {
             case 'CAN_NOT_OPEN_IN_TRASH': selectedWindowBody = <CanNotOpenInTrashWindow data={window.data} />; break
             case 'RENAME': selectedWindowBody = <RenameWindow />; break
             case 'MOVE': selectedWindowBody = <MoveWindow />; break
-            case 'UPLOAD': selectedWindowBody = <UploadWindow />
+            case 'UPLOAD': selectedWindowBody = <UploadWindow />; break
+            case 'SORT': selectedWindowBody = <SortWindow />
         }
 
         setWindowBody(selectedWindowBody)
