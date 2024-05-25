@@ -28,6 +28,10 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
         dispatch(showWindow({ title: 'Utwórz nowy folder', content: 'CREATE_NEW_FOLDER' }))
     }
 
+    const handleSort = () => {
+        dispatch(showWindow({ title: 'Sortuj zawartość', content: 'SORT' }))
+    }
+
     return <>
         {
             (!uploadHereDisabled || !createNewFolderDisabled) && <>
@@ -60,7 +64,7 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
                 Zaznacz wszystko
             </Button>
 
-            <Button $variant='quaternary'>
+            <Button $variant='quaternary' onClick={handleSort}>
                 <img src={iconSort} alt="Sortuj..." />
 
                 Sortuj...
