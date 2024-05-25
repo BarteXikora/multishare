@@ -8,6 +8,7 @@ const useUpdateContent = () => {
 
     const path = useSelector(state => state.content.currentPath)
     const content = useSelector(state => state.content.loadedContent)
+    const sort = useSelector(state => state.content.sort)
 
     useEffect(() => {
         const currentFolderId: number = getCurrentFolderId(path)
@@ -15,7 +16,7 @@ const useUpdateContent = () => {
         dispatch(setTreeLocation(currentFolderId))
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [content])
+    }, [content, sort])
 }
 
 export default useUpdateContent
