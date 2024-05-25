@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from '../../../../store/store'
 import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSlice'
+import { setSort } from '../../../../store/features/contentSlice/contentSlice'
+import { sortType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 import Button from '../../../ui/button/Button'
 import Dropdown from '../../../ui/dropdown/Dropdown'
@@ -17,10 +19,16 @@ import iconUp from '../../../../assets/icons/icon-up.svg'
 import iconDown from '../../../../assets/icons/icon-down.svg'
 
 const ListTools = () => {
-    const viewStyle = useSelector(state => state.view.contentViewStyle)
     const dispatch = useDispatch()
 
+    const viewStyle = useSelector(state => state.view.contentViewStyle)
+    const sort = useSelector(state => state.content.sort)
+
     const { selectAll } = useContentEvents()
+
+    const handleSort = (sort: sortType) => {
+        dispatch(setSort(sort))
+    }
 
     return <section className="list-tools">
         <Button $variant='secondary' onClick={() => selectAll()}>
@@ -41,19 +49,19 @@ const ListTools = () => {
             dropdownContent={<>
                 <h2>Sortuj zawartość:</h2>
 
-                <Button $variant='quaternary'>
-                    <img src={iconSortAlphabet} alt="Sortuj Nazwa" />
+                <Button $variant='quaternary' $active={sort.sortBy === 'NAME'} onClick={() => handleSort({ ...sort, sortBy: 'NAME' })}>
+                    <img src={iconSortAlphabet} alt="Nazwa" />
 
                     Nazwa
                 </Button>
 
-                <Button $variant='quaternary'>
+                <Button $variant='quaternary' $active={sort.sortBy === 'DATE'} onClick={() => handleSort({ ...sort, sortBy: 'DATE' })}>
                     <img src={iconSortDate} alt="Data" />
 
                     Data
                 </Button>
 
-                <Button $variant='quaternary'>
+                <Button $variant='quaternary' $active={sort.sortBy === 'TYPE'} onClick={() => handleSort({ ...sort, sortBy: 'TYPE' })}>
                     <img src={iconSortType} alt="Typ" />
 
                     Typ
@@ -61,13 +69,13 @@ const ListTools = () => {
 
                 <hr />
 
-                <Button $variant='quaternary'>
+                <Button $variant='quaternary' $active={sort.method === 'ASC'} onClick={() => handleSort({ ...sort, method: 'ASC' })}>
                     <img src={iconDown} alt="Rosnąco" />
 
                     Rosnąco
                 </Button>
 
-                <Button $variant='quaternary'>
+                <Button $variant='quaternary' $active={sort.method === 'DESC'} onClick={() => handleSort({ ...sort, method: 'DESC' })}>
                     <img src={iconUp} alt="Malejąco" />
 
                     Malejąco
