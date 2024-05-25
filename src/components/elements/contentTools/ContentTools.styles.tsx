@@ -47,7 +47,7 @@ const StyledContentTools = styled.div`
         }
     }
 
-    .button-view .dropdown-content {
+    .button-dropdown .dropdown-content {
         right: 0;
         flex-direction: column;
         padding: ${(props) => props.theme.margins.sectionMedium};
@@ -65,7 +65,7 @@ const StyledContentTools = styled.div`
         }
     }
 
-    .open-tools-buttons .dropdown-content {
+    .dropdown-content {
         section {
             display: flex;
             flex-direction: column;

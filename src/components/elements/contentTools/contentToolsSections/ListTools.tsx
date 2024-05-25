@@ -10,6 +10,11 @@ import iconSort from '../../../../assets/icons/icon-sort.svg'
 import iconFilter from '../../../../assets/icons/icon-filter.svg'
 import iconDisplay from '../../../../assets/icons/icon-display.svg'
 import iconList from '../../../../assets/icons/icon-list.svg'
+import iconSortAlphabet from '../../../../assets/icons/icon-sort-alphabet.svg'
+import iconSortDate from '../../../../assets/icons/icon-sort-date.svg'
+import iconSortType from '../../../../assets/icons/icon-sort-type.svg'
+import iconUp from '../../../../assets/icons/icon-up.svg'
+import iconDown from '../../../../assets/icons/icon-down.svg'
 
 const ListTools = () => {
     const viewStyle = useSelector(state => state.view.contentViewStyle)
@@ -24,11 +29,51 @@ const ListTools = () => {
             Zaznacz wszystko
         </Button>
 
-        <Button $variant='secondary'>
-            <img src={iconSort} alt="Sortuj..." />
+        <Dropdown
+            className='button-dropdown'
+            buttonOptions={{ $variant: 'secondary' }}
+            showArrow={false}
+            buttonContent={<>
+                <img src={iconSort} alt="Sortuj..." />
 
-            Sortuj...
-        </Button>
+                Sortuj...
+            </>}
+            dropdownContent={<>
+                <h2>Sortuj zawartość:</h2>
+
+                <Button $variant='quaternary'>
+                    <img src={iconSortAlphabet} alt="Sortuj Nazwa" />
+
+                    Nazwa
+                </Button>
+
+                <Button $variant='quaternary'>
+                    <img src={iconSortDate} alt="Data" />
+
+                    Data
+                </Button>
+
+                <Button $variant='quaternary'>
+                    <img src={iconSortType} alt="Typ" />
+
+                    Typ
+                </Button>
+
+                <hr />
+
+                <Button $variant='quaternary'>
+                    <img src={iconDown} alt="Rosnąco" />
+
+                    Rosnąco
+                </Button>
+
+                <Button $variant='quaternary'>
+                    <img src={iconUp} alt="Malejąco" />
+
+                    Malejąco
+                </Button>
+            </>}
+        />
 
         <Button $variant='secondary'>
             <img src={iconFilter} alt="Filtruj..." />
@@ -37,7 +82,7 @@ const ListTools = () => {
         </Button>
 
         <Dropdown
-            className='button-view'
+            className='button-dropdown'
             buttonOptions={{ $variant: 'secondary' }}
             showArrow={false}
             buttonContent={<>
