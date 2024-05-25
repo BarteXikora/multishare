@@ -7,7 +7,7 @@ const sortByName = (content: contentDisplayType): contentDisplayType => {
     content.folders = folders.sort((a, b) => a.name.localeCompare(b.name))
     content.files = files.sort((a, b) => a.name.localeCompare(b.name))
 
-    return content
+    return { ...content }
 }
 
 const sortByDate = (content: contentDisplayType): contentDisplayType => {
@@ -31,7 +31,7 @@ const sortByDate = (content: contentDisplayType): contentDisplayType => {
         return new Date(dateB).getTime() - new Date(dateA).getTime()
     })
 
-    return content
+    return { ...content }
 }
 
 const sortByType = (content: contentDisplayType): contentDisplayType => {
@@ -39,22 +39,24 @@ const sortByType = (content: contentDisplayType): contentDisplayType => {
 
     content.files = files.sort((a, b) => getFileTypeName(a.extension).localeCompare(getFileTypeName(b.extension)))
 
-    return content
+    return { ...content }
 }
 
 const reverse = (content: contentDisplayType): contentDisplayType => {
-    return { folders: content.folders.reverse(), files: content.files.reverse() }
+    return { folders: content.folders.reverse(), files: [...content.files.reverse()] }
 }
 
 const sortContent = (content: contentDisplayType, sort: sortType): contentDisplayType => {
-    content = sortByName(content)
+    let currentContent = JSON.parse(JSON.stringify(content))
 
-    if (sort.sortBy === 'DATE') content = sortByDate(content)
-    if (sort.sortBy === 'TYPE') content = sortByType(content)
+    currentContent = sortByName(currentContent)
 
-    if (sort.method === 'DESC') content = reverse(content)
+    if (sort.sortBy === 'DATE') currentContent = sortByDate(currentContent)
+    if (sort.sortBy === 'TYPE') currentContent = sortByType(currentContent)
 
-    return content
+    if (sort.method === 'DESC') currentContent = reverse(currentContent)
+
+    return currentContent
 }
 
 export default sortContent
