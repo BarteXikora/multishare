@@ -1,4 +1,5 @@
 import { contentDisplayType, sortType } from '../../store/features/contentSlice/contentSlice.types'
+import getFileType from '../fileTypes/getFileType/getFileType'
 import getFileTypeName from '../fileTypes/getFileTypeName/getFileTypeName'
 
 const sortByName = (content: contentDisplayType): contentDisplayType => {
@@ -38,6 +39,7 @@ const sortByType = (content: contentDisplayType): contentDisplayType => {
     const { files } = content
 
     content.files = files.sort((a, b) => getFileTypeName(a.extension).localeCompare(getFileTypeName(b.extension)))
+    content.files = content.files.sort((a, b) => getFileType(a.extension).localeCompare(getFileType(b.extension)))
 
     return { ...content }
 }
