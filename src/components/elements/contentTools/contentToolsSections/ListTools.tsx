@@ -17,6 +17,7 @@ import iconSortDate from '../../../../assets/icons/icon-sort-date.svg'
 import iconSortType from '../../../../assets/icons/icon-sort-type.svg'
 import iconUp from '../../../../assets/icons/icon-up.svg'
 import iconDown from '../../../../assets/icons/icon-down.svg'
+import iconClose from '../../../../assets/icons/icon-close.svg'
 
 const ListTools = () => {
     const dispatch = useDispatch()
@@ -83,11 +84,89 @@ const ListTools = () => {
             </>}
         />
 
-        <Button $variant='secondary'>
-            <img src={iconFilter} alt="Filtruj..." />
+        <Dropdown
+            className='button-dropdown'
+            buttonOptions={{ $variant: 'secondary' }}
+            showArrow={false}
+            buttonContent={<><img src={iconFilter} alt="Filtruj..." /> Filtruj...</>}
+            dropdownContent={<>
+                <Button $variant='wrong'>
+                    <img src={iconClose} alt="Wyczyść filtry" />
 
-            Filtruj...
-        </Button>
+                    Wyczyść filtry
+                </Button>
+
+                <hr />
+
+                <h2>Data modyfikacji:</h2>
+
+                <Button $variant='quaternary'>
+                    Dzisiaj
+                </Button>
+
+                <Button $variant='quaternary'>
+                    Ostatnie 7 dni
+                </Button>
+
+                <Button $variant='quaternary'>
+                    Ostatnie 30 dni
+                </Button>
+
+                <Button $variant='quaternary'>
+                    Wybierz zakres dat...
+                </Button>
+
+                <hr />
+
+                <h2>Typ elementu:</h2>
+
+                <section className="dropdown-scroll">
+                    <Button $variant='quaternary'>
+                        Foldery
+                    </Button>
+
+                    <Button $variant='quaternary'>
+                        Arkusze kalkulacyjne
+                    </Button>
+
+                    <Button $variant='quaternary'>
+                        Dokumnty tekstowe
+                    </Button>
+
+                    <Button $variant='quaternary'>
+                        Filmy
+                    </Button>
+
+                    <Button $variant='quaternary'>
+                        Kod
+                    </Button>
+
+                    <Button $variant='quaternary'>
+                        Obrazy
+                    </Button>
+
+                    <Button $variant='quaternary'>
+                        Pliki dźwiękowe
+                    </Button>
+
+                    <Button $variant='quaternary'>
+                        Prezentacje mulimedialne
+                    </Button>
+
+                    <Button $variant='quaternary'>
+                        Pliki PDF
+                    </Button>
+
+                    <Button $variant='quaternary'>
+                        Pliki TXT
+                    </Button>
+
+                    <Button $variant='quaternary'>
+                        Pozostałe (nieznane)
+                    </Button>
+                </section>
+            </>}
+        />
 
         <Dropdown
             className='button-dropdown'

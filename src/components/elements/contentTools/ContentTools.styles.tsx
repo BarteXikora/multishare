@@ -82,6 +82,11 @@ const StyledContentTools = styled.div`
         }
     }
 
+    .dropdown-scroll {
+        max-height: 118px;
+        overflow-y: auto;
+    }
+
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
         .details-button {
             display: flex;
