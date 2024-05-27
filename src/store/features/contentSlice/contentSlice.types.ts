@@ -63,6 +63,19 @@ export type sortType = {
     method: 'ASC' | 'DESC'
 }
 
+type filterTimeType = {
+    from: Date,
+    to: Date
+} | null
+
+type filterTypeType = 'FOLDER' | 'IMAGE' | 'TEXT' | 'PDF' | 'WORD' |
+    'CALCULATIONS' | 'SLIDES' | 'CODE' | 'SOUND' | 'FILM' | 'UNKNOWN' | null
+
+export type filterType = {
+    time: filterTimeType,
+    type: filterTypeType
+}
+
 type loadedContentLoadingType = {
     status: 'LOADING'
 }
@@ -96,6 +109,7 @@ export type contentStateType = {
     loadedContent: loadedContentType,
     displayType: displayTypeType,
     sort: sortType,
+    filter: filterType,
     currentFolder: contentDisplayType,
     currentPath: pathType[],
     selected: selectedType

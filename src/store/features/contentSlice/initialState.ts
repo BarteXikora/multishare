@@ -6,6 +6,7 @@ const initialState: contentStateType = {
     currentPath: [],
     displayType: 'TREE',
     sort: { sortBy: 'NAME', method: 'ASC' },
+    filter: { time: null, type: null },
     currentFolder: emptyContent,
     loadedContent: { status: 'LOADING' },
     selected: { ...emptyContent, selectionStart: null }
