@@ -1,5 +1,5 @@
 import StyledNoPreviewSection from './NoPreviewSection.styles'
-import getPreviewImage from '../../../../functions/getPreviewImage/getPreviewImage'
+import getPreviewImage from '../../../../functions/fileTypes/getPreviewImage/getPreviewImage'
 
 const NoPreviewSection = ({ extension }: { extension: string }) => {
     return <StyledNoPreviewSection>

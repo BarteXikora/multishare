@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import StyledFile from './File.styles'
-import getPreviewImage from '../../../functions/getPreviewImage/getPreviewImage'
+import getPreviewImage from '../../../functions/fileTypes/getPreviewImage/getPreviewImage'
 
 import iconStar from '../../../assets/icons/icon-star-color.svg'
 
