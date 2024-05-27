@@ -1,5 +1,5 @@
 import { contentDisplayType, sortType } from '../../store/features/contentSlice/contentSlice.types'
-import getFileTypeName from '../getFileTypeName/getFileTypeName'
+import getFileTypeName from '../fileTypes/getFileTypeName/getFileTypeName'
 
 const sortByName = (content: contentDisplayType): contentDisplayType => {
     const { folders, files } = content
