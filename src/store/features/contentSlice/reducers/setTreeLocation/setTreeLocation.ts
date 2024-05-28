@@ -6,6 +6,7 @@ import getCurrentContent from '../../../../../functions/getCurrentContent/getCur
 import getTrashContent from '../../../../../functions/getTrashContent/getTrashContent'
 import sortContent from '../../../../../functions/sortContent/sortContent'
 import getAllDisplayContent from '../../../../../functions/getAllDisplayContent/getAllDisplayContent'
+import filterContent from '../../../../../functions/filterContent/filterContent'
 
 const emptySelect: selectedType = { folders: [], files: [], selectionStart: null }
 
@@ -43,13 +44,13 @@ const setTreeLocation = (state: contentStateType, action: PayloadAction<number>)
             }
         } else {
             state.currentPath = []
-            state.currentFolder = sortContent(getAllDisplayContent(state.loadedContent.content), state.sort)
+            state.currentFolder = sortContent(filterContent(getAllDisplayContent(state.loadedContent.content), state.filter), state.sort)
             state.selected = emptySelect
         }
 
     } else {
         state.currentPath = []
-        state.currentFolder = sortContent(getTrashContent(state.loadedContent.trash), state.sort)
+        state.currentFolder = sortContent(filterContent(getTrashContent(state.loadedContent.trash), state.filter), state.sort)
         state.selected = emptySelect
     }
 }
