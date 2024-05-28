@@ -7,6 +7,7 @@ import Title from './title/Title'
 import BackButton from './backButton/BackButton'
 import Path from './path/Path'
 import CurrentFolderButton from './currentFolderButon/CurrentFolderButton'
+import FilterWarning from '../filterWarning/FilterWarning'
 
 import getShortenName from '../../../functions/getShortenName/getShortenName'
 
@@ -16,6 +17,7 @@ const PathBox = () => {
     const projectName = useSelector(state => state.project.selectedProject ? state.project.selectedProject.name : '')
     const currentPath = useSelector(state => state.content.currentPath)
     const displayType = useSelector(state => state.content.displayType)
+    const filter = useSelector(state => state.content.filter)
 
     const [shortenPath, setShortenPath] = useState<pathType[]>([])
 
@@ -35,19 +37,27 @@ const PathBox = () => {
     }, [projectName, currentPath])
 
     return <StyledPathBox>
+        <section className='main-section'>
+            {
+                displayType === 'TREE' ?
+                    <>
+                        <BackButton isHome={shortenPath.length <= 1} />
+
+                        <Path path={shortenPath} />
+
+                        <CurrentFolderButton path={shortenPath} />
+                    </>
+
+                    :
+
+                    <Title displayType={displayType} />
+            }
+        </section>
+
         {
-            displayType === 'TREE' ?
-                <>
-                    <BackButton isHome={shortenPath.length <= 1} />
-
-                    <Path path={shortenPath} />
-
-                    <CurrentFolderButton path={shortenPath} />
-                </>
-
-                :
-
-                <Title displayType={displayType} />
+            (filter.time || filter.type) && <section className='warning-section'>
+                <FilterWarning />
+            </section>
         }
     </StyledPathBox>
 }
