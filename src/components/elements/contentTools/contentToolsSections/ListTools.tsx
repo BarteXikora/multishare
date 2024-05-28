@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from '../../../../store/store'
 import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSlice'
-import { setSort } from '../../../../store/features/contentSlice/contentSlice'
-import { sortType } from '../../../../store/features/contentSlice/contentSlice.types'
+import { setFilter, setSort } from '../../../../store/features/contentSlice/contentSlice'
+import { filterType, sortType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 import Button from '../../../ui/button/Button'
 import Dropdown from '../../../ui/dropdown/Dropdown'
@@ -24,11 +24,16 @@ const ListTools = () => {
 
     const viewStyle = useSelector(state => state.view.contentViewStyle)
     const sort = useSelector(state => state.content.sort)
+    const filter = useSelector(state => state.content.filter)
 
     const { selectAll } = useContentEvents()
 
     const handleSort = (sort: sortType) => {
         dispatch(setSort(sort))
+    }
+
+    const handleFilter = (filter: filterType) => {
+        dispatch(setFilter(filter))
     }
 
     return <section className="list-tools">
@@ -90,13 +95,17 @@ const ListTools = () => {
             showArrow={false}
             buttonContent={<><img src={iconFilter} alt="Filtruj..." /> Filtruj...</>}
             dropdownContent={<>
-                <Button $variant='wrong'>
-                    <img src={iconClose} alt="Wyczyść filtry" />
+                {
+                    (filter.time || filter.type) && <>
+                        <Button $variant='wrong' onClick={() => handleFilter({ time: null, type: null })}>
+                            <img src={iconClose} alt="Wyczyść filtry" />
 
-                    Wyczyść filtry
-                </Button>
+                            Wyczyść filtry
+                        </Button>
 
-                <hr />
+                        <hr />
+                    </>
+                }
 
                 <h2>Data modyfikacji:</h2>
 
@@ -121,47 +130,91 @@ const ListTools = () => {
                 <h2>Typ elementu:</h2>
 
                 <section className="dropdown-scroll">
-                    <Button $variant='quaternary'>
+                    <Button
+                        $variant='quaternary'
+                        $active={filter.type === 'FOLDER'}
+                        onClick={() => handleFilter({ ...filter, type: 'FOLDER' })}
+                    >
                         Foldery
                     </Button>
 
-                    <Button $variant='quaternary'>
+                    <Button
+                        $variant='quaternary'
+                        $active={filter.type === 'CALCULATIONS'}
+                        onClick={() => handleFilter({ ...filter, type: 'CALCULATIONS' })}
+                    >
                         Arkusze kalkulacyjne
                     </Button>
 
-                    <Button $variant='quaternary'>
+                    <Button
+                        $variant='quaternary'
+                        $active={filter.type === 'WORD'}
+                        onClick={() => handleFilter({ ...filter, type: 'WORD' })}
+                    >
                         Dokumnty tekstowe
                     </Button>
 
-                    <Button $variant='quaternary'>
+                    <Button
+                        $variant='quaternary'
+                        $active={filter.type === 'FILM'}
+                        onClick={() => handleFilter({ ...filter, type: 'FILM' })}
+                    >
                         Filmy
                     </Button>
 
-                    <Button $variant='quaternary'>
+                    <Button
+                        $variant='quaternary'
+                        $active={filter.type === 'CODE'}
+                        onClick={() => handleFilter({ ...filter, type: 'CODE' })}
+                    >
                         Kod
                     </Button>
 
-                    <Button $variant='quaternary'>
+                    <Button
+                        $variant='quaternary'
+                        $active={filter.type === 'IMAGE'}
+                        onClick={() => handleFilter({ ...filter, type: 'IMAGE' })}
+                    >
                         Obrazy
                     </Button>
 
-                    <Button $variant='quaternary'>
+                    <Button
+                        $variant='quaternary'
+                        $active={filter.type === 'SOUND'}
+                        onClick={() => handleFilter({ ...filter, type: 'SOUND' })}
+                    >
                         Pliki dźwiękowe
                     </Button>
 
-                    <Button $variant='quaternary'>
+                    <Button
+                        $variant='quaternary'
+                        $active={filter.type === 'SLIDES'}
+                        onClick={() => handleFilter({ ...filter, type: 'SLIDES' })}
+                    >
                         Prezentacje mulimedialne
                     </Button>
 
-                    <Button $variant='quaternary'>
+                    <Button
+                        $variant='quaternary'
+                        $active={filter.type === 'PDF'}
+                        onClick={() => handleFilter({ ...filter, type: 'PDF' })}
+                    >
                         Pliki PDF
                     </Button>
 
-                    <Button $variant='quaternary'>
+                    <Button
+                        $variant='quaternary'
+                        $active={filter.type === 'TEXT'}
+                        onClick={() => handleFilter({ ...filter, type: 'TEXT' })}
+                    >
                         Pliki TXT
                     </Button>
 
-                    <Button $variant='quaternary'>
+                    <Button
+                        $variant='quaternary'
+                        $active={filter.type === 'UNKNOWN'}
+                        onClick={() => handleFilter({ ...filter, type: 'UNKNOWN' })}
+                    >
                         Pozostałe (nieznane)
                     </Button>
                 </section>
