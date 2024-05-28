@@ -91,7 +91,7 @@ const ListTools = () => {
 
         <Dropdown
             className='button-dropdown'
-            buttonOptions={{ $variant: 'secondary' }}
+            buttonOptions={{ $variant: (filter.time || filter.type) ? 'warning' : 'secondary' }}
             showArrow={false}
             buttonContent={<><img src={iconFilter} alt="Filtruj..." /> Filtruj...</>}
             dropdownContent={<>
