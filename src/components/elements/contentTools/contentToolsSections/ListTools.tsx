@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from '../../../../store/store'
 import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSlice'
 import { setFilter, setSort } from '../../../../store/features/contentSlice/contentSlice'
+import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import { filterType, sortType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 import Button from '../../../ui/button/Button'
@@ -34,6 +35,10 @@ const ListTools = () => {
 
     const handleFilter = (filter: filterType) => {
         dispatch(setFilter(filter))
+    }
+
+    const handleDateRange = () => {
+        dispatch(showWindow({ title: 'Wybierz zakres dat', content: 'DATE_RANGE' }))
     }
 
     return <section className="list-tools">
@@ -121,7 +126,7 @@ const ListTools = () => {
                     Ostatnie 30 dni
                 </Button>
 
-                <Button $variant='quaternary'>
+                <Button $variant='quaternary' onClick={handleDateRange}>
                     Wybierz zakres dat...
                 </Button>
 
