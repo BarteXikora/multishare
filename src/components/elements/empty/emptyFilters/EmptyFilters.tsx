@@ -10,7 +10,7 @@ const EmptyFilters = () => {
     const dispatch = useDispatch()
 
     const handleClearFilters = () => {
-        dispatch(setFilter({ type: null, time: null }))
+        dispatch(setFilter({ type: null, time: null, star: null }))
     }
 
     return <>

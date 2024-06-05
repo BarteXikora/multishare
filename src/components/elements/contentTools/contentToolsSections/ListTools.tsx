@@ -102,7 +102,7 @@ const ListTools = () => {
             dropdownContent={<>
                 {
                     (filter.time || filter.type) && <>
-                        <Button $variant='wrong' onClick={() => handleFilter({ time: null, type: null })}>
+                        <Button $variant='wrong' onClick={() => handleFilter({ time: null, type: null, star: null })}>
                             <img src={iconClose} alt="Wyczyść filtry" />
 
                             Wyczyść filtry

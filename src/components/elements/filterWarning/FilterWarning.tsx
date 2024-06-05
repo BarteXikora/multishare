@@ -10,7 +10,7 @@ const FilterWarning = () => {
     const dispatch = useDispatch()
 
     const handleClearFilters = () => {
-        dispatch(setFilter({ time: null, type: null }))
+        dispatch(setFilter({ time: null, type: null, star: null }))
     }
 
     return <StyledFilterWarning onClick={handleClearFilters}>

@@ -14,7 +14,7 @@ const useOpenFolder = () => {
             data: { type: 'FOLDER', id: folderId }
         }))
 
-        dispatch(setFilter({ type: null, time: null }))
+        dispatch(setFilter({ type: null, time: null, star: null }))
         dispatch(setDisplayType('TREE'))
         dispatch(setTreeLocation(folderId))
     }
