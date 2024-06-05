@@ -3,8 +3,8 @@ import NameSection from '../../sections/nameSection/NameSection'
 import DetailsListSection from '../../sections/detailsListSection/DetailsListSection'
 
 import { contentFileType } from '../../../../../store/features/detailsSectionSlice/initialState.types'
-import getPreviewImage from '../../../../../functions/getPreviewImage/getPreviewImage'
-import getFileTypeName from '../../../../../functions/getFileTypeName/getFileTypeName'
+import getPreviewImage from '../../../../../functions/fileTypes/getPreviewImage/getPreviewImage'
+import getFileTypeName from '../../../../../functions/fileTypes/getFileTypeName/getFileTypeName'
 
 const SingleFileDetails = ({ content }: { content: contentFileType }) => {
     const { name, extension, star, details, preview } = content.data

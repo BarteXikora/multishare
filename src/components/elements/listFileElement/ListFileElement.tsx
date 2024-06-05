@@ -1,7 +1,7 @@
 import Moment from 'react-moment'
 import moment from 'moment'
 
-import getFileTypeName from '../../../functions/getFileTypeName/getFileTypeName'
+import getFileTypeName from '../../../functions/fileTypes/getFileTypeName/getFileTypeName'
 import getDataWithUnit from '../../../functions/getDataWithUnit/getDataWithUnit'
 
 import iconStar from '../../../assets/icons/icon-star-color.svg'

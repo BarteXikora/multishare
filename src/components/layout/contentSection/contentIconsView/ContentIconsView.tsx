@@ -17,7 +17,7 @@ const ContentIconsView = () => {
     return <StyledContentIconsView>
         {displayType === 'TRASH' && <TrashWarning isTrashEmpty={content.folders.length + content.files.length === 0} />}
 
-        {displayType !== 'FILES' && content.folders.length > 0 && <FoldersSection content={content} selected={selected} />}
+        {content.folders.length > 0 && <FoldersSection content={content} selected={selected} />}
 
         {content.files.length > 0 && <FilesSection content={content} selected={selected} displayType={displayType} />}
 

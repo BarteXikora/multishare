@@ -20,11 +20,15 @@ type ButtonQuaternary = {
     $active?: boolean
 }
 
+type ButtonWarning = {
+    $variant: 'warning'
+}
+
 type ButtonWrong = {
     $variant: 'wrong'
 }
 
-export type ButtonProps = (ButtonPrimary | ButtonSecondary | ButtonTertiary | ButtonQuaternary | ButtonWrong) & {
+export type ButtonProps = (ButtonPrimary | ButtonSecondary | ButtonTertiary | ButtonQuaternary | ButtonWarning | ButtonWrong) & {
     $size?: ButtonSizes
     disabled?: boolean
 }

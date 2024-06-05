@@ -9,7 +9,7 @@ import iconUpload from '../../../../assets/icons/icon-upload.svg'
 import iconNewFolder from '../../../../assets/icons/icon-new-folder-dark.svg'
 import iconSelect from '../../../../assets/icons/icon-ok.svg'
 import iconSort from '../../../../assets/icons/icon-sort-dark.svg'
-import iconFilter from '../../../../assets/icons/icon-filter.svg'
+import iconFilter from '../../../../assets/icons/icon-filter-dark.svg'
 import iconDisplay from '../../../../assets/icons/icon-display.svg'
 import iconList from '../../../../assets/icons/icon-list.svg'
 
@@ -30,6 +30,10 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
 
     const handleSort = () => {
         dispatch(showWindow({ title: 'Sortuj zawartość', content: 'SORT' }))
+    }
+
+    const handleFilter = () => {
+        dispatch(showWindow({ title: 'Filtruj zawartość', content: 'FILTER' }))
     }
 
     return <>
@@ -70,7 +74,7 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
                 Sortuj...
             </Button>
 
-            <Button $variant='quaternary'>
+            <Button $variant='quaternary' onClick={handleFilter}>
                 <img src={iconFilter} alt="Filtruj..." />
 
                 Filtruj...

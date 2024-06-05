@@ -13,6 +13,8 @@ import RenameWindow from '../../windows/renameWindow/RenameWindow'
 import MoveWindow from '../../windows/moveWindow/MoveWindow'
 import UploadWindow from '../../windows/uploadWindow/UploadWindow'
 import SortWindow from '../../windows/sortWindow/SortWindow'
+import FilterWindow from '../../windows/filterWindow/FilterWindow'
+import DateRangeWindow from '../../windows/dateRangeWindow/DateRangeWindow'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
 
@@ -34,7 +36,9 @@ const Window = () => {
             case 'RENAME': selectedWindowBody = <RenameWindow />; break
             case 'MOVE': selectedWindowBody = <MoveWindow />; break
             case 'UPLOAD': selectedWindowBody = <UploadWindow />; break
-            case 'SORT': selectedWindowBody = <SortWindow />
+            case 'SORT': selectedWindowBody = <SortWindow />; break
+            case 'FILTER': selectedWindowBody = <FilterWindow />; break
+            case 'DATE_RANGE': selectedWindowBody = <DateRangeWindow />
         }
 
         setWindowBody(selectedWindowBody)

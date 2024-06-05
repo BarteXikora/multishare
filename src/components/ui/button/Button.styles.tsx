@@ -52,6 +52,15 @@ const buttonQuaternaryActiveStyles = css`
     }
 `
 
+const buttonWarningStyles = css`
+    background-color: ${(props) => props.theme.colors.warning6};
+    color: ${(props) => props.theme.colors.black};
+
+    &:hover {
+        background-color: ${(props) => props.theme.colors.warning5};
+    }
+`
+
 const buttonWrongStyles = css`
     background-color: ${(props) => props.theme.colors.wrong6};
     color: ${(props) => props.theme.colors.white};
@@ -116,6 +125,7 @@ const StyledButton = styled.button<ButtonProps>`
     ${(props) => props.$variant === 'secondary' && buttonSecondaryStyles}
     ${(props) => props.$variant === 'tertiary' && (props.$active ? buttonTertiaryActiveStyles : buttonTertiaryStyles)}
     ${(props) => props.$variant === 'quaternary' && (props.$active ? buttonQuaternaryActiveStyles : buttonQuaternaryStyles)}
+    ${(props) => props.$variant === 'warning' && buttonWarningStyles}
     ${(props) => props.$variant === 'wrong' && buttonWrongStyles}
     ${(props) => props.disabled && buttonDisabled}
 `
