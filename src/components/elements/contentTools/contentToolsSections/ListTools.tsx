@@ -96,12 +96,12 @@ const ListTools = () => {
 
         <Dropdown
             className='button-dropdown'
-            buttonOptions={{ $variant: (filter.time || filter.type) ? 'warning' : 'secondary' }}
+            buttonOptions={{ $variant: (filter.time || filter.type || filter.star) ? 'warning' : 'secondary' }}
             showArrow={false}
             buttonContent={<><img src={iconFilter} alt="Filtruj..." /> Filtruj...</>}
             dropdownContent={<>
                 {
-                    (filter.time || filter.type) && <>
+                    (filter.time || filter.type || filter.star) && <>
                         <Button $variant='wrong' onClick={() => handleFilter({ time: null, type: null, star: null })}>
                             <img src={iconClose} alt="Wyczyść filtry" />
 

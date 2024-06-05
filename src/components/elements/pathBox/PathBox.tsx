@@ -55,7 +55,7 @@ const PathBox = () => {
         </section>
 
         {
-            (filter.time || filter.type) && <section className='warning-section'>
+            (filter.time || filter.type || filter.star) && <section className='warning-section'>
                 <FilterWarning />
             </section>
         }

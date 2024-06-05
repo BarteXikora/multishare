@@ -14,7 +14,7 @@ const setTreeLocation = (state: contentStateType, action: PayloadAction<number>)
     if (state.loadedContent.status !== 'READY') return
 
     if (state.displayType !== 'TRASH') {
-        if (!state.filter.time && !state.filter.type) {
+        if (!state.filter.time && !state.filter.type && !state.filter.star) {
             if (state.displayType === 'TREE') {
                 const newPath = getCurrentPath(state.loadedContent.content.folders, action.payload)
 

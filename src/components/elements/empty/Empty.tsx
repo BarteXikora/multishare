@@ -12,7 +12,7 @@ const Empty = () => {
     const displayType = useSelector(state => state.content.displayType)
     const isHome = useSelector(state => state.content.currentPath.length === 0)
 
-    if (filter.type || filter.time) return <StyledEmpty><EmptyFilters /></StyledEmpty>
+    if (filter.type || filter.time || filter.star) return <StyledEmpty><EmptyFilters /></StyledEmpty>
 
     return <StyledEmpty>
         {(displayType === 'TREE' && !isHome) && <EmptyFolder />}
