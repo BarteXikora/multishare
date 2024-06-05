@@ -69,7 +69,7 @@ type filterTimeRangType = { from: Date | null, to: Date | null }
 
 type filterTimeType = filterTimeDaysType | filterTimeRangType | null
 
-type filterTypeType = 'FOLDER' | 'IMAGE' | 'TEXT' | 'PDF' | 'WORD' |
+export type filterTypeType = 'FOLDER' | 'IMAGE' | 'TEXT' | 'PDF' | 'WORD' |
     'CALCULATIONS' | 'SLIDES' | 'CODE' | 'SOUND' | 'FILM' | 'UNKNOWN' | null
 
 export type filterType = {
