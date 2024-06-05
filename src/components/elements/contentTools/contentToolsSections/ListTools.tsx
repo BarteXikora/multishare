@@ -116,6 +116,8 @@ const ListTools = () => {
 
                 <Button
                     $variant='quaternary'
+                    $active={!!filter.star}
+                    onClick={() => handleFilter({ ...filter, star: true })}
                 >
                     Oznaczone gwiazdką
                 </Button>
