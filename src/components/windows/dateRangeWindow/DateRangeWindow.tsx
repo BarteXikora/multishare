@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from '../../../store/store'
+import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
+import { setFilter } from '../../../store/features/contentSlice/contentSlice'
 import { dateType } from '../../elements/dateRangeInput/DateRangeInput'
 
 import DateRangeInput from '../../elements/dateRangeInput/DateRangeInput'
@@ -8,11 +11,27 @@ import StyledDateRangeWindow from './DateRangeWindow.styles'
 import iconFilter from '../../../assets/icons/icon-filter.svg'
 
 const DateRangeWindow = () => {
+    const dispatch = useDispatch()
+
+    const currentFilter = useSelector(state => state.content.filter)
+
     const [dateFrom, setDateFrom] = useState<dateType>({ isDefault: true, date: '' })
     const [dateTo, setDateTo] = useState<dateType>({ isDefault: true, date: '' })
 
     const [isDateRangeSelected, setIsDateRangeSelected] = useState<boolean>(false)
     const [isDateRangeOK, setIsDateRangeOK] = useState<boolean>(false)
+
+    const handleSetDateRange = () => {
+        if (!isDateRangeOK || !isDateRangeSelected) return
+
+        const dateRange = {
+            from: dateFrom.isDefault ? null : new Date(dateFrom.date),
+            to: dateTo.isDefault ? null : new Date(dateTo.date)
+        }
+
+        dispatch(setFilter({ ...currentFilter, time: dateRange }))
+        dispatch(closeWindow())
+    }
 
     useEffect(() => {
         if (dateFrom.isDefault && dateTo.isDefault) return setIsDateRangeSelected(false)
@@ -46,11 +65,11 @@ const DateRangeWindow = () => {
         </section>
 
         <section className="actions">
-            <Button $variant='secondary'>
+            <Button $variant='secondary' onClick={() => dispatch(closeWindow())}>
                 Anuluj
             </Button>
 
-            <Button disabled={!isDateRangeSelected || !isDateRangeOK}>
+            <Button disabled={!isDateRangeSelected || !isDateRangeOK} onClick={handleSetDateRange}>
                 <img src={iconFilter} alt='Ustaw zakres dat' />
 
                 Ustaw zakres dat
