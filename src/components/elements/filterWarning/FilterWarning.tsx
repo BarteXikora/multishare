@@ -3,7 +3,7 @@ import { setFilter } from '../../../store/features/contentSlice/contentSlice'
 
 import StyledFilterWarning from './FilterWarning.styles'
 
-import iconFilter from '../../../assets/icons/icon-filter.svg'
+import iconFilter from '../../../assets/icons/icon-filter-dark.svg'
 import iconClose from '../../../assets/icons/icon-close.svg'
 
 const FilterWarning = () => {

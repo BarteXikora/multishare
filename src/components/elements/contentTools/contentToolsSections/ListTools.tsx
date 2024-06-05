@@ -10,7 +10,7 @@ import useContentEvents from '../../../../functions/useContentEvents/useContentE
 
 import iconSelect from '../../../../assets/icons/icon-ok.svg'
 import iconSort from '../../../../assets/icons/icon-sort-dark.svg'
-import iconFilter from '../../../../assets/icons/icon-filter.svg'
+import iconFilter from '../../../../assets/icons/icon-filter-dark.svg'
 import iconDisplay from '../../../../assets/icons/icon-display.svg'
 import iconList from '../../../../assets/icons/icon-list.svg'
 import iconSortAlphabet from '../../../../assets/icons/icon-sort-alphabet.svg'
