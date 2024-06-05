@@ -32,6 +32,10 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
         dispatch(showWindow({ title: 'Sortuj zawartość', content: 'SORT' }))
     }
 
+    const handleFilter = () => {
+        dispatch(showWindow({ title: 'Filtruj zawartość', content: 'FILTER' }))
+    }
+
     return <>
         {
             (!uploadHereDisabled || !createNewFolderDisabled) && <>
@@ -70,7 +74,7 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
                 Sortuj...
             </Button>
 
-            <Button $variant='quaternary'>
+            <Button $variant='quaternary' onClick={handleFilter}>
                 <img src={iconFilter} alt="Filtruj..." />
 
                 Filtruj...
