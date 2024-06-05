@@ -63,10 +63,11 @@ export type sortType = {
     method: 'ASC' | 'DESC'
 }
 
-type filterTimeType = {
-    from: Date,
-    to: Date
-} | null
+type filterTimeDaysType = { lastDays: number }
+
+type filterTimeRangType = { from: Date | null, to: Date | null }
+
+type filterTimeType = filterTimeDaysType | filterTimeRangType | null
 
 type filterTypeType = 'FOLDER' | 'IMAGE' | 'TEXT' | 'PDF' | 'WORD' |
     'CALCULATIONS' | 'SLIDES' | 'CODE' | 'SOUND' | 'FILM' | 'UNKNOWN' | null
