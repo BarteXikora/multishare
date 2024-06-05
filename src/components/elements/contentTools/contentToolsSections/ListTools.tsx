@@ -114,19 +114,35 @@ const ListTools = () => {
 
                 <h2>Data modyfikacji:</h2>
 
-                <Button $variant='quaternary'>
+                <Button
+                    $variant='quaternary'
+                    $active={!!(filter.time && 'lastDays' in filter.time && filter.time.lastDays === 1)}
+                    onClick={() => handleFilter({ ...filter, time: { lastDays: 1 } })}
+                >
                     Dzisiaj
                 </Button>
 
-                <Button $variant='quaternary'>
+                <Button
+                    $variant='quaternary'
+                    $active={!!(filter.time && 'lastDays' in filter.time && filter.time.lastDays === 7)}
+                    onClick={() => handleFilter({ ...filter, time: { lastDays: 7 } })}
+                >
                     Ostatnie 7 dni
                 </Button>
 
-                <Button $variant='quaternary'>
+                <Button
+                    $variant='quaternary'
+                    $active={!!(filter.time && 'lastDays' in filter.time && filter.time.lastDays === 30)}
+                    onClick={() => handleFilter({ ...filter, time: { lastDays: 30 } })}
+                >
                     Ostatnie 30 dni
                 </Button>
 
-                <Button $variant='quaternary' onClick={handleDateRange}>
+                <Button
+                    $variant='quaternary'
+                    $active={!!(filter.time && 'from' in filter.time)}
+                    onClick={handleDateRange}
+                >
                     Wybierz zakres dat...
                 </Button>
 
