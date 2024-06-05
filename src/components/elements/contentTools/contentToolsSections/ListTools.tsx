@@ -112,6 +112,16 @@ const ListTools = () => {
                     </>
                 }
 
+                <h2>Oznaczone gwiazdką:</h2>
+
+                <Button
+                    $variant='quaternary'
+                >
+                    Oznaczone gwiazdką
+                </Button>
+
+                <hr />
+
                 <h2>Data modyfikacji:</h2>
 
                 <Button
