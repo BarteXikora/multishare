@@ -2,6 +2,13 @@ import { contentDisplayType, filterType } from '../../store/features/contentSlic
 import getFileType from '../fileTypes/getFileType/getFileType'
 import getTimeRangeDays from '../getTimeRangeDays/getTimeRangeDays'
 
+const filterByStar = (content: contentDisplayType, filter: filterType): contentDisplayType => {
+    return {
+        folders: content.folders.filter(f => f.star),
+        files: content.files.filter(f => f.star)
+    }
+}
+
 const flterByTime = (content: contentDisplayType, filter: filterType): contentDisplayType => {
     if (!filter.time) return content
 
@@ -37,6 +44,8 @@ const filterByType = (content: contentDisplayType, filter: filterType): contentD
 
 const filterContent = (content: contentDisplayType, filter: filterType): contentDisplayType => {
     let currentContent = JSON.parse(JSON.stringify(content))
+
+    if (filter.star) currentContent = filterByStar(currentContent, filter)
 
     if (filter.time) currentContent = flterByTime(currentContent, filter)
 
