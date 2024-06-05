@@ -74,7 +74,8 @@ type filterTypeType = 'FOLDER' | 'IMAGE' | 'TEXT' | 'PDF' | 'WORD' |
 
 export type filterType = {
     time: filterTimeType,
-    type: filterTypeType
+    type: filterTypeType,
+    star: true | null
 }
 
 type loadedContentLoadingType = {
