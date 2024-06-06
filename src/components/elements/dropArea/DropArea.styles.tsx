@@ -6,6 +6,7 @@ const StyledDropArea = styled.div`
     flex-direction: column;
     width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
 
     .file-input {
         position: absolute;
@@ -67,7 +68,7 @@ const StyledDropArea = styled.div`
         .actions {
             z-index: 1000;
             display: flex;
-            justify-content: center;
+            justify-content: center !important;
             margin-top: ${(props) => props.theme.margins.medium};
         }
     }

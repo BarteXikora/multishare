@@ -38,7 +38,7 @@ const ListTools = () => {
     }
 
     const handleDateRange = () => {
-        dispatch(showWindow({ title: 'Wybierz zakres dat', content: 'DATE_RANGE' }))
+        dispatch(showWindow('DATE_RANGE'))
     }
 
     return <section className="list-tools">

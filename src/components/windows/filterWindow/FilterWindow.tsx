@@ -26,7 +26,7 @@ const FilterWindow = () => {
         setCurrentFilter({ ...currentFilter, time: { lastDays: days } })
     }
 
-    const handleDateRange = () => dispatch(showWindow({ title: 'Wybierz zakres dat', content: 'DATE_RANGE' }))
+    const handleDateRange = () => dispatch(showWindow('DATE_RANGE'))
 
     const handleType = (type: filterTypeType) => {
         if (currentFilter.type === type) return setCurrentFilter({ ...currentFilter, type: null })
@@ -40,14 +40,10 @@ const FilterWindow = () => {
     }
 
     return <StyledFilterWindow>
-        <section className="title">
-            <h2>Filtruj zawartość:</h2>
-        </section>
-
         <section className='main'>
             <h3>Oznaczono gwiazdką:</h3>
 
-            <Button $variant='quaternary' $active={!!currentFilter.star} onClick={handleStar}>
+            <Button $variant='quaternary' $size='big' $active={!!currentFilter.star} onClick={handleStar}>
                 Oznaczono gwiazdką
             </Button>
         </section>
@@ -57,6 +53,7 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={!!(currentFilter.time && 'lastDays' in currentFilter.time && currentFilter.time.lastDays === 1)}
                 onClick={() => handleTimeDays(1)}
             >
@@ -65,6 +62,7 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={!!(currentFilter.time && 'lastDays' in currentFilter.time && currentFilter.time.lastDays === 7)}
                 onClick={() => handleTimeDays(7)}
             >
@@ -73,13 +71,18 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={!!(currentFilter.time && 'lastDays' in currentFilter.time && currentFilter.time.lastDays === 30)}
                 onClick={() => handleTimeDays(30)}
             >
                 Ostatnie 30 dni
             </Button>
 
-            <Button $variant='quaternary' onClick={handleDateRange}>
+            <Button
+                $variant='quaternary'
+                $size='big'
+                onClick={handleDateRange}
+            >
                 Wybierz zakres dat...
             </Button>
         </section>
@@ -89,6 +92,7 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={currentFilter.type === 'FOLDER'}
                 onClick={() => handleType('FOLDER')}
             >
@@ -97,6 +101,7 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={currentFilter.type === 'CALCULATIONS'}
                 onClick={() => handleType('CALCULATIONS')}
             >
@@ -105,6 +110,7 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={currentFilter.type === 'WORD'}
                 onClick={() => handleType('WORD')}
             >
@@ -113,6 +119,7 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={currentFilter.type === 'FILM'}
                 onClick={() => handleType('FILM')}
             >
@@ -121,6 +128,7 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={currentFilter.type === 'CODE'}
                 onClick={() => handleType('CODE')}
             >
@@ -129,6 +137,7 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={currentFilter.type === 'IMAGE'}
                 onClick={() => handleType('IMAGE')}
             >
@@ -137,6 +146,7 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={currentFilter.type === 'SOUND'}
                 onClick={() => handleType('SOUND')}
             >
@@ -145,6 +155,7 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={currentFilter.type === 'SLIDES'}
                 onClick={() => handleType('SLIDES')}
             >
@@ -153,6 +164,7 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={currentFilter.type === 'PDF'}
                 onClick={() => handleType('PDF')}
             >
@@ -161,6 +173,7 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={currentFilter.type === 'TEXT'}
                 onClick={() => handleType('TEXT')}
             >
@@ -169,6 +182,7 @@ const FilterWindow = () => {
 
             <Button
                 $variant='quaternary'
+                $size='big'
                 $active={currentFilter.type === 'UNKNOWN'}
                 onClick={() => handleType('UNKNOWN')}
             >

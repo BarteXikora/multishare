@@ -12,9 +12,7 @@ const EmptyFolder = () => {
     const dispatch = useDispatch()
     const goBack = useGoBack()
 
-    const handleUpload = () => {
-        dispatch(showWindow({ title: 'Prześlij pliki', content: 'UPLOAD' }))
-    }
+    const handleUpload = () => dispatch(showWindow('UPLOAD'))
 
     return <>
         <div className="image">

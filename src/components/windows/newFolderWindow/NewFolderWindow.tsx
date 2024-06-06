@@ -72,7 +72,7 @@ const NewFolderWindow = () => {
     }
 
     return <StyledNewFolderWindow>
-        <section className="path-section">
+        <section>
             <h2>Utwórz nowy folder w:</h2>
 
             <div className='path'>
@@ -96,7 +96,7 @@ const NewFolderWindow = () => {
             </div>
         </section>
 
-        <section className="action-section">
+        <section>
             <InputButton
                 buttonContent={<><img src={iconNewFolder} alt='Utwórz nowy folder' /> Utwórz folder</>}
                 inputState={[folderName, setFolderName]}
@@ -104,8 +104,10 @@ const NewFolderWindow = () => {
                 buttonOptions={{ disabled: !!validation }}
                 autoSelect
             />
+        </section>
 
-            {validation && <div className="validation-info">{validation}</div>}
+        <section className="info-box">
+            {validation && <span className="error">{validation}</span>}
         </section>
     </StyledNewFolderWindow>
 }

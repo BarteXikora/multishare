@@ -21,7 +21,7 @@ const SortWindow = () => {
     const [selectedSort, setSelectedSort] = useState<sortType>(sort)
 
     return <StyledSortWindow>
-        <section className='sort-section'>
+        <section className='main'>
             <h2>Sortuj według:</h2>
 
             <Button
@@ -55,7 +55,7 @@ const SortWindow = () => {
             </Button>
         </section>
 
-        <section className='sort-section'>
+        <section className='main'>
             <h2>Metoda sortowania:</h2>
 
             <Button

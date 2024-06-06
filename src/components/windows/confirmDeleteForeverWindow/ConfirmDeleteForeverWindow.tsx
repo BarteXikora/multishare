@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from '../../../store/store'
 import { deleteForever } from '../../../store/features/contentSlice/contentSlice'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
-import StyledConfirmDeleteForeverWindow from './ConfirmDeleteForeverWindow.styles'
 import Button from '../../ui/button/Button'
 import ElementsPills from '../../elements/elementsPills/ElementsPills'
 
@@ -19,26 +18,26 @@ const ConfirmDeleteForeverWindow = () => {
         dispatch(closeWindow())
     }
 
-    return <StyledConfirmDeleteForeverWindow>
-        <section className="info-section">
+    return <>
+        <section>
             <h2>{`Czy na pewno chcesz trwale usunąć ${selectedCnt === 1 ? 'wybrany element' : 'wybrane elementy'}?`}</h2>
 
-            <p>Usunięte trwale elementów nie będzie można odzyskać.</p>
+            <p>Usuniętych trwale elementów nie będzie można odzyskać.</p>
         </section>
 
         {
-            selectedCnt === 0 && <h3 className='error'>Niczego nie zaznaczono.</h3>
+            selectedCnt === 0 && <div className='error'>Niczego nie zaznaczono.</div>
         }
 
         {
-            selectedCnt > 0 && <section className="details-section">
+            selectedCnt > 0 && <section>
                 <h3>{selectedCnt === 1 ? 'Wybrany element' : 'Wybrane elementy'}:</h3>
 
                 <ElementsPills elements={{ folders: selected.folders, files: selected.files }} />
             </section>
         }
 
-        <section className="actions-section">
+        <section className="actions">
             <Button $variant='secondary' onClick={() => dispatch(closeWindow())}>
                 Anuluj
             </Button>
@@ -51,7 +50,7 @@ const ConfirmDeleteForeverWindow = () => {
                 </Button>
             }
         </section>
-    </StyledConfirmDeleteForeverWindow>
+    </>
 }
 
 export default ConfirmDeleteForeverWindow

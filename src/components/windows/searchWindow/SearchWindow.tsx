@@ -26,17 +26,19 @@ const SearchWindow = () => {
     }
 
     return <StyledSearchWindow>
-        <form className="main" onSubmit={handleSearch}>
-            <Input
-                value={searchValue}
-                onChange={e => setSearchValue(e.target.value)}
-                placeholder={displayType === 'TRASH' ? 'Szukaj w koszu...' : 'Szukaj folderów i plików...'}
-            />
+        <section>
+            <form className="main" onSubmit={handleSearch}>
+                <Input
+                    value={searchValue}
+                    onChange={e => setSearchValue(e.target.value)}
+                    placeholder={displayType === 'TRASH' ? 'Szukaj w koszu...' : 'Szukaj folderów i plików...'}
+                />
 
-            <Button $size='big' type='submit'>
-                <img src={iconSearch} alt='Szukaj' />
-            </Button>
-        </form>
+                <Button $size='big' type='submit'>
+                    <img src={iconSearch} alt='Szukaj' />
+                </Button>
+            </form>
+        </section>
     </StyledSearchWindow>
 }
 

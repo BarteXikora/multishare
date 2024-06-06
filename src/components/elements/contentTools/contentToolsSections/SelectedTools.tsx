@@ -29,28 +29,11 @@ const SelectedTools = () => {
         }))
     }
 
-    const handleDelete = () => {
-        dispatch(showWindow({
-            title: 'Czy na pewno chcesz przenieść wybrane elementy do kosza?',
-            content: 'CONFIRM_DELETE'
-        }))
-    }
+    const handleDelete = () => dispatch(showWindow('CONFIRM_DELETE'))
 
-    const handleRename = () => {
-        // alert(selected.folders.length + selected.files.length !== 1 ? 'Błąd' : selected.folders.length === 1 ? 'Folder' : 'Plik')
+    const handleRename = () => dispatch(showWindow('RENAME'))
 
-        dispatch(showWindow({
-            title: 'Zmień nazwę',
-            content: 'RENAME'
-        }))
-    }
-
-    const handleMove = () => {
-        dispatch(showWindow({
-            title: 'Przenieś do...',
-            content: 'MOVE'
-        }))
-    }
+    const handleMove = () => dispatch(showWindow('MOVE'))
 
     const handleMarkWithStar = () => {
         if (content.status !== 'READY') return
@@ -77,12 +60,7 @@ const SelectedTools = () => {
         dispatch(restoreFromTrash(data))
     }
 
-    const handleDeleteForever = () => {
-        dispatch(showWindow({
-            title: 'Czy na pewno chcesz trwale usunąć wybrane elementy?',
-            content: 'CONFIRM_DELETE_FOREVER'
-        }))
-    }
+    const handleDeleteForever = () => dispatch(showWindow('CONFIRM_DELETE_FOREVER'))
 
     return <section className="selected-tools">
         {

@@ -2,20 +2,10 @@ import { useState, useEffect, ReactNode } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
+import windowTypes from '../../../functions/windowTypes/windowTypes'
+
 import StyledWindow from './Window.styles'
 import Button from '../../ui/button/Button'
-
-import NewFolderWindow from '../../windows/newFolderWindow/NewFolderWindow'
-import ConfirmDeleteWindow from '../../windows/confirmDeleteWindow/ConfirmDeleteWindow'
-import ConfirmDeleteForeverWindow from '../../windows/confirmDeleteForeverWindow/ConfirmDeleteForeverWindow'
-import CanNotOpenInTrashWindow from '../../windows/canNotOpenInTrashWindow/CanNotOpenInTrashWindow'
-import RenameWindow from '../../windows/renameWindow/RenameWindow'
-import MoveWindow from '../../windows/moveWindow/MoveWindow'
-import UploadWindow from '../../windows/uploadWindow/UploadWindow'
-import SortWindow from '../../windows/sortWindow/SortWindow'
-import FilterWindow from '../../windows/filterWindow/FilterWindow'
-import DateRangeWindow from '../../windows/dateRangeWindow/DateRangeWindow'
-import SearchWindow from '../../windows/searchWindow/SearchWindow'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
 
@@ -24,36 +14,24 @@ const Window = () => {
 
     const window = useSelector(state => state.window)
 
-    const [windowsBody, setWindowBody] = useState<ReactNode | null>(null)
+    const [windowTitle, setWindowTitle] = useState<string>('')
+    const [windowBody, setWindowBody] = useState<ReactNode | null>(null)
 
     useEffect(() => {
-        let selectedWindowBody = null
+        if (!window.window) return
 
-        switch (window.content) {
-            case 'CREATE_NEW_FOLDER': selectedWindowBody = <NewFolderWindow />; break
-            case 'CONFIRM_DELETE': selectedWindowBody = <ConfirmDeleteWindow />; break
-            case 'CONFIRM_DELETE_FOREVER': selectedWindowBody = <ConfirmDeleteForeverWindow />; break
-            case 'CAN_NOT_OPEN_IN_TRASH': selectedWindowBody = <CanNotOpenInTrashWindow data={window.data} />; break
-            case 'RENAME': selectedWindowBody = <RenameWindow />; break
-            case 'MOVE': selectedWindowBody = <MoveWindow />; break
-            case 'UPLOAD': selectedWindowBody = <UploadWindow />; break
-            case 'SORT': selectedWindowBody = <SortWindow />; break
-            case 'FILTER': selectedWindowBody = <FilterWindow />; break
-            case 'DATE_RANGE': selectedWindowBody = <DateRangeWindow />; break
-            case 'SEARCH': selectedWindowBody = <SearchWindow />
-        }
-
-        setWindowBody(selectedWindowBody)
+        setWindowTitle(windowTypes[window.window].title)
+        setWindowBody(windowTypes[window.window].body)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [window.content])
+    }, [window.window])
 
     if (!window.isShown) return null
 
     return <StyledWindow>
         <div className="container">
             <div className="bar">
-                <h2>{window.title}</h2>
+                <h2>{windowTitle}</h2>
 
                 <Button $variant='wrong' $size='big' className='close-button' onClick={() => dispatch(closeWindow())}>
                     <img src={iconClose} alt='Zamknij okno' />
@@ -61,7 +39,7 @@ const Window = () => {
             </div>
 
             <div className="content">
-                {windowsBody || <>Error</>}
+                {windowBody || <>Error</>}
             </div>
         </div>
     </StyledWindow>

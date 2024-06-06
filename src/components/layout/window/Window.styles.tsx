@@ -50,6 +50,63 @@ const StyledWindow = styled.div`
         padding: ${(props) => props.theme.margins.sectionSmall};
         max-height: 80vh;
         overflow-y: auto;
+
+        h2, h3 {
+            font-size: ${(props) => props.theme.fontSizes.subtitle};
+            margin: ${(props) => '0 0 ' + props.theme.margins.small + ' 0'};
+        }
+
+        p {
+            font-size: ${(props) => props.theme.fontSizes.default};
+            margin: 0
+        }
+
+        section {
+            padding: ${(props) => props.theme.margins.medium + ' 0'};
+
+            &:first-of-type {
+                padding-top: ${(props) => props.theme.margins.small};
+            }
+
+            &:last-of-type {
+                padding-bottom: ${(props) => props.theme.margins.small};
+            }
+        }
+
+        .extra-margin {
+            margin-bottom: ${(props) => props.theme.margins.big};
+        }
+
+        .columns {
+            display: flex;
+            gap: ${(props) => props.theme.margins.big};
+
+            .column {
+                width: 50%;
+                height: 100px;
+            }
+        }
+
+        .actions {
+            display: flex;
+            justify-content: end;
+            gap: ${(props) => props.theme.margins.medium};
+        }
+
+        .info-box {
+            height: 12px;
+            margin: ${(props) => '-' + props.theme.margins.medium + ' 0 ' + props.theme.margins.small + ' 0'};
+            font-size: ${(props) => props.theme.fontSizes.default};
+            font-weight: bold;
+        }
+
+        .error {
+            color: ${(props) => props.theme.colors.wrong6};
+        }
+
+        .warning {
+            color: ${(props) => props.theme.colors.warning6};
+        }
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
@@ -93,6 +150,17 @@ const StyledWindow = styled.div`
             box-sizing: border-box;
             max-height: calc(100vh - 60px);
             height: calc(100vh - 60px);
+
+            .columns {
+                display: flex;
+                flex-direction: column;
+                gap: ${(props) => props.theme.margins.big};
+
+                .column {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
         }
     }
 `

@@ -19,7 +19,7 @@ const TopBar = () => {
 
     const [searchValue, setSearchValue] = useState<string>('')
 
-    const handleSearchWindow = () => dispatch(showWindow({ title: 'Szukaj', content: 'SEARCH' }))
+    const handleSearchWindow = () => dispatch(showWindow('SEARCH'))
 
     const handleSearch = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()

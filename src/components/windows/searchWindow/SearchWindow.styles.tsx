@@ -4,7 +4,7 @@ const StyledSearchWindow = styled.div`
     .main {
         display: flex;
         width: 100%;
-        padding: ${(props) => props.theme.margins.big} 0;
+        padding: ${(props) => props.theme.margins.medium} 0;
 
         input {
             width: 100%;

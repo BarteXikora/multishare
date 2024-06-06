@@ -1,4 +1,3 @@
-import StyledRenameWindow from './RenameWindow.styles'
 import InputButton from '../../ui/inputButton/InputButton'
 
 import { useState, useEffect, FormEvent } from 'react'
@@ -72,17 +71,17 @@ const RenameWindow = () => {
         dispatch(closeWindow())
     }
 
-    return <StyledRenameWindow>
+    return <>
         {
             isDataOk ?
                 <>
-                    <div className="info-section">
+                    <section>
                         <h2>Zmień nazwę {elementType === 'FOLDER' ? 'folderu' : 'pliku'}:</h2>
 
                         <p>Obecna nazwa: <b>{getShortenName(element?.name || '', 30)}</b></p>
-                    </div>
+                    </section>
 
-                    <div className="actions-section">
+                    <section>
                         <InputButton
                             buttonContent={<><img src={iconEdit} alt="Zmień nazwę" /> Zmień nazwę</>}
                             buttonOptions={{ disabled: !isNewNameOk }}
@@ -91,26 +90,27 @@ const RenameWindow = () => {
                             autoFocus
                             autoSelect
                         />
+                    </section>
 
+                    <section className="info-box">
                         {
-                            !isNewNameOk && <p className='warning wrong'>
+                            !isNewNameOk && <span className='error'>
                                 {
                                     newName.length < 1 ?
                                         `Należy podać nazwę ${elementType === 'FOLDER' ? 'folderu' : 'pliku'}.`
                                         :
                                         'Nazwa nie może być dłuższa, niż 50 znaków.'
                                 }
-                            </p>
+                            </span>
                         }
-                    </div>
+                    </section>
                 </>
 
                 :
 
-                <p className="wrong">Wystąpił błąd!</p>
-
+                <section><p className="error">Wystąpił błąd!</p></section>
         }
-    </StyledRenameWindow>
+    </>
 }
 
 export default RenameWindow
