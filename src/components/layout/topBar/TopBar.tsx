@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { useDispatch } from '../../../store/store'
 import { toggle } from '../../../store/features/sideMenuSlice/sideMenuSlice'
 import { showWindow } from '../../../store/features/windowSlice/windowSlice'
+import { setSearch } from '../../../store/features/contentSlice/contentSlice'
 
 import StyledTopBar from './TopBar.styles'
 
@@ -18,6 +19,16 @@ const TopBar = () => {
 
     const handleSearchWindow = () => dispatch(showWindow({ title: 'Szukaj', content: 'SEARCH' }))
 
+    const handleSearch = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+
+        if (searchValue.trim() === '') return
+
+        dispatch(setSearch(searchValue.trim()))
+
+        setSearchValue('')
+    }
+
     return <StyledTopBar>
         <Button className='hamburger-button' $size='big' onClick={() => dispatch(toggle())}>
             <img src={iconHamburger} alt='Otwórz menu' />
@@ -28,7 +39,7 @@ const TopBar = () => {
         <div className="search">
             <SearchInput
                 state={[searchValue, setSearchValue]}
-                onSubmit={() => null}
+                onSubmit={handleSearch}
                 mobileButton={handleSearchWindow}
                 placeholder='Szukaj folderów i plików...'
             />

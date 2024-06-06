@@ -1,3 +1,5 @@
+import { FormEvent } from 'react'
+
 import StyledSeachInput from './SearchInput.styles'
 import Input from '../../ui/input/Input'
 import Button from '../../ui/button/Button'
@@ -6,7 +8,7 @@ import iconSearch from '../../../assets/icons/icon-search-dark.svg'
 
 type SearchInputType = {
     state: [string, (s: string) => void]
-    onSubmit: () => void
+    onSubmit: (e: FormEvent<HTMLFormElement>) => void
     mobileButton: () => void
     placeholder?: string
 }
