@@ -4,7 +4,9 @@ import SearchInput from './SearchInput'
 describe('Search Input', () => {
 
     test('renders correctly', () => {
-        render(<SearchInput />)
+        const value = ''
+
+        render(<SearchInput state={[value, (v: string) => null]} onSubmit={() => null} mobileButton={() => null} />)
 
         const inputElement = screen.getByRole('textbox')
         const buttonsElements = screen.getAllByRole('button')
