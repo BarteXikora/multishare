@@ -112,6 +112,7 @@ export type contentStateType = {
     displayType: displayTypeType,
     sort: sortType,
     filter: filterType,
+    search: string,
     currentFolder: contentDisplayType,
     currentPath: pathType[],
     selected: selectedType
