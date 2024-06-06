@@ -1,6 +1,3 @@
-import { useDispatch } from '../../../store/store'
-import { showWindow } from '../../../store/features/windowSlice/windowSlice'
-
 import StyledSeachInput from './SearchInput.styles'
 import Input from '../../ui/input/Input'
 import Button from '../../ui/button/Button'
@@ -8,22 +5,21 @@ import Button from '../../ui/button/Button'
 import iconSearch from '../../../assets/icons/icon-search-dark.svg'
 
 type SearchInputType = {
+    state: [string, (s: string) => void]
+    onSubmit: () => void
+    mobileButton: () => void
     placeholder?: string
 }
 
-const SearchInput = ({ placeholder }: SearchInputType) => {
-    const dispatch = useDispatch()
-
-    const handleSearchWindow = () => dispatch(showWindow({ title: 'Szukaj', content: 'SEARCH' }))
-
-    return <StyledSeachInput>
-        <Input placeholder={placeholder || ''} />
+const SearchInput = ({ state, onSubmit, mobileButton, placeholder }: SearchInputType) => {
+    return <StyledSeachInput onSubmit={onSubmit}>
+        <Input value={state[0]} onChange={e => state[1](e.target.value)} placeholder={placeholder || ''} />
 
         <Button className='search-button' $variant='secondary' type='submit'>
             <img src={iconSearch} alt="Szukaj" />
         </Button>
 
-        <Button className='open-search-button' $variant='secondary' $size='big' type='button' onClick={handleSearchWindow}>
+        <Button className='open-search-button' $variant='secondary' $size='big' type='button' onClick={mobileButton}>
             <img src={iconSearch} alt="Szukaj" />
         </Button>
     </StyledSeachInput>
