@@ -51,7 +51,7 @@ const StyledWindow = styled.div`
         max-height: 80vh;
         overflow-y: auto;
 
-        h2 {
+        h2, h3 {
             font-size: ${(props) => props.theme.fontSizes.subtitle};
             margin: ${(props) => '0 0 ' + props.theme.margins.small + ' 0'};
         }
@@ -77,6 +77,14 @@ const StyledWindow = styled.div`
             display: flex;
             justify-content: end;
             gap: ${(props) => props.theme.margins.medium};
+        }
+
+        .error {
+            color: ${(props) => props.theme.colors.wrong6};
+        }
+
+        .warning {
+            color: ${(props) => props.theme.colors.warning6};
         }
     }
 
