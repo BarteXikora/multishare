@@ -1,5 +1,6 @@
 import { useState, useEffect, ReactNode } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
+import { windowsList } from '../../../store/features/windowSlice/windowSlice.types'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
 import StyledWindow from './Window.styles'
@@ -24,36 +25,38 @@ const Window = () => {
 
     const window = useSelector(state => state.window)
 
-    const [windowsBody, setWindowBody] = useState<ReactNode | null>(null)
+    const [windowTitle, setWindowTitle] = useState<string>('')
+    const [windowBody, setWindowBody] = useState<ReactNode | null>(null)
+
+    const windows: Record<windowsList, { title: string, body: ReactNode | null }> = {
+        'CAN_NOT_OPEN_IN_TRASH': { title: 'Element znajduje się w koszu', body: <CanNotOpenInTrashWindow /> },
+        'CONFIRM_DELETE': { title: 'Czy na pewno chcesz przenieść do kosza?', body: <ConfirmDeleteWindow /> },
+        'CONFIRM_DELETE_FOREVER': { title: 'Czy na pewno chcesz trwale usunąć elementy?', body: <ConfirmDeleteForeverWindow /> },
+        'CREATE_NEW_FOLDER': { title: 'Utwórz nowy folder', body: <NewFolderWindow /> },
+        'DATE_RANGE': { title: 'Wybierz zakres dat', body: <DateRangeWindow /> },
+        'FILTER': { title: 'Filtruj zawartość', body: <FilterWindow /> },
+        'MOVE': { title: 'Przenieś elementy', body: <MoveWindow /> },
+        'RENAME': { title: 'Zmień nazwę', body: <RenameWindow /> },
+        'SEARCH': { title: 'Wyszukaj', body: <SearchWindow /> },
+        'SORT': { title: 'Sortuj zawartość', body: <SortWindow /> },
+        'UPLOAD': { title: 'Prześlij na dysk', body: <UploadWindow /> }
+    }
 
     useEffect(() => {
-        let selectedWindowBody = null
+        if (!window.window) return
 
-        switch (window.content) {
-            case 'CREATE_NEW_FOLDER': selectedWindowBody = <NewFolderWindow />; break
-            case 'CONFIRM_DELETE': selectedWindowBody = <ConfirmDeleteWindow />; break
-            case 'CONFIRM_DELETE_FOREVER': selectedWindowBody = <ConfirmDeleteForeverWindow />; break
-            case 'CAN_NOT_OPEN_IN_TRASH': selectedWindowBody = <CanNotOpenInTrashWindow />; break
-            case 'RENAME': selectedWindowBody = <RenameWindow />; break
-            case 'MOVE': selectedWindowBody = <MoveWindow />; break
-            case 'UPLOAD': selectedWindowBody = <UploadWindow />; break
-            case 'SORT': selectedWindowBody = <SortWindow />; break
-            case 'FILTER': selectedWindowBody = <FilterWindow />; break
-            case 'DATE_RANGE': selectedWindowBody = <DateRangeWindow />; break
-            case 'SEARCH': selectedWindowBody = <SearchWindow />
-        }
-
-        setWindowBody(selectedWindowBody)
+        setWindowTitle(windows[window.window].title)
+        setWindowBody(windows[window.window].body)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [window.content])
+    }, [window.window])
 
     if (!window.isShown) return null
 
     return <StyledWindow>
         <div className="container">
             <div className="bar">
-                <h2>{window.title}</h2>
+                <h2>{windowTitle}</h2>
 
                 <Button $variant='wrong' $size='big' className='close-button' onClick={() => dispatch(closeWindow())}>
                     <img src={iconClose} alt='Zamknij okno' />
@@ -61,7 +64,7 @@ const Window = () => {
             </div>
 
             <div className="content">
-                {windowsBody || <>Error</>}
+                {windowBody || <>Error</>}
             </div>
         </div>
     </StyledWindow>

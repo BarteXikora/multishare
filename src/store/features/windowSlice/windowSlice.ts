@@ -1,10 +1,9 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { showWindowType, windowStateType } from './windowSlice.types'
+import { windowsList, windowStateType } from './windowSlice.types'
 
 const initialState: windowStateType = {
     isShown: false,
-    title: 'Multishare',
-    content: null
+    window: null
 }
 
 export const windowSlice = createSlice({
@@ -12,9 +11,8 @@ export const windowSlice = createSlice({
     initialState,
     reducers: {
 
-        showWindow: (state, action: PayloadAction<showWindowType>) => {
-            state.title = action.payload.title
-            state.content = action.payload.content
+        showWindow: (state, action: PayloadAction<windowsList>) => {
+            state.window = action.payload
             state.isShown = true
         },
 
