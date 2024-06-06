@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from '../../../store/store'
-import { setDisplayType, setFilter, setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
+import { setDisplayType, setFilter, setSearch, setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
 import { showWindow } from '../../../store/features/windowSlice/windowSlice'
 
 const useOpenFolder = () => {
@@ -15,6 +15,7 @@ const useOpenFolder = () => {
         }))
 
         dispatch(setFilter({ type: null, time: null, star: null }))
+        dispatch(setSearch(''))
         dispatch(setDisplayType('TREE'))
         dispatch(setTreeLocation(folderId))
     }
