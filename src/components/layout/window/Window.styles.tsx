@@ -50,6 +50,34 @@ const StyledWindow = styled.div`
         padding: ${(props) => props.theme.margins.sectionSmall};
         max-height: 80vh;
         overflow-y: auto;
+
+        h2 {
+            font-size: ${(props) => props.theme.fontSizes.subtitle};
+            margin: ${(props) => '0 0 ' + props.theme.margins.small + ' 0'};
+        }
+
+        p {
+            font-size: ${(props) => props.theme.fontSizes.default};
+            margin: 0
+        }
+
+        section {
+            padding: ${(props) => props.theme.margins.medium + ' 0'};
+
+            &:first-of-type {
+                padding-top: ${(props) => props.theme.margins.small};
+            }
+
+            &:last-of-type {
+                padding-bottom: ${(props) => props.theme.margins.small};
+            }
+        }
+
+        .actions {
+            display: flex;
+            justify-content: end;
+            gap: ${(props) => props.theme.margins.medium};
+        }
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
