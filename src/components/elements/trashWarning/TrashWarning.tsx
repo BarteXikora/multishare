@@ -14,10 +14,7 @@ const TrashWarning = ({ isTrashEmpty }: { isTrashEmpty: boolean }) => {
 
     const handleEmptyTrash = () => {
         selectAll()
-        dispatch(showWindow({
-            title: 'Czy na pewno chcesz trwale usunąć wybrane elementy?',
-            content: 'CONFIRM_DELETE_FOREVER'
-        }))
+        dispatch(showWindow('CONFIRM_DELETE_FOREVER'))
     }
 
     return <StyledTrashWarning>

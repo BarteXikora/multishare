@@ -24,17 +24,11 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
 
     const viewStyle = useSelector(state => state.view.contentViewStyle)
 
-    const handleCreateFolderWindow = () => {
-        dispatch(showWindow({ title: 'Utwórz nowy folder', content: 'CREATE_NEW_FOLDER' }))
-    }
+    const handleCreateFolderWindow = () => dispatch(showWindow('CREATE_NEW_FOLDER'))
 
-    const handleSort = () => {
-        dispatch(showWindow({ title: 'Sortuj zawartość', content: 'SORT' }))
-    }
+    const handleSort = () => dispatch(showWindow('SORT'))
 
-    const handleFilter = () => {
-        dispatch(showWindow({ title: 'Filtruj zawartość', content: 'FILTER' }))
-    }
+    const handleFilter = () => dispatch(showWindow('FILTER'))
 
     return <>
         {

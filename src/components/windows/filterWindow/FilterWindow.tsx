@@ -26,7 +26,7 @@ const FilterWindow = () => {
         setCurrentFilter({ ...currentFilter, time: { lastDays: days } })
     }
 
-    const handleDateRange = () => dispatch(showWindow({ title: 'Wybierz zakres dat', content: 'DATE_RANGE' }))
+    const handleDateRange = () => dispatch(showWindow('DATE_RANGE'))
 
     const handleType = (type: filterTypeType) => {
         if (currentFilter.type === type) return setCurrentFilter({ ...currentFilter, type: null })

@@ -9,13 +9,9 @@ import iconAddFolder from '../../../../assets/icons/icon-new-folder.svg'
 const EmptyProject = () => {
     const dispatch = useDispatch()
 
-    const handleNewFolder = () => {
-        dispatch(showWindow({ title: 'Utwórz nowy folder', content: 'CREATE_NEW_FOLDER' }))
-    }
+    const handleNewFolder = () => dispatch(showWindow('CREATE_NEW_FOLDER'))
 
-    const handleUpload = () => {
-        dispatch(showWindow({ title: 'Prześlij pliki', content: 'UPLOAD' }))
-    }
+    const handleUpload = () => dispatch(showWindow('UPLOAD'))
 
     return <>
         <div className="image">

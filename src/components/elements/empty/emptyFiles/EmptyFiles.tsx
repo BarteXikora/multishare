@@ -9,9 +9,7 @@ import iconUpload from '../../../../assets/icons/icon-upload.svg'
 const EmptyFiles = () => {
     const dispatch = useDispatch()
 
-    const handleUpload = () => {
-        dispatch(showWindow({ title: 'Prześlij pliki', content: 'UPLOAD' }))
-    }
+    const handleUpload = () => dispatch(showWindow('UPLOAD'))
 
     return <>
         <div className="image">

@@ -15,11 +15,11 @@ const GeneralTools = () => {
     const displayType = useSelector(state => state.content.displayType)
 
     const handleUploadWindow = () => {
-        dispatch(showWindow({ title: 'Prześlij pliki', content: 'UPLOAD' }))
+        dispatch(showWindow('UPLOAD'))
     }
 
     const handleCreateFolderWindow = () => {
-        dispatch(showWindow({ title: 'Utwórz nowy folder', content: 'CREATE_NEW_FOLDER' }))
+        dispatch(showWindow('CREATE_NEW_FOLDER'))
     }
 
     return <section className="general-tools">
