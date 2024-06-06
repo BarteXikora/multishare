@@ -67,7 +67,7 @@ const StyledDropArea = styled.div`
         .actions {
             z-index: 1000;
             display: flex;
-            justify-content: center;
+            justify-content: center !important;
             margin-top: ${(props) => props.theme.margins.medium};
         }
     }
