@@ -3,7 +3,6 @@ import { useDispatch } from '../../../store/store'
 import { uploadFiles } from '../../../store/features/contentSlice/contentSlice'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
-import StyledUploadWindow from './UploadWindow.styles'
 import DropArea from '../../elements/dropArea/DropArea'
 
 const UploadWindow = () => {
@@ -34,9 +33,9 @@ const UploadWindow = () => {
         dispatch(closeWindow())
     }
 
-    return <StyledUploadWindow>
+    return <section>
         <DropArea filesState={[files, setFiles]} locationState={[location, setLocation]} upload={handleUpload} />
-    </StyledUploadWindow>
+    </section>
 }
 
 export default UploadWindow
