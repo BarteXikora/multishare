@@ -7,6 +7,7 @@ import getTrashContent from '../../../../../functions/getTrashContent/getTrashCo
 import sortContent from '../../../../../functions/sortContent/sortContent'
 import getAllDisplayContent from '../../../../../functions/getAllDisplayContent/getAllDisplayContent'
 import filterContent from '../../../../../functions/filterContent/filterContent'
+import searchContent from '../../../../../functions/searchContent/searchContent'
 
 const emptySelect: selectedType = { folders: [], files: [], selectionStart: null }
 
@@ -14,7 +15,20 @@ const setTreeLocation = (state: contentStateType, action: PayloadAction<number>)
     if (state.loadedContent.status !== 'READY') return
 
     if (state.displayType !== 'TRASH') {
-        if (!state.filter.time && !state.filter.type && !state.filter.star) {
+        if (state.search !== '') {
+            state.currentPath = []
+            state.selected = emptySelect
+
+            state.currentFolder = sortContent(
+                filterContent(
+                    searchContent(
+                        getAllDisplayContent(state.loadedContent.content),
+                        state.search),
+                    state.filter),
+                state.sort
+            )
+
+        } else if (!state.filter.time && !state.filter.type && !state.filter.star) {
             if (state.displayType === 'TREE') {
                 const newPath = getCurrentPath(state.loadedContent.content.folders, action.payload)
 
@@ -50,7 +64,7 @@ const setTreeLocation = (state: contentStateType, action: PayloadAction<number>)
 
     } else {
         state.currentPath = []
-        state.currentFolder = sortContent(filterContent(getTrashContent(state.loadedContent.trash), state.filter), state.sort)
+        state.currentFolder = sortContent(filterContent(searchContent(getTrashContent(state.loadedContent.trash), state.search), state.filter), state.sort)
         state.selected = emptySelect
     }
 }
