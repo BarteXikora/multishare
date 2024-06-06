@@ -3,7 +3,7 @@ import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 
 import Button from '../../../ui/button/Button'
 import Dropdown from '../../../ui/dropdown/Dropdown'
-import ToolsDropdown from './ToolsDropdown'
+import ToolsDropdown from '../elements/ToolsDropdown'
 
 import iconUpload from '../../../../assets/icons/icon-upload.svg'
 import iconNewFolder from '../../../../assets/icons/icon-new-folder-dark.svg'
