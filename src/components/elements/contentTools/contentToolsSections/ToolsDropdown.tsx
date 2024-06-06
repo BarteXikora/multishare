@@ -24,6 +24,8 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
 
     const viewStyle = useSelector(state => state.view.contentViewStyle)
 
+    const handleUpload = () => dispatch(showWindow('UPLOAD'))
+
     const handleCreateFolderWindow = () => dispatch(showWindow('CREATE_NEW_FOLDER'))
 
     const handleSort = () => dispatch(showWindow('SORT'))
@@ -35,7 +37,7 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
             (!uploadHereDisabled || !createNewFolderDisabled) && <>
                 <section>
                     {
-                        !uploadHereDisabled && <Button>
+                        !uploadHereDisabled && <Button onClick={handleUpload}>
                             <img src={iconUpload} alt="Prześlij pliki tutaj" />
 
                             Prześlij pliki
