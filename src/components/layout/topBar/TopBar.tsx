@@ -23,6 +23,7 @@ const TopBar = () => {
 
     const handleSearch = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        e.currentTarget.querySelectorAll('input')[0].blur()
 
         if (searchValue.trim() === '') return
 
