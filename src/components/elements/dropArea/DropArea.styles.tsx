@@ -6,6 +6,7 @@ const StyledDropArea = styled.div`
     flex-direction: column;
     width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
 
     .file-input {
         position: absolute;
