@@ -8,9 +8,10 @@ import ContentListView from './contentListView/ContentListView'
 const ContentSection = () => {
     const contentViewStyle = useSelector(state => state.view.contentViewStyle)
     const search = useSelector(state => state.content.search)
+    const content = useSelector(state => state.content.currentFolder)
 
     return <StyledContentSection>
-        {search !== '' && <SearchInfo search={search} />}
+        {search !== '' && (content.folders.length + content.files.length > 0) && <SearchInfo search={search} />}
 
         {
             contentViewStyle === 'ICONS' ?
