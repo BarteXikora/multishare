@@ -1,4 +1,3 @@
-import StyledMoveWindow from './MoveWindow.styles'
 import LocationSelector from '../../elements/locationSelector/LocationSelector'
 import Button from '../../ui/button/Button'
 
@@ -29,33 +28,35 @@ const MoveWindow = () => {
         dispatch(closeWindow())
     }
 
-    return <StyledMoveWindow>
-        <div className="info-section">
+    return <>
+        <section>
             <h2>{
                 `Przenieś ${selected.folders.length + selected.files.length === 1 ?
                     'zaznaczony element' : 'zaznaczone elementy (' + (selected.folders.length + selected.files.length) + ')'
                 }:`
             }</h2>
-        </div>
+        </section>
 
-        <LocationSelector selectionState={[selectedLocation, setSelectedLocation]} excluded={selected.folders} />
+        <section>
+            <LocationSelector selectionState={[selectedLocation, setSelectedLocation]} excluded={selected.folders} />
+        </section>
 
-        <div className="actions-section">
-            <div className="warning">{selectedLocation === null && 'Należy wybrać lokalizację!'}</div>
+        <section className="actions">
+            <Button $variant='secondary' onClick={() => dispatch(closeWindow())}>
+                Anuluj
+            </Button>
 
-            <div className="buttons">
-                <Button $variant='secondary' onClick={() => dispatch(closeWindow())}>
-                    Anuluj
-                </Button>
+            <Button disabled={selectedLocation === null} onClick={handleMove}>
+                <img src={iconMove} alt='Przenieś' />
 
-                <Button disabled={selectedLocation === null} onClick={handleMove}>
-                    <img src={iconMove} alt='Przenieś' />
+                Przenieś
+            </Button>
+        </section>
 
-                    Przenieś
-                </Button>
-            </div>
-        </div>
-    </StyledMoveWindow>
+        <section className="info-box">
+            {selectedLocation === null && <span className="warning">Należy wybrać lokalizację!</span>}
+        </section>
+    </>
 }
 
 export default MoveWindow
