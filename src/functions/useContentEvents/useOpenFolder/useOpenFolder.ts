@@ -10,8 +10,7 @@ const useOpenFolder = () => {
     const openFolder = (folderId: number) => {
         if (isInTrash) return dispatch(showWindow({
             title: 'Element znajduje się w koszu',
-            content: 'CAN_NOT_OPEN_IN_TRASH',
-            data: { type: 'FOLDER', id: folderId }
+            content: 'CAN_NOT_OPEN_IN_TRASH'
         }))
 
         dispatch(setFilter({ type: null, time: null, star: null }))

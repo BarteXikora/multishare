@@ -11,8 +11,7 @@ const useOpenFile = () => {
     const openFile = (id: number) => {
         if (isInTrash) return dispatch(showWindow({
             title: 'Element znajduje się w koszu',
-            content: 'CAN_NOT_OPEN_IN_TRASH',
-            data: { type: 'FOLDER', id }
+            content: 'CAN_NOT_OPEN_IN_TRASH'
         }))
 
         navigate('/file/' + id.toString())
