@@ -5,7 +5,7 @@ import StyledSeachInput from './SearchInput.styles'
 import Input from '../../ui/input/Input'
 import Button from '../../ui/button/Button'
 
-import iconSearch from '../../../assets/icons/icon-search.svg'
+import iconSearch from '../../../assets/icons/icon-search-dark.svg'
 
 type SearchInputType = {
     placeholder?: string
