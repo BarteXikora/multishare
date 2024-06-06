@@ -6,7 +6,6 @@ import { dateType } from '../../elements/dateRangeInput/DateRangeInput'
 
 import DateRangeInput from '../../elements/dateRangeInput/DateRangeInput'
 import Button from '../../ui/button/Button'
-import StyledDateRangeWindow from './DateRangeWindow.styles'
 
 import iconFilter from '../../../assets/icons/icon-filter.svg'
 
@@ -45,9 +44,9 @@ const DateRangeWindow = () => {
 
     }, [dateFrom, dateTo])
 
-    return <StyledDateRangeWindow>
+    return <>
         <section>
-            <h2>Wybierz zakres dat:</h2>
+            <h2 className='extra-margin'>Wybierz zakres dat:</h2>
 
             <div className="columns">
                 <div className="column">
@@ -76,17 +75,17 @@ const DateRangeWindow = () => {
             </Button>
         </section>
 
-        <section className="warning">
+        <section className="info-box">
             {
                 isDateRangeSelected ?
-                    !isDateRangeOK && 'Wybrano nieprawidłowy zakres dat.'
+                    !isDateRangeOK && <span className="error">Wybrano nieprawidłowy zakres dat.</span>
 
                     :
 
-                    'Należy wybrać zakres dat.'
+                    <span className="warning">Należy wybrać zakres dat.</span>
             }
         </section>
-    </StyledDateRangeWindow>
+    </>
 }
 
 export default DateRangeWindow
