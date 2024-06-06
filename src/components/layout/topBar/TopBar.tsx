@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react'
-import { useDispatch } from '../../../store/store'
+import { useSelector, useDispatch } from '../../../store/store'
 import { toggle } from '../../../store/features/sideMenuSlice/sideMenuSlice'
 import { showWindow } from '../../../store/features/windowSlice/windowSlice'
 import { setSearch } from '../../../store/features/contentSlice/contentSlice'
@@ -14,6 +14,8 @@ import iconHamburger from '../../../assets/icons/icon-hamburger.svg'
 
 const TopBar = () => {
     const dispatch = useDispatch()
+
+    const displayType = useSelector(state => state.content.displayType)
 
     const [searchValue, setSearchValue] = useState<string>('')
 
@@ -41,7 +43,7 @@ const TopBar = () => {
                 state={[searchValue, setSearchValue]}
                 onSubmit={handleSearch}
                 mobileButton={handleSearchWindow}
-                placeholder='Szukaj folderów i plików...'
+                placeholder={displayType === 'TRASH' ? 'Szukaj w koszu...' : 'Szukaj folderów i plików...'}
             />
         </div>
     </StyledTopBar>

@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react'
-import { useDispatch } from '../../../store/store'
+import { useSelector, useDispatch } from '../../../store/store'
 import { setSearch } from '../../../store/features/contentSlice/contentSlice'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
@@ -11,6 +11,8 @@ import iconSearch from '../../../assets/icons/icon-search.svg'
 
 const SearchWindow = () => {
     const dispatch = useDispatch()
+
+    const displayType = useSelector(state => state.content.displayType)
 
     const [searchValue, setSearchValue] = useState<string>('')
 
@@ -28,7 +30,7 @@ const SearchWindow = () => {
             <Input
                 value={searchValue}
                 onChange={e => setSearchValue(e.target.value)}
-                placeholder='Szukaj folderów i plików...'
+                placeholder={displayType === 'TRASH' ? 'Szukaj w koszu...' : 'Szukaj folderów i plików...'}
             />
 
             <Button $size='big' type='submit'>
