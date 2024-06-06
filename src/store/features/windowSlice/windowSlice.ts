@@ -4,8 +4,7 @@ import { showWindowType, windowStateType } from './windowSlice.types'
 const initialState: windowStateType = {
     isShown: false,
     title: 'Multishare',
-    content: null,
-    data: null
+    content: null
 }
 
 export const windowSlice = createSlice({
@@ -16,13 +15,11 @@ export const windowSlice = createSlice({
         showWindow: (state, action: PayloadAction<showWindowType>) => {
             state.title = action.payload.title
             state.content = action.payload.content
-            state.data = action.payload.data || null
             state.isShown = true
         },
 
         closeWindow: (state) => {
             state.isShown = false
-            state.data = null
         }
 
     }

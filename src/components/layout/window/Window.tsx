@@ -33,7 +33,7 @@ const Window = () => {
             case 'CREATE_NEW_FOLDER': selectedWindowBody = <NewFolderWindow />; break
             case 'CONFIRM_DELETE': selectedWindowBody = <ConfirmDeleteWindow />; break
             case 'CONFIRM_DELETE_FOREVER': selectedWindowBody = <ConfirmDeleteForeverWindow />; break
-            case 'CAN_NOT_OPEN_IN_TRASH': selectedWindowBody = <CanNotOpenInTrashWindow data={window.data} />; break
+            case 'CAN_NOT_OPEN_IN_TRASH': selectedWindowBody = <CanNotOpenInTrashWindow />; break
             case 'RENAME': selectedWindowBody = <RenameWindow />; break
             case 'MOVE': selectedWindowBody = <MoveWindow />; break
             case 'UPLOAD': selectedWindowBody = <UploadWindow />; break
