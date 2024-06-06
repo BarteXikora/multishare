@@ -3,7 +3,6 @@ import { toggle } from '../../../store/features/sideMenuSlice/sideMenuSlice'
 
 import StyledProjectsTopBar from './ProjectsTopBar.styles'
 import Button from '../../ui/button/Button'
-import SearchInput from '../../elements/searchInput/SearchInput'
 
 import iconHamburger from '../../../assets/icons/icon-hamburger.svg'
 import iconProjects from '../../../assets/icons/icon-projects-dark.svg'
@@ -31,8 +30,6 @@ const ProjectsTopBar = () => {
 
                 <span>Utwórz projekt</span>
             </Button>
-
-            <SearchInput placeholder='Szukaj projektu...' />
         </div>
     </StyledProjectsTopBar>
 }

@@ -32,7 +32,6 @@ const StyledProjectsTopBar = styled.header`
 
     .side {
         display: flex;
-        width: 50%;
         gap: ${(props) => props.theme.margins.medium};
 
         button {
