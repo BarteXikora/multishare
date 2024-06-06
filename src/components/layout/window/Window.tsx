@@ -15,6 +15,7 @@ import UploadWindow from '../../windows/uploadWindow/UploadWindow'
 import SortWindow from '../../windows/sortWindow/SortWindow'
 import FilterWindow from '../../windows/filterWindow/FilterWindow'
 import DateRangeWindow from '../../windows/dateRangeWindow/DateRangeWindow'
+import SearchWindow from '../../windows/searchWindow/SearchWindow'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
 
@@ -38,7 +39,8 @@ const Window = () => {
             case 'UPLOAD': selectedWindowBody = <UploadWindow />; break
             case 'SORT': selectedWindowBody = <SortWindow />; break
             case 'FILTER': selectedWindowBody = <FilterWindow />; break
-            case 'DATE_RANGE': selectedWindowBody = <DateRangeWindow />
+            case 'DATE_RANGE': selectedWindowBody = <DateRangeWindow />; break
+            case 'SEARCH': selectedWindowBody = <SearchWindow />
         }
 
         setWindowBody(selectedWindowBody)
