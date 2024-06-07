@@ -8,7 +8,6 @@ import SingleFolderDetails from './detailsTypes/singleFolderDetails/SingleFolder
 import SingleFileDetails from './detailsTypes/singleFileDetails/SingleFileDetails'
 import MultipleDetails from './detailsTypes/multipleDetails/MultipleDetails'
 import Button from '../../ui/button/Button'
-import ProcessPill from '../../elements/processPill/ProcessPill'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
 
@@ -34,10 +33,6 @@ const DetailsSection = () => {
             {content.type === 'FILE' && <SingleFileDetails content={content} />}
             {content.type === 'MULTIPLE' && <MultipleDetails content={content} />}
         </section>
-
-        <div className="process-pill">
-            <ProcessPill />
-        </div>
     </StyledDetailsSection>
 }
 
