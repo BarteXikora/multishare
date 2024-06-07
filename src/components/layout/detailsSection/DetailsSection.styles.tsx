@@ -10,10 +10,6 @@ const StyledDetailsSection = styled.div`
     background-color: ${(props) => props.theme.colors.gray2};
     border-radius: ${(props) => props.theme.borderRadiuses.big};
 
-    .main-content {
-        height: 100%;
-    }
-
     .close-button {
         display: none;
         position: absolute;

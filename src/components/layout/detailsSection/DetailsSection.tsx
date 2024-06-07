@@ -8,7 +8,6 @@ import SingleFolderDetails from './detailsTypes/singleFolderDetails/SingleFolder
 import SingleFileDetails from './detailsTypes/singleFileDetails/SingleFileDetails'
 import MultipleDetails from './detailsTypes/multipleDetails/MultipleDetails'
 import Button from '../../ui/button/Button'
-import ProcessPill from '../../elements/processPill/ProcessPill'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
 
@@ -28,16 +27,11 @@ const DetailsSection = () => {
             <img src={iconClose} alt='Zamknij szczegóły' />
         </Button>
 
-        <section className='main-content'>
-            {content.type === 'EMPTY' && <NothingSelectedDetails isHomeFolder={isHomeFolder} project={project} />}
-            {content.type === 'FOLDER' && <SingleFolderDetails content={content} />}
-            {content.type === 'FILE' && <SingleFileDetails content={content} />}
-            {content.type === 'MULTIPLE' && <MultipleDetails content={content} />}
-        </section>
+        {content.type === 'EMPTY' && <NothingSelectedDetails isHomeFolder={isHomeFolder} project={project} />}
+        {content.type === 'FOLDER' && <SingleFolderDetails content={content} />}
+        {content.type === 'FILE' && <SingleFileDetails content={content} />}
+        {content.type === 'MULTIPLE' && <MultipleDetails content={content} />}
 
-        <div className="process-pill">
-            <ProcessPill />
-        </div>
     </StyledDetailsSection>
 }
 
