@@ -27,12 +27,11 @@ const DetailsSection = () => {
             <img src={iconClose} alt='Zamknij szczegóły' />
         </Button>
 
-        <section className='main-content'>
-            {content.type === 'EMPTY' && <NothingSelectedDetails isHomeFolder={isHomeFolder} project={project} />}
-            {content.type === 'FOLDER' && <SingleFolderDetails content={content} />}
-            {content.type === 'FILE' && <SingleFileDetails content={content} />}
-            {content.type === 'MULTIPLE' && <MultipleDetails content={content} />}
-        </section>
+        {content.type === 'EMPTY' && <NothingSelectedDetails isHomeFolder={isHomeFolder} project={project} />}
+        {content.type === 'FOLDER' && <SingleFolderDetails content={content} />}
+        {content.type === 'FILE' && <SingleFileDetails content={content} />}
+        {content.type === 'MULTIPLE' && <MultipleDetails content={content} />}
+
     </StyledDetailsSection>
 }
 
