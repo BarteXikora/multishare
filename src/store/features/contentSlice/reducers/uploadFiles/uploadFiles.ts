@@ -12,7 +12,7 @@ type uploadFilesRequestType = {
     data: filesRequestType[]
 }
 
-type uploadFilesType = uploadFilesRequestType | fileType[]
+export type uploadFilesType = uploadFilesRequestType | fileType[]
 
 const uploadFiles = (state: contentStateType, action: PayloadAction<uploadFilesType>) => {
     if (state.loadedContent.status !== 'READY') return
