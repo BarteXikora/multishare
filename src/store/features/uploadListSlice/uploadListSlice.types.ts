@@ -1,10 +1,13 @@
 export type uploadFileStatusType = 'WAITING' | 'UPLOADING' | 'DONE'
 
-export type uploadFileType = {
-    id: string,
+export type addUploadFileType = {
     name: string,
     extension: string,
     parentFolder: number,
+}
+
+export type uploadFileType = addUploadFileType & {
+    id: string,
     status: uploadFileStatusType
 }
 
