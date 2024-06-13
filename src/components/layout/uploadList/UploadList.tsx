@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useSelector } from '../../../store/store'
 
 import StyledUploadList from './UploadList.styles'
@@ -12,9 +13,11 @@ import iconDone from '../../../assets/icons/icon-ok-color.svg'
 const UploadList = () => {
     const uploadList = useSelector(state => state.uploadList)
 
+    const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
+
     if (uploadList.length === 0) return null
 
-    return <StyledUploadList>
+    return <StyledUploadList className={isCollapsed ? 'collapsed' : ''}>
         <section className="bar">
             <h2>
                 <img src={iconUpload} alt='Przesyłanie plików' />
@@ -22,7 +25,7 @@ const UploadList = () => {
                 Przesyłanie plików...
             </h2>
 
-            <Button $variant='tertiary'>
+            <Button $variant='tertiary' onClick={() => setIsCollapsed(!isCollapsed)}>
                 <img src={iconArrow} alt='Pokaż / ukryj listę' />
             </Button>
         </section>
