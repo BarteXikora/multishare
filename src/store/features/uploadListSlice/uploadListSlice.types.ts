@@ -6,9 +6,11 @@ export type addUploadFileType = {
     parentFolder: number,
 }
 
-export type uploadFileType = addUploadFileType & {
+export type changeStatusType = {
     id: string,
     status: uploadFileStatusType
 }
+
+export type uploadFileType = addUploadFileType & changeStatusType
 
 export type uploadListStateType = uploadFileType[]
