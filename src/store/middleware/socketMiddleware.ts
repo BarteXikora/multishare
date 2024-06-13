@@ -28,7 +28,7 @@ const socketMiddleware = () => {
             case 'contentSlice/downloadElements': onDownloadElements(action); return
             case 'contentSlice/addFolder': onAddFolder(action); return
             case 'contentSlice/updateContent': onUpdateContent(action); return
-            case 'contentSlice/uploadFiles': onUploadFiles(action); return
+            case 'contentSlice/uploadFiles': onUploadFiles(action, next); return
             case 'contentSlice/moveToTrash': onMoveToTrash(action); return
             case 'contentSlice/restoreFromTrash': onRestoreFromTrash(action); return
             case 'contentSlice/deleteForever': onDeleteForever(action); return
