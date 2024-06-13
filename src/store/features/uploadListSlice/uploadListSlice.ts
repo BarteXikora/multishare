@@ -21,10 +21,14 @@ const uploadListSlice = createSlice({
 
                 if (foundFile) foundFile.status = fileToChange.status
             })
+        },
+
+        removeFiles: (state, action: PayloadAction<string[]>) => {
+            return state.filter(file => !action.payload.includes(file.id))
         }
 
     }
 })
 
 export default uploadListSlice.reducer
-export const { addFiles, changeStatus } = uploadListSlice.actions
+export const { addFiles, changeStatus, removeFiles } = uploadListSlice.actions
