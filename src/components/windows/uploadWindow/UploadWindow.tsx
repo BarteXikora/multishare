@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from '../../../store/store'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
+import getFilesToUpload from '../../../functions/getFilesToUpload/getFilesToUpload'
+import { addFiles } from '../../../store/features/uploadListSlice/uploadListSlice'
 
 import DropArea from '../../elements/dropArea/DropArea'
 
@@ -13,20 +15,11 @@ const UploadWindow = () => {
     useEffect(() => { if (!files) setLocation(null) }, [files])
 
     const handleUpload = () => {
-        if (!files || !location) return
+        const filesToUpload = getFilesToUpload(files, location)
 
-        const filesToUpload = files.map(f => {
-            let currentFileName = f.name.split('.').slice(0, -1).join('')
+        if (filesToUpload === false) return
 
-            return {
-                file: new File([f], f.name),
-                name: currentFileName,
-                extension: f.name.split('.').pop() || null
-            }
-        })
-
-        // dispatch(uploadFiles({ location, data: filesToUpload }))
-
+        dispatch(addFiles(filesToUpload))
         setFiles(null)
 
         dispatch(closeWindow())
