@@ -11,6 +11,12 @@ import Button from '../../ui/button/Button'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
 
+
+
+import UploadList from '../uploadList/UploadList'
+
+
+
 const DetailsSection = () => {
     const project = useSelector(state => state.project.selectedProject)
     const isHomeFolder = useSelector(state => state.content.currentPath.length === 0)
@@ -27,10 +33,20 @@ const DetailsSection = () => {
             <img src={iconClose} alt='Zamknij szczegóły' />
         </Button>
 
-        {content.type === 'EMPTY' && <NothingSelectedDetails isHomeFolder={isHomeFolder} project={project} />}
-        {content.type === 'FOLDER' && <SingleFolderDetails content={content} />}
-        {content.type === 'FILE' && <SingleFileDetails content={content} />}
-        {content.type === 'MULTIPLE' && <MultipleDetails content={content} />}
+        <section className="main">
+            {content.type === 'EMPTY' && <NothingSelectedDetails isHomeFolder={isHomeFolder} project={project} />}
+            {content.type === 'FOLDER' && <SingleFolderDetails content={content} />}
+            {content.type === 'FILE' && <SingleFileDetails content={content} />}
+            {content.type === 'MULTIPLE' && <MultipleDetails content={content} />}
+        </section>
+
+
+
+
+        <UploadList />
+
+
+
 
     </StyledDetailsSection>
 }

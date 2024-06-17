@@ -75,15 +75,25 @@ const onInitializeUser = (dispatch: Dispatch, next: any) => {
     }
     socket.on('download_response', (data: any) => handleDownloadElements(data))
 
-    const handleUploadFiles = (data: any) => {
-        if (data === null) return alert('error')
-
-        const action = { type: 'contentSlice/uploadFiles', payload: data }
-        next(action)
-
-        return
+    const handleUploadInProgress = (data: any) => {
+        next({ type: 'uploadSlice/changeStatus', payload: { uploadId: data, status: 'UPLOADING' } })
     }
-    socket.on('upload_response', (data: any) => handleUploadFiles(data))
+    socket.on('upload_in_progress', (data: any) => handleUploadInProgress(data))
+
+    const handleUploadEnd = (data: any) => {
+        next({ type: 'uploadSlice/changeStatus', payload: { uploadId: data, status: 'DONE' } })
+    }
+    socket.on('upload_end', (data: any) => handleUploadEnd(data))
+
+    const handleChangePercent = (data: any) => {
+        next({ type: 'uploadSlice/changePercent', payload: data })
+    }
+    socket.on('upload_percent', (data: any) => handleChangePercent(data))
+
+    const handleUploadFile = (data: any) => {
+        next({ type: 'contentSlice/uploadFile', payload: data })
+    }
+    socket.on('upload_response', (data: any) => handleUploadFile(data))
 }
 
 export default onInitializeUser

@@ -1,0 +1,96 @@
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from '../../../store/store'
+import { removeFiles } from '../../../store/features/uploadListSlice/uploadListSlice'
+
+import StyledUploadList from './UploadList.styles'
+import Button from '../../ui/button/Button'
+import CircleProgress from '../../ui/circleProgress/CircleProgress'
+
+import iconUpload from '../../../assets/icons/icon-upload.svg'
+import iconArrow from '../../../assets/icons/icon-arrow-down.svg'
+import iconWaiting from '../../../assets/icons/icon-waiting.svg'
+import iconDone from '../../../assets/icons/icon-ok-color.svg'
+
+const UploadList = () => {
+    const dispatch = useDispatch()
+
+    const uploadList = useSelector(state => state.uploadList)
+
+    const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
+    const [isAllDone, setIsAllDone] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (uploadList.filter(file => file.status !== 'DONE').length === 0) {
+            setIsAllDone(true)
+
+            setTimeout(() => {
+                dispatch(removeFiles(uploadList.map(file => file.uploadId)))
+
+            }, 3000)
+        }
+
+        else setIsAllDone(false)
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [uploadList])
+
+    if (uploadList.length === 0) return null
+
+    return <StyledUploadList className={(isCollapsed || isAllDone) ? 'collapsed' : ''}>
+        <section className="bar">
+            {
+                isAllDone ?
+                    <h2>
+                        <img src={iconDone} alt='Przesłano pliki' />
+
+                        Przesłano pliki ({uploadList.length})
+                    </h2>
+
+                    :
+
+                    <>
+                        <h2>
+                            <img src={iconUpload} alt='Przesyłanie plików' />
+
+                            Przesyłanie plików...
+                        </h2>
+
+                        <Button $variant='tertiary' onClick={() => setIsCollapsed(!isCollapsed)}>
+                            <img src={iconArrow} alt='Pokaż / ukryj listę' />
+                        </Button>
+                    </>
+            }
+        </section>
+
+        <section className="main">
+            {
+                uploadList.map(file => <div key={file.uploadId} className="file">
+                    <div className='file-name'>
+                        {file.name}<span className='extension'>.{file.extension.toLocaleLowerCase()}</span>
+                    </div>
+
+                    <div
+                        className='status'
+                        title={
+                            file.status === 'WAITING' ?
+                                'Oczekuje...' : file.status === 'UPLOADING' ?
+                                    `(${file.uploadPercent}%) - Przesyłanie...` : 'Przesłano'
+                        }
+                    >
+                        {
+                            file.status === 'WAITING' ?
+                                <img src={iconWaiting} alt='Oczekuje...' />
+                                :
+                                file.status === 'UPLOADING' ?
+                                    <CircleProgress $percent={file.uploadPercent} />
+                                    :
+                                    <img src={iconDone} alt='Przesłano' />
+                        }
+                    </div>
+                </div>)
+            }
+        </section>
+    </StyledUploadList>
+}
+
+export default UploadList

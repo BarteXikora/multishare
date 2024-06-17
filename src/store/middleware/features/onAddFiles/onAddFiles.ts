@@ -1,7 +1,7 @@
 import socket from '../../../../api/socket'
 
-const onUploadFiles = (action: any) => {
+const onAddFiles = (action: any) => {
     socket.emit('upload_request', action.payload)
 }
 
-export default onUploadFiles
+export default onAddFiles

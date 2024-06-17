@@ -18,6 +18,10 @@ const StyledDetailsSection = styled.div`
         margin-top: ${(props) => props.theme.margins.medium};
     }
 
+    .main {
+        height: 100%;
+    }
+
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
         position: fixed;
         z-index: 2000;
