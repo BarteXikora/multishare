@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const StyledContentIconsView = styled.div`
+    position: relative;
     margin-top: ${(props) => props.theme.margins.big};
     margin-bottom: ${(props) => props.theme.margins.extraBig};
     pointer-events: none;

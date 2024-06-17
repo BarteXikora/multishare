@@ -6,6 +6,7 @@ import TrashWarning from '../../../elements/trashWarning/TrashWarning'
 import FoldersSection from './foldersSection/FoldersSection'
 import FilesSection from './filesSection/FilesSection'
 import Empty from '../../../elements/empty/Empty'
+import MovePill from '../../../elements/movePill/MovePill'
 
 const ContentIconsView = () => {
     const content = useSelector(state => state.content.currentFolder)
@@ -23,6 +24,8 @@ const ContentIconsView = () => {
         {content.files.length > 0 && <FilesSection content={content} selected={selected} onMove={onMove} displayType={displayType} />}
 
         {(content.folders.length === 0 && content.files.length === 0) && <Empty />}
+
+        <MovePill />
     </StyledContentIconsView>
 
 }
