@@ -18,7 +18,9 @@ const uploadListSlice = createSlice({
             if (found) found.status = action.payload.status
         },
 
-        removeFiles: (state, action: PayloadAction<string[]>) => { }
+        removeFiles: (state, action: PayloadAction<string[]>) => {
+            return state.filter(file => !action.payload.includes(file.uploadId))
+        }
 
     }
 })
