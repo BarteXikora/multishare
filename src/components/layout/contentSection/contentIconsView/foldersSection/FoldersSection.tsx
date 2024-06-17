@@ -1,9 +1,9 @@
 import Folder from '../../../../elements/folder/Folder'
 import useContentEvents from '../../../../../functions/useContentEvents/useContentEvents'
 
-import { contentDisplayType, selectedType } from '../../../../../store/features/contentSlice/contentSlice.types'
+import { contentDisplayType, onMoveType, selectedType } from '../../../../../store/features/contentSlice/contentSlice.types'
 
-const FoldersSection = ({ content, selected }: { content: contentDisplayType, selected: selectedType }) => {
+const FoldersSection = ({ content, selected, onMove }: { content: contentDisplayType, selected: selectedType, onMove: onMoveType }) => {
     const { folderEvents } = useContentEvents()
 
     return <section className='folders-section'>
@@ -18,6 +18,7 @@ const FoldersSection = ({ content, selected }: { content: contentDisplayType, se
                         displayName={folder.name}
                         isStar={folder.star || false}
                         isSelected={selected.folders ? selected.folders.includes(folder.id) : false}
+                        isOnMove={onMove.folders.includes(folder.id)}
 
                         onClick={e => folderEvents.onClick(e, folder.id)}
                         onDoubleClick={() => folderEvents.onDoubleClick(folder.id)}
