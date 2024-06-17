@@ -4,11 +4,11 @@ import { removeFiles } from '../../../store/features/uploadListSlice/uploadListS
 
 import StyledUploadList from './UploadList.styles'
 import Button from '../../ui/button/Button'
+import CircleProgress from '../../ui/circleProgress/CircleProgress'
 
 import iconUpload from '../../../assets/icons/icon-upload.svg'
 import iconArrow from '../../../assets/icons/icon-arrow-down.svg'
 import iconWaiting from '../../../assets/icons/icon-waiting.svg'
-import iconUploading from '../../../assets/icons/icon-upload-color.svg'
 import iconDone from '../../../assets/icons/icon-ok-color.svg'
 
 const UploadList = () => {
@@ -74,7 +74,7 @@ const UploadList = () => {
                         title={
                             file.status === 'WAITING' ?
                                 'Oczekuje...' : file.status === 'UPLOADING' ?
-                                    'Przesyłanie...' : 'Przesłano'
+                                    `(${file.uploadPercent}%) - Przesyłanie...` : 'Przesłano'
                         }
                     >
                         {
@@ -82,7 +82,7 @@ const UploadList = () => {
                                 <img src={iconWaiting} alt='Oczekuje...' />
                                 :
                                 file.status === 'UPLOADING' ?
-                                    <img src={iconUploading} alt='Przesyłanie...' />
+                                    <CircleProgress $percent={file.uploadPercent} />
                                     :
                                     <img src={iconDone} alt='Przesłano' />
                         }

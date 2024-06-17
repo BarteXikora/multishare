@@ -44,6 +44,10 @@ const StyledUploadList = styled.div`
 
             &:nth-of-type(even) {
                 background-color: ${(props) => props.theme.colors.gray2};
+
+                .status div::after {
+                    background-color: ${(props) => props.theme.colors.gray2};
+                }
             }
 
             .file-name {
@@ -57,6 +61,14 @@ const StyledUploadList = styled.div`
 
             .status {
                 padding: 0 ${(props) => props.theme.margins.small};
+
+                div {
+                    display: inline-block;
+
+                    &::after {
+                        background-color: ${(props) => props.theme.colors.gray3};
+                    }
+                }
             }
         }
     }
