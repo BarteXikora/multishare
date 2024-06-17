@@ -85,6 +85,11 @@ const onInitializeUser = (dispatch: Dispatch, next: any) => {
     }
     socket.on('upload_end', (data: any) => handleUploadEnd(data))
 
+    const handleChangePercent = (data: any) => {
+        next({ type: 'uploadSlice/changePercent', payload: data })
+    }
+    socket.on('upload_percent', (data: any) => handleChangePercent(data))
+
     const handleUploadFile = (data: any) => {
         next({ type: 'contentSlice/uploadFile', payload: data })
     }
