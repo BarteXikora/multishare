@@ -32,7 +32,7 @@ const UploadList = () => {
 
         <section className="main">
             {
-                uploadList.map(file => <div key={file.id} className="file">
+                uploadList.map(file => <div key={file.uploadId} className="file">
                     <div className='file-name'>
                         {file.name}<span className='extension'>.{file.extension.toLocaleLowerCase()}</span>
                     </div>
