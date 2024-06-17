@@ -11,6 +11,7 @@ import onRestoreFromTrash from './features/onRestoreFromTrash/onRestoreFromTrash
 import onDeleteForever from './features/onDeleteForever/onDeleteForever'
 import onInitializeProjects from './features/onInitializeProjects/onInitializeProjects'
 import onInitializePreview from './features/onInitializePreview/onInitializePreview'
+import onAddFiles from './features/onAddFiles/onAddFiles'
 
 type paramsType = {
     dispatch: Dispatch
@@ -31,7 +32,8 @@ const socketMiddleware = () => {
             case 'contentSlice/restoreFromTrash': onRestoreFromTrash(action); return
             case 'contentSlice/deleteForever': onDeleteForever(action); return
             case 'projectSlice/initializeProjects': onInitializeProjects(dispatch); break
-            case 'previewSlice/initializePreview': onInitializePreview(dispatch, action)
+            case 'previewSlice/initializePreview': onInitializePreview(dispatch, action); break
+            case 'uploadSlice/addFiles': onAddFiles(action)
         }
 
         next(action)
