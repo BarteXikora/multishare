@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { useSelector } from '../../../store/store'
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from '../../../store/store'
+import { removeFiles } from '../../../store/features/uploadListSlice/uploadListSlice'
 
 import StyledUploadList from './UploadList.styles'
 import Button from '../../ui/button/Button'
@@ -11,23 +12,54 @@ import iconUploading from '../../../assets/icons/icon-upload-color.svg'
 import iconDone from '../../../assets/icons/icon-ok-color.svg'
 
 const UploadList = () => {
+    const dispatch = useDispatch()
+
     const uploadList = useSelector(state => state.uploadList)
 
     const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
+    const [isAllDone, setIsAllDone] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (uploadList.filter(file => file.status !== 'DONE').length === 0) {
+            setIsAllDone(true)
+
+            setTimeout(() => {
+                dispatch(removeFiles(uploadList.map(file => file.uploadId)))
+
+            }, 3000)
+        }
+
+        else setIsAllDone(false)
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [uploadList])
 
     if (uploadList.length === 0) return null
 
-    return <StyledUploadList className={isCollapsed ? 'collapsed' : ''}>
+    return <StyledUploadList className={(isCollapsed || isAllDone) ? 'collapsed' : ''}>
         <section className="bar">
-            <h2>
-                <img src={iconUpload} alt='Przesyłanie plików' />
+            {
+                isAllDone ?
+                    <h2>
+                        <img src={iconDone} alt='Przesłano pliki' />
 
-                Przesyłanie plików...
-            </h2>
+                        Przesłano pliki ({uploadList.length})
+                    </h2>
 
-            <Button $variant='tertiary' onClick={() => setIsCollapsed(!isCollapsed)}>
-                <img src={iconArrow} alt='Pokaż / ukryj listę' />
-            </Button>
+                    :
+
+                    <>
+                        <h2>
+                            <img src={iconUpload} alt='Przesyłanie plików' />
+
+                            Przesyłanie plików...
+                        </h2>
+
+                        <Button $variant='tertiary' onClick={() => setIsCollapsed(!isCollapsed)}>
+                            <img src={iconArrow} alt='Pokaż / ukryj listę' />
+                        </Button>
+                    </>
+            }
         </section>
 
         <section className="main">
@@ -37,7 +69,14 @@ const UploadList = () => {
                         {file.name}<span className='extension'>.{file.extension.toLocaleLowerCase()}</span>
                     </div>
 
-                    <div className='status' title={file.status === 'WAITING' ? 'Oczekuje...' : file.status === 'UPLOADING' ? 'Przesyłanie...' : 'Przesłano'}>
+                    <div
+                        className='status'
+                        title={
+                            file.status === 'WAITING' ?
+                                'Oczekuje...' : file.status === 'UPLOADING' ?
+                                    'Przesyłanie...' : 'Przesłano'
+                        }
+                    >
                         {
                             file.status === 'WAITING' ?
                                 <img src={iconWaiting} alt='Oczekuje...' />
