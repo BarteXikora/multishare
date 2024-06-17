@@ -23,6 +23,9 @@ const FoldersSection = ({ content, selected }: { content: contentDisplayType, se
                         onDoubleClick={() => folderEvents.onDoubleClick(folder.id)}
                         onTouchStart={e => folderEvents.onTouchStart(e, folder.id)}
                         onTouchEnd={e => folderEvents.onTouchEnd(e, folder.id)}
+
+                        onMouseDown={e => folderEvents.onMouseDown(e, folder.id)}
+                        onMouseMove={e => folderEvents.onMouseMove(e, folder.id)}
                     />
                 })
             }
