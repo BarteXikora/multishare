@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from '../../../store/store'
 import { useState, useEffect } from 'react'
-import { elementType } from '../../../store/features/contentSlice/contentSlice.types'
-import { setSelected } from '../../../store/features/contentSlice/contentSlice'
+import { elementType, selectedType } from '../../../store/features/contentSlice/contentSlice.types'
+import { setOnMove, setSelected } from '../../../store/features/contentSlice/contentSlice'
 import getMoveElements from '../functions/getMoveElements/getMoveElements'
 
 const useMouseMoveEvents = () => {
@@ -22,12 +22,15 @@ const useMouseMoveEvents = () => {
             setIsMouseDown(false)
             setIsMouseMove(false)
             setMovedElement(null)
+
+            dispatch(setOnMove({ folders: [], files: [] }))
         }
 
         if (isMouseDown) window.addEventListener('mouseup', handleEvent)
 
         return () => window.removeEventListener('mouseup', handleEvent)
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMouseDown])
 
     useEffect(() => {
@@ -47,7 +50,12 @@ const useMouseMoveEvents = () => {
         if (isMouseDown && distance >= MOUSE_MOVE_MIN_DISTANCE) {
             setIsMouseMove(true)
 
-            if (movedElement !== null) dispatch(setSelected(getMoveElements(selected, movedElement.type, movedElement.id)))
+            if (movedElement !== null) {
+                const moveSelected: selectedType = getMoveElements(selected, movedElement.type, movedElement.id)
+
+                dispatch(setSelected(moveSelected))
+                dispatch(setOnMove(moveSelected))
+            }
         }
     }
 
