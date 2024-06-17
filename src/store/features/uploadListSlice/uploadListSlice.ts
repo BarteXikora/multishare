@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { uploadListStateType, changeStatusType, uploadFileType } from './uploadListSlice.types'
-import { v4 as uuid } from 'uuid'
 
 const initialState: uploadListStateType = []
 
@@ -9,7 +8,9 @@ const uploadListSlice = createSlice({
     initialState,
     reducers: {
 
-        addFiles: (state, action: PayloadAction<uploadFileType[]>) => { },
+        addFiles: (state, action: PayloadAction<uploadFileType[]>) => {
+            return [...state, ...action.payload]
+        },
 
         changeStatus: (state, action: PayloadAction<changeStatusType[]>) => { },
 
