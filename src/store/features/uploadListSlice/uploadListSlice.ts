@@ -12,7 +12,11 @@ const uploadListSlice = createSlice({
             return [...state, ...action.payload]
         },
 
-        changeStatus: (state, action: PayloadAction<changeStatusType[]>) => { },
+        changeStatus: (state, action: PayloadAction<changeStatusType>) => {
+            const found = state.find(file => file.uploadId === action.payload.uploadId)
+
+            if (found) found.status = action.payload.status
+        },
 
         removeFiles: (state, action: PayloadAction<string[]>) => { }
 
