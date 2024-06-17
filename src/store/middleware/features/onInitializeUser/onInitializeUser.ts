@@ -74,6 +74,16 @@ const onInitializeUser = (dispatch: Dispatch, next: any) => {
         return
     }
     socket.on('download_response', (data: any) => handleDownloadElements(data))
+
+    const handleUploadInProgress = (data: any) => {
+        next({ type: 'uploadSlice/changeStatus', payload: { uploadId: data, status: 'UPLOADING' } })
+    }
+    socket.on('upload_in_progress', (data: any) => handleUploadInProgress(data))
+
+    const handleUploadEnd = (data: any) => {
+        next({ type: 'uploadSlice/changeStatus', payload: { uploadId: data, status: 'DONE' } })
+    }
+    socket.on('upload_end', (data: any) => handleUploadEnd(data))
 }
 
 export default onInitializeUser
