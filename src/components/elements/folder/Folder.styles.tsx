@@ -53,6 +53,16 @@ const StyledFolder = styled(Button)`
             background-color: ${(props) => props.theme.colors.primary2};
         }
     }
+
+    &.on-move::after {
+        position: absolute;
+        content: '';
+        background-color: ${(props) => props.theme.colors.gray2};
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
 `
 
 export default StyledFolder

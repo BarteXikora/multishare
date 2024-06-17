@@ -8,6 +8,7 @@ type FolderProps = {
     displayName: string
     isStar: boolean
     isSelected: boolean
+    isOnMove: boolean
     onClick: (e: React.MouseEvent<HTMLElement>) => void
     onDoubleClick: () => void
     onTouchStart: (e: React.TouchEvent<HTMLElement>) => void
@@ -17,7 +18,7 @@ type FolderProps = {
 }
 
 const Folder = ({
-    id, displayName, isStar, isSelected, onClick,
+    id, displayName, isStar, isSelected, isOnMove, onClick,
     onDoubleClick, onTouchStart, onTouchEnd,
     onMouseDown, onMouseMove
 }: FolderProps) => {
@@ -25,7 +26,7 @@ const Folder = ({
     return <StyledFolder
         $variant='secondary'
         $size='big'
-        className={isSelected ? 'selected' : ''}
+        className={isOnMove ? 'on-move' : isSelected ? 'selected' : ''}
 
         onClick={onClick}
         onDoubleClick={onDoubleClick}
