@@ -15,9 +15,14 @@ type FileProps = {
     onDoubleClick: () => void
     onTouchStart: (e: React.TouchEvent<HTMLElement>) => void
     onTouchEnd: (e: React.TouchEvent<HTMLElement>) => void
+    onMouseDown: (e: React.MouseEvent<HTMLElement>) => void
+    onMouseMove: (e: React.MouseEvent<HTMLElement>) => void
 }
 
-const File = ({ displayName, extension, preview, isStar, isSelected, onClick, onDoubleClick, onTouchStart, onTouchEnd }: FileProps) => {
+const File = ({
+    displayName, extension, preview, isStar, isSelected, onClick,
+    onDoubleClick, onTouchStart, onTouchEnd, onMouseDown, onMouseMove
+}: FileProps) => {
     const [previewImage, setPreviewImage] = useState<string>('')
 
     useEffect(() => {
@@ -34,6 +39,8 @@ const File = ({ displayName, extension, preview, isStar, isSelected, onClick, on
         onDoubleClick={onDoubleClick}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
     >
         <div
             className={`preview ${preview && 'preview-img'}`}
