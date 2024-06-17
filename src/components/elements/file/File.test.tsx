@@ -7,6 +7,7 @@ const _fileDefaultProps = {
     preview: '',
     isStar: false,
     isSelected: false,
+    isOnMove: false,
     onClick: () => null,
     onDoubleClick: () => null,
     onTouchStart: () => null,
