@@ -107,6 +107,11 @@ export type selectedType = {
     selectionStart: { type: elementType, id: number } | null
 }
 
+export type onMoveType = {
+    folders: number[],
+    files: number[]
+}
+
 export type contentStateType = {
     loadedContent: loadedContentType,
     displayType: displayTypeType,
@@ -115,5 +120,6 @@ export type contentStateType = {
     search: string,
     currentFolder: contentDisplayType,
     currentPath: pathType[],
-    selected: selectedType
+    selected: selectedType,
+    onMove: onMoveType
 }

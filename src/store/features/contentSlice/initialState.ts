@@ -10,7 +10,8 @@ const initialState: contentStateType = {
     search: '',
     currentFolder: emptyContent,
     loadedContent: { status: 'LOADING' },
-    selected: { ...emptyContent, selectionStart: null }
+    selected: { ...emptyContent, selectionStart: null },
+    onMove: emptyContent
 }
 
 export default initialState
