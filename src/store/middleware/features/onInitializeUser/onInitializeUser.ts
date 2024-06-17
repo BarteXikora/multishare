@@ -84,6 +84,11 @@ const onInitializeUser = (dispatch: Dispatch, next: any) => {
         next({ type: 'uploadSlice/changeStatus', payload: { uploadId: data, status: 'DONE' } })
     }
     socket.on('upload_end', (data: any) => handleUploadEnd(data))
+
+    const handleUploadFile = (data: any) => {
+        next({ type: 'contentSlice/uploadFile', payload: data })
+    }
+    socket.on('upload_response', (data: any) => handleUploadFile(data))
 }
 
 export default onInitializeUser
