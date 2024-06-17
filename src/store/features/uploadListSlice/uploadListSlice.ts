@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { uploadListStateType, changeStatusType, uploadFileType } from './uploadListSlice.types'
+import { uploadListStateType, changeStatusType, changePercentType, uploadFileType } from './uploadListSlice.types'
 
 const initialState: uploadListStateType = []
 
@@ -18,6 +18,12 @@ const uploadListSlice = createSlice({
             if (found) found.status = action.payload.status
         },
 
+        changePercent: (state, action: PayloadAction<changePercentType>) => {
+            const found = state.find(file => file.uploadId === action.payload.uploadId)
+
+            if (found) found.uploadPercent = action.payload.uploadPercent
+        },
+
         removeFiles: (state, action: PayloadAction<string[]>) => {
             return state.filter(file => !action.payload.includes(file.uploadId))
         }
@@ -26,4 +32,4 @@ const uploadListSlice = createSlice({
 })
 
 export default uploadListSlice.reducer
-export const { addFiles, changeStatus, removeFiles } = uploadListSlice.actions
+export const { addFiles, changeStatus, changePercent, removeFiles } = uploadListSlice.actions

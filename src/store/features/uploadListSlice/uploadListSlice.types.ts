@@ -5,12 +5,18 @@ export type changeStatusType = {
     status: uploadFileStatusType
 }
 
+export type changePercentType = {
+    uploadId: string
+    uploadPercent: number
+}
+
 export type uploadFileType = {
     uploadId: string
     name: string
     extension: string
     parentFolder: number
     status: uploadFileStatusType
+    uploadPercent: number
     file: File
 }
 
