@@ -11,6 +11,7 @@ const getFilesToUpload = (files: File[] | null, location: number | null): upload
             extension: f.name.split('.').pop() || '',
             parentFolder: location,
             status: 'WAITING',
+            uploadPercent: 0,
             file: new File([f], f.name)
         }
     })
