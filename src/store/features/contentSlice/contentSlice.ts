@@ -14,6 +14,7 @@ import setFilterReducer from './reducers/setFilter/setFilter'
 import setSearchReducer from './reducers/setSearch/setSearch'
 import downloadElementsReducer from './reducers/downloadElements/downloadElements'
 import addFolderReducer from './reducers/addFolder/addFolder'
+import uploadFileReducer from './reducers/uploadFile/uploadFile'
 import updateContentReducer from './reducers/updateContent/updateContent'
 import moveToTrashReducer from './reducers/moveToTrash/moveToTrash'
 import restoreFromTrashReducer from './reducers/restoreFromTrash/restoreFromTrash'
@@ -35,6 +36,7 @@ export const contentSlice = createSlice({
         setSearch: setSearchReducer,
         downloadElements: downloadElementsReducer,
         addFolder: addFolderReducer,
+        uploadFile: uploadFileReducer,
         updateContent: updateContentReducer,
         moveToTrash: moveToTrashReducer,
         restoreFromTrash: restoreFromTrashReducer,
@@ -47,7 +49,7 @@ export default contentSlice.reducer
 export const {
     initializeContent, setContent, setContentError, resetContent,
     setSelected, setTreeLocation, setDisplayType, setSort, setFilter,
-    setSearch, downloadElements, addFolder, updateContent,
+    setSearch, downloadElements, addFolder, uploadFile, updateContent,
     moveToTrash, restoreFromTrash, deleteForever
 
 } = contentSlice.actions
