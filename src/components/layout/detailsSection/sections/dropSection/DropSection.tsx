@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../../../store/store'
-import { uploadFiles } from '../../../../../store/features/contentSlice/contentSlice'
 
 import StyledDropSection from './DropSection.styles'
 import DropArea from '../../../../elements/dropArea/DropArea'
@@ -32,7 +31,7 @@ const DropSection = () => {
             }
         })
 
-        dispatch(uploadFiles({ location, data: filesToUpload }))
+        // dispatch(uploadFiles({ location, data: filesToUpload }))
 
         setFiles(null)
     }

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from '../../../store/store'
-import { uploadFiles } from '../../../store/features/contentSlice/contentSlice'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
 import DropArea from '../../elements/dropArea/DropArea'
@@ -26,7 +25,7 @@ const UploadWindow = () => {
             }
         })
 
-        dispatch(uploadFiles({ location, data: filesToUpload }))
+        // dispatch(uploadFiles({ location, data: filesToUpload }))
 
         setFiles(null)
 
