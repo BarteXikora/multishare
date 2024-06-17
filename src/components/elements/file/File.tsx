@@ -11,6 +11,7 @@ type FileProps = {
     preview: string | false
     isStar: boolean
     isSelected: boolean
+    isOnMove: boolean
     onClick: (e: React.MouseEvent<HTMLElement>) => void
     onDoubleClick: () => void
     onTouchStart: (e: React.TouchEvent<HTMLElement>) => void
@@ -20,7 +21,7 @@ type FileProps = {
 }
 
 const File = ({
-    displayName, extension, preview, isStar, isSelected, onClick,
+    displayName, extension, preview, isStar, isSelected, isOnMove, onClick,
     onDoubleClick, onTouchStart, onTouchEnd, onMouseDown, onMouseMove
 }: FileProps) => {
     const [previewImage, setPreviewImage] = useState<string>('')
@@ -33,7 +34,7 @@ const File = ({
     return <StyledFile
         $variant='secondary'
         $size='big'
-        className={isSelected ? 'selected' : ''}
+        className={isOnMove ? 'on-move' : isSelected ? 'selected' : ''}
 
         onClick={onClick}
         onDoubleClick={onDoubleClick}

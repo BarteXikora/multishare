@@ -96,6 +96,17 @@ const StyledFile = styled(Button)`
             background-color: ${(props) => props.theme.colors.primary2};
         }
     }
+
+    &.on-move::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: ${(props) => props.theme.colors.gray2};
+        z-index: 100;
+    }
 `
 
 export default StyledFile
