@@ -20,7 +20,7 @@ const uploadRequest = (socket, data) => {
         setTimeout(() => {
             const newFile = {
                 id: Math.floor(Math.random() * 999999999),
-                parentFolder: file.location,
+                parentFolder: file.parentFolder,
                 name: file.name,
                 extension: file.extension.toUpperCase(),
                 details: {},
@@ -43,9 +43,7 @@ const uploadRequest = (socket, data) => {
 
             processQueue()
 
-            if (queue.length === 0 && activeUploads === 0) {
-                setProjectContent(currentProject, currentContent)
-            }
+            setProjectContent(currentProject, currentContent)
         }
 
         while (queue.length > 0 && activeUploads < MAX_CONCURRENT_UPLOADS) {
