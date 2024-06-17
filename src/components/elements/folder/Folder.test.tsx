@@ -9,7 +9,9 @@ const _folderDefaultProps = {
     onClick: () => null,
     onDoubleClick: () => null,
     onTouchStart: () => null,
-    onTouchEnd: () => null
+    onTouchEnd: () => null,
+    onMouseDown: () => null,
+    onMouseMove: () => null
 }
 
 describe('Folder', () => {
