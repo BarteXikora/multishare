@@ -6,6 +6,7 @@ const _folderDefaultProps = {
     displayName: 'Test',
     isStar: false,
     isSelected: false,
+    isOnMove: false,
     onClick: () => null,
     onDoubleClick: () => null,
     onTouchStart: () => null,
