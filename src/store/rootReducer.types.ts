@@ -7,6 +7,7 @@ import { previewStateType } from './features/previewSlice/initialState.types'
 import { viewStateType } from './features/viewSlice/initialState.types'
 import { windowStateType } from './features/windowSlice/windowSlice.types'
 import { uploadListStateType } from './features/uploadListSlice/uploadListSlice.types'
+import { contextMenuStateType } from './features/contextMenuSlice/contextMenuSlice'
 
 export type rootStateType = {
     sideMenu: sideMenuStateType,
@@ -17,5 +18,6 @@ export type rootStateType = {
     preview: previewStateType,
     view: viewStateType,
     window: windowStateType,
-    uploadList: uploadListStateType
+    uploadList: uploadListStateType,
+    contextMenu: contextMenuStateType
 }

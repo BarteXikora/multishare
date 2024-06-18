@@ -9,6 +9,7 @@ import previewSlice from './features/previewSlice/previewSlice'
 import viewSlice from './features/viewSlice/viewSlice'
 import windowSlice from './features/windowSlice/windowSlice'
 import uploadListSlice from './features/uploadListSlice/uploadListSlice'
+import contextMenuSlice from './features/contextMenuSlice/contextMenuSlice'
 
 const rootReducer = combineReducers({
     sideMenu: sideMenuSlice,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
     preview: previewSlice,
     view: viewSlice,
     window: windowSlice,
-    uploadList: uploadListSlice
+    uploadList: uploadListSlice,
+    contextMenu: contextMenuSlice
 })
 
 export default rootReducer
