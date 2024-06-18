@@ -96,18 +96,9 @@ const useMouseMoveEvents = () => {
         }
 
         if (action === 'MOUSE_UP') handleDrop()
-
         if (action === 'MOUSE_MOVE') handleCheckDistance([event.clientX, event.clientY])
-
-        if (action === 'HOVER_IN') {
-            console.log('MOUSE ENTER', elementType)
-            handleHover(elementType, elementId, true)
-        }
-
-        if (action === 'HOVER_OUT') {
-            console.log('MOUSE LEAVE', elementType)
-            handleHover(elementType, elementId, false)
-        }
+        if (action === 'HOVER_IN') handleHover(elementType, elementId, true)
+        if (action === 'HOVER_OUT') handleHover(elementType, elementId, false)
     }
 
     return mouseMoveEvent
