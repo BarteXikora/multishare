@@ -27,6 +27,7 @@ const FoldersSection = ({ content, selected, onMove }: { content: contentDisplay
                         onTouchEnd={e => folderEvents.onTouchEnd(e, folder.id)}
 
                         onMouseDown={e => folderEvents.onMouseDown(e, folder.id)}
+                        onMouseUp={e => folderEvents.onMouseUp(e, folder.id)}
                         onMouseMove={e => folderEvents.onMouseMove(e, folder.id)}
                         onMouseEnter={e => folderEvents.onMouseEnter(e, folder.id)}
                         onMouseLeave={e => folderEvents.onMouseLeave(e, folder.id)}
