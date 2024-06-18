@@ -109,7 +109,12 @@ export type selectedType = {
 
 export type onMoveType = {
     folders: number[],
-    files: number[]
+    files: number[],
+
+    targetElement: {
+        type: elementType,
+        id: number
+    } | null
 }
 
 export type contentStateType = {

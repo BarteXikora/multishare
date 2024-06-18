@@ -11,7 +11,7 @@ const initialState: contentStateType = {
     currentFolder: emptyContent,
     loadedContent: { status: 'LOADING' },
     selected: { ...emptyContent, selectionStart: null },
-    onMove: emptyContent
+    onMove: { ...emptyContent, targetElement: null }
 }
 
 export default initialState
