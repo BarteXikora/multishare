@@ -23,20 +23,6 @@ const StyledFolder = styled(Button)`
         transition: ${(props) => props.theme.transition};
     }
 
-    button {
-        background-color: ${(props) => props.theme.colors.gray2};
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-
-        &:hover {
-            background-color: ${(props) => props.theme.colors.primary3} !important;
-        }
-    }
-
-    &:hover button {
-        background-color: ${(props) => props.theme.colors.gray3};
-    }
-
     &:hover .star {
         background-color: ${(props) => props.theme.colors.gray3};
     }
@@ -44,10 +30,6 @@ const StyledFolder = styled(Button)`
     &.selected {
         background-color: ${(props) => props.theme.colors.primary2};
         outline: 1px solid ${(props) => props.theme.colors.black};
-
-        button {
-            background-color: ${(props) => props.theme.colors.primary2};
-        }
 
         .star {
             background-color: ${(props) => props.theme.colors.primary2};
@@ -62,6 +44,15 @@ const StyledFolder = styled(Button)`
         height: 100%;
         top: 0;
         left: 0;
+    }
+
+    &.target {
+        background-color: ${(props) => props.theme.colors.correct3};
+        outline: 1px solid ${(props) => props.theme.colors.black};
+
+        .star {
+            background-color: ${(props) => props.theme.colors.correct3};
+        }
     }
 `
 
