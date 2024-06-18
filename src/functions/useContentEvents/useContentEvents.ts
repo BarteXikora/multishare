@@ -22,7 +22,9 @@ const useContentEvents = () => {
             onTouchStart: (event: React.TouchEvent<HTMLElement>, folderId: number) => mobileEvents(event, true, 'FOLDER', folderId),
             onTouchEnd: (event: React.TouchEvent<HTMLElement>, folderId: number) => mobileEvents(event, false, 'FOLDER', folderId),
             onMouseDown: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, 'MOUSE_DOWN', 'FOLDER', folderId),
-            onMouseMove: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, 'MOUSE_MOVE', 'FOLDER', folderId)
+            onMouseMove: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, 'MOUSE_MOVE', 'FOLDER', folderId),
+            onMouseEnter: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, 'HOVER_IN', 'FOLDER', folderId),
+            onMouseLeave: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, 'HOVER_OUT', 'FOLDER', folderId)
         },
 
         filesEvents: {
@@ -31,7 +33,9 @@ const useContentEvents = () => {
             onTouchStart: (event: React.TouchEvent<HTMLElement>, fileId: number) => mobileEvents(event, true, 'FILE', fileId),
             onTouchEnd: (event: React.TouchEvent<HTMLElement>, fileId: number) => mobileEvents(event, false, 'FILE', fileId),
             onMouseDown: (event: React.MouseEvent<HTMLElement>, fileId: number) => mouseMoveEvents(event, 'MOUSE_DOWN', 'FILE', fileId),
-            onMouseMove: (event: React.MouseEvent<HTMLElement>, fileId: number) => mouseMoveEvents(event, 'MOUSE_MOVE', 'FILE', fileId)
+            onMouseMove: (event: React.MouseEvent<HTMLElement>, fileId: number) => mouseMoveEvents(event, 'MOUSE_MOVE', 'FILE', fileId),
+            onMouseEnter: (event: React.MouseEvent<HTMLElement>, fileId: number) => mouseMoveEvents(event, 'HOVER_IN', 'FILE', fileId),
+            onMouseLeave: (event: React.MouseEvent<HTMLElement>, fileId: number) => mouseMoveEvents(event, 'HOVER_OUT', 'FILE', fileId)
         },
 
         selectAll,
