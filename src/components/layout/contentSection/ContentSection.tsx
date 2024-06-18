@@ -4,6 +4,7 @@ import StyledContentSection from './ContentSection.styles'
 import SearchInfo from '../../elements/searchInfo/SearchInfo'
 import ContentIconsView from './contentIconsView/ContentIconsView'
 import ContentListView from './contentListView/ContentListView'
+import ContextMenu from '../../elements/contextMenu/ContextMenu'
 
 const ContentSection = () => {
     const contentViewStyle = useSelector(state => state.view.contentViewStyle)
@@ -19,6 +20,8 @@ const ContentSection = () => {
                 :
                 <ContentListView />
         }
+
+        <ContextMenu />
     </StyledContentSection>
 }
 
