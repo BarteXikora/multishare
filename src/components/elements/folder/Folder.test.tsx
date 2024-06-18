@@ -13,6 +13,7 @@ const _folderDefaultProps = {
     onTouchStart: () => null,
     onTouchEnd: () => null,
     onMouseDown: () => null,
+    onMouseUp: () => null,
     onMouseMove: () => null,
     onMouseEnter: () => null,
     onMouseLeave: () => null
