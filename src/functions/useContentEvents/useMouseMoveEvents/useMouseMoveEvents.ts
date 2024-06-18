@@ -61,14 +61,13 @@ const useMouseMoveEvents = () => {
 
     const mouseMoveEvent = (
         event: React.MouseEvent<HTMLElement>,
-        _isMouseDown: boolean,
-        _isMouseMove: boolean,
+        action: 'MOUSE_DOWN' | 'MOUSE_MOVE' | 'HOVER_IN' | 'HOVER_OUT',
         elementType: elementType,
         elementId: number
     ) => {
 
         if (!isMouseDown) {
-            if (_isMouseDown) {
+            if (action === 'MOUSE_DOWN') {
                 setIsMouseDown(true)
                 setStartMousePosition([event.clientX, event.clientY])
             }
@@ -76,7 +75,7 @@ const useMouseMoveEvents = () => {
             setMovedElement({ type: elementType, id: elementId })
         }
 
-        if (_isMouseMove) handleCheckDistance([event.clientX, event.clientY])
+        if (action === 'MOUSE_MOVE') handleCheckDistance([event.clientX, event.clientY])
     }
 
     return mouseMoveEvent

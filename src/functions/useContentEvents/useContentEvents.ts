@@ -21,8 +21,8 @@ const useContentEvents = () => {
             onDoubleClick: (folderId: number) => openFolder(folderId),
             onTouchStart: (event: React.TouchEvent<HTMLElement>, folderId: number) => mobileEvents(event, true, 'FOLDER', folderId),
             onTouchEnd: (event: React.TouchEvent<HTMLElement>, folderId: number) => mobileEvents(event, false, 'FOLDER', folderId),
-            onMouseDown: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, true, false, 'FOLDER', folderId),
-            onMouseMove: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, false, true, 'FOLDER', folderId)
+            onMouseDown: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, 'MOUSE_DOWN', 'FOLDER', folderId),
+            onMouseMove: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, 'MOUSE_MOVE', 'FOLDER', folderId)
         },
 
         filesEvents: {
@@ -30,8 +30,8 @@ const useContentEvents = () => {
             onDoubleClick: (fileId: number) => openFile(fileId),
             onTouchStart: (event: React.TouchEvent<HTMLElement>, fileId: number) => mobileEvents(event, true, 'FILE', fileId),
             onTouchEnd: (event: React.TouchEvent<HTMLElement>, fileId: number) => mobileEvents(event, false, 'FILE', fileId),
-            onMouseDown: (event: React.MouseEvent<HTMLElement>, fileId: number) => mouseMoveEvents(event, true, false, 'FILE', fileId),
-            onMouseMove: (event: React.MouseEvent<HTMLElement>, fileId: number) => mouseMoveEvents(event, false, true, 'FILE', fileId)
+            onMouseDown: (event: React.MouseEvent<HTMLElement>, fileId: number) => mouseMoveEvents(event, 'MOUSE_DOWN', 'FILE', fileId),
+            onMouseMove: (event: React.MouseEvent<HTMLElement>, fileId: number) => mouseMoveEvents(event, 'MOUSE_MOVE', 'FILE', fileId)
         },
 
         selectAll,
