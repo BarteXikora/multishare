@@ -9,24 +9,27 @@ type FolderProps = {
     isStar: boolean
     isSelected: boolean
     isOnMove: boolean
+    isTarget: boolean
     onClick: (e: React.MouseEvent<HTMLElement>) => void
     onDoubleClick: () => void
     onTouchStart: (e: React.TouchEvent<HTMLElement>) => void
     onTouchEnd: (e: React.TouchEvent<HTMLElement>) => void
     onMouseDown: (e: React.MouseEvent<HTMLElement>) => void
     onMouseMove: (e: React.MouseEvent<HTMLElement>) => void
+    onMouseEnter: (e: React.MouseEvent<HTMLElement>) => void
+    onMouseLeave: (e: React.MouseEvent<HTMLElement>) => void
 }
 
 const Folder = ({
-    id, displayName, isStar, isSelected, isOnMove, onClick,
-    onDoubleClick, onTouchStart, onTouchEnd,
-    onMouseDown, onMouseMove
+    id, displayName, isStar, isSelected, isOnMove, isTarget,
+    onClick, onDoubleClick, onTouchStart, onTouchEnd,
+    onMouseDown, onMouseMove, onMouseEnter, onMouseLeave
 }: FolderProps) => {
 
     return <StyledFolder
         $variant='secondary'
         $size='big'
-        className={isOnMove ? 'on-move' : isSelected ? 'selected' : ''}
+        className={isOnMove ? 'on-move' : isTarget ? 'target' : isSelected ? 'selected' : ''}
 
         onClick={onClick}
         onDoubleClick={onDoubleClick}
@@ -35,6 +38,8 @@ const Folder = ({
 
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
     >
         <div className="folder-name">
             <img src={iconFolder} alt='Folder' />

@@ -19,6 +19,7 @@ const FoldersSection = ({ content, selected, onMove }: { content: contentDisplay
                         isStar={folder.star || false}
                         isSelected={selected.folders ? selected.folders.includes(folder.id) : false}
                         isOnMove={onMove.folders.includes(folder.id)}
+                        isTarget={onMove.targetElement ? onMove.targetElement.id === folder.id : false}
 
                         onClick={e => folderEvents.onClick(e, folder.id)}
                         onDoubleClick={() => folderEvents.onDoubleClick(folder.id)}
@@ -27,6 +28,8 @@ const FoldersSection = ({ content, selected, onMove }: { content: contentDisplay
 
                         onMouseDown={e => folderEvents.onMouseDown(e, folder.id)}
                         onMouseMove={e => folderEvents.onMouseMove(e, folder.id)}
+                        onMouseEnter={e => folderEvents.onMouseEnter(e, folder.id)}
+                        onMouseLeave={e => folderEvents.onMouseLeave(e, folder.id)}
                     />
                 })
             }
