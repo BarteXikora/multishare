@@ -9,6 +9,8 @@ const StyledMovePill = styled.div`
     border-radius: ${(props) => props.theme.borderRadiuses.small};
     border: 2px solid ${(props) => props.theme.colors.black};
     box-shadow: 6px 6px 18px 0 ${(props) => props.theme.colors.black};
+    top: 0;
+    left: 0;
 
     h3 {
         margin: 0;
