@@ -5,7 +5,7 @@ import { setOnMove, setSelected, setTargetElement, updateContent } from '../../.
 import getMoveElements from '../functions/getMoveElements/getMoveElements'
 
 const useMouseMoveEvents = () => {
-    const MOUSE_MOVE_MIN_DISTANCE = 20
+    const MOUSE_MOVE_MIN_DISTANCE = 5
 
     const dispatch = useDispatch()
     const selected = useSelector(state => state.content.selected)
