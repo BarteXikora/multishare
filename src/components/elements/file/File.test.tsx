@@ -7,10 +7,16 @@ const _fileDefaultProps = {
     preview: '',
     isStar: false,
     isSelected: false,
+    isOnMove: false,
+    isTarget: false,
     onClick: () => null,
     onDoubleClick: () => null,
     onTouchStart: () => null,
-    onTouchEnd: () => null
+    onTouchEnd: () => null,
+    onMouseDown: () => null,
+    onMouseMove: () => null,
+    onMouseEnter: () => null,
+    onMouseLeave: () => null
 }
 
 describe('File', () => {

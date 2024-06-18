@@ -1,9 +1,9 @@
 import Folder from '../../../../elements/folder/Folder'
 import useContentEvents from '../../../../../functions/useContentEvents/useContentEvents'
 
-import { contentDisplayType, selectedType } from '../../../../../store/features/contentSlice/contentSlice.types'
+import { contentDisplayType, onMoveType, selectedType } from '../../../../../store/features/contentSlice/contentSlice.types'
 
-const FoldersSection = ({ content, selected }: { content: contentDisplayType, selected: selectedType }) => {
+const FoldersSection = ({ content, selected, onMove }: { content: contentDisplayType, selected: selectedType, onMove: onMoveType }) => {
     const { folderEvents } = useContentEvents()
 
     return <section className='folders-section'>
@@ -18,11 +18,19 @@ const FoldersSection = ({ content, selected }: { content: contentDisplayType, se
                         displayName={folder.name}
                         isStar={folder.star || false}
                         isSelected={selected.folders ? selected.folders.includes(folder.id) : false}
+                        isOnMove={onMove.folders.includes(folder.id)}
+                        isTarget={onMove.targetElement ? onMove.targetElement.id === folder.id : false}
 
                         onClick={e => folderEvents.onClick(e, folder.id)}
                         onDoubleClick={() => folderEvents.onDoubleClick(folder.id)}
                         onTouchStart={e => folderEvents.onTouchStart(e, folder.id)}
                         onTouchEnd={e => folderEvents.onTouchEnd(e, folder.id)}
+
+                        onMouseDown={e => folderEvents.onMouseDown(e, folder.id)}
+                        onMouseUp={e => folderEvents.onMouseUp(e, folder.id)}
+                        onMouseMove={e => folderEvents.onMouseMove(e, folder.id)}
+                        onMouseEnter={e => folderEvents.onMouseEnter(e, folder.id)}
+                        onMouseLeave={e => folderEvents.onMouseLeave(e, folder.id)}
                     />
                 })
             }

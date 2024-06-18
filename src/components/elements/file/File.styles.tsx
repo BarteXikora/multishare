@@ -96,6 +96,49 @@ const StyledFile = styled(Button)`
             background-color: ${(props) => props.theme.colors.primary2};
         }
     }
+
+    &.on-move::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: ${(props) => props.theme.colors.gray2};
+        z-index: 100;
+    }
+
+    &.target {
+        background-color: ${(props) => props.theme.colors.wrong4};
+        outline: 1px solid ${(props) => props.theme.colors.black};
+        cursor: not-allowed;
+
+        .extension {
+            background-color: ${(props) => props.theme.colors.wrong4};
+            outline: 1px solid ${(props) => props.theme.colors.black};
+            z-index: 10;
+        }
+
+        .preview {
+            position: relative;
+            outline: 1px solid ${(props) => props.theme.colors.black};
+
+            &::after {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: ${(props) => props.theme.colors.wrong4};
+                opacity: .6;
+            }
+        }
+
+        .star {
+            background-color: ${(props) => props.theme.colors.wrong4};
+        }
+    }
 `
 
 export default StyledFile

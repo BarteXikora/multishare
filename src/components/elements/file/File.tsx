@@ -11,13 +11,23 @@ type FileProps = {
     preview: string | false
     isStar: boolean
     isSelected: boolean
+    isOnMove: boolean
+    isTarget: boolean
     onClick: (e: React.MouseEvent<HTMLElement>) => void
     onDoubleClick: () => void
     onTouchStart: (e: React.TouchEvent<HTMLElement>) => void
     onTouchEnd: (e: React.TouchEvent<HTMLElement>) => void
+    onMouseDown: (e: React.MouseEvent<HTMLElement>) => void
+    onMouseMove: (e: React.MouseEvent<HTMLElement>) => void
+    onMouseEnter: (e: React.MouseEvent<HTMLElement>) => void
+    onMouseLeave: (e: React.MouseEvent<HTMLElement>) => void
 }
 
-const File = ({ displayName, extension, preview, isStar, isSelected, onClick, onDoubleClick, onTouchStart, onTouchEnd }: FileProps) => {
+const File = ({
+    displayName, extension, preview, isStar, isSelected, isOnMove, isTarget,
+    onClick, onDoubleClick, onTouchStart, onTouchEnd, onMouseDown, onMouseMove,
+    onMouseEnter, onMouseLeave
+}: FileProps) => {
     const [previewImage, setPreviewImage] = useState<string>('')
 
     useEffect(() => {
@@ -28,12 +38,16 @@ const File = ({ displayName, extension, preview, isStar, isSelected, onClick, on
     return <StyledFile
         $variant='secondary'
         $size='big'
-        className={isSelected ? 'selected' : ''}
+        className={isOnMove ? 'on-move' : isTarget ? 'target' : isSelected ? 'selected' : ''}
 
         onClick={onClick}
         onDoubleClick={onDoubleClick}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
     >
         <div
             className={`preview ${preview && 'preview-img'}`}
