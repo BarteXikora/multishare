@@ -22,6 +22,7 @@ const useContentEvents = () => {
             onTouchStart: (event: React.TouchEvent<HTMLElement>, folderId: number) => mobileEvents(event, true, 'FOLDER', folderId),
             onTouchEnd: (event: React.TouchEvent<HTMLElement>, folderId: number) => mobileEvents(event, false, 'FOLDER', folderId),
             onMouseDown: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, 'MOUSE_DOWN', 'FOLDER', folderId),
+            onMouseUp: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, 'MOUSE_UP', 'FOLDER', folderId),
             onMouseMove: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, 'MOUSE_MOVE', 'FOLDER', folderId),
             onMouseEnter: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, 'HOVER_IN', 'FOLDER', folderId),
             onMouseLeave: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, 'HOVER_OUT', 'FOLDER', folderId)
