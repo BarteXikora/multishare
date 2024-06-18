@@ -27,6 +27,7 @@ const FilesSection = ({ content, selected, onMove, displayType }: filesSectionTy
                         isStar={file.star || false}
                         isSelected={selected.files ? selected.files.includes(file.id) : false}
                         isOnMove={onMove.files.includes(file.id)}
+                        isTarget={onMove.targetElement ? onMove.targetElement.id === file.id : false}
 
                         onClick={e => filesEvents.onClick(e, file.id)}
                         onDoubleClick={() => filesEvents.onDoubleClick(file.id)}
@@ -35,6 +36,8 @@ const FilesSection = ({ content, selected, onMove, displayType }: filesSectionTy
 
                         onMouseDown={e => filesEvents.onMouseDown(e, file.id)}
                         onMouseMove={e => filesEvents.onMouseMove(e, file.id)}
+                        onMouseEnter={e => filesEvents.onMouseEnter(e, file.id)}
+                        onMouseLeave={e => filesEvents.onMouseLeave(e, file.id)}
                     />
                 })
             }
