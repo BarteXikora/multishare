@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from '../../../store/store'
 import { useState, useEffect } from 'react'
-import { elementType, selectedType } from '../../../store/features/contentSlice/contentSlice.types'
-import { setOnMove, setSelected, setTargetElement } from '../../../store/features/contentSlice/contentSlice'
+import { elementType, selectedType, updateContentType } from '../../../store/features/contentSlice/contentSlice.types'
+import { setOnMove, setSelected, setTargetElement, updateContent } from '../../../store/features/contentSlice/contentSlice'
 import getMoveElements from '../functions/getMoveElements/getMoveElements'
 
 const useMouseMoveEvents = () => {
@@ -62,9 +62,26 @@ const useMouseMoveEvents = () => {
         dispatch(setTargetElement({ type: elementType, id: elementId }))
     }
 
+    const handleDrop = () => {
+        if (onMove.folders.length + onMove.files.length === 0) return
+        if (!onMove.targetElement) return
+
+        if (onMove.targetElement.type === 'FILE') return
+        if (onMove.folders.includes(onMove.targetElement.id)) return
+
+        const targetFolderId: number = onMove.targetElement.id
+
+        const update: updateContentType = {
+            folders: onMove.folders.map(f => { return { id: f, parentFolder: targetFolderId } }),
+            files: onMove.files.map(f => { return { id: f, parentFolder: targetFolderId } })
+        }
+
+        dispatch(updateContent(update))
+    }
+
     const mouseMoveEvent = (
         event: React.MouseEvent<HTMLElement>,
-        action: 'MOUSE_DOWN' | 'MOUSE_MOVE' | 'HOVER_IN' | 'HOVER_OUT',
+        action: 'MOUSE_DOWN' | 'MOUSE_UP' | 'MOUSE_MOVE' | 'HOVER_IN' | 'HOVER_OUT',
         elementType: elementType,
         elementId: number
     ) => {
@@ -77,6 +94,8 @@ const useMouseMoveEvents = () => {
 
             setMovedElement({ type: elementType, id: elementId })
         }
+
+        if (action === 'MOUSE_UP') handleDrop()
 
         if (action === 'MOUSE_MOVE') handleCheckDistance([event.clientX, event.clientY])
 
