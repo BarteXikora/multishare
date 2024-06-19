@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from '../../../../store/store'
 import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSlice'
+import { closeContextMenu } from '../../../../store/features/contextMenuSlice/contextMenuSlice'
+import { contentViewStyleType } from '../../../../store/features/viewSlice/initialState.types'
 
 import Button from '../../../ui/button/Button'
 
@@ -19,13 +21,37 @@ const LocationContextMenu = () => {
 
     const viewStyle = useSelector(state => state.view.contentViewStyle)
 
-    const handleUpload = () => dispatch(showWindow('UPLOAD'))
+    const handleCloseContextMenu = () => dispatch(closeContextMenu())
 
-    const handleCreateFolderWindow = () => dispatch(showWindow('CREATE_NEW_FOLDER'))
+    const handleUpload = () => {
+        dispatch(showWindow('UPLOAD'))
+        handleCloseContextMenu()
+    }
 
-    const handleSort = () => dispatch(showWindow('SORT'))
+    const handleCreateFolderWindow = () => {
+        dispatch(showWindow('CREATE_NEW_FOLDER'))
+        handleCloseContextMenu()
+    }
 
-    const handleFilter = () => dispatch(showWindow('FILTER'))
+    const handleSelectAll = () => {
+        selectAll()
+        handleCloseContextMenu()
+    }
+
+    const handleSort = () => {
+        dispatch(showWindow('SORT'))
+        handleCloseContextMenu()
+    }
+
+    const handleFilter = () => {
+        dispatch(showWindow('FILTER'))
+        handleCloseContextMenu()
+    }
+
+    const handleView = (view: contentViewStyleType) => {
+        dispatch(setContentViewStyle(view))
+        handleCloseContextMenu()
+    }
 
     return <>
         <Button $variant='quaternary' onClick={handleUpload}>
@@ -42,7 +68,7 @@ const LocationContextMenu = () => {
 
         <hr />
 
-        <Button $variant='quaternary' onClick={() => selectAll()}>
+        <Button $variant='quaternary' onClick={handleSelectAll}>
             <img src={iconSelect} alt='Zaznacz wszystko' />
 
             Zaznacz wszystko
@@ -62,13 +88,13 @@ const LocationContextMenu = () => {
 
         <hr />
 
-        <Button $variant='quaternary' $active={viewStyle === 'ICONS'} onClick={() => dispatch(setContentViewStyle('ICONS'))}>
+        <Button $variant='quaternary' $active={viewStyle === 'ICONS'} onClick={() => handleView('ICONS')}>
             <img src={iconDisplay} alt='Wyświetl: Ikony' />
 
             Wyświetl: Ikony
         </Button>
 
-        <Button $variant='quaternary' $active={viewStyle === 'LIST'} onClick={() => dispatch(setContentViewStyle('LIST'))}>
+        <Button $variant='quaternary' $active={viewStyle === 'LIST'} onClick={() => handleView('LIST')}>
             <img src={iconList} alt='Wyświetl: Lista' />
 
             Wyświetl: Lista
