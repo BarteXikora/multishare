@@ -20,6 +20,7 @@ const LocationContextMenu = () => {
     const dispatch = useDispatch()
 
     const viewStyle = useSelector(state => state.view.contentViewStyle)
+    const displayType = useSelector(state => state.content.displayType)
 
     const handleCloseContextMenu = () => dispatch(closeContextMenu())
 
@@ -54,13 +55,13 @@ const LocationContextMenu = () => {
     }
 
     return <>
-        <Button $variant='quaternary' onClick={handleUpload}>
+        <Button $variant='quaternary' onClick={handleUpload} disabled={displayType === 'TRASH'}>
             <img src={iconUpload} alt='Prześlij pliki tutaj' />
 
             Prześlij pliki tutaj
         </Button>
 
-        <Button $variant='quaternary' onClick={handleCreateFolderWindow}>
+        <Button $variant='quaternary' onClick={handleCreateFolderWindow} disabled={displayType !== 'TREE'}>
             <img src={iconNewFolder} alt='Nowy folder...' />
 
             Nowy folder...
