@@ -30,6 +30,7 @@ const FilesSection = ({ content, selected, onMove, displayType }: filesSectionTy
                         isTarget={onMove.targetElement ? onMove.targetElement.id === file.id : false}
 
                         onClick={e => filesEvents.onClick(e, file.id)}
+                        onContextMenu={e => filesEvents.onContextMenu(e, file.id)}
                         onDoubleClick={() => filesEvents.onDoubleClick(file.id)}
                         onTouchStart={e => filesEvents.onTouchStart(e, file.id)}
                         onTouchEnd={e => filesEvents.onTouchEnd(e, file.id)}

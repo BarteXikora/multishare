@@ -3,6 +3,7 @@ import useOpenFolder from './useOpenFolder/useOpenFolder'
 import useOpenFile from './useOpenFile/useOpenFile'
 import useMobileEvents from './useMobileEvents/useMobileEvents'
 import useMouseMoveEvents from './useMouseMoveEvents/useMouseMoveEvents'
+import useContextMenu from './useContextMenu/useContextMenu'
 import useSelectAll from './useSelectAll/useSelectAll'
 import useUnselectAll from './useUnselectAll/useUnselectAll'
 
@@ -12,12 +13,14 @@ const useContentEvents = () => {
     const openFile = useOpenFile()
     const mobileEvents = useMobileEvents()
     const mouseMoveEvents = useMouseMoveEvents()
+    const { elementsContextMenu, locationContextMenu } = useContextMenu()
     const selectAll = useSelectAll()
     const unselectAll = useUnselectAll()
 
     return {
         folderEvents: {
             onClick: (event: React.MouseEvent<HTMLElement>, folderId: number) => select(event, 'FOLDER', folderId),
+            onContextMenu: (event: React.MouseEvent<HTMLElement>, folderId: number) => elementsContextMenu(event, 'FOLDER', folderId),
             onDoubleClick: (folderId: number) => openFolder(folderId),
             onTouchStart: (event: React.TouchEvent<HTMLElement>, folderId: number) => mobileEvents(event, true, 'FOLDER', folderId),
             onTouchEnd: (event: React.TouchEvent<HTMLElement>, folderId: number) => mobileEvents(event, false, 'FOLDER', folderId),
@@ -30,6 +33,7 @@ const useContentEvents = () => {
 
         filesEvents: {
             onClick: (event: React.MouseEvent<HTMLElement>, fileId: number) => select(event, 'FILE', fileId),
+            onContextMenu: (event: React.MouseEvent<HTMLElement>, folderId: number) => elementsContextMenu(event, 'FILE', folderId),
             onDoubleClick: (fileId: number) => openFile(fileId),
             onTouchStart: (event: React.TouchEvent<HTMLElement>, fileId: number) => mobileEvents(event, true, 'FILE', fileId),
             onTouchEnd: (event: React.TouchEvent<HTMLElement>, fileId: number) => mobileEvents(event, false, 'FILE', fileId),
@@ -39,6 +43,7 @@ const useContentEvents = () => {
             onMouseLeave: (event: React.MouseEvent<HTMLElement>, fileId: number) => mouseMoveEvents(event, 'HOVER_OUT', 'FILE', fileId)
         },
 
+        locationContextMenu,
         selectAll,
         unselectAll
     }

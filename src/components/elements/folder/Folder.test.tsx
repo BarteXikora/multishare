@@ -9,6 +9,7 @@ const _folderDefaultProps = {
     isOnMove: false,
     isTarget: false,
     onClick: () => null,
+    onContextMenu: () => null,
     onDoubleClick: () => null,
     onTouchStart: () => null,
     onTouchEnd: () => null,

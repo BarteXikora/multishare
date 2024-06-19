@@ -14,6 +14,7 @@ type FileProps = {
     isOnMove: boolean
     isTarget: boolean
     onClick: (e: React.MouseEvent<HTMLElement>) => void
+    onContextMenu: (e: React.MouseEvent<HTMLElement>) => void
     onDoubleClick: () => void
     onTouchStart: (e: React.TouchEvent<HTMLElement>) => void
     onTouchEnd: (e: React.TouchEvent<HTMLElement>) => void
@@ -25,8 +26,8 @@ type FileProps = {
 
 const File = ({
     displayName, extension, preview, isStar, isSelected, isOnMove, isTarget,
-    onClick, onDoubleClick, onTouchStart, onTouchEnd, onMouseDown, onMouseMove,
-    onMouseEnter, onMouseLeave
+    onClick, onContextMenu, onDoubleClick, onTouchStart, onTouchEnd, onMouseDown,
+    onMouseMove, onMouseEnter, onMouseLeave
 }: FileProps) => {
     const [previewImage, setPreviewImage] = useState<string>('')
 
@@ -41,6 +42,7 @@ const File = ({
         className={isOnMove ? 'on-move' : isTarget ? 'target' : isSelected ? 'selected' : ''}
 
         onClick={onClick}
+        onContextMenu={onContextMenu}
         onDoubleClick={onDoubleClick}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}

@@ -10,6 +10,7 @@ const _fileDefaultProps = {
     isOnMove: false,
     isTarget: false,
     onClick: () => null,
+    onContextMenu: () => null,
     onDoubleClick: () => null,
     onTouchStart: () => null,
     onTouchEnd: () => null,

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const StyledContentSection = styled.main`
+    position: relative;
     pointer-events: none;
     user-select: none;
 
