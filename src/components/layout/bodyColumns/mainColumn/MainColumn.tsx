@@ -5,13 +5,21 @@ import { ChildrenProps } from '../../../../utilities/types'
 const MainColumn = ({ children }: ChildrenProps) => {
     const sectionRef = useRef<HTMLElement>(null)
 
-    const { unselectAll } = useContentEvents()
+    const { unselectAll, locationContextMenu } = useContentEvents()
 
-    const handleClick = (event: React.MouseEvent, ref: React.RefObject<HTMLElement>) => {
-        if (event.target === ref.current) unselectAll()
+    const handleEvent = (eventType: 'CLICK' | 'CONTEXT_MENU', event: React.MouseEvent, ref: React.RefObject<HTMLElement>) => {
+        if (event.target === ref.current) {
+            if (eventType === 'CLICK') unselectAll()
+            else locationContextMenu()
+        }
     }
 
-    return <section className='main-column' ref={sectionRef} onClick={e => handleClick(e, sectionRef)}>
+    return <section
+        className='main-column'
+        ref={sectionRef}
+        onClick={e => handleEvent('CLICK', e, sectionRef)}
+        onContextMenu={e => handleEvent('CONTEXT_MENU', e, sectionRef)}
+    >
         {children}
     </section>
 }
