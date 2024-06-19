@@ -1,13 +1,16 @@
 import { useSelector } from '../../../store/store'
 
 import StyledContextMenu from './ContextMenu.styles'
+import ElementsContextMenu from './elementsContextMenu/ElementsContextMenu'
 
 const ContextMenu = () => {
     const contextMenu = useSelector(state => state.contextMenu)
 
-    if (!contextMenu.isShown) return null
+    // if (!contextMenu.isShown) return null
 
-    return <StyledContextMenu>context menu</StyledContextMenu>
+    return <StyledContextMenu>
+        {contextMenu.type === 'ELEMENT' && <ElementsContextMenu />}
+    </StyledContextMenu>
 }
 
 export default ContextMenu

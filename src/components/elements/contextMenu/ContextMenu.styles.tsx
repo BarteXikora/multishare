@@ -3,11 +3,12 @@ import styled from 'styled-components'
 const StyledContextMenu = styled.div`
     position: absolute;
     display: flex;
-    align-items: center;
-    gap: ${(props) => props.theme.margins.medium};
+    /* gap: ${(props) => props.theme.margins.small}; */
+    gap: 0;
+    flex-direction: column;
     background-color: ${(props) => props.theme.colors.white};
     color: ${(props) => props.theme.colors.black};
-    padding: ${(props) => props.theme.margins.sectionMedium};
+    /* padding: ${(props) => props.theme.margins.sectionMedium}; */
     box-sizing: border-box;
     white-space: nowrap;
     border-radius: ${(props) => props.theme.borderRadiuses.small};
@@ -16,6 +17,17 @@ const StyledContextMenu = styled.div`
     top: 0;
     left: 0;
     z-index: 200;
+    pointer-events: all;
+
+    button {
+        padding: ${(props) => props.theme.margins.medium + ' ' + props.theme.margins.big};
+        border-radius: 0;
+    }
+
+    hr {
+        width: 100%;
+        /* margin: ${(props) => props.theme.margins.medium} 0;  */
+    }
 `
 
 export default StyledContextMenu
