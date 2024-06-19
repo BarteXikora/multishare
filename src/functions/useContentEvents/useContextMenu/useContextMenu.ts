@@ -19,12 +19,17 @@ const useContextMenu = () => {
 
     }, [])
 
-    const contextMenu = (event: React.MouseEvent<HTMLElement>, elementType: elementType, elementId: number) => {
+    const elementsContextMenu = (event: React.MouseEvent<HTMLElement>, elementType: elementType, elementId: number) => {
         dispatch(setSelected(getMoveElements(selected, elementType, elementId)))
         dispatch(showContextMenu('ELEMENT'))
     }
 
-    return contextMenu
+    const locationContextMenu = () => {
+        dispatch(setSelected({ folders: [], files: [], selectionStart: null }))
+        dispatch(showContextMenu('LOCATION'))
+    }
+
+    return { elementsContextMenu, locationContextMenu }
 }
 
 export default useContextMenu
