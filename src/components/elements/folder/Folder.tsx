@@ -11,6 +11,7 @@ type FolderProps = {
     isOnMove: boolean
     isTarget: boolean
     onClick: (e: React.MouseEvent<HTMLElement>) => void
+    onContextMenu: (e: React.MouseEvent<HTMLElement>) => void
     onDoubleClick: () => void
     onTouchStart: (e: React.TouchEvent<HTMLElement>) => void
     onTouchEnd: (e: React.TouchEvent<HTMLElement>) => void
@@ -23,7 +24,7 @@ type FolderProps = {
 
 const Folder = ({
     id, displayName, isStar, isSelected, isOnMove, isTarget,
-    onClick, onDoubleClick, onTouchStart, onTouchEnd,
+    onClick, onContextMenu, onDoubleClick, onTouchStart, onTouchEnd,
     onMouseDown, onMouseUp, onMouseMove, onMouseEnter, onMouseLeave
 }: FolderProps) => {
 
@@ -33,6 +34,7 @@ const Folder = ({
         className={isOnMove ? 'on-move' : isTarget ? 'target' : isSelected ? 'selected' : ''}
 
         onClick={onClick}
+        onContextMenu={onContextMenu}
         onDoubleClick={onDoubleClick}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
