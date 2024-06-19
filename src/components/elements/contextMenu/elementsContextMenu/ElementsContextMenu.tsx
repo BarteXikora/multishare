@@ -78,7 +78,7 @@ const ElementsContextMenu = () => {
             Przenieś do...
         </Button>
 
-        <Button $variant='quaternary' onClick={handleRename}>
+        <Button $variant='quaternary' onClick={handleRename} disabled={selected.folders.length + selected.files.length > 1}>
             <img src={iconRename} alt='Zmień nazwę' />
 
             Zmień nazwę...
