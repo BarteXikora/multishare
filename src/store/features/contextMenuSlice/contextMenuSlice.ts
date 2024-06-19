@@ -19,10 +19,14 @@ const contextMenuSlice = createSlice({
 
         showContextMenu: (state, action: PayloadAction<contextMenuType>) => {
             return { isShown: true, type: action.payload }
+        },
+
+        closeContextMenu: (state) => {
+            return { ...state, isShown: false }
         }
 
     }
 })
 
 export default contextMenuSlice.reducer
-export const { showContextMenu } = contextMenuSlice.actions
+export const { showContextMenu, closeContextMenu } = contextMenuSlice.actions
