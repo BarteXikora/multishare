@@ -1,7 +1,8 @@
 import { useRef } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
-import useClickOutside from '../../../functions/useClickOutside/useClickOutside'
 import { closeContextMenu } from '../../../store/features/contextMenuSlice/contextMenuSlice'
+import useClickOutside from '../../../functions/useClickOutside/useClickOutside'
+import useMoveToClick from '../../../functions/useMoveToClick/useMoveToClick'
 
 import StyledContextMenu from './ContextMenu.styles'
 import ElementsContextMenu from './elementsContextMenu/ElementsContextMenu'
@@ -14,6 +15,7 @@ const ContextMenu = () => {
 
     const contextMenuRef = useRef(null)
     useClickOutside(contextMenuRef, () => dispatch(closeContextMenu()))
+    useMoveToClick(contextMenuRef)
 
     if (!contextMenu.isShown) return null
 
