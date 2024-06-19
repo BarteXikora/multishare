@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from '../../../../store/store'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import { downloadElements } from '../../../../store/features/contentSlice/contentSlice'
 import { updateContent } from '../../../../store/features/contentSlice/contentSlice'
+import { closeContextMenu } from '../../../../store/features/contextMenuSlice/contextMenuSlice'
 import { updateContentType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 import Button from '../../../ui/button/Button'
@@ -18,19 +19,32 @@ const ElementsContextMenu = () => {
     const selected = useSelector(state => state.content.selected)
     const content = useSelector(state => state.content.loadedContent)
 
+    const handleCloseContextMenu = () => dispatch(closeContextMenu())
+
     const handleDownload = () => {
         dispatch(downloadElements({
             type: 'REQ',
             folders: selected.folders,
             files: selected.files
         }))
+
+        handleCloseContextMenu()
     }
 
-    const handleDelete = () => dispatch(showWindow('CONFIRM_DELETE'))
+    const handleDelete = () => {
+        dispatch(showWindow('CONFIRM_DELETE'))
+        handleCloseContextMenu()
+    }
 
-    const handleRename = () => dispatch(showWindow('RENAME'))
+    const handleRename = () => {
+        dispatch(showWindow('RENAME'))
+        handleCloseContextMenu()
+    }
 
-    const handleMove = () => dispatch(showWindow('MOVE'))
+    const handleMove = () => {
+        dispatch(showWindow('MOVE'))
+        handleCloseContextMenu()
+    }
 
     const handleMarkWithStar = () => {
         if (content.status !== 'READY') return
@@ -46,6 +60,7 @@ const ElementsContextMenu = () => {
         }
 
         dispatch(updateContent(data))
+        handleCloseContextMenu()
     }
 
     return <>
