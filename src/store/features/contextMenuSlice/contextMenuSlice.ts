@@ -1,8 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+type contextMenuType = 'ELEMENT' | 'LOCATION'
 
 export type contextMenuStateType = {
     isShown: boolean
-    type: 'ELEMENT' | 'LOCATION'
+    type: contextMenuType
 }
 
 const initialState: contextMenuStateType = {
@@ -13,8 +15,14 @@ const initialState: contextMenuStateType = {
 const contextMenuSlice = createSlice({
     name: 'contextMenuSlice',
     initialState,
-    reducers: {}
+    reducers: {
+
+        showContextMenu: (state, action: PayloadAction<contextMenuType>) => {
+            return { isShown: true, type: action.payload }
+        }
+
+    }
 })
 
 export default contextMenuSlice.reducer
-export const { } = contextMenuSlice.actions
+export const { showContextMenu } = contextMenuSlice.actions
