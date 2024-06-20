@@ -1,12 +1,17 @@
-import socket from '../../api/socket'
+import socket from '../../../../api/socket'
+import handleLoadContent from '../handleLoadContent/handleLoadContent'
+
+import { Dispatch } from '@reduxjs/toolkit'
 
 type eventsType = {
     event: string
-    actionType: string
+    actionType: string | null
     getPayload?: (data: any) => any
+    callback?: (data: any, dispatch: Dispatch) => void
 }[]
 
 const events: eventsType = [
+    { event: 'content', actionType: null, callback: handleLoadContent },
     { event: 'new_folder', actionType: 'contentSlice/addFolder' },
     { event: 'moved_to_trash', actionType: 'contentSlice/moveToTrash' },
     { event: 'deleted_forever', actionType: 'contentSlice/deleteForever' },
@@ -19,15 +24,17 @@ const events: eventsType = [
     { event: 'upload_response', actionType: 'contentSlice/uploadFile' }
 ]
 
-const socketEventListeners = (next: any) => {
-    const handleEvent = (actonType: string, data: any, getPayload?: (data: any) => any) => {
+const socketEventListeners = (next: any, dispatch: Dispatch) => {
+    const handleEvent = (actonType: string | null, data: any, getPayload?: (data: any) => any, callback?: (data: any, dispatch: Dispatch) => void) => {
         if (data === null) return alert('error')
 
-        next({ type: actonType, payload: getPayload ? getPayload(data) : data })
+        if (actonType !== null) next({ type: actonType, payload: getPayload ? getPayload(data) : data })
+
+        if (callback) callback(data, dispatch)
     }
 
     events.forEach(event => {
-        socket.on(event.event, (data: any) => handleEvent(event.actionType, data, event.getPayload))
+        socket.on(event.event, (data: any) => handleEvent(event.actionType, data, event.getPayload, event.callback))
     })
 }
 
