@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from '../../../store/store'
 import { useNavigate } from 'react-router-dom'
 import { projectType } from '../../../store/features/userSlice/userSlice.types'
 import { resetContent } from '../../../store/features/contentSlice/contentSlice'
+import { selectProject } from '../../../store/features/userSlice/userSlice'
 
 const ProjectsSection = () => {
     const dispatch = useDispatch()
@@ -15,7 +16,9 @@ const ProjectsSection = () => {
 
     const handleClick = (project: projectType) => {
         dispatch(resetContent())
-        navigate('/project/' + project.id)
+
+        dispatch(selectProject(project.id))
+        navigate('/project')
     }
 
     return <StyledProjectsSection>
