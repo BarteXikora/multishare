@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 import initialState from './initialState'
 
-import initializeUserReducer from './reducers/initializeUser/initializeUser'
+import logInReducer from './reducers/logIn/logIn'
 
 export const userSlice = createSlice({
     name: 'userSlice',
     initialState,
     reducers: {
-        initializeUser: initializeUserReducer
+        logIn: logInReducer
     }
 })
 
 export default userSlice.reducer
-export const { initializeUser } = userSlice.actions
+export const { logIn } = userSlice.actions
