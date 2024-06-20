@@ -17,6 +17,7 @@ const getData = (action: any) => action.payload
 
 const events: eventType[] = [
     { on: 'userSlice/logIn', eventName: 'log_in', getData: getLogInAction, before: beforeLogIn },
+    { on: 'userSlice/selectProject', eventName: 'select_project' },
     { on: 'contentSlice/initializeContent', eventName: 'get_content', doNext: true },
     { on: 'contentSlice/addFolder', eventName: 'add_folder' },
     { on: 'contentSlice/downloadElements', eventName: 'download_request' },
