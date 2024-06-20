@@ -14,7 +14,7 @@ const onInitializeContent = (dispatch: Dispatch, getState: () => rootStateType, 
     let projectId: string | undefined = pathnameData[1]
     let folderId: string | undefined = pathnameData[2]
 
-    if (projectId === '' || projectId === undefined) projectId = getState().user.defaultProject.toString()
+    if (projectId === '' || projectId === undefined) projectId = '0' // getState().user.defaultProject.toString()
 
     socket.emit('enter_project', Number(projectId))
 
