@@ -9,12 +9,15 @@ const useUpdatePathName = () => {
     const location = useLocation()
     const dispatch = useDispatch()
 
+    const contentStatus = useSelector(state => state.content.loadedContent.status)
     const currentFolder = useSelector(state => state.content.currentFolder)
     const project = useSelector(state => state.user.status === 'READY' ? state.user.project.selectedProject : null)
     const path = useSelector(state => state.content.currentPath)
     const displayType = useSelector(state => state.content.displayType)
 
     useEffect(() => {
+        if (contentStatus !== 'READY') return
+
         let newPathName = displayType === 'TREE' ? '/project/' : displayType === 'FILES' ? '/files/' : '/trash/'
 
         if (project) newPathName += project.id
