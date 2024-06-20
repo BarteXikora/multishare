@@ -1,17 +1,17 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import { rootStateType } from '../rootReducer.types'
 
-import onLogIn from './features/onLogIn/onLogIn'
-import onInitializeContent from './features/onInitializeContent/onInitializeContent'
-import onDownloadElements from './features/onDownloadElements/onDownloadElements'
-import onAddFolder from './features/onAddFolder/onAddFolder'
-import onUpdateContent from './features/onUpdateContent/onUpdateContent'
-import onMoveToTrash from './features/onMoveToTrash/onMoveToTrash'
-import onRestoreFromTrash from './features/onRestoreFromTrash/onRestoreFromTrash'
-import onDeleteForever from './features/onDeleteForever/onDeleteForever'
-import onInitializeProjects from './features/onInitializeProjects/onInitializeProjects'
-import onInitializePreview from './features/onInitializePreview/onInitializePreview'
-import onAddFiles from './features/onAddFiles/onAddFiles'
+import onLogIn from './events/onLogIn/onLogIn'
+import onInitializeContent from './events/onInitializeContent/onInitializeContent'
+import onDownloadElements from './events/onDownloadElements/onDownloadElements'
+import onAddFolder from './events/onAddFolder/onAddFolder'
+import onUpdateContent from './events/onUpdateContent/onUpdateContent'
+import onMoveToTrash from './events/onMoveToTrash/onMoveToTrash'
+import onRestoreFromTrash from './events/onRestoreFromTrash/onRestoreFromTrash'
+import onDeleteForever from './events/onDeleteForever/onDeleteForever'
+import onInitializeProjects from './events/onInitializeProjects/onInitializeProjects'
+import onInitializePreview from './events/onInitializePreview/onInitializePreview'
+import onAddFiles from './events/onAddFiles/onAddFiles'
 
 type paramsType = {
     dispatch: Dispatch
