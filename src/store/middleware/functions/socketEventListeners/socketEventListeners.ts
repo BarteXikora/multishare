@@ -1,6 +1,5 @@
 import socket from '../../../../api/socket'
-import { setContent, setTreeLocation } from '../../../features/contentSlice/contentSlice'
-import getDataFromPathname from '../../../../functions/getDataFromPathname/getDataFromPathname'
+import handleLoadContent from '../handleLoadContent/handleLoadContent'
 
 import { Dispatch } from '@reduxjs/toolkit'
 
@@ -11,19 +10,8 @@ type eventsType = {
     callback?: (data: any, dispatch: Dispatch) => void
 }[]
 
-const handleContent = (data: any, dispatch: Dispatch) => {
-    dispatch(setContent(data))
-
-    const pathname = window.location.pathname
-    let folderId = getDataFromPathname(pathname).data
-
-    if (folderId === null || folderId === 'home') folderId = '-1'
-
-    dispatch(setTreeLocation(Number(folderId)))
-}
-
 const events: eventsType = [
-    { event: 'content', actionType: null, callback: handleContent },
+    { event: 'content', actionType: null, callback: handleLoadContent },
     { event: 'new_folder', actionType: 'contentSlice/addFolder' },
     { event: 'moved_to_trash', actionType: 'contentSlice/moveToTrash' },
     { event: 'deleted_forever', actionType: 'contentSlice/deleteForever' },
