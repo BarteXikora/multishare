@@ -1,7 +1,7 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import { rootStateType } from '../rootReducer.types'
 
-import onInitializeUser from './features/onInitializeUser/onInitializeUser'
+import onLogIn from './features/onLogIn/onLogIn'
 import onInitializeContent from './features/onInitializeContent/onInitializeContent'
 import onDownloadElements from './features/onDownloadElements/onDownloadElements'
 import onAddFolder from './features/onAddFolder/onAddFolder'
@@ -23,7 +23,7 @@ const socketMiddleware = () => {
         const { dispatch, getState } = params
 
         switch (action.type) {
-            case 'userSlice/initializeUser': onInitializeUser(dispatch, next); break
+            case 'userSlice/logIn': onLogIn(); return
             case 'contentSlice/initializeContent': onInitializeContent(dispatch, getState, action); break
             case 'contentSlice/downloadElements': onDownloadElements(action); return
             case 'contentSlice/addFolder': onAddFolder(action); return
