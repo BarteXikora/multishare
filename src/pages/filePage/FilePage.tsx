@@ -14,14 +14,15 @@ const FilePage = () => {
     const location = useLocation()
 
     const preview = useSelector(state => state.preview.content)
+    const user = useSelector(state => state.user)
 
     useEffect(() => {
         const fileId = Number(location.pathname.substring(6, location.pathname.length))
 
-        dispatch(initializePreview(fileId))
+        if (user.status === 'READY') dispatch(initializePreview(fileId))
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dispatch])
+    }, [user])
 
     if (preview.status === 'LOADING') return <LoadingPage />
     if (preview.status === 'ERROR') return <ErrorPage error={preview.error} />
