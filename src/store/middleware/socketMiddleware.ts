@@ -19,11 +19,11 @@ type paramsType = {
 
 const socketMiddleware = () => {
     return (params: paramsType) => (next: any) => (action: any) => {
-        const { dispatch, getState } = params
+        const { dispatch } = params
 
         switch (action.type) {
             case 'userSlice/logIn': onLogIn(next, action); return
-            case 'contentSlice/initializeContent': onInitializeContent(dispatch, getState, action); break
+            case 'contentSlice/initializeContent': onInitializeContent(dispatch); break
             case 'contentSlice/downloadElements': onDownloadElements(action); return
             case 'contentSlice/addFolder': onAddFolder(action); return
             case 'contentSlice/updateContent': onUpdateContent(action); return
