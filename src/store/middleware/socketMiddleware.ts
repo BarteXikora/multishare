@@ -9,7 +9,6 @@ import onUpdateContent from './events/onUpdateContent/onUpdateContent'
 import onMoveToTrash from './events/onMoveToTrash/onMoveToTrash'
 import onRestoreFromTrash from './events/onRestoreFromTrash/onRestoreFromTrash'
 import onDeleteForever from './events/onDeleteForever/onDeleteForever'
-import onInitializeProjects from './events/onInitializeProjects/onInitializeProjects'
 import onInitializePreview from './events/onInitializePreview/onInitializePreview'
 import onAddFiles from './events/onAddFiles/onAddFiles'
 
@@ -31,7 +30,6 @@ const socketMiddleware = () => {
             case 'contentSlice/moveToTrash': onMoveToTrash(action); return
             case 'contentSlice/restoreFromTrash': onRestoreFromTrash(action); return
             case 'contentSlice/deleteForever': onDeleteForever(action); return
-            case 'projectSlice/initializeProjects': onInitializeProjects(dispatch); break
             case 'previewSlice/initializePreview': onInitializePreview(dispatch, action); break
             case 'uploadSlice/addFiles': onAddFiles(action)
         }
