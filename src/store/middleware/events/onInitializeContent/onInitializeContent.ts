@@ -1,7 +1,7 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import { rootStateType } from '../../../rootReducer.types'
 import { setContentError, setContent, setTreeLocation, setDisplayType } from '../../../features/contentSlice/contentSlice'
-import { selectProject } from '../../../features/projectSlice/projectSlice'
+import { selectProject } from '../../../features/userSlice/userSlice'
 import { displayTypeType } from '../../../features/contentSlice/contentSlice.types'
 
 import socket from '../../../../api/socket'
