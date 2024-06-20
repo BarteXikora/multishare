@@ -1,8 +1,7 @@
 import socket from '../../../../api/socket'
-import { resetPreview, setPreview } from '../../../features/previewSlice/previewSlice'
-
 import getLogInAction from '../getLogInActon/getLogInAction'
 import beforeLogIn from '../beforeLogIn/beforeLogIn'
+import beforePreview from '../beforePreview/beforePreview'
 
 import { Dispatch } from '@reduxjs/toolkit'
 
@@ -12,19 +11,6 @@ type eventType = {
     getData?: (action: any) => any
     before?: (action: any, next: (action: any) => void, dispatch: Dispatch) => boolean
     doNext?: boolean
-}
-
-
-const beforePreview = (action: any, next: (action: any) => void, dispatch: Dispatch): boolean => {
-    dispatch(resetPreview())
-
-    socket.once('file', (data: any) => {
-        if (data === null) return alert('error')
-
-        dispatch(setPreview(data))
-    })
-
-    return true
 }
 
 const getData = (action: any) => action.payload
