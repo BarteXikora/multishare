@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { setDisplayType, setTreeLocation } from '../../store/features/contentSlice/contentSlice'
-import getDisplayTypeFromPathname from '../getDisplayTypeFromPathname/getDisplayTypeFromPathname'
+import getDataFromPathname from '../getDataFromPathname/getDataFromPathname'
 
 const useUpdatePathName = () => {
     const navigate = useNavigate()
@@ -38,10 +38,10 @@ const useUpdatePathName = () => {
     }, [currentFolder])
 
     useEffect(() => {
-        const pathType = getDisplayTypeFromPathname(location.pathname)
+        const pathData = getDataFromPathname(location.pathname)
 
-        if (displayType !== pathType) {
-            dispatch(setDisplayType(pathType))
+        if (displayType !== pathData.displayType) {
+            dispatch(setDisplayType(pathData.displayType || 'TREE'))
             dispatch(setTreeLocation(-1))
         }
 
