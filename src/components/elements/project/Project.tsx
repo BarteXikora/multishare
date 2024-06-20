@@ -7,9 +7,10 @@ type ProjectType = {
     description?: string
     icon?: projectIconType
     onClick: () => void
+    isSelected: boolean
 }
 
-const Project = ({ name, icon, description, onClick }: ProjectType) => {
+const Project = ({ name, icon, description, onClick, isSelected }: ProjectType) => {
     return <StyledProject $variant='secondary' onClick={onClick}>
         {
             (!icon || icon.type === 'ICON') && <div className="preview icon">
@@ -22,6 +23,8 @@ const Project = ({ name, icon, description, onClick }: ProjectType) => {
         }
 
         <div className="name">
+            {isSelected && <div className="selected-pill">Wybrany</div>}
+
             <h2>{name}</h2>
 
             {

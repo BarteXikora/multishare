@@ -30,11 +30,13 @@ const StyledProject = styled(Button)`
     }
 
     .name {
+        position: relative;
         padding: ${(props) => props.theme.margins.sectionMedium};
         display: flex;
         flex-direction: column;
         gap: ${(props) => props.theme.margins.small};
         text-align: left;
+        width: 100%;
 
         h2 {
             font-size: ${(props) => props.theme.fontSizes.subtitle};
@@ -43,6 +45,19 @@ const StyledProject = styled(Button)`
 
         p {
             margin: 0;
+        }
+
+        .selected-pill {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: ${(props) => props.theme.margins.sectionSmall};
+            padding: ${(props) => props.theme.margins.sectionSmall};
+            background-color: ${(props) => props.theme.colors.correct4};
+            border-radius: ${(props) => props.theme.borderRadiuses.small};
+            color: ${(props) => props.theme.colors.black};
+            font-weight: bold;
+            border: 1px solid ${(props) => props.theme.colors.black};
         }
     }
 

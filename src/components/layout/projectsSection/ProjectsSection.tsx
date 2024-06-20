@@ -37,6 +37,7 @@ const ProjectsSection = () => {
                                 description={project.description}
                                 icon={project.icon}
                                 onClick={() => handleClick(project)}
+                                isSelected={user.project.selectedProject.id === project.id}
                             />
                         ))
                     }
