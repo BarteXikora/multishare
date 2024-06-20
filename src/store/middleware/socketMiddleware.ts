@@ -1,7 +1,7 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import { rootStateType } from '../rootReducer.types'
 
-import socketEvents from './socketEvents'
+import socketEvents from './functions/socketEvents/socketEvents'
 
 type paramsType = {
     dispatch: Dispatch

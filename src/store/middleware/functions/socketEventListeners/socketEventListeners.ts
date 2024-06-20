@@ -1,7 +1,8 @@
+import socket from '../../../../api/socket'
+import { setContent, setTreeLocation } from '../../../features/contentSlice/contentSlice'
+import getDataFromPathname from '../../../../functions/getDataFromPathname/getDataFromPathname'
+
 import { Dispatch } from '@reduxjs/toolkit'
-import socket from '../../api/socket'
-import { setContent, setTreeLocation } from '../features/contentSlice/contentSlice'
-import getDataFromPathname from '../../functions/getDataFromPathname/getDataFromPathname'
 
 type eventsType = {
     event: string

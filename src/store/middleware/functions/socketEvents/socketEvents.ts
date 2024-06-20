@@ -1,8 +1,9 @@
+import socket from '../../../../api/socket'
+import socketEventListeners from '../socketEventListeners/socketEventListeners'
+import getDataFromPathname from '../../../../functions/getDataFromPathname/getDataFromPathname'
+import { resetPreview, setPreview } from '../../../features/previewSlice/previewSlice'
+
 import { Dispatch } from '@reduxjs/toolkit'
-import socket from '../../api/socket'
-import getDataFromPathname from '../../functions/getDataFromPathname/getDataFromPathname'
-import socketEventListeners from './socketEventListeners'
-import { resetPreview, setPreview } from '../features/previewSlice/previewSlice'
 
 type eventType = {
     on: string
