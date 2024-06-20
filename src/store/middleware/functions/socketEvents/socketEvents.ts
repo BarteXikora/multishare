@@ -1,7 +1,8 @@
 import socket from '../../../../api/socket'
 import socketEventListeners from '../socketEventListeners/socketEventListeners'
-import getDataFromPathname from '../../../../functions/getDataFromPathname/getDataFromPathname'
 import { resetPreview, setPreview } from '../../../features/previewSlice/previewSlice'
+
+import getLogInAction from '../getLogInActon/getLogInAction'
 
 import { Dispatch } from '@reduxjs/toolkit'
 
@@ -11,10 +12,6 @@ type eventType = {
     getData?: (action: any) => any
     before?: (action: any, next: (action: any) => void, dispatch: Dispatch) => boolean
     doNext?: boolean
-}
-
-const getLogInAction = (action: any) => {
-    return { projectId: getDataFromPathname(action.payload.pathname).projectId }
 }
 
 const beforeLogIn = (action: any, next: (action: any) => void, dispatch: Dispatch): boolean => {
