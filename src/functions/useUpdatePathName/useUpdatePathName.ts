@@ -10,7 +10,7 @@ const useUpdatePathName = () => {
     const dispatch = useDispatch()
 
     const currentFolder = useSelector(state => state.content.currentFolder)
-    const project = useSelector(state => state.project.selectedProject)
+    const project = useSelector(state => state.user.status === 'READY' ? state.user.project.selectedProject : null)
     const path = useSelector(state => state.content.currentPath)
     const displayType = useSelector(state => state.content.displayType)
 
