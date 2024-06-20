@@ -22,12 +22,13 @@ const AppPage = () => {
     const location = useLocation()
 
     const contentStatus = useSelector(state => state.content.loadedContent)
+    const user = useSelector(state => state.user)
 
     useEffect(() => {
-        dispatch(initializeContent(location.pathname))
+        if (user.status === 'READY') dispatch(initializeContent(location.pathname))
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [user])
 
     useUpdatePathName()
     useUpdateContent()
