@@ -12,6 +12,7 @@ type eventsType = {
 
 const events: eventsType = [
     { event: 'content', actionType: null, callback: handleLoadContent },
+    { event: 'selected_project', actionType: 'userSlice/selectProject' },
     { event: 'new_folder', actionType: 'contentSlice/addFolder' },
     { event: 'moved_to_trash', actionType: 'contentSlice/moveToTrash' },
     { event: 'deleted_forever', actionType: 'contentSlice/deleteForever' },
