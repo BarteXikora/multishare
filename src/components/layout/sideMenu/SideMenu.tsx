@@ -18,7 +18,6 @@ const SideMenu = () => {
     const dispatch = useDispatch()
 
     const location = useLocation().pathname
-    const isProjectSelected = useSelector(state => state.project.selectedProject !== null)
 
     return <StyledSideMenu className={`${isMenuShown ? 'shown' : ''}`}>
 
@@ -46,13 +45,11 @@ const SideMenu = () => {
         </section>
 
         <section>
-            {
-                isProjectSelected && <Button $variant='tertiary'>
-                    <img src={iconManageProject} alt='Zarządzaj projektem' />
+            <Button $variant='tertiary'>
+                <img src={iconManageProject} alt='Zarządzaj projektem' />
 
-                    Zarządzaj projektem
-                </Button>
-            }
+                Zarządzaj projektem
+            </Button>
 
             <Button $variant='tertiary'>
                 <img src={iconAccount} alt='Moje konto' />

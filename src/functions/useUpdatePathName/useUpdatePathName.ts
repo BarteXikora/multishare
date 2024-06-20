@@ -2,19 +2,22 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { setDisplayType, setTreeLocation } from '../../store/features/contentSlice/contentSlice'
-import getDisplayTypeFromPathname from '../getDisplayTypeFromPathname/getDisplayTypeFromPathname'
+import getDataFromPathname from '../getDataFromPathname/getDataFromPathname'
 
 const useUpdatePathName = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const dispatch = useDispatch()
 
+    const contentStatus = useSelector(state => state.content.loadedContent.status)
     const currentFolder = useSelector(state => state.content.currentFolder)
-    const project = useSelector(state => state.project.selectedProject)
+    const project = useSelector(state => state.user.status === 'READY' ? state.user.project.selectedProject : null)
     const path = useSelector(state => state.content.currentPath)
     const displayType = useSelector(state => state.content.displayType)
 
     useEffect(() => {
+        if (contentStatus !== 'READY') return
+
         let newPathName = displayType === 'TREE' ? '/project/' : displayType === 'FILES' ? '/files/' : '/trash/'
 
         if (project) newPathName += project.id
@@ -35,10 +38,10 @@ const useUpdatePathName = () => {
     }, [currentFolder])
 
     useEffect(() => {
-        const pathType = getDisplayTypeFromPathname(location.pathname)
+        const pathData = getDataFromPathname(location.pathname)
 
-        if (displayType !== pathType) {
-            dispatch(setDisplayType(pathType))
+        if (displayType !== pathData.displayType) {
+            dispatch(setDisplayType(pathData.displayType || 'TREE'))
             dispatch(setTreeLocation(-1))
         }
 

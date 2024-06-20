@@ -1,15 +1,16 @@
 import StyledProject from './Project.styles'
-import { iconType } from '../../../store/features/projectSlice/projectSlice.types'
+import { projectIconType } from '../../../store/features/userSlice/userSlice.types'
 import getProjectIcon from '../../../functions/getProjectIcon/getProjectIcon'
 
 type ProjectType = {
     name: string
     description?: string
-    icon?: iconType
+    icon?: projectIconType
     onClick: () => void
+    isSelected: boolean
 }
 
-const Project = ({ name, icon, description, onClick }: ProjectType) => {
+const Project = ({ name, icon, description, onClick, isSelected }: ProjectType) => {
     return <StyledProject $variant='secondary' onClick={onClick}>
         {
             (!icon || icon.type === 'ICON') && <div className="preview icon">
@@ -22,6 +23,8 @@ const Project = ({ name, icon, description, onClick }: ProjectType) => {
         }
 
         <div className="name">
+            {isSelected && <div className="selected-pill">Wybrany</div>}
+
             <h2>{name}</h2>
 
             {

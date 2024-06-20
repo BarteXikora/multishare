@@ -7,11 +7,14 @@ const useOpenFile = () => {
     const navigate = useNavigate()
 
     const isInTrash = useSelector(state => state.content.displayType) === 'TRASH'
+    const projectId = useSelector(state => state.user.status === 'READY' ? state.user.project.selectedProject.id : null)
 
     const openFile = (id: number) => {
         if (isInTrash) return dispatch(showWindow('CAN_NOT_OPEN_IN_TRASH'))
 
-        navigate('/file/' + id.toString())
+        if (projectId === null) return
+
+        navigate('/file/' + projectId + '/' + id.toString())
     }
 
     return openFile

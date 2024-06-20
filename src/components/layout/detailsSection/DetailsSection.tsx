@@ -8,17 +8,12 @@ import SingleFolderDetails from './detailsTypes/singleFolderDetails/SingleFolder
 import SingleFileDetails from './detailsTypes/singleFileDetails/SingleFileDetails'
 import MultipleDetails from './detailsTypes/multipleDetails/MultipleDetails'
 import Button from '../../ui/button/Button'
+import UploadList from '../uploadList/UploadList'
 
 import iconClose from '../../../assets/icons/icon-close.svg'
 
-
-
-import UploadList from '../uploadList/UploadList'
-
-
-
 const DetailsSection = () => {
-    const project = useSelector(state => state.project.selectedProject)
+    const project = useSelector(state => state.user.status === 'READY' ? state.user.project.selectedProject : null)
     const isHomeFolder = useSelector(state => state.content.currentPath.length === 0)
     const isShown = useSelector(state => state.detailsSection.isShown)
     const content = useSelector(state => state.detailsSection.content)
@@ -40,14 +35,7 @@ const DetailsSection = () => {
             {content.type === 'MULTIPLE' && <MultipleDetails content={content} />}
         </section>
 
-
-
-
         <UploadList />
-
-
-
-
     </StyledDetailsSection>
 }
 

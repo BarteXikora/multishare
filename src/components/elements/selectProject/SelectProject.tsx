@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from '../../../store/store'
 import { useNavigate } from 'react-router-dom'
 import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
-import { resetProject } from '../../../store/features/projectSlice/projectSlice'
 import getShortenName from '../../../functions/getShortenName/getShortenName'
 
 import StyledSelectProject from './SelectProject.styles'
@@ -16,10 +15,9 @@ const SelectProject = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const projectName = useSelector(state => state.project.selectedProject ? state.project.selectedProject.name : '')
+    const projectName = useSelector(state => state.user.status === 'READY' ? state.user.project.selectedProject.name : '')
 
     const handleClick = () => {
-        dispatch(resetProject())
         navigate('/projects')
     }
 
