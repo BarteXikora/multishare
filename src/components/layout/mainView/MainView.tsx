@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch } from '../../../store/store'
-import { initializeUser } from '../../../store/features/userSlice/userSlice'
+import { logIn } from '../../../store/features/userSlice/userSlice'
 import { Outlet } from 'react-router-dom'
 
 import SideMenu from '../sideMenu/SideMenu'
@@ -12,7 +12,7 @@ const MainView = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(initializeUser())
+        dispatch(logIn({ status: 'LOADING' }))
 
     }, [dispatch])
 
