@@ -33,4 +33,6 @@ type userReadyType = {
     project: projectsType
 }
 
+export type logInType = { pathname: string } | userStateType
+
 export type userStateType = userLoadingType | userReadyType | userErrorType
