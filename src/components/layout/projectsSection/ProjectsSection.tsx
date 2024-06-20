@@ -4,14 +4,14 @@ import LoadingContent from '../../elements/loadingContent/LoadingContent'
 
 import { useSelector, useDispatch } from '../../../store/store'
 import { useNavigate } from 'react-router-dom'
-import { projectType } from '../../../store/features/projectSlice/projectSlice.types'
+import { projectType } from '../../../store/features/userSlice/userSlice.types'
 import { resetContent } from '../../../store/features/contentSlice/contentSlice'
 
 const ProjectsSection = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const projects = useSelector(state => state.project.allProjects)
+    const user = useSelector(state => state.user)
 
     const handleClick = (project: projectType) => {
         dispatch(resetContent())
@@ -19,15 +19,15 @@ const ProjectsSection = () => {
     }
 
     return <StyledProjectsSection>
-        {projects.status === 'LOADING' && <LoadingContent text='Wczytywanie projektów...' />}
+        {user.status === 'LOADING' && <LoadingContent text='Wczytywanie projektów...' />}
 
         {
-            projects.status === 'READY' && <>
+            user.status === 'READY' && <>
                 <h2>Dostępne projekty:</h2>
 
                 <div className="content">
                     {
-                        projects.content.map(project => (
+                        user.project.allProjects.map(project => (
                             <Project
                                 key={project.id}
                                 name={project.name}

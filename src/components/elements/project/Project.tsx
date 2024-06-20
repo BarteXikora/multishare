@@ -1,11 +1,11 @@
 import StyledProject from './Project.styles'
-import { iconType } from '../../../store/features/projectSlice/projectSlice.types'
+import { projectIconType } from '../../../store/features/userSlice/userSlice.types'
 import getProjectIcon from '../../../functions/getProjectIcon/getProjectIcon'
 
 type ProjectType = {
     name: string
     description?: string
-    icon?: iconType
+    icon?: projectIconType
     onClick: () => void
 }
 

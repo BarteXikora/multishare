@@ -14,7 +14,7 @@ import getShortenName from '../../../functions/getShortenName/getShortenName'
 const MAX_FOLDER_NAME_LENGTH = 30
 
 const PathBox = () => {
-    const projectName = useSelector(state => state.project.selectedProject ? state.project.selectedProject.name : '')
+    const projectName = useSelector(state => state.user.status === 'READY' ? state.user.project.selectedProject.name : 'Folder główny')
     const currentPath = useSelector(state => state.content.currentPath)
     const displayType = useSelector(state => state.content.displayType)
     const filter = useSelector(state => state.content.filter)

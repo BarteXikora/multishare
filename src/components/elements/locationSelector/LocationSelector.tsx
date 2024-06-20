@@ -20,7 +20,7 @@ const LocationSelector = (props: locationSelectorType) => {
     const { selectionState, excluded } = props
     const [selectedFolder, setSelectedFolder] = selectionState
 
-    const project = useSelector(state => state.project.selectedProject)
+    const project = useSelector(state => state.user.status === 'READY' ? state.user.project.selectedProject : null)
     const content = useSelector(state => state.content.loadedContent)
 
     const [currentFolder, setCurrentFolder] = useState<folderType>({ id: -1, name: null })

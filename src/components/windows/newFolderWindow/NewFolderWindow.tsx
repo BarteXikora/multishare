@@ -14,7 +14,7 @@ import { folderType } from '../../../store/features/contentSlice/contentSlice.ty
 const NewFolderWindow = () => {
     const dispatch = useDispatch()
 
-    const projectName = useSelector(state => state.project.selectedProject?.name)
+    const projectName = useSelector(state => state.user.status === 'READY' ? state.user.project.selectedProject.name : 'Folder główny')
     const path = useSelector(state => state.content.currentPath)
     const currentFolders = useSelector(state => state.content.currentFolder.folders)
 

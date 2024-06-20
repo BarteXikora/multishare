@@ -3,7 +3,7 @@ import PreviewSection from '../../sections/previewSection/PreviewSection'
 import NameSection from '../../sections/nameSection/NameSection'
 import DropSection from '../../sections/dropSection/DropSection'
 import getProjectIcon from '../../../../../functions/getProjectIcon/getProjectIcon'
-import { projectType } from '../../../../../store/features/projectSlice/projectSlice.types'
+import { projectType } from '../../../../../store/features/userSlice/userSlice.types'
 
 type NothingSelectedDetailsType = {
     isHomeFolder: boolean
