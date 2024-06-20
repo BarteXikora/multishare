@@ -8,6 +8,7 @@ import LoadingPage from '../loadingPage/LoadingPage'
 import ErrorPage from '../errorPage/ErrorPage'
 import PreviewTopBar from '../../components/layout/previewTopBar/PreviewTopBar'
 import PreviewContentSection from '../../components/layout/previewContentSection/PreviewContentSection'
+import getDataFromPathname from '../../functions/getDataFromPathname/getDataFromPathname'
 
 const FilePage = () => {
     const dispatch = useDispatch()
@@ -17,7 +18,9 @@ const FilePage = () => {
     const user = useSelector(state => state.user)
 
     useEffect(() => {
-        const fileId = Number(location.pathname.substring(6, location.pathname.length))
+        const { data } = getDataFromPathname(location.pathname)
+
+        const fileId = Number(data)
 
         if (user.status === 'READY') dispatch(initializePreview(fileId))
 
