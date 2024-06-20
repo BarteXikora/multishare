@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
-import { initializeProjects } from '../../store/features/projectSlice/projectSlice'
 
 import LoadingPage from '../loadingPage/LoadingPage'
 import ErrorPage from '../errorPage/ErrorPage'
@@ -11,16 +10,15 @@ import { setSelected } from '../../store/features/contentSlice/contentSlice'
 const ProjectsPage = () => {
     const dispatch = useDispatch()
 
-    const projectsStatus = useSelector(state => state.project.allProjects)
+    const userStatus = useSelector(state => state.user)
 
     useEffect(() => {
-        dispatch(initializeProjects())
         dispatch(setSelected({ folders: [], files: [], selectionStart: null }))
 
     }, [dispatch])
 
-    if (projectsStatus.status === 'LOADING') return <LoadingPage />
-    if (projectsStatus.status === 'ERROR') return <ErrorPage error={projectsStatus.error} />
+    if (userStatus.status === 'LOADING') return <LoadingPage />
+    if (userStatus.status === 'ERROR') return <ErrorPage error={userStatus.message} />
 
     return <>
         <ProjectsTopBar />
