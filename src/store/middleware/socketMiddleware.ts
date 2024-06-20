@@ -23,7 +23,7 @@ const socketMiddleware = () => {
 
         switch (action.type) {
             case 'userSlice/logIn': onLogIn(next, action); return
-            case 'contentSlice/initializeContent': onInitializeContent(dispatch); break
+            case 'contentSlice/initializeContent': onInitializeContent(dispatch, action); break
             case 'contentSlice/downloadElements': onDownloadElements(action); return
             case 'contentSlice/addFolder': onAddFolder(action); return
             case 'contentSlice/updateContent': onUpdateContent(action); return
