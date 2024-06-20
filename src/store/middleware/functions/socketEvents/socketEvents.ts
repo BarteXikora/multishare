@@ -1,8 +1,8 @@
 import socket from '../../../../api/socket'
-import socketEventListeners from '../socketEventListeners/socketEventListeners'
 import { resetPreview, setPreview } from '../../../features/previewSlice/previewSlice'
 
 import getLogInAction from '../getLogInActon/getLogInAction'
+import beforeLogIn from '../beforeLogIn/beforeLogIn'
 
 import { Dispatch } from '@reduxjs/toolkit'
 
@@ -14,14 +14,6 @@ type eventType = {
     doNext?: boolean
 }
 
-const beforeLogIn = (action: any, next: (action: any) => void, dispatch: Dispatch): boolean => {
-    if (!('pathname' in action.payload)) return false
-
-    socket.once('logged_in', (data: any) => next({ ...action, payload: { ...data, status: 'READY' } }))
-    socketEventListeners(next, dispatch)
-
-    return true
-}
 
 const beforePreview = (action: any, next: (action: any) => void, dispatch: Dispatch): boolean => {
     dispatch(resetPreview())
