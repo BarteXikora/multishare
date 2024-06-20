@@ -1,3 +1,4 @@
+const logIn = require('./logIn')
 const getProjects = require('./getProjects')
 const enterProject = require('./enterProject')
 const getFile = require('./getFile')
@@ -10,6 +11,7 @@ const downloadRequest = require('./downloadRequest')
 const uploadRequest = require('./uploadRequest')
 
 const socketEvents = [
+    { name: 'log_in', callback: logIn },
     { name: 'get_projects', callback: getProjects },
     { name: 'enter_project', callback: enterProject },
     { name: 'get_file', callback: getFile },
