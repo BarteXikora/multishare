@@ -1,4 +1,5 @@
 const { projects } = require('../storage')
+const { responde, respondeError } = require('../functions/responde')
 
 const logIn = (socket, data) => {
     const response = {
@@ -15,12 +16,12 @@ const logIn = (socket, data) => {
 
     const project = projects.find(p => p.id === data.projectId)
 
-    if (!project) return socket.emit('logged_in', { status: 'ERROR', message: 'Projekt nie istnieje' })
+    if (!project) return respondeError(socket, 'logged_in', 'Nie udało się zalogować do systemu.', true)
 
     socket.join(project.id)
     response.project.selectedProject = project
 
-    socket.emit('logged_in', response)
+    responde(socket, 'logged_in', response)
 }
 
 module.exports = logIn
