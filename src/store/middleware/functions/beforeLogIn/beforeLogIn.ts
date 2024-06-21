@@ -1,4 +1,5 @@
 import socket from '../../../../api/socket'
+import { setError } from '../../../features/userSlice/userSlice'
 import socketEventListeners from '../socketEventListeners/socketEventListeners'
 
 import { Dispatch } from '@reduxjs/toolkit'
@@ -6,7 +7,13 @@ import { Dispatch } from '@reduxjs/toolkit'
 const beforeLogIn = (action: any, next: (action: any) => void, dispatch: Dispatch): boolean => {
     if (!('pathname' in action.payload)) return false
 
-    socket.once('logged_in', (data: any) => next({ ...action, payload: { ...data, status: 'READY' } }))
+    socket.once('logged_in', (data: any) => {
+        if (!('success' in data)) return dispatch(setError('Wystąpił błąd.'))
+        if (!data.success) return dispatch(setError(data.message))
+
+        next({ ...action, payload: { ...data.data, status: 'READY' } })
+    })
+
     socketEventListeners(next, dispatch)
 
     return true
