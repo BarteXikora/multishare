@@ -1,4 +1,5 @@
 import socket from '../../../../api/socket'
+import { setError } from '../../../features/userSlice/userSlice'
 import handleLoadContent from '../handleLoadContent/handleLoadContent'
 
 import { Dispatch } from '@reduxjs/toolkit'
@@ -27,11 +28,16 @@ const events: eventsType = [
 
 const socketEventListeners = (next: any, dispatch: Dispatch) => {
     const handleEvent = (actonType: string | null, data: any, getPayload?: (data: any) => any, callback?: (data: any, dispatch: Dispatch) => void) => {
-        if (data === null) return alert('error')
+        if (!('success' in data)) return dispatch(setError('Wystąpił błąd.'))
+        if (!data.success) {
+            if (data.fatal) return dispatch(setError(data.message))
 
-        if (actonType !== null) next({ type: actonType, payload: getPayload ? getPayload(data) : data })
+            alert(data.message)
+        }
 
-        if (callback) callback(data, dispatch)
+        if (actonType !== null) next({ type: actonType, payload: getPayload ? getPayload(data.data) : data.data })
+
+        if (callback) callback(data.data, dispatch)
     }
 
     events.forEach(event => {
