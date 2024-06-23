@@ -1,7 +1,9 @@
 const getUserProject = require('../functions/getUserProject')
 const getProjectContent = require('../functions/getProjectContent')
 const setProjestContent = require('../functions/setProjectContent')
+
 const getPath = require('../functions/getPath')
+const { responde } = require('../functions/responde')
 
 const moveToTrash = (socket, data) => {
     const currentProject = getUserProject(socket)
@@ -64,7 +66,7 @@ const moveToTrash = (socket, data) => {
 
     setProjestContent(currentProject, currentContent)
 
-    socket.to(currentProject).emit('moved_to_trash', allToTrash)
+    responde(socket, 'moved_to_trash', allToTrash, true)
 }
 
 module.exports = moveToTrash
