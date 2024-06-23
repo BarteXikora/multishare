@@ -1,9 +1,9 @@
 const getUserProject = require('./getUserProject')
 
-const responde = (socket, event, data, toProject = false) => {
+const responde = (socket, event, data, toProject = false, message = null) => {
     const currentProject = getUserProject(socket)
 
-    const res = { success: true, data }
+    const res = { success: true, data, message }
 
     if (toProject) return socket.to(currentProject).emit(event, res)
     socket.emit(event, res)

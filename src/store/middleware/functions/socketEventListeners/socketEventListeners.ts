@@ -35,6 +35,8 @@ const socketEventListeners = (next: any, dispatch: Dispatch) => {
             alert(data.message)
         }
 
+        if (data.message) alert(data.message)
+
         if (actonType !== null) next({ type: actonType, payload: getPayload ? getPayload(data.data) : data.data })
 
         if (callback) callback(data.data, dispatch)
