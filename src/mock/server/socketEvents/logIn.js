@@ -1,5 +1,5 @@
 const { projects } = require('../storage')
-const { responde, respondeError } = require('../functions/responde')
+const { responde } = require('../functions/responde')
 
 const logIn = (socket, data) => {
     const response = {
@@ -14,14 +14,24 @@ const logIn = (socket, data) => {
 
     socket.leaveAll()
 
-    const project = projects.find(p => p.id === data.projectId)
+    let project = projects.find(p => p.id === data.projectId)
+    let switchedToDefault = false
 
-    if (!project) return respondeError(socket, 'logged_in', 'Nie udało się zalogować do systemu.', true)
+    if (!project) {
+        project = projects[0]
+        switchedToDefault = true
+    }
 
     socket.join(project.id)
     response.project.selectedProject = project
 
-    responde(socket, 'logged_in', response)
+    responde(
+        socket,
+        'logged_in',
+        response,
+        false,
+        switchedToDefault ? `Wybrany projekt nie istnieje. Przełączono na projekt domyślny (${project.name}).` : null
+    )
 }
 
 module.exports = logIn

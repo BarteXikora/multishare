@@ -9,7 +9,12 @@ const beforeLogIn = (action: any, next: (action: any) => void, dispatch: Dispatc
 
     socket.once('logged_in', (data: any) => {
         if (!('success' in data)) return dispatch(setError('Wystąpił błąd.'))
-        if (!data.success) return dispatch(setError(data.message))
+        if (!data.success) {
+            if (data.fatal) return dispatch(setError(data.message))
+            return alert(data.message)
+        }
+
+        if (data.message) alert('message: ' + data.message)
 
         next({ ...action, payload: { ...data.data, status: 'READY' } })
     })
