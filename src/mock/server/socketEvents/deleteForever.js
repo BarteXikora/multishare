@@ -1,7 +1,9 @@
 const getUserProject = require('../functions/getUserProject')
 const getProjectContent = require('../functions/getProjectContent')
 const setProjestContent = require('../functions/setProjectContent')
+
 const getPath = require('../functions/getPath')
+const { responde } = require('../functions/responde')
 
 const deleteForever = (socket, data) => {
     const currentProject = getUserProject(socket)
@@ -51,7 +53,7 @@ const deleteForever = (socket, data) => {
 
     setProjestContent(currentProject, currentContent)
 
-    socket.to(currentProject).emit('deleted_forever', data)
+    responde(socket, 'deleted_forever', data, true)
 }
 
 module.exports = deleteForever
