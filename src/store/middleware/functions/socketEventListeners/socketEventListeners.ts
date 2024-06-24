@@ -28,6 +28,8 @@ const events: eventsType = [
 
 const socketEventListeners = (next: any, dispatch: Dispatch) => {
     const handleEvent = (actonType: string | null, data: any, getPayload?: (data: any) => any, callback?: (data: any, dispatch: Dispatch) => void) => {
+        if (callback) return callback(data.data, dispatch)
+
         if (!('success' in data)) return dispatch(setError('Wystąpił błąd.'))
         if (!data.success) {
             if (data.fatal) return dispatch(setError(data.message))
@@ -38,8 +40,6 @@ const socketEventListeners = (next: any, dispatch: Dispatch) => {
         if (data.message) dispatch(setMessage(data.message))
 
         if (actonType !== null) next({ type: actonType, payload: getPayload ? getPayload(data.data) : data.data })
-
-        if (callback) callback(data.data, dispatch)
     }
 
     events.forEach(event => {
