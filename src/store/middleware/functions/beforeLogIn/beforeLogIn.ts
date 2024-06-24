@@ -1,5 +1,5 @@
 import socket from '../../../../api/socket'
-import { setError } from '../../../features/userSlice/userSlice'
+import { setError, setMessage } from '../../../features/userSlice/userSlice'
 import socketEventListeners from '../socketEventListeners/socketEventListeners'
 
 import { Dispatch } from '@reduxjs/toolkit'
@@ -11,12 +11,12 @@ const beforeLogIn = (action: any, next: (action: any) => void, dispatch: Dispatc
         if (!('success' in data)) return dispatch(setError('Wystąpił błąd.'))
         if (!data.success) {
             if (data.fatal) return dispatch(setError(data.message))
-            return alert(data.message)
+            return dispatch(setMessage(data.message))
         }
 
-        if (data.message) alert('message: ' + data.message)
+        if (data.message) dispatch(setMessage(data.message))
 
-        next({ ...action, payload: { ...data.data, status: 'READY' } })
+        next({ ...action, payload: { ...data.data, message: data.message } })
     })
 
     socketEventListeners(next, dispatch)
