@@ -1,5 +1,5 @@
 import socket from '../../../../api/socket'
-import { setError } from '../../../features/userSlice/userSlice'
+import { setError, setMessage } from '../../../features/userSlice/userSlice'
 import handleLoadContent from '../handleLoadContent/handleLoadContent'
 
 import { Dispatch } from '@reduxjs/toolkit'
@@ -32,10 +32,10 @@ const socketEventListeners = (next: any, dispatch: Dispatch) => {
         if (!data.success) {
             if (data.fatal) return dispatch(setError(data.message))
 
-            alert(data.message)
+            dispatch(setMessage(data.message))
         }
 
-        if (data.message) alert(data.message)
+        if (data.message) dispatch(setMessage(data.message))
 
         if (actonType !== null) next({ type: actonType, payload: getPayload ? getPayload(data.data) : data.data })
 
