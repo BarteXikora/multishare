@@ -1,6 +1,8 @@
 import socket from '../../../../api/socket'
 import { setError, setMessage } from '../../../features/userSlice/userSlice'
+
 import handleLoadContent from '../handleLoadContent/handleLoadContent'
+import handleDisconnect from '../handleDisconnect/handleDisconnect'
 
 import { Dispatch } from '@reduxjs/toolkit'
 
@@ -23,7 +25,8 @@ const events: eventsType = [
     { event: 'upload_in_progress', actionType: 'uploadSlice/changeStatus', getPayload: (data: any) => { return { uploadId: data, status: 'UPLOADING' } } },
     { event: 'upload_end', actionType: 'uploadSlice/changeStatus', getPayload: (data: any) => { return { uploadId: data, status: 'DONE' } } },
     { event: 'upload_percent', actionType: 'uploadSlice/changePercent' },
-    { event: 'upload_response', actionType: 'contentSlice/uploadFile' }
+    { event: 'upload_response', actionType: 'contentSlice/uploadFile' },
+    { event: 'disconnect', actionType: null, callback: handleDisconnect }
 ]
 
 const socketEventListeners = (next: any, dispatch: Dispatch) => {
