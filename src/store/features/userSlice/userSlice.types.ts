@@ -27,12 +27,15 @@ export type projectsType = {
     selectedProject: projectType
 }
 
+export type messagesType = string[]
+
 type userReadyType = {
     status: 'READY'
     userData: userDataType
     project: projectsType
+    messages: messagesType
 }
 
-export type logInType = { pathname: string } | userStateType
+export type logInType = { pathname: string } | { userData: userDataType, project: projectsType, message: string }
 
 export type userStateType = userLoadingType | userReadyType | userErrorType
