@@ -44,6 +44,7 @@ import iconTrash from '../../../assets/icons/icon-trash.svg'
 import iconTrashOutline from '../../../assets/icons/icon-trash-outline.svg'
 import iconUp from '../../../assets/icons/icon-up.svg'
 import iconUpload from '../../../assets/icons/icon-upload.svg'
+import iconStarSpecial from '../../../assets/icons/icon-star-special.svg'
 
 export const IconAccount = (args: iconType) => <Icon iconSrc={iconAccount} iconArgs={args} />
 export const IconAdd = (args: iconType) => <Icon iconSrc={iconAdd} iconArgs={args} />
@@ -85,3 +86,4 @@ export const IconTools = (args: iconType) => <Icon iconSrc={iconTools} iconArgs=
 export const IconTrash = (args: iconOutlineType) => <IconOptionOutline iconSrc={iconTrash} iconOutlineSrc={iconTrashOutline} iconArgs={args} />
 export const IconUp = (args: iconType) => <IconOutline iconSrc={iconUp} iconArgs={args} />
 export const IconUpload = (args: iconType) => <Icon iconSrc={iconUpload} iconArgs={args} />
+export const IconStarSpecial = (args: iconType) => <Icon iconSrc={iconStarSpecial} iconArgs={args} />
