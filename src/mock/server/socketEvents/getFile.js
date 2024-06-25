@@ -21,8 +21,6 @@ const getFile = (socket, data) => {
     }
 
     responde(socket, 'file', response)
-
-    socket.emit('file', response)
 }
 
 module.exports = getFile
