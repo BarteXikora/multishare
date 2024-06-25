@@ -3,11 +3,13 @@ import { iconOutlineType } from './Icon.types'
 
 const iconDefault = css`
     width: 26px;
+    max-width: 26px;
     height: 26px;
 `
 
 const iconBig = css`
     width: 38px;
+    max-width: 38px;
     height: 38px;
 `
 
@@ -16,6 +18,10 @@ const StyledIcon = styled.figure<iconOutlineType>`
     margin: 0;
 
     ${(props) => props.$size === 'big' ? iconBig : iconDefault}
+
+    div {
+        ${(props) => props.$size === 'big' ? iconBig : iconDefault}
+    }
 
     svg {
         ${(props) => !props.$outline && `
