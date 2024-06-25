@@ -5,11 +5,7 @@ import { removeFiles } from '../../../store/features/uploadListSlice/uploadListS
 import StyledUploadList from './UploadList.styles'
 import Button from '../../ui/button/Button'
 import CircleProgress from '../../ui/circleProgress/CircleProgress'
-
-import iconUpload from '../../../assets/icons/icon-upload.svg'
-import iconArrow from '../../../assets/icons/icon-arrow-down.svg'
-import iconWaiting from '../../../assets/icons/icon-waiting.svg'
-import iconDone from '../../../assets/icons/icon-ok-color.svg'
+import { IconUpload, IconArrowDown, IconOK } from '../../ui/icon/Icons'
 
 const UploadList = () => {
     const dispatch = useDispatch()
@@ -41,7 +37,7 @@ const UploadList = () => {
             {
                 isAllDone ?
                     <h2>
-                        <img src={iconDone} alt='Przesłano pliki' />
+                        <IconOK />
 
                         Przesłano pliki ({uploadList.length})
                     </h2>
@@ -50,13 +46,13 @@ const UploadList = () => {
 
                     <>
                         <h2>
-                            <img src={iconUpload} alt='Przesyłanie plików' />
+                            <IconUpload />
 
                             Przesyłanie plików...
                         </h2>
 
                         <Button $variant='tertiary' onClick={() => setIsCollapsed(!isCollapsed)}>
-                            <img src={iconArrow} alt='Pokaż / ukryj listę' />
+                            <IconArrowDown />
                         </Button>
                     </>
             }
@@ -79,12 +75,12 @@ const UploadList = () => {
                     >
                         {
                             file.status === 'WAITING' ?
-                                <img src={iconWaiting} alt='Oczekuje...' />
+                                null // <img src={iconWaiting} alt='Oczekuje...' />
                                 :
                                 file.status === 'UPLOADING' ?
                                     <CircleProgress $percent={file.uploadPercent} />
                                     :
-                                    <img src={iconDone} alt='Przesłano' />
+                                    <IconOK $color='dark' />
                         }
                     </div>
                 </div>)

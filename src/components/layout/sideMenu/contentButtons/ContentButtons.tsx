@@ -3,11 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { setFilter, setSearch } from '../../../../store/features/contentSlice/contentSlice'
 
 import Button from '../../../ui/button/Button'
-
-import iconFolder from '../../../../assets/icons/icon-folder.svg'
-import iconFiles from '../../../../assets/icons/icon-files-full.svg'
-import iconStar from '../../../../assets/icons/icon-star.svg'
-import iconTrash from '../../../../assets/icons/icon-trash-full.svg'
+import { IconFolder, IconFiles, IconStar, IconTrash } from '../../../ui/icon/Icons'
 
 const ContentButtons = () => {
     const dispatch = useDispatch()
@@ -38,7 +34,7 @@ const ContentButtons = () => {
             $active={(!filter.star && !filter.time && !filter.type) && search === '' && displayType === 'TREE'}
             onClick={() => handleClick('project')}
         >
-            <img src={iconFolder} alt='Dysk' />
+            <IconFolder />
 
             Dysk
         </Button>
@@ -48,7 +44,7 @@ const ContentButtons = () => {
             $active={(filter.time || filter.type || displayType === 'FILES' || search !== '') && !filter.star && displayType !== 'TRASH'}
             onClick={() => handleClick('files')}
         >
-            <img src={iconFiles} alt='Wszystkie pliki' />
+            <IconFiles />
 
             Wszystkie pliki
         </Button>
@@ -58,7 +54,7 @@ const ContentButtons = () => {
             $active={!!(filter.star && displayType !== 'TRASH')}
             onClick={() => handleClick('star')}
         >
-            <img src={iconStar} alt='Oznaczone gwiazdką' />
+            <IconStar />
 
             Oznaczone gwiazdką
         </Button>
@@ -68,7 +64,7 @@ const ContentButtons = () => {
             $active={displayType === 'TRASH'}
             onClick={() => handleClick('trash')}
         >
-            <img src={iconTrash} alt='Kosz' />
+            <IconTrash />
 
             Kosz
         </Button>
