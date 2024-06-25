@@ -29,6 +29,8 @@ const StyledIcon = styled.figure<iconOutlineType>`
 
             ${props.$color === 'dark' ? `fill: ${props.theme.colors.black} !important;` : ''}
             ${props.$color === 'primary' ? `fill: ${props.theme.colors.primary6} !important;` : ''}
+            ${props.$color === 'correct' ? `fill: ${props.theme.colors.correct6} !important;` : ''}
+            ${props.$color === 'warning' ? `fill: ${props.theme.colors.warning6} !important;` : ''}
             ${props.$color === 'wrong' ? `fill: ${props.theme.colors.wrong6} !important;` : ''}
         ` : ''}
 
@@ -37,6 +39,8 @@ const StyledIcon = styled.figure<iconOutlineType>`
 
             ${props.$color === 'dark' ? `stroke: ${props.theme.colors.black} !important;` : ''}
             ${props.$color === 'primary' ? `stroke: ${props.theme.colors.primary6} !important;` : ''}
+            ${props.$color === 'correct' ? `stroke: ${props.theme.colors.correct6} !important;` : ''}
+            ${props.$color === 'warning' ? `stroke: ${props.theme.colors.warning6} !important;` : ''}
             ${props.$color === 'wrong' ? `stroke: ${props.theme.colors.wrong6} !important;` : ''}
         ` : ''}
 

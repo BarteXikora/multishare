@@ -1,5 +1,5 @@
 export type iconType = {
-    $color?: 'light' | 'dark' | 'primary' | 'wrong'
+    $color?: 'light' | 'dark' | 'primary' | 'correct' | 'warning' | 'wrong'
     $size?: 'default' | 'big'
 }
 
