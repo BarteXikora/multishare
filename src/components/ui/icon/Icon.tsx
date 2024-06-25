@@ -11,6 +11,8 @@ export const IconOutline = ({ iconSrc, iconArgs }: { iconSrc: string, iconArgs: 
     return <StyledIcon $color={iconArgs.$color} $size={iconArgs.$size} $outline><ReactSVG src={iconSrc} /></StyledIcon>
 }
 
-export const IconOptionOutline = ({ iconSrc, iconArgs }: { iconSrc: string, iconArgs: iconOutlineType }) => {
-    return <StyledIcon $color={iconArgs.$color} $size={iconArgs.$size} $outline={iconArgs.$outline}><ReactSVG src={iconSrc} /></StyledIcon>
+export const IconOptionOutline = ({ iconSrc, iconOutlineSrc, iconArgs }: { iconSrc: string, iconOutlineSrc: string, iconArgs: iconOutlineType }) => {
+    return <StyledIcon $color={iconArgs.$color} $size={iconArgs.$size} $outline={iconArgs.$outline}>
+        <ReactSVG src={iconArgs.$outline ? iconOutlineSrc : iconSrc} />
+    </StyledIcon>
 }
