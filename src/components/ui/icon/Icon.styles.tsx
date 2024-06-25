@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { iconType } from './Icon.types'
+import { iconOutlineType } from './Icon.types'
 
 const iconDefault = css`
     width: 26px;
@@ -11,18 +11,28 @@ const iconBig = css`
     height: 38px;
 `
 
-const StyledIcon = styled.figure<iconType>`
+const StyledIcon = styled.figure<iconOutlineType>`
     display: flex;
     margin: 0;
 
     ${(props) => props.$size === 'big' ? iconBig : iconDefault}
 
     svg {
-        fill: ${(props) => props.theme.colors.white} !important;
-        
-        ${(props) => props.$color === 'dark' && `fill: ${props.theme.colors.black} !important;`}
-        ${(props) => props.$color === 'primary' && `fill: ${props.theme.colors.primary6} !important;`}
-        ${(props) => props.$color === 'wrong' && `fill: ${props.theme.colors.wrong6} !important;`}
+        ${(props) => !props.$outline && `
+            fill: ${props.theme.colors.white} !important;
+
+            ${props.$color === 'dark' && `fill: ${props.theme.colors.black} !important;`}
+            ${props.$color === 'primary' && `fill: ${props.theme.colors.primary6} !important;`}
+            ${props.$color === 'wrong' && `fill: ${props.theme.colors.wrong6} !important;`}
+        `}
+
+        ${(props) => props.$outline && `
+            stroke: ${props.theme.colors.white} !important;
+
+            ${props.$color === 'dark' && `stroke: ${props.theme.colors.black} !important;`}
+            ${props.$color === 'primary' && `stroke: ${props.theme.colors.primary6} !important;`}
+            ${props.$color === 'wrong' && `stroke: ${props.theme.colors.wrong6} !important;`}
+        `}
 
         ${(props) => props.$size === 'big' ? iconBig : iconDefault}
     }
