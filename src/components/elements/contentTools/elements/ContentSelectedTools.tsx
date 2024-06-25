@@ -66,7 +66,7 @@ const ContentSelectedTools = () => {
         </Button>
 
         <Button $variant='secondary' onClick={handleMarkWithStar}>
-            <IconStar $color='dark' />
+            <IconStar $color='warning' />
 
             <span className="label">Oznacz gwiazdką</span>
         </Button>

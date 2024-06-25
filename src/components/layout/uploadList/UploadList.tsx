@@ -37,7 +37,7 @@ const UploadList = () => {
             {
                 isAllDone ?
                     <h2>
-                        <IconOK />
+                        <IconOK $color='correct' />
 
                         Przesłano pliki ({uploadList.length})
                     </h2>
@@ -80,7 +80,7 @@ const UploadList = () => {
                                 file.status === 'UPLOADING' ?
                                     <CircleProgress $percent={file.uploadPercent} />
                                     :
-                                    <IconOK $color='dark' />
+                                    <IconOK $color='correct' />
                         }
                     </div>
                 </div>)
