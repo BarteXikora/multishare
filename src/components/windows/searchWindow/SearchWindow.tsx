@@ -6,8 +6,7 @@ import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 import StyledSearchWindow from './SearchWindow.styles'
 import Input from '../../ui/input/Input'
 import Button from '../../ui/button/Button'
-
-import iconSearch from '../../../assets/icons/icon-search.svg'
+import { IconSearch } from '../../ui/icon/Icons'
 
 const SearchWindow = () => {
     const dispatch = useDispatch()
@@ -35,7 +34,7 @@ const SearchWindow = () => {
                 />
 
                 <Button $size='big' type='submit'>
-                    <img src={iconSearch} alt='Szukaj' />
+                    <IconSearch />
                 </Button>
             </form>
         </section>

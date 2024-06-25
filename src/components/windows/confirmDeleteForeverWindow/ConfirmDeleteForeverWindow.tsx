@@ -4,8 +4,7 @@ import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
 import Button from '../../ui/button/Button'
 import ElementsPills from '../../elements/elementsPills/ElementsPills'
-
-import iconTrash from '../../../assets/icons/icon-trash-full.svg'
+import { IconTrash } from '../../ui/icon/Icons'
 
 const ConfirmDeleteForeverWindow = () => {
     const dispatch = useDispatch()
@@ -44,7 +43,7 @@ const ConfirmDeleteForeverWindow = () => {
 
             {
                 selectedCnt > 0 && <Button $variant='wrong' onClick={handleDeleteForever}>
-                    <img src={iconTrash} alt='Kosz' />
+                    <IconTrash />
 
                     Tak, usuń trwale
                 </Button>

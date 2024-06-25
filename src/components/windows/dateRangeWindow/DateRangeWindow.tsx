@@ -6,8 +6,7 @@ import { dateType } from '../../elements/dateRangeInput/DateRangeInput'
 
 import DateRangeInput from '../../elements/dateRangeInput/DateRangeInput'
 import Button from '../../ui/button/Button'
-
-import iconFilter from '../../../assets/icons/icon-filter.svg'
+import { IconFilter } from '../../ui/icon/Icons'
 
 const DateRangeWindow = () => {
     const dispatch = useDispatch()
@@ -69,7 +68,7 @@ const DateRangeWindow = () => {
             </Button>
 
             <Button disabled={!isDateRangeSelected || !isDateRangeOK} onClick={handleSetDateRange}>
-                <img src={iconFilter} alt='Ustaw zakres dat' />
+                <IconFilter />
 
                 Ustaw zakres dat
             </Button>
