@@ -9,7 +9,7 @@ const BackButton = ({ isHome }: { isHome: boolean }) => {
     return <StyledBackButton $variant='tertiary' onClick={() => !isHome ? goBack() : null}>
         {
             isHome ?
-                <IconHome />
+                <IconHome $outline />
                 :
                 <IconBack />
         }
