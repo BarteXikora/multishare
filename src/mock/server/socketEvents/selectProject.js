@@ -1,16 +1,18 @@
 const { projects } = require('../storage')
+const { responde, respondeError } = require('../functions/responde')
 
 const selectProject = (socket, data) => {
     console.log('select', data)
 
     const foundProject = projects.find(project => project.id === data)
 
-    if (!foundProject) return socket.emit('selected_project', null)
+    if (!foundProject)
+        return respondeError(socket, 'selected_project', 'Wybrany projekt nie istnieje. Projekt nie został przełączony.')
 
     socket.leaveAll()
     socket.join(foundProject.id)
 
-    socket.emit('selected_project', data)
+    responde(socket, 'selected_project', data)
 }
 
 module.exports = selectProject

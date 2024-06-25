@@ -2,6 +2,8 @@ const getUserProject = require('../functions/getUserProject')
 const getProjectContent = require('../functions/getProjectContent')
 const setProjestContent = require('../functions/setProjectContent')
 
+const { responde } = require('../functions/responde')
+
 const addFolder = (socket, data) => {
     data.id = Math.floor(Math.random() * 999999999)
     data.details = {
@@ -16,7 +18,7 @@ const addFolder = (socket, data) => {
 
     setProjestContent(currentProject, newContent)
 
-    socket.to(currentProject).emit('new_folder', data)
+    responde(socket, 'new_folder', data, true)
 }
 
 module.exports = addFolder

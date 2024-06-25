@@ -2,6 +2,8 @@ const getUserProject = require('../functions/getUserProject')
 const getProjectContent = require('../functions/getProjectContent')
 const setProjestContent = require('../functions/setProjectContent')
 
+const { responde } = require('../functions/responde')
+
 const updateContent = (socket, data) => {
     const currentProject = getUserProject(socket)
     const currentContent = getProjectContent(currentProject)
@@ -30,7 +32,7 @@ const updateContent = (socket, data) => {
 
     setProjestContent(currentProject, currentContent)
 
-    socket.to(currentProject).emit('updated_content', data)
+    responde(socket, 'updated_content', data, true)
 }
 
 module.exports = updateContent
