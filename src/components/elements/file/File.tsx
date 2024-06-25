@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
-
-import StyledFile from './File.styles'
 import getPreviewImage from '../../../functions/fileTypes/getPreviewImage/getPreviewImage'
 
-import iconStar from '../../../assets/icons/icon-star-color.svg'
+import StyledFile from './File.styles'
+import { IconStar } from '../../ui/icon/Icons'
 
 type FileProps = {
     displayName: string
@@ -63,7 +62,7 @@ const File = ({
 
             {
                 isStar && <div className="star">
-                    <img src={iconStar} alt='Oznaczono gwiazdką' />
+                    <IconStar $color='dark' />
                 </div>
             }
         </div>

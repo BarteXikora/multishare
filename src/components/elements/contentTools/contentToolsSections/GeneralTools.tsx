@@ -4,10 +4,7 @@ import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import Button from '../../../ui/button/Button'
 import Dropdown from '../../../ui/dropdown/Dropdown'
 import ToolsDropdown from '../elements/ToolsDropdown'
-
-import iconUpload from '../../../../assets/icons/icon-upload.svg'
-import iconNewFolder from '../../../../assets/icons/icon-new-folder-dark.svg'
-import iconTools from '../../../../assets/icons/icon-tools.svg'
+import { IconUpload, IconNewFolder, IconTools } from '../../../ui/icon/Icons'
 
 const GeneralTools = () => {
     const dispatch = useDispatch()
@@ -25,13 +22,13 @@ const GeneralTools = () => {
     return <section className="general-tools">
         <div className="tools-buttons">
             <Button disabled={displayType === 'TRASH'} onClick={handleUploadWindow}>
-                <img src={iconUpload} alt="Prześlij pliki tutaj" />
+                <IconUpload />
 
                 Prześlij pliki
             </Button>
 
             <Button $variant='secondary' disabled={displayType !== 'TREE'} onClick={handleCreateFolderWindow}>
-                <img src={iconNewFolder} alt="Nowy folder" />
+                <IconNewFolder $color='dark' />
 
                 Nowy folder...
             </Button>
@@ -40,7 +37,7 @@ const GeneralTools = () => {
         <Dropdown
             className='open-tools-buttons'
             showArrow={false}
-            buttonContent={<><img src={iconTools} alt="Wyświetl narzędzia" /></>}
+            buttonContent={<IconTools />}
             dropdownContent={<ToolsDropdown
                 uploadHereDisabled={displayType === 'TRASH'}
                 createNewFolderDisabled={displayType !== 'TREE'}

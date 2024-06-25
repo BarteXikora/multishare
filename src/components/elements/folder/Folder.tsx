@@ -1,7 +1,5 @@
 import StyledFolder from './Folder.styles'
-
-import iconFolder from '../../../assets/icons/icon-folder-dark.svg'
-import iconStar from '../../../assets/icons/icon-star-color.svg'
+import { IconFolder, IconStar } from '../../ui/icon/Icons'
 
 type FolderProps = {
     id: number
@@ -46,14 +44,14 @@ const Folder = ({
         onMouseLeave={onMouseLeave}
     >
         <div className="folder-name">
-            <img src={iconFolder} alt='Folder' />
+            <IconFolder $color='dark' />
 
             {displayName}
         </div>
 
         {
             isStar && <div className="star">
-                <img src={iconStar} alt='Oznaczono gwiazdką' />
+                <IconStar $color='dark' />
             </div>
         }
     </StyledFolder>

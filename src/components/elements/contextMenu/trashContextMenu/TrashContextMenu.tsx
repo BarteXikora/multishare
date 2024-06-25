@@ -5,9 +5,7 @@ import { restoreFromTrashType } from '../../../../store/features/contentSlice/re
 import { closeContextMenu } from '../../../../store/features/contextMenuSlice/contextMenuSlice'
 
 import Button from '../../../ui/button/Button'
-
-import iconRestore from '../../../../assets/icons/icon-restore-dark.svg'
-import iconTrash from '../../../../assets/icons/icon-trash-dark.svg'
+import { IconRestore, IconTrash } from '../../../ui/icon/Icons'
 
 const TrashContextMenu = () => {
     const dispatch = useDispatch()
@@ -33,7 +31,7 @@ const TrashContextMenu = () => {
 
     return <>
         <Button $variant='quaternary' onClick={handleRestoreFromTrash}>
-            <img src={iconRestore} alt='Przywróć' />
+            <IconRestore $color='dark' />
 
             Przywróć
         </Button>
@@ -41,7 +39,7 @@ const TrashContextMenu = () => {
         <hr />
 
         <Button $variant='quaternary' onClick={handleDeleteForever}>
-            <img src={iconTrash} alt='Usuń na zawsze...' />
+            <IconTrash $color='dark' />
 
             Usuń na zawsze...
         </Button>

@@ -6,12 +6,7 @@ import { closeContextMenu } from '../../../../store/features/contextMenuSlice/co
 import { updateContentType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 import Button from '../../../ui/button/Button'
-
-import iconDownload from '../../../../assets/icons/icon-download-dark.svg'
-import iconMove from '../../../../assets/icons/icon-move-dark.svg'
-import iconRename from '../../../../assets/icons/icon-edit-dark.svg'
-import iconStar from '../../../../assets/icons/icon-star-dark.svg'
-import iconTrash from '../../../../assets/icons/icon-trash-dark.svg'
+import { IconDownload, IconMove, IconEdit, IconStar, IconTrash } from '../../../ui/icon/Icons'
 
 const ElementsContextMenu = () => {
     const dispatch = useDispatch()
@@ -65,7 +60,7 @@ const ElementsContextMenu = () => {
 
     return <>
         <Button $variant='quaternary' onClick={handleDownload}>
-            <img src={iconDownload} alt='Pobierz' />
+            <IconDownload $color='dark' />
 
             Pobierz
         </Button>
@@ -73,19 +68,19 @@ const ElementsContextMenu = () => {
         <hr />
 
         <Button $variant='quaternary' onClick={handleMove}>
-            <img src={iconMove} alt='Przenieś do' />
+            <IconMove $color='dark' />
 
             Przenieś do...
         </Button>
 
         <Button $variant='quaternary' onClick={handleRename} disabled={selected.folders.length + selected.files.length > 1}>
-            <img src={iconRename} alt='Zmień nazwę' />
+            <IconEdit $color='dark' />
 
             Zmień nazwę...
         </Button>
 
         <Button $variant='quaternary' onClick={handleMarkWithStar}>
-            <img src={iconStar} alt='Oznacz gwiazdką' />
+            <IconStar $color='dark' />
 
             Oznacz gwiazdką
         </Button>
@@ -93,7 +88,7 @@ const ElementsContextMenu = () => {
         <hr />
 
         <Button $variant='quaternary' onClick={handleDelete}>
-            <img src={iconTrash} alt='Usuń' />
+            <IconTrash $color='dark' />
 
             Usuń
         </Button>

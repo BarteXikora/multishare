@@ -3,9 +3,9 @@ import { setTreeLocation } from '../../../store/features/contentSlice/contentSli
 
 import StyledFolderNotFound from './FolderNotFound.styles'
 import Button from '../../ui/button/Button'
+import { IconBack } from '../../ui/icon/Icons'
 
 import imgFolderNotFound from '../../../assets/images/img-folder-not-found.svg'
-import iconBack from '../../../assets/icons/icon-back.svg'
 
 const FolderNotFound = () => {
     const dispatch = useDispatch()
@@ -21,7 +21,7 @@ const FolderNotFound = () => {
             <p>Wybrany folder nie istnieje. Mógł on zostać usunięty, lub edytowany.</p>
 
             <Button $variant='secondary' className='back-button' onClick={() => dispatch(setTreeLocation(-1))}>
-                <img src={iconBack} alt='Wróć do folderu głównego.' />
+                <IconBack />
 
                 Wróć
             </Button>

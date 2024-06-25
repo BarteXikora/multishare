@@ -3,9 +3,7 @@ import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSl
 
 import Dropdown from '../../../ui/dropdown/Dropdown'
 import Button from '../../../ui/button/Button'
-
-import iconDisplay from '../../../../assets/icons/icon-display.svg'
-import iconList from '../../../../assets/icons/icon-list.svg'
+import { IconDisplay, IconList } from '../../../ui/icon/Icons'
 
 const DisplayDropdown = () => {
     const dispatch = useDispatch()
@@ -17,7 +15,7 @@ const DisplayDropdown = () => {
         buttonOptions={{ $variant: 'secondary' }}
         showArrow={false}
         buttonContent={<>
-            <img src={viewStyle === 'ICONS' ? iconDisplay : iconList} alt="Wyświetl..." />
+            {viewStyle === 'ICONS' ? <IconDisplay $color='dark' /> : <IconList $color='dark' />}
 
             Wyświetl...
         </>}
@@ -26,13 +24,13 @@ const DisplayDropdown = () => {
             <h2>Wyświetl jako:</h2>
 
             <Button $variant='quaternary' $active={viewStyle === 'ICONS'} onClick={() => dispatch(setContentViewStyle('ICONS'))}>
-                <img src={iconDisplay} alt="Ikony" />
+                <IconDisplay $color='dark' />
 
                 Ikony
             </Button>
 
             <Button $variant='quaternary' $active={viewStyle === 'LIST'} onClick={() => dispatch(setContentViewStyle('LIST'))}>
-                <img src={iconList} alt="Lista" />
+                <IconList $color='dark' />
 
                 Lista
             </Button>

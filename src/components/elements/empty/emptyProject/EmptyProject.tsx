@@ -1,10 +1,10 @@
-import Button from '../../../ui/button/Button'
 import { useDispatch } from '../../../../store/store'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 
+import Button from '../../../ui/button/Button'
+import { IconUpload, IconNewFolder } from '../../../ui/icon/Icons'
+
 import imgLogo from '../../../../assets/images/img-logo-icon-dark.svg'
-import iconUpload from '../../../../assets/icons/icon-upload.svg'
-import iconAddFolder from '../../../../assets/icons/icon-new-folder.svg'
 
 const EmptyProject = () => {
     const dispatch = useDispatch()
@@ -25,13 +25,13 @@ const EmptyProject = () => {
 
             <div className="actions">
                 <Button onClick={handleUpload}>
-                    <img src={iconUpload} alt='Wyślij pliki na dysk' />
+                    <IconUpload />
 
                     Prześlij pliki
                 </Button>
 
                 <Button className='back-button' onClick={handleNewFolder}>
-                    <img src={iconAddFolder} alt='Utwórz folder' />
+                    <IconNewFolder />
 
                     Utwórz folder
                 </Button>

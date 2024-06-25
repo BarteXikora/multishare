@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from '../../../store/store'
-
-import StyledElementsPills from './ElementsPills.styles'
 import { contentType } from '../../../store/features/contentSlice/contentSlice.types'
 
-import iconFolder from '../../../assets/icons/icon-folder-dark.svg'
+import StyledElementsPills from './ElementsPills.styles'
+import { IconFolder } from '../../ui/icon/Icons'
 
 type ElementsPillsType = {
     folders: number[],
@@ -29,7 +28,7 @@ const ElementsPills = ({ elements }: { elements: ElementsPillsType }) => {
     return <StyledElementsPills>
         {
             elements.folders.map(folder => <div key={folder} className="element">
-                <img src={iconFolder} alt='Folder' />
+                <IconFolder $color='dark' />
 
                 {
                     content.status === 'READY' && allContent.folders.find(f => f.id === folder)?.name

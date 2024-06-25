@@ -3,15 +3,13 @@ import { useEffect, useRef } from 'react'
 import StyledDropArea from './DropArea.styles'
 import Button from '../../ui/button/Button'
 import LocationSelector from '../locationSelector/LocationSelector'
+import { IconSelectFiles, IconUpload, IconClose } from '../../ui/icon/Icons'
 
 import getShortenName from '../../../functions/getShortenName/getShortenName'
 
 import imgDrop from '../../../assets/images/img-drop.svg'
 import imgDropColor from '../../../assets/images/img-drop-color.svg'
 import imgFiles from '../../../assets/images/img-selected-files.svg'
-import iconSelectFiles from '../../../assets/icons/icon-select-files.svg'
-import iconUpload from '../../../assets/icons/icon-upload.svg'
-import iconClose from '../../../assets/icons/icon-close.svg'
 
 type DropAreaType = {
     filesState: [File[] | null, (f: File[] | null) => void]
@@ -90,13 +88,13 @@ const DropArea = ({ filesState, locationState, upload, showLocationSelector = tr
 
                     <div className="actions">
                         <Button onClick={handleUpload} disabled={!(filesState[0] && locationState[0])}>
-                            <img src={iconUpload} alt="Prześlij pliki" />
+                            <IconUpload />
 
                             Prześlij wybrane pliki
                         </Button>
 
                         <Button $variant='wrong' onClick={() => filesState[1](null)}>
-                            <img src={iconClose} alt="Anuluj" />
+                            <IconClose />
 
                             Anuluj
                         </Button>
@@ -116,7 +114,7 @@ const DropArea = ({ filesState, locationState, upload, showLocationSelector = tr
                     {
                         showSelectButton && <div className='actions'>
                             <Button onClick={() => inputRef.current?.dispatchEvent(new MouseEvent('click'))}>
-                                <img src={iconSelectFiles} alt="Przeglądaj" />
+                                <IconSelectFiles />
 
                                 Przeglądaj...
                             </Button>

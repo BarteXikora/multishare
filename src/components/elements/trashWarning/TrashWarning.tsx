@@ -1,12 +1,10 @@
-import StyledTrashWarning from './TrashWarning.styles'
-import Button from '../../ui/button/Button'
-
 import useContentEvents from '../../../functions/useContentEvents/useContentEvents'
 import { useDispatch } from '../../../store/store'
 import { showWindow } from '../../../store/features/windowSlice/windowSlice'
 
-import iconInfo from '../../../assets/icons/icon-info.svg'
-import iconTrash from '../../../assets/icons/icon-trash-full.svg'
+import StyledTrashWarning from './TrashWarning.styles'
+import Button from '../../ui/button/Button'
+import { IconInfo, IconTrash } from '../../ui/icon/Icons'
 
 const TrashWarning = ({ isTrashEmpty }: { isTrashEmpty: boolean }) => {
     const dispatch = useDispatch()
@@ -19,7 +17,7 @@ const TrashWarning = ({ isTrashEmpty }: { isTrashEmpty: boolean }) => {
 
     return <StyledTrashWarning>
         <div className='info-box'>
-            <img src={iconInfo} alt='Informacja' />
+            <IconInfo $color='dark' />
 
             Elementy znajdujące się w koszu będą automatycznie usuwane na zawsze po upływie 30 dni.
         </div>
@@ -27,7 +25,7 @@ const TrashWarning = ({ isTrashEmpty }: { isTrashEmpty: boolean }) => {
         {
             !isTrashEmpty && <div>
                 <Button $variant='wrong' onClick={handleEmptyTrash}>
-                    <img src={iconTrash} alt='Opróżnij kosz' />
+                    <IconTrash />
 
                     Opróżnij kosz
                 </Button>

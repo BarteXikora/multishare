@@ -1,11 +1,10 @@
-import Button from '../../../ui/button/Button'
-import ContentSelectedTools from '../elements/ContentSelectedTools'
-import TrashSelectedTools from '../elements/TrashSelectedTools'
-
 import { useDispatch, useSelector } from '../../../../store/store'
 import { toggle } from '../../../../store/features/detailsSectionSlice/detailsSectionSlice'
 
-import iconDetails from '../../../../assets/icons/icon-details.svg'
+import Button from '../../../ui/button/Button'
+import ContentSelectedTools from '../elements/ContentSelectedTools'
+import TrashSelectedTools from '../elements/TrashSelectedTools'
+import { IconDetails } from '../../../ui/icon/Icons'
 
 const SelectedTools = () => {
     const dispatch = useDispatch()
@@ -18,7 +17,7 @@ const SelectedTools = () => {
         {displayType === 'TRASH' && <TrashSelectedTools />}
 
         <Button className='details-button' onClick={() => dispatch(toggle())}>
-            <img src={iconDetails} alt="Pokaż szczegóły" />
+            <IconDetails />
 
             <span className="label">Sczegóły</span>
         </Button>

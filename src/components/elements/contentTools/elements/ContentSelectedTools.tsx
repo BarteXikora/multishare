@@ -4,12 +4,7 @@ import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import { updateContentType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 import Button from '../../../ui/button/Button'
-
-import iconDownload from '../../../../assets/icons/icon-download.svg'
-import iconMove from '../../../../assets/icons/icon-move-dark.svg'
-import iconEdit from '../../../../assets/icons/icon-edit-dark.svg'
-import iconStar from '../../../../assets/icons/icon-star-color.svg'
-import iconTrash from '../../../../assets/icons/icon-trash-full.svg'
+import { IconDownload, IconMove, IconEdit, IconStar, IconTrash } from '../../../ui/icon/Icons'
 
 const ContentSelectedTools = () => {
     const dispatch = useDispatch()
@@ -49,13 +44,13 @@ const ContentSelectedTools = () => {
 
     return <div className="tools-buttons">
         <Button onClick={handleDownload}>
-            <img src={iconDownload} alt="Pobierz" />
+            <IconDownload />
 
             <span className="label">Pobierz</span>
         </Button>
 
         <Button $variant='secondary' onClick={handleMove}>
-            <img src={iconMove} alt="Przenieś do..." />
+            <IconMove $color='dark' />
 
             <span className="label">Przenieś do...</span>
         </Button>
@@ -65,19 +60,19 @@ const ContentSelectedTools = () => {
             disabled={selected.folders.length + selected.files.length > 1}
             onClick={handleRename}
         >
-            <img src={iconEdit} alt="Zmień nazwę..." />
+            <IconEdit $color='dark' />
 
             <span className="label">Zmień nazwę...</span>
         </Button>
 
         <Button $variant='secondary' onClick={handleMarkWithStar}>
-            <img src={iconStar} alt="Oznacz gwiazdką" />
+            <IconStar $color='dark' />
 
             <span className="label">Oznacz gwiazdką</span>
         </Button>
 
         <Button $variant='wrong' onClick={handleDelete}>
-            <img src={iconTrash} alt="Usuń" />
+            <IconTrash />
 
             <span className="label">Usuń</span>
         </Button>
