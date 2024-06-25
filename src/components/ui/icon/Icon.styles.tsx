@@ -24,21 +24,21 @@ const StyledIcon = styled.figure<iconOutlineType>`
     }
 
     svg {
-        ${(props) => !props.$outline && `
+        ${(props) => !props.$outline ? `
             fill: ${props.theme.colors.white} !important;
 
-            ${props.$color === 'dark' && `fill: ${props.theme.colors.black} !important;`}
-            ${props.$color === 'primary' && `fill: ${props.theme.colors.primary6} !important;`}
-            ${props.$color === 'wrong' && `fill: ${props.theme.colors.wrong6} !important;`}
-        `}
+            ${props.$color === 'dark' ? `fill: ${props.theme.colors.black} !important;` : ''}
+            ${props.$color === 'primary' ? `fill: ${props.theme.colors.primary6} !important;` : ''}
+            ${props.$color === 'wrong' ? `fill: ${props.theme.colors.wrong6} !important;` : ''}
+        ` : ''}
 
-        ${(props) => props.$outline && `
+        ${(props) => props.$outline ? `
             stroke: ${props.theme.colors.white} !important;
 
-            ${props.$color === 'dark' && `stroke: ${props.theme.colors.black} !important;`}
-            ${props.$color === 'primary' && `stroke: ${props.theme.colors.primary6} !important;`}
-            ${props.$color === 'wrong' && `stroke: ${props.theme.colors.wrong6} !important;`}
-        `}
+            ${props.$color === 'dark' ? `stroke: ${props.theme.colors.black} !important;` : ''}
+            ${props.$color === 'primary' ? `stroke: ${props.theme.colors.primary6} !important;` : ''}
+            ${props.$color === 'wrong' ? `stroke: ${props.theme.colors.wrong6} !important;` : ''}
+        ` : ''}
 
         ${(props) => props.$size === 'big' ? iconBig : iconDefault}
     }
