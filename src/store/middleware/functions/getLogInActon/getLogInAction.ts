@@ -1,7 +1,11 @@
 import getDataFromPathname from '../../../../functions/getDataFromPathname/getDataFromPathname'
+import getFromLocalStorage from '../../../../functions/useLocalStorage/getFromLocalStorage/getFromLocalStorage'
 
 const getLogInAction = (action: any) => {
-    return { projectId: getDataFromPathname(action.payload.pathname).projectId }
+    let projectId = getDataFromPathname(action.payload.pathname).projectId
+    if (!projectId) projectId = getFromLocalStorage<number>('projectId')
+
+    return { projectId }
 }
 
 export default getLogInAction
