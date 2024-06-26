@@ -2,9 +2,9 @@ import { useDispatch } from '../../../../store/store'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 
 import Button from '../../../ui/button/Button'
+import { IconUpload } from '../../../ui/icon/Icons'
 
 import imageEmptyFolder from '../../../../assets/images/img-empty-folder.svg'
-import iconUpload from '../../../../assets/icons/icon-upload.svg'
 
 const EmptyFiles = () => {
     const dispatch = useDispatch()
@@ -23,7 +23,7 @@ const EmptyFiles = () => {
 
             <div className="actions">
                 <Button onClick={handleUpload}>
-                    <img src={iconUpload} alt='Prześlij pliki tutaj' />
+                    <IconUpload />
 
                     Prześlij pliki
                 </Button>

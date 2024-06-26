@@ -6,14 +6,7 @@ import { closeContextMenu } from '../../../../store/features/contextMenuSlice/co
 import { contentViewStyleType } from '../../../../store/features/viewSlice/initialState.types'
 
 import Button from '../../../ui/button/Button'
-
-import iconUpload from '../../../../assets/icons/icon-upload-dark.svg'
-import iconNewFolder from '../../../../assets/icons/icon-new-folder-dark.svg'
-import iconSelect from '../../../../assets/icons/icon-ok.svg'
-import iconSort from '../../../../assets/icons/icon-sort-dark.svg'
-import iconFilter from '../../../../assets/icons/icon-filter-dark.svg'
-import iconDisplay from '../../../../assets/icons/icon-display.svg'
-import iconList from '../../../../assets/icons/icon-list.svg'
+import { IconUpload, IconNewFolder, IconOK, IconSort, IconFilter, IconDisplay, IconList } from '../../../ui/icon/Icons'
 
 const LocationContextMenu = () => {
     const { selectAll } = useContentEvents()
@@ -56,13 +49,13 @@ const LocationContextMenu = () => {
 
     return <>
         <Button $variant='quaternary' onClick={handleUpload} disabled={displayType === 'TRASH'}>
-            <img src={iconUpload} alt='Prześlij pliki tutaj' />
+            <IconUpload $color='dark' />
 
             Prześlij pliki tutaj
         </Button>
 
         <Button $variant='quaternary' onClick={handleCreateFolderWindow} disabled={displayType !== 'TREE'}>
-            <img src={iconNewFolder} alt='Nowy folder...' />
+            <IconNewFolder $color='dark' />
 
             Nowy folder...
         </Button>
@@ -70,19 +63,19 @@ const LocationContextMenu = () => {
         <hr />
 
         <Button $variant='quaternary' onClick={handleSelectAll}>
-            <img src={iconSelect} alt='Zaznacz wszystko' />
+            <IconOK $color='dark' />
 
             Zaznacz wszystko
         </Button>
 
         <Button $variant='quaternary' onClick={handleSort}>
-            <img src={iconSort} alt='Sortuj...' />
+            <IconSort $color='dark' />
 
             Sortuj...
         </Button>
 
         <Button $variant='quaternary' onClick={handleFilter}>
-            <img src={iconFilter} alt='Filtruj...' />
+            <IconFilter $color='dark' />
 
             Filtruj...
         </Button>
@@ -90,13 +83,13 @@ const LocationContextMenu = () => {
         <hr />
 
         <Button $variant='quaternary' $active={viewStyle === 'ICONS'} onClick={() => handleView('ICONS')}>
-            <img src={iconDisplay} alt='Wyświetl: Ikony' />
+            <IconDisplay $color='dark' />
 
             Wyświetl: Ikony
         </Button>
 
         <Button $variant='quaternary' $active={viewStyle === 'LIST'} onClick={() => handleView('LIST')}>
-            <img src={iconList} alt='Wyświetl: Lista' />
+            <IconList $color='dark' />
 
             Wyświetl: Lista
         </Button>

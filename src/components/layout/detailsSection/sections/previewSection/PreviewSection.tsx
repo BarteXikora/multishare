@@ -1,6 +1,5 @@
 import StyledPreviewSection from './PreviewSection.styles'
-
-import iconStar from '../../../../../assets/icons/icon-star-color.svg'
+import { IconStarSpecial } from '../../../../ui/icon/Icons'
 
 type PreviewSectionType = {
     type: 'ICON' | 'IMAGE'
@@ -17,11 +16,7 @@ const PreviewSection = ({ type, image, imageAltText, isStar }: PreviewSectionTyp
                     <img src={image} className='icon-img' alt={imageAltText} />
 
                     {
-                        isStar && <img
-                            src={iconStar}
-                            className='star icon-star'
-                            alt='Oznaczono gwiazdką'
-                        />
+                        isStar && <div className="star icon-star"><IconStarSpecial /></div>
                     }
                 </div>
             </div>
@@ -33,11 +28,7 @@ const PreviewSection = ({ type, image, imageAltText, isStar }: PreviewSectionTyp
                 style={{ backgroundImage: `url(${image})` }}
             >
                 {
-                    isStar && <img
-                        src={iconStar}
-                        className='star image-star'
-                        alt='Oznaczono gwiazdką'
-                    />
+                    isStar && <div className="star image-star"><IconStarSpecial /></div>
                 }
             </div>
         }

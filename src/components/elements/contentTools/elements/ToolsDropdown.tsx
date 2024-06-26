@@ -1,17 +1,10 @@
-import Button from '../../../ui/button/Button'
-
 import { useSelector, useDispatch } from '../../../../store/store'
 import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSlice'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
 
-import iconUpload from '../../../../assets/icons/icon-upload.svg'
-import iconNewFolder from '../../../../assets/icons/icon-new-folder-dark.svg'
-import iconSelect from '../../../../assets/icons/icon-ok.svg'
-import iconSort from '../../../../assets/icons/icon-sort-dark.svg'
-import iconFilter from '../../../../assets/icons/icon-filter-dark.svg'
-import iconDisplay from '../../../../assets/icons/icon-display.svg'
-import iconList from '../../../../assets/icons/icon-list.svg'
+import Button from '../../../ui/button/Button'
+import { IconUpload, IconNewFolder, IconOK, IconSort, IconFilter, IconDisplay, IconList } from '../../../ui/icon/Icons'
 
 type toolsDropdownType = {
     uploadHereDisabled: boolean,
@@ -38,7 +31,7 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
                 <section>
                     {
                         !uploadHereDisabled && <Button onClick={handleUpload}>
-                            <img src={iconUpload} alt="Prześlij pliki tutaj" />
+                            <IconUpload />
 
                             Prześlij pliki
                         </Button>
@@ -46,7 +39,7 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
 
                     {
                         !createNewFolderDisabled && <Button $variant='secondary' onClick={handleCreateFolderWindow}>
-                            <img src={iconNewFolder} alt="Nowy folder" />
+                            <IconNewFolder $color='dark' />
 
                             Nowy folder...
                         </Button>
@@ -59,19 +52,19 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
 
         <section>
             <Button $variant='quaternary' onClick={() => selectAll()}>
-                <img src={iconSelect} alt="Zaznacz wszystko" />
+                <IconOK $color='dark' />
 
                 Zaznacz wszystko
             </Button>
 
             <Button $variant='quaternary' onClick={handleSort}>
-                <img src={iconSort} alt="Sortuj..." />
+                <IconSort $color='dark' />
 
                 Sortuj...
             </Button>
 
             <Button $variant='quaternary' onClick={handleFilter}>
-                <img src={iconFilter} alt="Filtruj..." />
+                <IconFilter $color='dark' />
 
                 Filtruj...
             </Button>
@@ -81,13 +74,13 @@ const ToolsDropdown = ({ uploadHereDisabled, createNewFolderDisabled }: toolsDro
 
         <section>
             <Button $variant='quaternary' $active={viewStyle === 'ICONS'} onClick={() => dispatch(setContentViewStyle('ICONS'))}>
-                <img src={iconDisplay} alt="Ikony" />
+                <IconDisplay $color='dark' />
 
                 Wyświetl: Ikony
             </Button>
 
             <Button $variant='quaternary' $active={viewStyle === 'LIST'} onClick={() => dispatch(setContentViewStyle('LIST'))}>
-                <img src={iconList} alt="Lista" />
+                <IconList $color='dark' />
 
                 Wyświetl: Lista
             </Button>

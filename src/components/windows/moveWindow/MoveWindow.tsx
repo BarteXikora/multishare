@@ -1,13 +1,12 @@
-import LocationSelector from '../../elements/locationSelector/LocationSelector'
-import Button from '../../ui/button/Button'
-
 import { useState } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
-
-import iconMove from '../../../assets/icons/icon-move.svg'
 import { updateContent } from '../../../store/features/contentSlice/contentSlice'
 import { updateContentType } from '../../../store/features/contentSlice/contentSlice.types'
+
+import LocationSelector from '../../elements/locationSelector/LocationSelector'
+import Button from '../../ui/button/Button'
+import { IconMove } from '../../ui/icon/Icons'
 
 const MoveWindow = () => {
     const dispatch = useDispatch()
@@ -47,7 +46,7 @@ const MoveWindow = () => {
             </Button>
 
             <Button disabled={selectedLocation === null} onClick={handleMove}>
-                <img src={iconMove} alt='Przenieś' />
+                <IconMove />
 
                 Przenieś
             </Button>

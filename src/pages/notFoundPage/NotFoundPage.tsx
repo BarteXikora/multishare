@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 
 import StyledNotFoundPage from './NotFoundPage.styles'
 import Button from '../../components/ui/button/Button'
+import { IconHome } from '../../components/ui/icon/Icons'
 
 import logo from '../../assets/images/img-logo-dark.svg'
-import iconHome from '../../assets/icons/icon-home-full.svg'
 
 const NotFoundPage = () => {
     const navigate = useNavigate()
@@ -32,7 +32,7 @@ const NotFoundPage = () => {
             <p>Przekierowywanie na stronę główną za <b>{time}</b> s.</p>
 
             <Button $size='big' onClick={() => navigate('/')}>
-                <img src={iconHome} alt='Strona główna' />
+                <IconHome />
 
                 Wróć na stronę główną
             </Button>

@@ -6,13 +6,7 @@ import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
 import StyledSortWindow from './SortWindow.styles'
 import Button from '../../ui/button/Button'
-
-import iconSortAlphabet from '../../../assets/icons/icon-sort-alphabet.svg'
-import iconSortDate from '../../../assets/icons/icon-sort-date.svg'
-import iconSortType from '../../../assets/icons/icon-sort-type.svg'
-import iconUp from '../../../assets/icons/icon-up.svg'
-import iconDown from '../../../assets/icons/icon-down.svg'
-import iconSort from '../../../assets/icons/icon-sort.svg'
+import { IconSortAlphabet, IconSortDate, IconSortType, IconUp, IconDown, IconSort } from '../../ui/icon/Icons'
 
 const SortWindow = () => {
     const disptach = useDispatch()
@@ -29,7 +23,7 @@ const SortWindow = () => {
                 $active={selectedSort.sortBy === 'NAME'}
                 onClick={() => setSelectedSort({ ...selectedSort, sortBy: 'NAME' })}
             >
-                <img src={iconSortAlphabet} alt="Sortuj Nazwa" />
+                <IconSortAlphabet $color='dark' />
 
                 Nazwa
             </Button>
@@ -39,7 +33,7 @@ const SortWindow = () => {
                 $active={selectedSort.sortBy === 'DATE'}
                 onClick={() => setSelectedSort({ ...selectedSort, sortBy: 'DATE' })}
             >
-                <img src={iconSortDate} alt="Data" />
+                <IconSortDate $color='dark' />
 
                 Data
             </Button>
@@ -49,7 +43,7 @@ const SortWindow = () => {
                 $active={selectedSort.sortBy === 'TYPE'}
                 onClick={() => setSelectedSort({ ...selectedSort, sortBy: 'TYPE' })}
             >
-                <img src={iconSortType} alt="Typ" />
+                <IconSortType $color='dark' />
 
                 Typ
             </Button>
@@ -63,7 +57,7 @@ const SortWindow = () => {
                 $active={selectedSort.method === 'ASC'}
                 onClick={() => setSelectedSort({ ...selectedSort, method: 'ASC' })}
             >
-                <img src={iconDown} alt="Rosnąco" />
+                <IconDown $color='dark' />
 
                 Rosnąco
             </Button>
@@ -73,7 +67,7 @@ const SortWindow = () => {
                 $active={selectedSort.method === 'DESC'}
                 onClick={() => setSelectedSort({ ...selectedSort, method: 'DESC' })}
             >
-                <img src={iconUp} alt="Malejąco" />
+                <IconUp $color='dark' />
 
                 Malejąco
             </Button>
@@ -85,7 +79,7 @@ const SortWindow = () => {
             </Button>
 
             <Button onClick={() => { disptach(setSort(selectedSort)); disptach(closeWindow()) }}>
-                <img src={iconSort} alt="Sortuj" />
+                <IconSort />
 
                 Sortuj
             </Button>

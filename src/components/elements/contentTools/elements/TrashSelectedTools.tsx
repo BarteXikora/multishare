@@ -4,9 +4,7 @@ import { restoreFromTrash } from '../../../../store/features/contentSlice/conten
 import { restoreFromTrashType } from '../../../../store/features/contentSlice/reducers/restoreFromTrash/restoreFromTrash'
 
 import Button from '../../../ui/button/Button'
-
-import iconTrash from '../../../../assets/icons/icon-trash-full.svg'
-import iconRestore from '../../../../assets/icons/icon-restore.svg'
+import { IconTrash, IconRestore } from '../../../ui/icon/Icons'
 
 const TrashSelectedTools = () => {
     const dispatch = useDispatch()
@@ -26,13 +24,13 @@ const TrashSelectedTools = () => {
 
     return <div className="tools-buttons">
         <Button onClick={handleRestoreFromTrash}>
-            <img src={iconRestore} alt="Przywróć..." />
+            <IconRestore />
 
             <span className="label">Przywróć...</span>
         </Button>
 
         <Button $variant='wrong' onClick={handleDeleteForever}>
-            <img src={iconTrash} alt="Usuń" />
+            <IconTrash />
 
             <span className="label">Usuń na zawsze</span>
         </Button>

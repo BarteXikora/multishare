@@ -3,10 +3,7 @@ import { toggle } from '../../../store/features/sideMenuSlice/sideMenuSlice'
 
 import StyledProjectsTopBar from './ProjectsTopBar.styles'
 import Button from '../../ui/button/Button'
-
-import iconHamburger from '../../../assets/icons/icon-hamburger.svg'
-import iconProjects from '../../../assets/icons/icon-projects-dark.svg'
-import iconAdd from '../../../assets/icons/icon-add.svg'
+import { IconHamburger, IconProjects, IconAdd } from '../../ui/icon/Icons'
 
 const ProjectsTopBar = () => {
     const dispatch = useDispatch()
@@ -14,11 +11,11 @@ const ProjectsTopBar = () => {
     return <StyledProjectsTopBar>
         <div className='main'>
             <Button className='hamburger-button' $size='big' onClick={() => dispatch(toggle())}>
-                <img src={iconHamburger} alt='Otwórz menu' />
+                <IconHamburger />
             </Button>
 
             <h1>
-                <img src={iconProjects} alt='Projekty' />
+                <IconProjects $color='dark' $size='big' />
 
                 <span>Projekty:</span>
             </h1>
@@ -26,7 +23,7 @@ const ProjectsTopBar = () => {
 
         <div className="side">
             <Button $variant='primary' $size='big' className='create-project-btn'>
-                <img src={iconAdd} alt='Utwórz projekt' />
+                <IconAdd />
 
                 <span>Utwórz projekt</span>
             </Button>

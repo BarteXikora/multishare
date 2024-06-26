@@ -2,14 +2,12 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 import getShortenName from '../../../functions/getShortenName/getShortenName'
+import { addFolder } from '../../../store/features/contentSlice/contentSlice'
+import { folderType } from '../../../store/features/contentSlice/contentSlice.types'
 
 import StyledNewFolderWindow from './NewFolderWindow.styles'
 import InputButton from '../../ui/inputButton/InputButton'
-
-import iconSeparator from '../../../assets/icons/icon-arrow-right-dark.svg'
-import iconNewFolder from '../../../assets/icons/icon-new-folder.svg'
-import { addFolder } from '../../../store/features/contentSlice/contentSlice'
-import { folderType } from '../../../store/features/contentSlice/contentSlice.types'
+import { IconNewFolder } from '../../ui/icon/Icons'
 
 const NewFolderWindow = () => {
     const dispatch = useDispatch()
@@ -80,7 +78,7 @@ const NewFolderWindow = () => {
 
                 {
                     path.length > 1 && <>
-                        <img src={iconSeparator} alt='/' />
+                        {/* <img src={iconSeparator} alt='/' /> */}
 
                         <span>...</span>
                     </>
@@ -88,7 +86,7 @@ const NewFolderWindow = () => {
 
                 {
                     path.length > 0 && <>
-                        <img src={iconSeparator} alt='/' />
+                        {/* <img src={iconSeparator} alt='/' /> */}
 
                         <span>{getShortenName(path[path.length - 1].name, 30)}</span>
                     </>
@@ -98,7 +96,7 @@ const NewFolderWindow = () => {
 
         <section>
             <InputButton
-                buttonContent={<><img src={iconNewFolder} alt='Utwórz nowy folder' /> Utwórz folder</>}
+                buttonContent={<><IconNewFolder /> Utwórz folder</>}
                 inputState={[folderName, setFolderName]}
                 onSubmit={handleCreateFolder}
                 buttonOptions={{ disabled: !!validation }}

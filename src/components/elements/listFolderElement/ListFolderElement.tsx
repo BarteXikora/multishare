@@ -1,8 +1,7 @@
 import Moment from 'react-moment'
 import moment from 'moment'
 
-import iconFolder from '../../../assets/icons/icon-folder-dark.svg'
-import iconStar from '../../../assets/icons/icon-star-color.svg'
+import { IconFolder, IconStar } from '../../ui/icon/Icons'
 
 type ListFolderElementType = {
     name: string
@@ -29,13 +28,13 @@ const ListFolderElement = ({
         onTouchEnd={onTouchEnd}
     >
         <div className='name-column'>
-            <img src={iconFolder} alt='Folder:' />
+            <IconFolder $color='dark' />
 
             <b>{name}</b>
         </div>
 
         <div className='star-column'>
-            {isStar && <img src={iconStar} alt='Oznaczono gwiazdką' />}
+            {isStar && <IconStar $color='dark' />}
         </div>
 
         <div className='date-column'>

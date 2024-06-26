@@ -1,13 +1,10 @@
 import { useDispatch } from '../../../../store/store'
 import { setTreeLocation } from '../../../../store/features/contentSlice/contentSlice'
+import { pathType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 import StyledCurrentFolderButton from './CurrentFolderButton.styles'
 import Button from '../../../ui/button/Button'
-
-import { pathType } from '../../../../store/features/contentSlice/contentSlice.types'
-
-import iconFolder from '../../../../assets/icons/icon-folder-dark.svg'
-import iconFolderWrong from '../../../../assets/icons/icon-folder-wrong.svg'
+import { IconFolder } from '../../../ui/icon/Icons'
 
 const CurrentFolderButton = ({ path }: { path: pathType[] }) => {
     const dispatch = useDispatch()
@@ -28,7 +25,9 @@ const CurrentFolderButton = ({ path }: { path: pathType[] }) => {
                     onClick={() => dispatch(setTreeLocation(pathElement.id))}
                     className={`${pathElement.notFound ? 'path-button-not-found' : ''}`}
                 >
-                    <img src={pathElement.notFound ? iconFolderWrong : iconFolder} alt='Folder' />
+                    {
+                        pathElement.notFound ? <IconFolder $color='wrong' /> : <IconFolder $color='dark' />
+                    }
 
                     {pathElement.name}
                 </Button>

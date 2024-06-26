@@ -3,8 +3,7 @@ import useClickOutside from '../../../functions/useClickOutside/useClickOutside'
 
 import StyledDropdown from './Dropdown.styles'
 import Button, { ButtonProps } from '../button/Button'
-
-import iconArrow from '../../../assets/icons/icon-arrow-down.svg'
+import { IconArrowDown } from '../icon/Icons'
 
 type DropdownProps = {
     className?: string
@@ -28,7 +27,7 @@ const Dropdown = ({ buttonContent, dropdownContent, buttonOptions, showArrow = t
         >
             {buttonContent}
 
-            {showArrow && <img src={iconArrow} className='icon-arrow' alt='Rozwiń opcje' />}
+            {showArrow && <IconArrowDown />}
         </Button>
 
         <div onClick={() => setIsOpen(false)} className="dropdown-content">{dropdownContent}</div>

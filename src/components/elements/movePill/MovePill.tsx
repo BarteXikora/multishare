@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from '../../../store/store'
 import useFollowMouse from '../../../functions/useFollowMouse/useFollowMouse'
-
-import StyledMovePill from './MovePill.styles'
 import { elementType } from '../../../store/features/contentSlice/contentSlice.types'
 import getShortenName from '../../../functions/getShortenName/getShortenName'
 
-import iconFolder from '../../../assets/icons/icon-folder-dark.svg'
-import iconFile from '../../../assets/icons/icon-file-dark.svg'
-import iconMultiple from '../../../assets/icons/icon-multiple-elements-dark.svg'
+import StyledMovePill from './MovePill.styles'
+import { IconFolder, IconFile, IconMultipleElements } from '../../ui/icon/Icons'
 
 type currentMoveType = {
     elementsType: elementType | 'MIXED'
@@ -57,18 +54,15 @@ const MovePill = () => {
     if (onMove.folders.length + onMove.files.length === 0) return null
 
     return <StyledMovePill ref={elementRef}>
-        <img
-            src={
-                currentMove.elementsType === 'FOLDER' ?
-                    iconFolder
+        {
+            currentMove.elementsType === 'FOLDER' ?
+                <IconFolder $color='dark' />
+                :
+                currentMove.elementsType === 'FILE' ?
+                    <IconFile $color='dark' />
                     :
-                    currentMove.elementsType === 'FILE' ?
-                        iconFile
-                        :
-                        iconMultiple
-            }
-            alt='Wybrane elementy'
-        />
+                    <IconMultipleElements $color='dark' />
+        }
 
         <h3>{getShortenName(currentMove.name, 30)}</h3>
     </StyledMovePill>

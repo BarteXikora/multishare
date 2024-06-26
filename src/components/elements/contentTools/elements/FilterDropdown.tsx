@@ -5,9 +5,7 @@ import { filterType } from '../../../../store/features/contentSlice/contentSlice
 
 import Dropdown from '../../../ui/dropdown/Dropdown'
 import Button from '../../../ui/button/Button'
-
-import iconFilter from '../../../../assets/icons/icon-filter-dark.svg'
-import iconClose from '../../../../assets/icons/icon-close.svg'
+import { IconFilter, IconClose } from '../../../ui/icon/Icons'
 
 const FilterDropdown = () => {
     const dispatch = useDispatch()
@@ -26,12 +24,12 @@ const FilterDropdown = () => {
         className='button-dropdown'
         buttonOptions={{ $variant: (filter.time || filter.type || filter.star) ? 'warning' : 'secondary' }}
         showArrow={false}
-        buttonContent={<><img src={iconFilter} alt="Filtruj..." /> Filtruj...</>}
+        buttonContent={<><IconFilter $color='dark' /> Filtruj...</>}
         dropdownContent={<>
             {
                 (filter.time || filter.type || filter.star) && <>
                     <Button $variant='wrong' onClick={() => handleFilter({ time: null, type: null, star: null })}>
-                        <img src={iconClose} alt="Wyczyść filtry" />
+                        <IconClose />
 
                         Wyczyść filtry
                     </Button>

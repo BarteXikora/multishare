@@ -9,8 +9,7 @@ import SingleFileDetails from './detailsTypes/singleFileDetails/SingleFileDetail
 import MultipleDetails from './detailsTypes/multipleDetails/MultipleDetails'
 import Button from '../../ui/button/Button'
 import UploadList from '../uploadList/UploadList'
-
-import iconClose from '../../../assets/icons/icon-close.svg'
+import { IconClose } from '../../ui/icon/Icons'
 
 const DetailsSection = () => {
     const project = useSelector(state => state.user.status === 'READY' ? state.user.project.selectedProject : null)
@@ -25,7 +24,7 @@ const DetailsSection = () => {
     return <StyledDetailsSection className={`${isShown ? 'shown' : ''}`}>
 
         <Button className='close-button' $variant='wrong' $size='big' onClick={() => dispatch(toggle(false))}>
-            <img src={iconClose} alt='Zamknij szczegóły' />
+            <IconClose />
         </Button>
 
         <section className="main">

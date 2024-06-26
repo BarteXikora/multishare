@@ -2,14 +2,12 @@ import { Fragment } from 'react'
 
 import { useDispatch } from '../../../../store/store'
 import { setTreeLocation } from '../../../../store/features/contentSlice/contentSlice'
+import { pathType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 import StyledPath from './Path.styles'
 import CollapsedPathButton from '../collapsedPathButton/CollapsedPathButton'
 import Button from '../../../ui/button/Button'
-
-import { pathType } from '../../../../store/features/contentSlice/contentSlice.types'
-
-import iconArrow from '../../../../assets/icons/icon-arrow-right.svg'
+import { IconArrowRight } from '../../../ui/icon/Icons'
 
 const Path = ({ path }: { path: pathType[] }) => {
     const dispatch = useDispatch()
@@ -34,7 +32,7 @@ const Path = ({ path }: { path: pathType[] }) => {
                                     {pathElement.name}
                                 </Button>
 
-                                {n < path.length - 1 && <img src={iconArrow} alt="/" />}
+                                {n < path.length - 1 && <IconArrowRight />}
                             </Fragment>
 
                             :

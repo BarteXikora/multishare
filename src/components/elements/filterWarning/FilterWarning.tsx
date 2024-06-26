@@ -2,9 +2,7 @@ import { useDispatch } from '../../../store/store'
 import { setFilter } from '../../../store/features/contentSlice/contentSlice'
 
 import StyledFilterWarning from './FilterWarning.styles'
-
-import iconFilter from '../../../assets/icons/icon-filter-dark.svg'
-import iconClose from '../../../assets/icons/icon-close.svg'
+import { IconFilter, IconClose } from '../../ui/icon/Icons'
 
 const FilterWarning = () => {
     const dispatch = useDispatch()
@@ -14,12 +12,12 @@ const FilterWarning = () => {
     }
 
     return <StyledFilterWarning onClick={handleClearFilters}>
-        <img src={iconFilter} alt='Zastosowano filtry' />
+        <IconFilter $color='dark' />
 
         <h3>Zastosowano filtry!</h3>
 
         <div className="clear-filters">
-            <img src={iconClose} alt='Wyczyść filtry' />
+            <IconClose />
 
             <h3>Wyczyść filtry!</h3>
         </div>

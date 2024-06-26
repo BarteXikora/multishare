@@ -2,9 +2,9 @@ import { useDispatch } from '../../../../store/store'
 import { setFilter } from '../../../../store/features/contentSlice/contentSlice'
 
 import Button from '../../../ui/button/Button'
+import { IconClose } from '../../../ui/icon/Icons'
 
 import imgEmptyFilters from '../../../../assets/images/img-empty-filters.svg'
-import iconClose from '../../../../assets/icons/icon-close.svg'
 
 const EmptyFilters = () => {
     const dispatch = useDispatch()
@@ -25,7 +25,7 @@ const EmptyFilters = () => {
 
             <div className="actions">
                 <Button $variant='wrong' onClick={handleClearFilters}>
-                    <img src={iconClose} alt='Wyczyść filtry' />
+                    <IconClose />
 
                     Wyczyść filtry
                 </Button>

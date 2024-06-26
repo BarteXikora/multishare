@@ -4,8 +4,7 @@ import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 import { restoreFromTrashType } from '../../../store/features/contentSlice/reducers/restoreFromTrash/restoreFromTrash'
 
 import Button from '../../ui/button/Button'
-
-import iconRestore from '../../../assets/icons/icon-restore.svg'
+import { IconRestore } from '../../ui/icon/Icons'
 
 const CanNotOpenInTrashWindow = () => {
     const dispatch = useDispatch()
@@ -35,7 +34,7 @@ const CanNotOpenInTrashWindow = () => {
             </Button>
 
             <Button onClick={handleRestoreFromTrash}>
-                <img src={iconRestore} alt='Przywróć' />
+                <IconRestore />
 
                 Przywróć ten element
             </Button>

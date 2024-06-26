@@ -1,14 +1,11 @@
-import StyledLocationSelector from './LocationSelector.styles'
-import Button from '../../ui/button/Button'
-
 import { useState } from 'react'
 import { useSelector } from '../../../store/store'
 import getCurrentContent from '../../../functions/getCurrentContent/getCurrentContent'
 import { folderDisplayType } from '../../../store/features/contentSlice/contentSlice.types'
 
-import iconHome from '../../../assets/icons/icon-home.svg'
-import iconBack from '../../../assets/icons/icon-back.svg'
-import iconFolder from '../../../assets/icons/icon-folder-dark.svg'
+import StyledLocationSelector from './LocationSelector.styles'
+import Button from '../../ui/button/Button'
+import { IconHome, IconBack, IconFolder } from '../../ui/icon/Icons'
 
 type locationSelectorType = {
     selectionState: [number | null, (v: number | null) => void]
@@ -62,10 +59,10 @@ const LocationSelector = (props: locationSelectorType) => {
         <section className="path">
             {
                 currentFolder.id === -1 ?
-                    <Button $variant='tertiary'><img src={iconHome} alt="Folder główny" /></Button>
+                    <Button $variant='tertiary'><IconHome $outline /></Button>
                     :
                     <Button $variant='tertiary' onClick={() => handleGoBack()}>
-                        <img src={iconBack} alt="Wróć" />
+                        <IconBack />
                     </Button>
             }
             <Button
@@ -97,7 +94,7 @@ const LocationSelector = (props: locationSelectorType) => {
                     onClick={() => setSelectedFolder(folder.id)}
                     onDoubleClick={() => handleOpenFolder(folder.id)}
                 >
-                    <img src={iconFolder} alt="Folder" />
+                    <IconFolder $color='dark' />
 
                     {folder.name}
                 </Button>)

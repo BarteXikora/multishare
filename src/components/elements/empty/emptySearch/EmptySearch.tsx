@@ -1,9 +1,10 @@
 import { useDispatch } from '../../../../store/store'
 import { setSearch } from '../../../../store/features/contentSlice/contentSlice'
+
 import Button from '../../../ui/button/Button'
+import { IconClose } from '../../../ui/icon/Icons'
 
 import imgEmptySearch from '../../../../assets/images/img-empty-search.svg'
-import iconClose from '../../../../assets/icons/icon-close.svg'
 
 const EmptySearch = ({ search }: { search: string }) => {
     const dispatch = useDispatch()
@@ -22,7 +23,7 @@ const EmptySearch = ({ search }: { search: string }) => {
 
             <div className="actions">
                 <Button $variant='wrong' onClick={handleClearSearch}>
-                    <img src={iconClose} alt='Wyczyść filtry' />
+                    <IconClose />
 
                     Wyczyść wyszukiwanie
                 </Button>

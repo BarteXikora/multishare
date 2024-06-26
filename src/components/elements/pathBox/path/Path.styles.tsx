@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const StyledPath = styled.div`
     display: flex;
+    align-items: center;
     gap: ${(props) => props.theme.margins.small};
     white-space: nowrap;
     

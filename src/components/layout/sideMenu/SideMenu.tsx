@@ -7,11 +7,9 @@ import ProjectsButtons from './projectsButtons/ProjectsButtons'
 import ContentButtons from './contentButtons/ContentButtons'
 import Button from '../../ui/button/Button'
 import UsedSpace from '../../elements/usedSpace/UsedSpace'
+import { IconClose, IconAccount, IconManageProject } from '../../ui/icon/Icons'
 
-import iconClose from '../../../assets/icons/icon-close.svg'
 import logo from '../../../assets/images/img-logo.svg'
-import iconAccount from '../../../assets/icons/icon-account.svg'
-import iconManageProject from '../../../assets/icons/icon-manage-project.svg'
 
 const SideMenu = () => {
     const isMenuShown = useSelector(state => state.sideMenu.isShown)
@@ -22,7 +20,7 @@ const SideMenu = () => {
     return <StyledSideMenu className={`${isMenuShown ? 'shown' : ''}`}>
 
         <Button className='close-button' $variant='wrong' $size='big' onClick={() => dispatch(toggle(false))}>
-            <img src={iconClose} alt='Zamknij menu' />
+            <IconClose />
         </Button>
 
         <section className='logo'>
@@ -46,13 +44,13 @@ const SideMenu = () => {
 
         <section>
             <Button $variant='tertiary'>
-                <img src={iconManageProject} alt='Zarządzaj projektem' />
+                <IconManageProject />
 
                 Zarządzaj projektem
             </Button>
 
             <Button $variant='tertiary'>
-                <img src={iconAccount} alt='Moje konto' />
+                <IconAccount />
 
                 Moje konto
             </Button>

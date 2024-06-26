@@ -1,9 +1,8 @@
-import StyledTextPreviewSection from './TextPreviewSection.styles'
-import Button from '../../../ui/button/Button'
-
 import { fileType } from '../../../../store/features/contentSlice/contentSlice.types'
 
-import iconEdit from '../../../../assets/icons/icon-edit.svg'
+import StyledTextPreviewSection from './TextPreviewSection.styles'
+import Button from '../../../ui/button/Button'
+import { IconEdit } from '../../../ui/icon/Icons'
 
 const TextPreviewSection = ({ file, data }: { file: fileType, data: string }) => {
     return <StyledTextPreviewSection>
@@ -11,7 +10,7 @@ const TextPreviewSection = ({ file, data }: { file: fileType, data: string }) =>
             <h3>{file.name}</h3>
 
             <Button $variant='secondary' className='edit-button'>
-                <img src={iconEdit} alt='Edytuj' />
+                <IconEdit />
 
                 Edytuj
             </Button>

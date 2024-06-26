@@ -6,9 +6,7 @@ import { filterType, filterTypeType } from '../../../store/features/contentSlice
 
 import StyledFilterWindow from './FilterWindow.styles'
 import Button from '../../ui/button/Button'
-
-import iconClose from '../../../assets/icons/icon-close.svg'
-import iconFilter from '../../../assets/icons/icon-filter.svg'
+import { IconClose, IconFilter } from '../../ui/icon/Icons'
 
 const FilterWindow = () => {
     const dispatch = useDispatch()
@@ -198,13 +196,13 @@ const FilterWindow = () => {
                 disabled={!currentFilter.star && !currentFilter.time && !currentFilter.type}
                 onClick={() => setCurrentFilter({ time: null, type: null, star: null })}
             >
-                <img src={iconClose} alt='Wyczyść filtry' />
+                <IconClose />
 
                 Wyczyść filtry
             </Button>
 
             <Button onClick={handleFilter}>
-                <img src={iconFilter} alt='Zastosuj filtry' />
+                <IconFilter />
 
                 Zastosuj filtry
             </Button>

@@ -4,7 +4,7 @@ import moment from 'moment'
 import getFileTypeName from '../../../functions/fileTypes/getFileTypeName/getFileTypeName'
 import getDataWithUnit from '../../../functions/getDataWithUnit/getDataWithUnit'
 
-import iconStar from '../../../assets/icons/icon-star-color.svg'
+import { IconStar } from '../../ui/icon/Icons'
 
 type ListFileElementType = {
     name: string
@@ -40,7 +40,7 @@ const ListFileElement = ({
         </div>
 
         <div className='star-column'>
-            {isStar && <img src={iconStar} alt='Oznaczono gwiazdką' />}
+            {isStar && <IconStar $color='dark' />}
         </div>
 
         <div className='date-column'>

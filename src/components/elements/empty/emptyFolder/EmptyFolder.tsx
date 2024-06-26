@@ -1,12 +1,11 @@
 import { useDispatch } from '../../../../store/store'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
-
-import Button from '../../../ui/button/Button'
 import useGoBack from '../../../../functions/useGoBack/useGoBack'
 
+import Button from '../../../ui/button/Button'
+import { IconBack, IconUpload } from '../../../ui/icon/Icons'
+
 import imageEmptyFolder from '../../../../assets/images/img-empty-folder.svg'
-import iconBack from '../../../../assets/icons/icon-back.svg'
-import iconUpload from '../../../../assets/icons/icon-upload.svg'
 
 const EmptyFolder = () => {
     const dispatch = useDispatch()
@@ -26,11 +25,11 @@ const EmptyFolder = () => {
 
             <div className="actions">
                 <Button $variant='secondary' className='back-button' onClick={() => goBack()}>
-                    <img src={iconBack} alt='Cofnij się' />
+                    <IconBack />
                 </Button>
 
                 <Button onClick={handleUpload}>
-                    <img src={iconUpload} alt='Prześlij pliki tutaj' />
+                    <IconUpload />
 
                     Prześlij pliki
                 </Button>

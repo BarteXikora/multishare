@@ -1,13 +1,11 @@
 import { useState, useEffect, ReactNode } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
-
 import windowTypes from '../../../functions/windowTypes/windowTypes'
 
 import StyledWindow from './Window.styles'
 import Button from '../../ui/button/Button'
-
-import iconClose from '../../../assets/icons/icon-close.svg'
+import { IconClose } from '../../ui/icon/Icons'
 
 const Window = () => {
     const dispatch = useDispatch()
@@ -34,7 +32,7 @@ const Window = () => {
                 <h2>{windowTitle}</h2>
 
                 <Button $variant='wrong' $size='big' className='close-button' onClick={() => dispatch(closeWindow())}>
-                    <img src={iconClose} alt='Zamknij okno' />
+                    <IconClose />
                 </Button>
             </div>
 

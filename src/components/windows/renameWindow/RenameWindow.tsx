@@ -1,15 +1,14 @@
-import InputButton from '../../ui/inputButton/InputButton'
-
 import { useState, useEffect, FormEvent } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { elementType, fileType, folderType, loadedContentType, selectedType, updateContentType }
     from '../../../store/features/contentSlice/contentSlice.types'
 
 import getShortenName from '../../../functions/getShortenName/getShortenName'
-
-import iconEdit from '../../../assets/icons/icon-edit.svg'
+import InputButton from '../../ui/inputButton/InputButton'
 import { updateContent } from '../../../store/features/contentSlice/contentSlice'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
+
+import { IconEdit } from '../../ui/icon/Icons'
 
 type getCurrentElementType = { element: folderType | fileType | null, elementType: elementType | null }
 
@@ -83,7 +82,7 @@ const RenameWindow = () => {
 
                     <section>
                         <InputButton
-                            buttonContent={<><img src={iconEdit} alt="Zmień nazwę" /> Zmień nazwę</>}
+                            buttonContent={<><IconEdit /> Zmień nazwę</>}
                             buttonOptions={{ disabled: !isNewNameOk }}
                             inputState={[newName, setNewName]}
                             onSubmit={e => handleSubmit(e)}

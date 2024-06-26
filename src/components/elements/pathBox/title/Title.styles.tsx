@@ -5,7 +5,7 @@ const StyledTitle = styled.div`
     align-items: center;
     gap: ${(props) => props.theme.margins.small};
 
-    img {
+    figure {
         padding: ${(props) => props.theme.margins.sectionSmall}; 
     }
 
@@ -19,7 +19,7 @@ const StyledTitle = styled.div`
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
         gap: 0;
 
-        img, h2 {
+        figure, h2 {
             padding: ${(props) => props.theme.margins.small}
         }
     }
