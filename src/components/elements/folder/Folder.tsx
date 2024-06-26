@@ -1,5 +1,6 @@
 import StyledFolder from './Folder.styles'
-import { IconFolder, IconStarSpecial } from '../../ui/icon/Icons'
+import Star from '../star/Star'
+import { IconFolder } from '../../ui/icon/Icons'
 
 type FolderProps = {
     id: number
@@ -49,11 +50,7 @@ const Folder = ({
             {displayName}
         </div>
 
-        {
-            isStar && <div className="star">
-                <IconStarSpecial />
-            </div>
-        }
+        <Star isStar={isStar} />
     </StyledFolder>
 }
 
