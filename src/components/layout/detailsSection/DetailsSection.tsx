@@ -13,7 +13,6 @@ import { IconClose } from '../../ui/icon/Icons'
 
 const DetailsSection = () => {
     const project = useSelector(state => state.user.status === 'READY' ? state.user.project.selectedProject : null)
-    const isHomeFolder = useSelector(state => state.content.currentPath.length === 0)
     const isShown = useSelector(state => state.detailsSection.isShown)
     const content = useSelector(state => state.detailsSection.content)
 
@@ -28,7 +27,7 @@ const DetailsSection = () => {
         </Button>
 
         <section className="main">
-            {content.type === 'EMPTY' && <NothingSelectedDetails isHomeFolder={isHomeFolder} project={project} />}
+            {content.type === 'EMPTY' && <NothingSelectedDetails project={project} />}
             {content.type === 'FOLDER' && <SingleFolderDetails content={content} />}
             {content.type === 'FILE' && <SingleFileDetails content={content} />}
             {content.type === 'MULTIPLE' && <MultipleDetails content={content} />}
