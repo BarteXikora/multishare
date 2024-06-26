@@ -16,7 +16,7 @@ const PreviewSection = ({ type, image, imageAltText, isStar }: PreviewSectionTyp
                     <img src={image} className='icon-img' alt={imageAltText} />
 
                     {
-                        isStar && <IconStarSpecial />
+                        isStar && <div className="star icon-star"><IconStarSpecial /></div>
                     }
                 </div>
             </div>
@@ -28,7 +28,7 @@ const PreviewSection = ({ type, image, imageAltText, isStar }: PreviewSectionTyp
                 style={{ backgroundImage: `url(${image})` }}
             >
                 {
-                    isStar && <IconStarSpecial />
+                    isStar && <div className="star image-star"><IconStarSpecial /></div>
                 }
             </div>
         }
