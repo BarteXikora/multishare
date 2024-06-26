@@ -2,8 +2,11 @@ import { useState, useRef } from 'react'
 import useClickOutside from '../../../functions/useClickOutside/useClickOutside'
 
 import StyledDropdown from './Dropdown.styles'
+import AnimatedDropdownContent from './Dropdown.animation'
 import Button, { ButtonProps } from '../button/Button'
 import { IconArrowDown } from '../icon/Icons'
+
+import { AnimatePresence } from 'framer-motion'
 
 type DropdownProps = {
     className?: string
@@ -30,7 +33,15 @@ const Dropdown = ({ buttonContent, dropdownContent, buttonOptions, showArrow = t
             {showArrow && <IconArrowDown />}
         </Button>
 
-        <div onClick={() => setIsOpen(false)} className="dropdown-content">{dropdownContent}</div>
+        <AnimatePresence>
+            {
+                isOpen && <AnimatedDropdownContent>
+                    <div onClick={() => setIsOpen(false)} className="dropdown-content">{dropdownContent}</div>
+                </AnimatedDropdownContent>
+            }
+        </AnimatePresence>
+
+        {/* <div onClick={() => setIsOpen(false)} className="dropdown-content">{dropdownContent}</div> */}
     </StyledDropdown>
 }
 
