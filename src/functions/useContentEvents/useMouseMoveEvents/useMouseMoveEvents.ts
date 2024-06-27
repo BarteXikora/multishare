@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { elementType, selectedType, updateContentType } from '../../../store/features/contentSlice/contentSlice.types'
 import { setOnMove, setSelected, setTargetElement, updateContent } from '../../../store/features/contentSlice/contentSlice'
 import getMoveElements from '../functions/getMoveElements/getMoveElements'
+import getIsTouchScreen from '../functions/getIsTouchScreen/getIsTouchScreen'
 
 const useMouseMoveEvents = () => {
     const MOUSE_MOVE_MIN_DISTANCE = 5
@@ -85,6 +86,8 @@ const useMouseMoveEvents = () => {
         elementType: elementType,
         elementId: number
     ) => {
+
+        if (getIsTouchScreen()) return
 
         if (!isMouseDown) {
             if (action === 'MOUSE_DOWN') {
