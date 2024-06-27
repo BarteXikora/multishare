@@ -33,8 +33,9 @@ const ContentListView = () => {
 
                             onClick={e => folderEvents.onClick(e, folder.id)}
                             onDoubleClick={() => folderEvents.onDoubleClick(folder.id)}
-                            onTouchStart={e => folderEvents.onTouchStart(e, folder.id)}
-                            onTouchEnd={e => folderEvents.onTouchEnd(e, folder.id)}
+                            onTouchStart={() => folderEvents.onTouchStart(folder.id)}
+                            onTouchMove={() => folderEvents.onTouchMove(folder.id)}
+                            onTouchEnd={() => folderEvents.onTouchEnd(folder.id)}
                         />
                     ))
                 }
@@ -53,8 +54,9 @@ const ContentListView = () => {
 
                             onClick={e => filesEvents.onClick(e, file.id)}
                             onDoubleClick={() => filesEvents.onDoubleClick(file.id)}
-                            onTouchStart={e => filesEvents.onTouchStart(e, file.id)}
-                            onTouchEnd={e => filesEvents.onTouchEnd(e, file.id)}
+                            onTouchStart={() => filesEvents.onTouchStart(file.id)}
+                            onTouchMove={() => filesEvents.onTouchMove(file.id)}
+                            onTouchEnd={() => filesEvents.onTouchEnd(file.id)}
                         />
                     ))
                 }

@@ -11,12 +11,14 @@ type ListFolderElementType = {
     isSelected: boolean
     onClick: (e: React.MouseEvent<HTMLElement>) => void
     onDoubleClick: () => void
-    onTouchStart: (e: React.TouchEvent<HTMLElement>) => void
-    onTouchEnd: (e: React.TouchEvent<HTMLElement>) => void
+    onTouchStart: () => void
+    onTouchMove: () => void
+    onTouchEnd: () => void
 }
 
 const ListFolderElement = ({
-    name, isStar, lastModificationDate, isEmpty, isSelected, onClick, onDoubleClick, onTouchStart, onTouchEnd
+    name, isStar, lastModificationDate, isEmpty, isSelected,
+    onClick, onDoubleClick, onTouchStart, onTouchMove, onTouchEnd
 
 }: ListFolderElementType) => {
 
@@ -25,6 +27,7 @@ const ListFolderElement = ({
         onClick={onClick}
         onDoubleClick={onDoubleClick}
         onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
     >
         <div className='name-column'>
