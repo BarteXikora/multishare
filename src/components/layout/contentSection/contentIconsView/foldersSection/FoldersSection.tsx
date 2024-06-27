@@ -24,8 +24,9 @@ const FoldersSection = ({ content, selected, onMove }: { content: contentDisplay
                         onClick={e => folderEvents.onClick(e, folder.id)}
                         onContextMenu={e => folderEvents.onContextMenu(e, folder.id)}
                         onDoubleClick={() => folderEvents.onDoubleClick(folder.id)}
-                        onTouchStart={e => folderEvents.onTouchStart(e, folder.id)}
-                        onTouchEnd={e => folderEvents.onTouchEnd(e, folder.id)}
+                        onTouchStart={() => folderEvents.onTouchStart(folder.id)}
+                        onTouchMove={() => folderEvents.onTouchMove(folder.id)}
+                        onTouchEnd={() => folderEvents.onTouchEnd(folder.id)}
 
                         onMouseDown={e => folderEvents.onMouseDown(e, folder.id)}
                         onMouseUp={e => folderEvents.onMouseUp(e, folder.id)}
