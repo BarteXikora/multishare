@@ -12,6 +12,7 @@ const _listFileElementProps = {
     onClick: () => null,
     onDoubleClick: () => null,
     onTouchStart: () => null,
+    onTouchMove: () => null,
     onTouchEnd: () => null
 }
 
