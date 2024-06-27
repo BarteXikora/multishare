@@ -9,23 +9,14 @@ const StyledCourtain = styled.div`
     height: 100vh;
     background-color: ${(props) => props.theme.colors.black};
     opacity: .85;
-    display: none;
 
     &.shown-window {
-        display: flex;
         z-index: 2000;
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
         &.shown-details-section {
-            display: flex;
             z-index: 2000;
-        }
-    }
-
-    @media (max-width: ${(props) => props.theme.screenBreakpoints.tablet}) {
-        &.shown-side-menu {
-            display: flex;
         }
     }
 `
