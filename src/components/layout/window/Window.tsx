@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from '../../../store/store'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 import windowTypes from '../../../functions/windowTypes/windowTypes'
 
-import StyledWindow from './Window.styles'
+import AnimatedWindow from './Window.animation'
 import Button from '../../ui/button/Button'
 import { IconClose } from '../../ui/icon/Icons'
+
+import { AnimatePresence } from 'framer-motion'
 
 const Window = () => {
     const dispatch = useDispatch()
@@ -24,23 +26,25 @@ const Window = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [window.window])
 
-    if (!window.isShown) return null
+    return <AnimatePresence>
+        {
+            window.isShown && <AnimatedWindow>
+                <div className="container">
+                    <div className="bar">
+                        <h2>{windowTitle}</h2>
 
-    return <StyledWindow>
-        <div className="container">
-            <div className="bar">
-                <h2>{windowTitle}</h2>
+                        <Button $variant='wrong' $size='big' className='close-button' onClick={() => dispatch(closeWindow())}>
+                            <IconClose />
+                        </Button>
+                    </div>
 
-                <Button $variant='wrong' $size='big' className='close-button' onClick={() => dispatch(closeWindow())}>
-                    <IconClose />
-                </Button>
-            </div>
-
-            <div className="content">
-                {windowBody || <>Error</>}
-            </div>
-        </div>
-    </StyledWindow>
+                    <div className="content">
+                        {windowBody || <>Error</>}
+                    </div>
+                </div>
+            </AnimatedWindow>
+        }
+    </AnimatePresence>
 }
 
 export default Window
