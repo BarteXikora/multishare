@@ -11,7 +11,7 @@ const StyledCourtain = styled.div`
     opacity: .85;
 
     &.shown-window {
-        z-index: 2000;
+        z-index: 2500;
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
