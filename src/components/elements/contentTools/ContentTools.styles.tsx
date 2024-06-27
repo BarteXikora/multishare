@@ -15,6 +15,11 @@ const StyledContentTools = styled.div`
         gap: ${(props) => props.theme.margins.small};
     }
 
+    .animated-div {
+        width: 100%;
+        display: flex;
+    }
+
     .tools-buttons {
         display: flex;
         gap: ${(props) => props.theme.margins.small};
@@ -114,6 +119,7 @@ const StyledContentTools = styled.div`
 
         &.selected-tools-shown {
             width: 100%;
+            padding: ${(props) => props.theme.margins.small + ' ' + props.theme.margins.medium};
         }
 
         .general-tools {

@@ -4,6 +4,7 @@ import { addFiles } from '../../../../../store/features/uploadListSlice/uploadLi
 import getFilesToUpload from '../../../../../functions/getFilesToUpload/getFilesToUpload'
 
 import StyledDropSection from './DropSection.styles'
+import AnimatedDropSection from './DropSection.animation'
 import DropArea from '../../../../elements/dropArea/DropArea'
 
 const DropSection = () => {
@@ -30,13 +31,15 @@ const DropSection = () => {
     }
 
     return <StyledDropSection>
-        <DropArea
-            filesState={[files, setFiles]}
-            locationState={[location, setLocation]}
-            upload={handleUpload}
-            showLocationSelector={false}
-            showSelectButton={false}
-        />
+        <AnimatedDropSection>
+            <DropArea
+                filesState={[files, setFiles]}
+                locationState={[location, setLocation]}
+                upload={handleUpload}
+                showLocationSelector={false}
+                showSelectButton={false}
+            />
+        </AnimatedDropSection>
     </StyledDropSection>
 }
 

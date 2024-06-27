@@ -6,7 +6,7 @@ const StyledWindow = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2500;
+    z-index: 3000;
     background-color: transparent;
     pointer-events: none;
     display: flex;

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import getPreviewImage from '../../../functions/fileTypes/getPreviewImage/getPreviewImage'
 
 import StyledFile from './File.styles'
-import { IconStarSpecial } from '../../ui/icon/Icons'
+import Star from '../star/Star'
 
 type FileProps = {
     displayName: string
@@ -60,11 +60,7 @@ const File = ({
         <div className="file-bar">
             <div className="file-name">{displayName}</div>
 
-            {
-                isStar && <div className="star">
-                    <IconStarSpecial $color='dark' />
-                </div>
-            }
+            <Star isStar={isStar} />
         </div>
     </StyledFile>
 }

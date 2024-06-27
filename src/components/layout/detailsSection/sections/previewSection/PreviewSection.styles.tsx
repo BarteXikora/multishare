@@ -8,6 +8,11 @@ const StyledPreviewSection = styled.div`
     border-radius: ${(props) => props.theme.borderRadiuses.big + ' ' + props.theme.borderRadiuses.big} 0 0;
     flex-shrink: 0;
 
+    .animated-div {
+        width: 100%;
+        height: 100%;
+    }
+
     .icon-section {
         display: flex;
         align-items: center;

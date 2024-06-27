@@ -5,6 +5,11 @@ const StyledPath = styled.div`
     align-items: center;
     gap: ${(props) => props.theme.margins.small};
     white-space: nowrap;
+
+    .path-fragment {
+        display: flex;
+        align-items: center;
+    }
     
     .path-button {
         font-size: ${(props) => props.theme.fontSizes.subtitle};

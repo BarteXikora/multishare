@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useSelector } from '../../../store/store'
 
 import StyledContentTools from './ContentTools.styles'
+import AnimatedContentTools from './ContentTools.animation'
 
 import GeneralTools from './contentToolsSections/GeneralTools'
 import SelectedTools from './contentToolsSections/SelectedTools'
@@ -25,9 +26,11 @@ const ContentTools = () => {
     return <StyledContentTools className={isSelectedToolsShown ? 'selected-tools-shown' : ''}>
         <GeneralTools />
 
-        <SelectedTools />
+        <AnimatedContentTools key={isSelectedToolsShown ? 0 : 1}>
+            <SelectedTools />
 
-        <ListTools />
+            <ListTools />
+        </AnimatedContentTools>
     </StyledContentTools>
 }
 

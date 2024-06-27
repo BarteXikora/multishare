@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const StyledFilterWarning = styled.button`
     position: relative;
+    height: 100%;
     display: flex;
     align-items: center;
     gap: ${(props) => props.theme.margins.medium};
@@ -56,7 +57,7 @@ const StyledFilterWarning = styled.button`
         padding: ${(props) => props.theme.margins.sectionSmall};
         height: auto;
         top: ${(props) => props.theme.margins.small};
-        right: 55px;
+        right: 70px;
         border-radius: ${(props) => props.theme.borderRadiuses.small};
 
         img {

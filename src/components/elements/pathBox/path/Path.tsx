@@ -5,43 +5,48 @@ import { setTreeLocation } from '../../../../store/features/contentSlice/content
 import { pathType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 import StyledPath from './Path.styles'
+import AnimatedPathFragment from './Path.animation'
 import CollapsedPathButton from '../collapsedPathButton/CollapsedPathButton'
 import Button from '../../../ui/button/Button'
 import { IconArrowRight } from '../../../ui/icon/Icons'
+
+import { AnimatePresence } from 'framer-motion'
 
 const Path = ({ path }: { path: pathType[] }) => {
     const dispatch = useDispatch()
 
     console.log(path)
 
-
     return <StyledPath>
         {path.length > 4 && <CollapsedPathButton path={path} />}
 
-        {
-            path.map((pathElement, n) => (
-                <Fragment key={n}>
-                    {
-                        (path.length <= 4 || (path.length > 4 && n > path.length - 3)) ?
-                            <Fragment key={n}>
-                                <Button
-                                    $variant='tertiary'
-                                    className={`path-button ${pathElement.notFound ? 'path-button-not-found' : ''}`}
-                                    onClick={() => dispatch(setTreeLocation(pathElement.id))}
-                                >
-                                    {pathElement.name}
-                                </Button>
+        <AnimatePresence>
 
-                                {n < path.length - 1 && <IconArrowRight />}
-                            </Fragment>
+            {
+                path.map((pathElement, n) => (
+                    <AnimatedPathFragment key={n}>
+                        {
+                            (path.length <= 4 || (path.length > 4 && n > path.length - 3)) ?
+                                <Fragment key={n}>
+                                    <Button
+                                        $variant='tertiary'
+                                        className={`path-button ${pathElement.notFound ? 'path-button-not-found' : ''}`}
+                                        onClick={() => dispatch(setTreeLocation(pathElement.id))}
+                                    >
+                                        {pathElement.name}
+                                    </Button>
 
-                            :
+                                    {n < path.length - 1 && <IconArrowRight />}
+                                </Fragment>
 
-                            <></>
-                    }
-                </Fragment>
-            ))
-        }
+                                :
+
+                                <></>
+                        }
+                    </AnimatedPathFragment>
+                ))
+            }
+        </AnimatePresence>
     </StyledPath>
 }
 

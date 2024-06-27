@@ -3,8 +3,11 @@ import { setTreeLocation } from '../../../../store/features/contentSlice/content
 import { pathType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 import StyledCurrentFolderButton from './CurrentFolderButton.styles'
+import AnimatedCurrentFolderButton from './CurrentFolderButton.animation'
 import Button from '../../../ui/button/Button'
 import { IconFolder } from '../../../ui/icon/Icons'
+
+import { AnimatePresence } from 'framer-motion'
 
 const CurrentFolderButton = ({ path }: { path: pathType[] }) => {
     const dispatch = useDispatch()
@@ -13,9 +16,14 @@ const CurrentFolderButton = ({ path }: { path: pathType[] }) => {
         buttonOptions={{ $variant: 'tertiary' }}
         showArrow={false}
 
-        buttonContent={<span className={path[path.length - 1]?.notFound ? 'path-button-not-found' : ''}>
-            {path[path.length - 1]?.name || ''}
-        </span>}
+        buttonContent={<AnimatePresence>
+            <AnimatedCurrentFolderButton key={path[path.length - 1]?.name || ''}>
+                <span className={path[path.length - 1]?.notFound ? 'path-button-not-found' : ''}>
+                    {path[path.length - 1]?.name || ''}
+                </span>
+            </AnimatedCurrentFolderButton>
+        </AnimatePresence>
+        }
 
         dropdownContent={<>{
             path.map((pathElement, n) => {

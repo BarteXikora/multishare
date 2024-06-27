@@ -17,7 +17,6 @@ const PathBox = () => {
     const projectName = useSelector(state => state.user.status === 'READY' ? state.user.project.selectedProject.name : 'Folder główny')
     const currentPath = useSelector(state => state.content.currentPath)
     const displayType = useSelector(state => state.content.displayType)
-    const filter = useSelector(state => state.content.filter)
 
     const [shortenPath, setShortenPath] = useState<pathType[]>([])
 
@@ -54,11 +53,9 @@ const PathBox = () => {
             }
         </section>
 
-        {
-            (filter.time || filter.type || filter.star) && <section className='warning-section'>
-                <FilterWarning />
-            </section>
-        }
+        <section className='warning-section'>
+            <FilterWarning />
+        </section>
     </StyledPathBox>
 }
 

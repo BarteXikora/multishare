@@ -3,7 +3,8 @@ import { toggle as toggleSideMenu } from '../../../store/features/sideMenuSlice/
 import { toggle as toggleDetailsSection } from '../../../store/features/detailsSectionSlice/detailsSectionSlice'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 
-import StyledCourtain from './Courtain.styles'
+import AnimatedCourtain from './Courtain.animation'
+import { AnimatePresence } from 'framer-motion'
 
 const Courtain = () => {
     const isSideMenuShown = useSelector(state => state.sideMenu.isShown)
@@ -12,20 +13,23 @@ const Courtain = () => {
 
     const dispatch = useDispatch()
 
-    return <StyledCourtain
-        className={`
-            ${isDetailsSectionShown && 'shown-details-section'} 
-            ${isSideMenuShown && 'shown-side-menu'}
-            ${isWindowShown && 'shown-window'}
-        `}
+    return <AnimatePresence>
+        {
+            (isSideMenuShown || isDetailsSectionShown || isWindowShown) && <AnimatedCourtain
+                className={`
+                    ${isDetailsSectionShown && 'shown-details-section'} 
+                    ${isSideMenuShown && 'shown-side-menu'}
+                    ${isWindowShown && 'shown-window'}
+                `}
 
-        onClick={() => {
-            dispatch(toggleSideMenu(false))
-            dispatch(toggleDetailsSection(false))
-            dispatch(closeWindow())
-        }}
-
-    ></StyledCourtain>
+                onClick={() => {
+                    dispatch(toggleSideMenu(false))
+                    dispatch(toggleDetailsSection(false))
+                    dispatch(closeWindow())
+                }}
+            />
+        }
+    </AnimatePresence>
 }
 
 export default Courtain

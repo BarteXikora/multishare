@@ -1,25 +1,34 @@
 import { displayTypeType } from '../../../../store/features/contentSlice/contentSlice.types'
 
 import StyledTitle from './Title.styles'
+import { AnimatedIcon, AnimatedTitle } from './Title.animation'
 import { IconFiles, IconTrash } from '../../../ui/icon/Icons'
 
 const Title = ({ displayType }: { displayType: displayTypeType }) => {
     return <StyledTitle>
-        {
-            displayType === 'FILES' && <>
-                <IconFiles $outline />
+        <AnimatedIcon>
+            {
+                displayType === 'FILES' ?
+                    <IconFiles $outline />
+                    :
+                    displayType === 'TRASH' ?
+                        <IconTrash $outline />
+                        :
+                        <></>
+            }
+        </AnimatedIcon>
 
-                <h2>Wszystkie pliki:</h2>
-            </>
-        }
-
-        {
-            displayType === 'TRASH' && <>
-                <IconTrash $outline />
-
-                <h2>Kosz:</h2>
-            </>
-        }
+        <AnimatedTitle key={displayType}>
+            {
+                displayType === 'FILES' ?
+                    'Wszystkie pliki:'
+                    :
+                    displayType === 'TRASH' ?
+                        'Kosz:'
+                        :
+                        ''
+            }
+        </AnimatedTitle>
     </StyledTitle>
 }
 

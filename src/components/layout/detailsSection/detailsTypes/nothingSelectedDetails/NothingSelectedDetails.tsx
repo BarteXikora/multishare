@@ -6,28 +6,25 @@ import getProjectIcon from '../../../../../functions/getProjectIcon/getProjectIc
 import { projectType } from '../../../../../store/features/userSlice/userSlice.types'
 
 type NothingSelectedDetailsType = {
-    isHomeFolder: boolean
     project: projectType | null
 }
 
-const NothingSelectedDetails = ({ isHomeFolder, project }: NothingSelectedDetailsType) => {
+const NothingSelectedDetails = ({ project }: NothingSelectedDetailsType) => {
+    if (!project) return null
+
     return <StyledNothingSelectedDetails>
-        {
-            (isHomeFolder && project) && <>
-                <PreviewSection
-                    type={getProjectIcon(project.icon).type}
-                    image={getProjectIcon(project.icon).content}
-                    imageAltText='Projekt'
-                    isStar={false}
-                />
+        <PreviewSection
+            type={getProjectIcon(project.icon).type}
+            image={getProjectIcon(project.icon).content}
+            imageAltText='Projekt'
+            isStar={false}
+        />
 
-                <NameSection name={project.name} />
+        <NameSection name={project.name} />
 
-                <div className="separator">
-                    <hr />
-                </div>
-            </>
-        }
+        <div className="separator">
+            <hr />
+        </div>
 
         <DropSection />
     </StyledNothingSelectedDetails>

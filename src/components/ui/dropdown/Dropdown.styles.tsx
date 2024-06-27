@@ -4,8 +4,8 @@ const StyledDropdown = styled.div`
     position: relative;
     
     .dropdown-content {
-        display: none;
         position: absolute;
+        display: flex;
         background-color: ${(props) => props.theme.colors.white};
         color: ${(props) => props.theme.colors.black};
         padding: ${(props) => props.theme.margins.sectionSmall};
@@ -21,15 +21,9 @@ const StyledDropdown = styled.div`
         transition: ${(props) => props.theme.transition};
     }
 
-    &.dropdown-open {
-        .dropdown-content {
-            display: flex;
-        }
-
-        .icon-arrow {
-            transform: scaleY(-1);
-        }
-    }
+    &.dropdown-open .icon-arrow {
+        transform: scaleY(-1);
+    } 
 `
 
 export default StyledDropdown

@@ -3,9 +3,12 @@ import { useSelector, useDispatch } from '../../../store/store'
 import { removeFiles } from '../../../store/features/uploadListSlice/uploadListSlice'
 
 import StyledUploadList from './UploadList.styles'
+import { AnimatedUploadMainList } from './UploadList.animation'
 import Button from '../../ui/button/Button'
 import CircleProgress from '../../ui/circleProgress/CircleProgress'
 import { IconUpload, IconArrowDown, IconOK } from '../../ui/icon/Icons'
+
+import { AnimatePresence } from 'framer-motion'
 
 const UploadList = () => {
     const dispatch = useDispatch()
@@ -58,34 +61,40 @@ const UploadList = () => {
             }
         </section>
 
-        <section className="main">
+        <AnimatePresence>
             {
-                uploadList.map(file => <div key={file.uploadId} className="file">
-                    <div className='file-name'>
-                        {file.name}<span className='extension'>.{file.extension.toLocaleLowerCase()}</span>
-                    </div>
-
-                    <div
-                        className='status'
-                        title={
-                            file.status === 'WAITING' ?
-                                'Oczekuje...' : file.status === 'UPLOADING' ?
-                                    `(${file.uploadPercent}%) - Przesyłanie...` : 'Przesłano'
-                        }
-                    >
+                !(isCollapsed || isAllDone) && <AnimatedUploadMainList>
+                    <section className="main">
                         {
-                            file.status === 'WAITING' ?
-                                null // <img src={iconWaiting} alt='Oczekuje...' />
-                                :
-                                file.status === 'UPLOADING' ?
-                                    <CircleProgress $percent={file.uploadPercent} />
-                                    :
-                                    <IconOK $color='correct' />
+                            uploadList.map(file => <div key={file.uploadId} className="file">
+                                <div className='file-name'>
+                                    {file.name}<span className='extension'>.{file.extension.toLocaleLowerCase()}</span>
+                                </div>
+
+                                <div
+                                    className='status'
+                                    title={
+                                        file.status === 'WAITING' ?
+                                            'Oczekuje...' : file.status === 'UPLOADING' ?
+                                                `(${file.uploadPercent}%) - Przesyłanie...` : 'Przesłano'
+                                    }
+                                >
+                                    {
+                                        file.status === 'WAITING' ?
+                                            null // <img src={iconWaiting} alt='Oczekuje...' />
+                                            :
+                                            file.status === 'UPLOADING' ?
+                                                <CircleProgress $percent={file.uploadPercent} />
+                                                :
+                                                <IconOK $color='correct' />
+                                    }
+                                </div>
+                            </div>)
                         }
-                    </div>
-                </div>)
+                    </section>
+                </AnimatedUploadMainList>
             }
-        </section>
+        </AnimatePresence>
     </StyledUploadList>
 }
 
