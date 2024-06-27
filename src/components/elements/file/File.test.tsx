@@ -13,6 +13,7 @@ const _fileDefaultProps = {
     onContextMenu: () => null,
     onDoubleClick: () => null,
     onTouchStart: () => null,
+    onTouchMove: () => null,
     onTouchEnd: () => null,
     onMouseDown: () => null,
     onMouseMove: () => null,
