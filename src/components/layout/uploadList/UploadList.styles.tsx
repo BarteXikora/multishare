@@ -77,13 +77,9 @@ const StyledUploadList = styled.div`
         .bar {
             border-radius: ${(props) => props.theme.borderRadiuses.big};
 
-            button img {
+            button svg {
                 transform: rotateZ(180deg);
             }
-        }
-
-        .main {
-            height: 0;
         }
     }
 
