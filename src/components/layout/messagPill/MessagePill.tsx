@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { useSelector } from '../../../store/store'
 
-import StyledMessagePill from './MssagePill.styles'
+import AnimatedMessagePill from './MessagePill.animation'
+
+import { AnimatePresence } from 'framer-motion'
 
 const MessagePill = () => {
     const messages = useSelector(state => state.user.status === 'READY' && state.user.messages)
@@ -21,9 +23,11 @@ const MessagePill = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [messages])
 
-    if (!visibleMessage) return null
-
-    return <StyledMessagePill>{visibleMessage}</StyledMessagePill>
+    return <AnimatePresence>
+        {
+            visibleMessage && <AnimatedMessagePill>{visibleMessage}</AnimatedMessagePill>
+        }
+    </AnimatePresence>
 }
 
 export default MessagePill
