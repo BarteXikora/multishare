@@ -121,6 +121,10 @@ const StyledContentTools = styled.div`
         &.selected-tools-shown {
             width: 100%;
             padding: ${(props) => props.theme.margins.small + ' ' + props.theme.margins.medium};
+
+            button {
+                padding: ${(props) => props.theme.margins.small};
+            }
         }
 
         .general-tools {
