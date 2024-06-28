@@ -61,9 +61,23 @@ const StyledProject = styled(Button)`
         }
     }
 
+    .mobile-icon {
+        display: none;
+    }
+
     @media (max-width: ${(props) => props.theme.screenBreakpoints.smallerMobile}) {
-        .icon {
-            width: 80px;
+        padding: ${(props) => props.theme.margins.sectionMedium};
+        display: flex;
+        align-items: center;
+        gap: 0;
+
+        .mobile-icon {
+            display: flex;
+            padding: 0 ${(props) => props.theme.borderRadiuses.small};
+        }
+
+        .preview {
+            display: none;
         }
 
         .name p {
