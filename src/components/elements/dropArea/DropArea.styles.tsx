@@ -116,6 +116,31 @@ const StyledDropArea = styled.div`
         .heading-mobile{
             display: inline;
         }
+
+        .content {
+            height: auto !important;
+        }
+
+        .selected-files {
+            margin: 0;
+        }
+
+        .file-input {
+            position: relative;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+        }
+
+        .actions {
+            display: flex;
+            bottom: 0;
+            gap: ${(props) => props.theme.margins.small};
+
+            button {
+                width: 100%;
+            }
+        }
     }
 `
 
