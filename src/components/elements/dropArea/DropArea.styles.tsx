@@ -103,6 +103,20 @@ const StyledDropArea = styled.div`
             gap: ${(props) => props.theme.margins.small};
         }
     }
+
+    .heading-mobile{
+        display: none;
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        .section-image, .heading {
+            display: none;
+        }
+
+        .heading-mobile{
+            display: inline;
+        }
+    }
 `
 
 export default StyledDropArea

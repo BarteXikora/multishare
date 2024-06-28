@@ -111,6 +111,10 @@ const DropArea = ({ filesState, locationState, upload, showLocationSelector = tr
 
                     <h3 className='heading'>Upuść pliki tutaj, aby dodać je na dysk!</h3>
 
+                    <h3 className="heading-mobile">
+                        Prześlij pliki...
+                    </h3>
+
                     {
                         showSelectButton && <div className='actions'>
                             <Button onClick={() => inputRef.current?.dispatchEvent(new MouseEvent('click'))}>
