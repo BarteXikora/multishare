@@ -24,6 +24,7 @@ const StyledDetailsSection = styled.div`
 
         .main {
             height: 100%;
+            overflow: auto;
         }
     }
 
@@ -50,6 +51,27 @@ const StyledDetailsSection = styled.div`
         .animated-content {
             height: calc(100vh - (${(props) => props.theme.margins.medium} * 2));
             margin: ${(props) => props.theme.margins.sectionMedium};
+        }
+    }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.smallerMobile}) {
+        .animated-content {
+            width: 100%;
+            height: 100svh;
+            margin: 0;
+            border-radius: 0;
+
+            .close-button {
+                top: 0;
+                right: 0;
+                left: auto;
+                z-index: 2000;
+                margin: 0;
+                padding: ${(props) => props.theme.margins.sectionMedium};
+                border-top-right-radius: 0;
+                border-top-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
         }
     }
 `

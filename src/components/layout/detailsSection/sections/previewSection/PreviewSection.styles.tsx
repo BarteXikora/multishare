@@ -55,6 +55,15 @@ const StyledPreviewSection = styled.div`
             border-radius: ${(props) => props.theme.borderRadiuses.big} 0 0 0;
         }
     }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.smallerMobile}) {
+        border-radius: 0;
+        aspect-ratio: 4/1;
+
+        .image-section {
+            border-radius: 0;
+        }
+    }
 `
 
 export default StyledPreviewSection
