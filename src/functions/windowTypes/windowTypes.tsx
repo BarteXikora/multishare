@@ -8,6 +8,7 @@ import CanNotOpenInTrashWindow from '../../components/windows/canNotOpenInTrashW
 import RenameWindow from '../../components/windows/renameWindow/RenameWindow'
 import MoveWindow from '../../components/windows/moveWindow/MoveWindow'
 import UploadWindow from '../../components/windows/uploadWindow/UploadWindow'
+import ToolsWindow from '../../components/windows/toolsWindow/ToolsWindow'
 import SortWindow from '../../components/windows/sortWindow/SortWindow'
 import FilterWindow from '../../components/windows/filterWindow/FilterWindow'
 import DateRangeWindow from '../../components/windows/dateRangeWindow/DateRangeWindow'
@@ -24,7 +25,8 @@ const windowTypes: Record<windowsList, { title: string, body: ReactNode | null }
     'RENAME': { title: 'Zmień nazwę', body: <RenameWindow /> },
     'SEARCH': { title: 'Wyszukaj', body: <SearchWindow /> },
     'SORT': { title: 'Sortuj zawartość', body: <SortWindow /> },
-    'UPLOAD': { title: 'Prześlij na dysk', body: <UploadWindow /> }
+    'UPLOAD': { title: 'Prześlij na dysk', body: <UploadWindow /> },
+    'TOOLS': { title: 'Narzędzia', body: <ToolsWindow /> }
 }
 
 export default windowTypes
