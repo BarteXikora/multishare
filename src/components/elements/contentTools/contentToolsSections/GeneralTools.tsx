@@ -2,8 +2,6 @@ import { useDispatch, useSelector } from '../../../../store/store'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 
 import Button from '../../../ui/button/Button'
-import Dropdown from '../../../ui/dropdown/Dropdown'
-import ToolsDropdown from '../elements/ToolsDropdown'
 import { IconUpload, IconNewFolder, IconTools } from '../../../ui/icon/Icons'
 
 const GeneralTools = () => {
@@ -17,6 +15,10 @@ const GeneralTools = () => {
 
     const handleCreateFolderWindow = () => {
         dispatch(showWindow('CREATE_NEW_FOLDER'))
+    }
+
+    const handleToolsWindow = () => {
+        dispatch(showWindow('TOOLS'))
     }
 
     return <section className="general-tools">
@@ -34,15 +36,9 @@ const GeneralTools = () => {
             </Button>
         </div>
 
-        <Dropdown
-            className='open-tools-buttons'
-            showArrow={false}
-            buttonContent={<IconTools />}
-            dropdownContent={<ToolsDropdown
-                uploadHereDisabled={displayType === 'TRASH'}
-                createNewFolderDisabled={displayType !== 'TREE'}
-            />}
-        />
+        <Button className='open-tools-buttons' onClick={handleToolsWindow}>
+            <IconTools />
+        </Button>
     </section>
 }
 
