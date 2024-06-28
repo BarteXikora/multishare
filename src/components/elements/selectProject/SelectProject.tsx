@@ -34,13 +34,15 @@ const SelectProject = () => {
             <IconArrowDown />
         </Button>
 
-        <Button className='mobile-button' $variant='secondary' $size='big' onClick={handleClick}>
-            <div className="project-name">{getShortenName(projectName, 30)}</div>
+        <div className="mobile-button">
+            <Button $variant='secondary' $size='big' className='project-name' onClick={() => dispatch(setTreeLocation(-1))}>
+                {getShortenName(projectName, 30)}
+            </Button>
 
-            <div className="icon-arrow">
-                <IconArrowDown />
-            </div>
-        </Button>
+            <Button $variant='secondary' $size='big' className='icon-arrow' onClick={handleClick}>
+                <IconArrowDown $color='dark' />
+            </Button>
+        </div>
     </StyledSelectProject>
 }
 
