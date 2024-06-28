@@ -99,6 +99,14 @@ const StyledUploadList = styled.div`
         bottom: 0;
         right: 0;
         width: 100%;
+
+        .main {
+            border-radius: 0;
+        }
+
+        &.collapsed .bar {
+            border-radius: ${(props) => props.theme.borderRadiuses.big + ' ' + props.theme.borderRadiuses.big + ' 0 0'};
+        }
     }
 `
 
