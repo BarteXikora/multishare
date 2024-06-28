@@ -74,7 +74,7 @@ const SortWindow = () => {
         </section>
 
         <section className="actions">
-            <Button $variant='secondary' onClick={() => disptach(closeWindow())}>
+            <Button $variant='secondary' onClick={() => disptach(closeWindow())} className='no-mobile-button'>
                 Anuluj
             </Button>
 

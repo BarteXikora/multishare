@@ -8,7 +8,7 @@ import StyledToolsWindow from './ToolsWindow.styles'
 import Button from '../../ui/button/Button'
 import {
     IconUpload, IconNewFolder, IconOK, IconSort,
-    IconFilter, IconDisplay, IconList, IconClose
+    IconFilter, IconDisplay, IconList
 
 } from '../../ui/icon/Icons'
 
@@ -91,14 +91,6 @@ const ToolsWindow = () => {
                 <IconList $color='dark' />
 
                 Wyświetl: Lista
-            </Button>
-        </section>
-
-        <section className="actions">
-            <Button $variant='secondary'>
-                <IconClose $color='dark' />
-
-                Anuluj
             </Button>
         </section>
     </StyledToolsWindow >
