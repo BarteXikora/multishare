@@ -12,7 +12,7 @@ const StyledBodyColumns = styled.div`
         padding: ${(props) => props.theme.margins.sectionBig};
         padding-top: 0;
         padding-right: 0;
-        min-height: calc(100vh - 98px);
+        min-height: 100%;
         box-sizing: border-box;
     }
 
@@ -39,11 +39,11 @@ const StyledBodyColumns = styled.div`
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
-        padding-top: 74px;
+        padding-top: calc(30px +  ${(props) => props.theme.margins.small});
         
         .main-column {
             padding: ${(props) => props.theme.margins.sectionMedium};
-            min-height: calc(100vh - 74px);
+            min-height: 100%;
         }
     }
 `

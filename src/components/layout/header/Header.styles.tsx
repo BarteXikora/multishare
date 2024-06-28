@@ -11,7 +11,8 @@ const StyledHeader = styled.header`
     z-index: 1000;
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
-        top: 74px;
+        padding-top: ${(props) => props.theme.margins.small};
+        top: 62px;
     }
 `
 
