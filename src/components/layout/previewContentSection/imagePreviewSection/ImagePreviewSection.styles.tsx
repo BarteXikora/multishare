@@ -34,6 +34,12 @@ const StyledImagePreviewSection = styled.div`
             font-size: ${(props) => props.theme.fontSizes.subtitle};
         }
     }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        .error {
+            text-align: center;
+        }
+    }
 `
 
 export default StyledImagePreviewSection
