@@ -7,9 +7,9 @@ const AnimatedDetailsSction = ({ children }: { children: ReactNode }) => {
 
     return <motion.div
         className='animated-content'
-        initial={screenNumberSize < 4 && { x: 350 }}
+        initial={screenNumberSize === 0 ? { x: '100vw' } : screenNumberSize < 4 ? { x: 350 } : {}}
         animate={screenNumberSize < 4 && { x: 0 }}
-        exit={{ x: 350 }}
+        exit={screenNumberSize === 0 ? { x: '100vw' } : { x: 350 }}
         transition={{ duration: .1, animate: { ease: 'easeOut' }, exit: { ease: 'easeIn' } }}
     >
 
