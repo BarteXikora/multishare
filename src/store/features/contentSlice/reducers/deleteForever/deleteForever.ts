@@ -1,4 +1,4 @@
-import { PayloadAction } from '@reduxjs/toolkit'
+import { PayloadAction, current } from '@reduxjs/toolkit'
 import { contentStateType } from '../../contentSlice.types'
 
 const deleteForever = (state: contentStateType, action: PayloadAction<{ folders: number[], files: number[] }>) => {
@@ -8,7 +8,7 @@ const deleteForever = (state: contentStateType, action: PayloadAction<{ folders:
     let currentContent = { ...state.loadedContent }
 
     data.folders.forEach(folderId => {
-        let found = currentContent.content.folders.find(f => f.id = folderId)
+        let found = currentContent.content.folders.find(f => f.id === folderId)
         if (found) return currentContent.content.folders.splice(currentContent.content.folders.indexOf(found), 1)
 
         found = currentContent.trash.view.folders.find(f => f.id === folderId)
@@ -19,7 +19,7 @@ const deleteForever = (state: contentStateType, action: PayloadAction<{ folders:
     })
 
     data.files.forEach(fileId => {
-        let found = currentContent.content.files.find(f => f.id = fileId)
+        let found = currentContent.content.files.find(f => f.id === fileId)
         if (found) return currentContent.content.files.splice(currentContent.content.files.indexOf(found), 1)
 
         found = currentContent.trash.view.files.find(f => f.id === fileId)
@@ -30,6 +30,8 @@ const deleteForever = (state: contentStateType, action: PayloadAction<{ folders:
     })
 
     state.loadedContent = { ...currentContent }
+
+    console.log(current(currentContent.trash), action.payload)
 }
 
 export default deleteForever
