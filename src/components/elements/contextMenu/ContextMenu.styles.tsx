@@ -1,14 +1,12 @@
 import styled from 'styled-components'
 
 const StyledContextMenu = styled.div`
-    position: absolute;
+    position: fixed;
     display: flex;
-    /* gap: ${(props) => props.theme.margins.small}; */
     gap: 0;
     flex-direction: column;
     background-color: ${(props) => props.theme.colors.white};
     color: ${(props) => props.theme.colors.black};
-    /* padding: ${(props) => props.theme.margins.sectionMedium}; */
     box-sizing: border-box;
     white-space: nowrap;
     border-radius: ${(props) => props.theme.borderRadiuses.small};
@@ -26,7 +24,6 @@ const StyledContextMenu = styled.div`
 
     hr {
         width: 100%;
-        /* margin: ${(props) => props.theme.margins.medium} 0;  */
     }
 `
 
