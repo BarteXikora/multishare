@@ -5,7 +5,7 @@ import LoadingContent from '../../elements/loadingContent/LoadingContent'
 import { useSelector, useDispatch } from '../../../store/store'
 import { useNavigate } from 'react-router-dom'
 import { projectType } from '../../../store/features/userSlice/userSlice.types'
-import { resetContent } from '../../../store/features/contentSlice/contentSlice'
+import { resetContent, setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
 import { selectProject } from '../../../store/features/userSlice/userSlice'
 
 const ProjectsSection = () => {
@@ -19,6 +19,7 @@ const ProjectsSection = () => {
 
         dispatch(selectProject(project.id))
         navigate('/project')
+        dispatch(setTreeLocation(-1))
     }
 
     return <StyledProjectsSection>
