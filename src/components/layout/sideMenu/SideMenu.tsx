@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { toggle } from '../../../store/features/sideMenuSlice/sideMenuSlice'
-import { useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import useScreenSize from '../../../functions/useScreenSize/useScreenSize'
+import { setFilter, setSearch, setSelected, setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
 
 import AnimatedSideMenu from './SideMenu.animation'
 import StyledSideMenu from './SideMenu.styles'
@@ -19,6 +20,7 @@ import logo from '../../../assets/images/img-logo.svg'
 const SideMenu = () => {
     const isMenuShown = useSelector(state => state.sideMenu.isShown)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const location = useLocation().pathname
     const { screenNumberSize } = useScreenSize()
@@ -29,13 +31,22 @@ const SideMenu = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [screenNumberSize])
 
+    const handleLogoClick = () => {
+        navigate('/project')
+
+        dispatch(setTreeLocation(-1))
+        dispatch(setSearch(''))
+        dispatch(setFilter({ time: null, type: null, star: null }))
+        dispatch(setSelected({ folders: [], files: [], selectionStart: null }))
+    }
+
     return <StyledSideMenu className={`${isMenuShown ? 'shown' : ''}`}>
         <AnimatePresence>
             {
                 (screenNumberSize >= 3 || isMenuShown) && <AnimatedSideMenu>
                     <div className="container">
                         <section className='logo'>
-                            <Button $variant='tertiary'>
+                            <Button $variant='tertiary' onClick={handleLogoClick}>
                                 <img src={logo} alt="Logo multishare" />
                             </Button>
 
