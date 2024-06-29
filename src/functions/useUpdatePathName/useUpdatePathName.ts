@@ -32,7 +32,7 @@ const useUpdatePathName = () => {
             } else newPathName += '/home'
         }
 
-        navigate(newPathName)
+        if (newPathName !== location.pathname) navigate(newPathName)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentFolder])
