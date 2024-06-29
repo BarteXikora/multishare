@@ -7,9 +7,9 @@ const AnimatedSideMenu = ({ children }: { children: ReactNode }) => {
 
     return <motion.div
         className='animated-content'
-        initial={screenNumberSize < 3 && { x: -300 }}
+        initial={screenNumberSize === 0 ? { x: '-100vw' } : screenNumberSize < 3 ? { x: -300 } : {}}
         animate={screenNumberSize < 3 && { x: 0 }}
-        exit={{ x: -300 }}
+        exit={screenNumberSize === 0 ? { x: '-100vw' } : { x: -300 }}
         transition={{ duration: .1, animate: { ease: 'easeOut' }, exit: { ease: 'easeIn' } }}
     >
 
