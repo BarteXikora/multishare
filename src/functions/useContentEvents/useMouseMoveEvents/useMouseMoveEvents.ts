@@ -11,6 +11,7 @@ const useMouseMoveEvents = () => {
     const dispatch = useDispatch()
     const selected = useSelector(state => state.content.selected)
     const onMove = useSelector(state => state.content.onMove)
+    const displayType = useSelector(state => state.content.displayType)
 
     const [isMouseDown, setIsMouseDown] = useState<boolean>(false)
     const [startMousePosition, setStartMousePosition] = useState<[number | null, number | null]>([null, null])
@@ -34,6 +35,8 @@ const useMouseMoveEvents = () => {
     }, [isMouseDown])
 
     const handleCheckDistance = (newPosition: [number | null, number | null]) => {
+        if (displayType !== 'TREE') return
+
         if (startMousePosition[0] === null || startMousePosition[1] === null) return
         if (newPosition[0] === null || newPosition[1] === null) return
 
