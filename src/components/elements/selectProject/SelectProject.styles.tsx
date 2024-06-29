@@ -34,28 +34,27 @@ const StyledSelectProject = styled.section`
 
     .mobile-button {
         display: none;
-        white-space: nowrap;
         width: 100%;
-        max-width: 50vw;
-        overflow: hidden;
-        padding: 0;
         height: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+        max-width: 50vw;
+        background-color: ${(props) => props.theme.colors.gray2};
+        border-radius: ${(props) => props.theme.borderRadiuses.big};
+        transition: ${(props) => props.theme.transition};
 
-        &:hover .icon-arrow {
+        &:has(.project-name:hover) {
             background-color: ${(props) => props.theme.colors.gray3};
         }
 
         .project-name {
-            width: 100%;
-            padding: ${(props) => props.theme.margins.sectionMedium}; 
-        }
-
-        .icon-arrow {
-            display: flex;
-            background-color: ${(props) => props.theme.colors.gray2}; 
-            height: 100%;
-            padding: 0 ${(props) => props.theme.margins.medium};
-            transition: ${(props) => props.theme.transition};
+            width: 100% !important;
+            min-width: 25vw;
+            overflow: hidden;
+            font-size: ${(props) => props.theme.fontSizes.subtitle};
+            font-weight: bold;
+            white-space: nowrap;
+            background-color: transparent;
         }
     }
 
@@ -68,13 +67,6 @@ const StyledSelectProject = styled.section`
 
         .mobile-button {
             display: flex;
-            font-weight: bold;
-            font-size: ${(props) => props.theme.fontSizes.subtitle};
-
-            .project-name {
-                width: auto;
-                overflow: hidden;
-            }
         }
     }
 

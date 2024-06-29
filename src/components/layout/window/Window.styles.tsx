@@ -131,15 +131,36 @@ const StyledWindow = styled.div`
             max-width: 90vw;
             margin-top: ${(props) => props.theme.margins.big};
         }
+
+        .actions {
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            padding: ${(props) => props.theme.margins.big + ' ' + props.theme.margins.small} !important;
+            box-sizing: border-box;
+            background-color: ${(props) => props.theme.colors.white};
+            flex-direction: column;
+            border-top: 1px solid ${(props) => props.theme.colors.gray3};
+
+            button {
+                padding: ${(props) => props.theme.margins.sectionMedium};
+
+                &.no-mobile-button {
+                    display: none;
+                }
+            }
+        }
+
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.smallerMobile}) {
         .container {
             min-width: 100%;
             max-width: 100%;
-            height: 100%;
+            height: 100svh;
             margin-top: 0;
             border-radius: 0;
+            box-sizing: border-box;
         } 
 
         .bar, .bar .close-button {
@@ -148,9 +169,9 @@ const StyledWindow = styled.div`
 
         .content {
             box-sizing: border-box;
-            max-height: calc(100vh - 60px);
-            height: calc(100vh - 60px);
-
+            max-height: calc(100svh - 50px);
+            height: calc(100svh - 50px);
+            
             .columns {
                 display: flex;
                 flex-direction: column;

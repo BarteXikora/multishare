@@ -10,6 +10,7 @@ const _ListFolderElementTypeProps = {
     onClick: () => null,
     onDoubleClick: () => null,
     onTouchStart: () => null,
+    onTouchMove: () => null,
     onTouchEnd: () => null
 }
 

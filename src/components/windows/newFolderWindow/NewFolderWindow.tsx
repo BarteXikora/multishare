@@ -7,7 +7,7 @@ import { folderType } from '../../../store/features/contentSlice/contentSlice.ty
 
 import StyledNewFolderWindow from './NewFolderWindow.styles'
 import InputButton from '../../ui/inputButton/InputButton'
-import { IconNewFolder } from '../../ui/icon/Icons'
+import { IconNewFolder, IconArrowRight } from '../../ui/icon/Icons'
 
 const NewFolderWindow = () => {
     const dispatch = useDispatch()
@@ -78,7 +78,7 @@ const NewFolderWindow = () => {
 
                 {
                     path.length > 1 && <>
-                        {/* <img src={iconSeparator} alt='/' /> */}
+                        <IconArrowRight $color='dark' />
 
                         <span>...</span>
                     </>
@@ -86,7 +86,7 @@ const NewFolderWindow = () => {
 
                 {
                     path.length > 0 && <>
-                        {/* <img src={iconSeparator} alt='/' /> */}
+                        <IconArrowRight $color='dark' />
 
                         <span>{getShortenName(path[path.length - 1].name, 30)}</span>
                     </>

@@ -12,6 +12,7 @@ const _folderDefaultProps = {
     onContextMenu: () => null,
     onDoubleClick: () => null,
     onTouchStart: () => null,
+    onTouchMove: () => null,
     onTouchEnd: () => null,
     onMouseDown: () => null,
     onMouseUp: () => null,

@@ -2,6 +2,8 @@ import StyledProject from './Project.styles'
 import { projectIconType } from '../../../store/features/userSlice/userSlice.types'
 import getProjectIcon from '../../../functions/getProjectIcon/getProjectIcon'
 
+import { IconProjects } from '../../ui/icon/Icons'
+
 type ProjectType = {
     name: string
     description?: string
@@ -21,6 +23,10 @@ const Project = ({ name, icon, description, onClick, isSelected }: ProjectType) 
         {
             icon?.type === 'LINK' && <div className="preview image" style={{ backgroundImage: `url(${icon.link})` }}></div>
         }
+
+        <div className="mobile-icon">
+            <IconProjects $color='dark' />
+        </div>
 
         <div className="name">
             {isSelected && <div className="selected-pill">Wybrany</div>}

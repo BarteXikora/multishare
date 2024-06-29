@@ -12,8 +12,9 @@ type FolderProps = {
     onClick: (e: React.MouseEvent<HTMLElement>) => void
     onContextMenu: (e: React.MouseEvent<HTMLElement>) => void
     onDoubleClick: () => void
-    onTouchStart: (e: React.TouchEvent<HTMLElement>) => void
-    onTouchEnd: (e: React.TouchEvent<HTMLElement>) => void
+    onTouchStart: () => void
+    onTouchMove: () => void
+    onTouchEnd: () => void
     onMouseDown: (e: React.MouseEvent<HTMLElement>) => void
     onMouseUp: (e: React.MouseEvent<HTMLElement>) => void
     onMouseMove: (e: React.MouseEvent<HTMLElement>) => void
@@ -23,8 +24,8 @@ type FolderProps = {
 
 const Folder = ({
     id, displayName, isStar, isSelected, isOnMove, isTarget,
-    onClick, onContextMenu, onDoubleClick, onTouchStart, onTouchEnd,
-    onMouseDown, onMouseUp, onMouseMove, onMouseEnter, onMouseLeave
+    onClick, onContextMenu, onDoubleClick, onTouchStart, onTouchMove,
+    onTouchEnd, onMouseDown, onMouseUp, onMouseMove, onMouseEnter, onMouseLeave
 }: FolderProps) => {
 
     return <StyledFolder
@@ -36,6 +37,7 @@ const Folder = ({
         onContextMenu={onContextMenu}
         onDoubleClick={onDoubleClick}
         onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
 
         onMouseDown={onMouseDown}

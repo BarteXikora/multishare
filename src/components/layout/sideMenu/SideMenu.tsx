@@ -33,43 +33,44 @@ const SideMenu = () => {
         <AnimatePresence>
             {
                 (screenNumberSize >= 3 || isMenuShown) && <AnimatedSideMenu>
+                    <div className="container">
+                        <section className='logo'>
+                            <Button $variant='tertiary'>
+                                <img src={logo} alt="Logo multishare" />
+                            </Button>
 
-                    <Button className='close-button' $variant='wrong' $size='big' onClick={() => dispatch(toggle(false))}>
-                        <IconClose />
-                    </Button>
+                            <Button className='close-button' $variant='wrong' $size='big' onClick={() => dispatch(toggle(false))}>
+                                <IconClose />
+                            </Button>
+                        </section>
 
-                    <section className='logo'>
-                        <Button $variant='tertiary'>
-                            <img src={logo} alt="Logo multishare" />
-                        </Button>
-                    </section>
+                        <section className='nav-menu'>
+                            {
+                                location === '/projects' ?
+                                    <ProjectsButtons />
+                                    :
+                                    <ContentButtons />
+                            }
+                        </section>
 
-                    <section className='nav-menu'>
-                        {
-                            location === '/projects' ?
-                                <ProjectsButtons />
-                                :
-                                <ContentButtons />
-                        }
-                    </section>
+                        <section className='used-space'>
+                            <UsedSpace />
+                        </section>
 
-                    <section className='used-space'>
-                        <UsedSpace />
-                    </section>
+                        <section>
+                            <Button $variant='tertiary'>
+                                <IconManageProject />
 
-                    <section>
-                        <Button $variant='tertiary'>
-                            <IconManageProject />
+                                Zarządzaj projektem
+                            </Button>
 
-                            Zarządzaj projektem
-                        </Button>
+                            <Button $variant='tertiary'>
+                                <IconAccount />
 
-                        <Button $variant='tertiary'>
-                            <IconAccount />
-
-                            Moje konto
-                        </Button>
-                    </section>
+                                Moje konto
+                            </Button>
+                        </section>
+                    </div>
                 </AnimatedSideMenu>
             }
         </AnimatePresence>

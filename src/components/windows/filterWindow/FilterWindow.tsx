@@ -189,8 +189,6 @@ const FilterWindow = () => {
         </section>
 
         <section className="actions">
-            <Button $variant='secondary' onClick={() => dispatch(closeWindow())}>Anuluj</Button>
-
             <Button
                 $variant='wrong'
                 disabled={!currentFilter.star && !currentFilter.time && !currentFilter.type}

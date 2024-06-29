@@ -16,6 +16,16 @@ const StyledSearchInfo = styled.div`
         align-items: center;
         gap: ${(props) => props.theme.margins.medium};
     }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.smallerMobile}) {
+        .icon, .label {
+            display: none;
+        }
+
+        button {
+            padding: ${(props) => props.theme.margins.sectionMedium};
+        }
+    }
 `
 
 export default StyledSearchInfo

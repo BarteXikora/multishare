@@ -17,7 +17,7 @@ const TrashWarning = ({ isTrashEmpty }: { isTrashEmpty: boolean }) => {
 
     return <StyledTrashWarning>
         <div className='info-box'>
-            <IconInfo $color='dark' />
+            <div className="icon"><IconInfo $color='dark' /></div>
 
             Elementy znajdujące się w koszu będą automatycznie usuwane na zawsze po upływie 30 dni.
         </div>
@@ -27,7 +27,7 @@ const TrashWarning = ({ isTrashEmpty }: { isTrashEmpty: boolean }) => {
                 <Button $variant='wrong' onClick={handleEmptyTrash}>
                     <IconTrash />
 
-                    Opróżnij kosz
+                    <span className="label">Opróżnij kosz</span>
                 </Button>
             </div>
         }

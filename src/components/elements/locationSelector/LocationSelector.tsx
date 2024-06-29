@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useSelector } from '../../../store/store'
 import getCurrentContent from '../../../functions/getCurrentContent/getCurrentContent'
 import { folderDisplayType } from '../../../store/features/contentSlice/contentSlice.types'
+import getIsTouchScreen from '../../../functions/useContentEvents/functions/getIsTouchScreen/getIsTouchScreen'
 
 import StyledLocationSelector from './LocationSelector.styles'
 import Button from '../../ui/button/Button'
@@ -91,8 +92,9 @@ const LocationSelector = (props: locationSelectorType) => {
                     $active={folder.id === selectedFolder}
                     disabled={excluded.includes(folder.id)}
                     className='folder-button'
-                    onClick={() => setSelectedFolder(folder.id)}
-                    onDoubleClick={() => handleOpenFolder(folder.id)}
+                    onClick={() => !getIsTouchScreen() && setSelectedFolder(folder.id)}
+                    onDoubleClick={() => !getIsTouchScreen() && handleOpenFolder(folder.id)}
+                    onTouchEnd={() => { setSelectedFolder(folder.id); handleOpenFolder(folder.id) }}
                 >
                     <IconFolder $color='dark' />
 

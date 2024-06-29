@@ -39,8 +39,12 @@ const StyledContentIconsView = styled.div`
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.smallerMobile}) {
-        .content {
+        .folders-section .content {
             grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        .content {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
     }
 `

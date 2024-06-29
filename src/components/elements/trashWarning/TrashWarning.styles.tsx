@@ -17,6 +17,24 @@ const StyledTrashWarning = styled.div`
         align-items: center;
         gap: ${(props) => props.theme.margins.small};
     }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.smallerMobile}) {
+        .info-box {
+            flex-direction: column;
+
+            .icon {
+                display: none;
+            }
+        }
+
+        button {
+            padding: ${(props) => props.theme.margins.sectionMedium};
+        }
+
+        .label {
+            display: none;
+        }
+    }
 `
 
 export default StyledTrashWarning

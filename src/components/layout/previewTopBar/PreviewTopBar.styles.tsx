@@ -36,24 +36,14 @@ const StyledPreviewTopBar = styled.div`
         }
     }
 
-    .details-button {
-        display: none;
-    }
-
-    .tools-buttons {
-        gap: ${(props) => props.theme.margins.medium};
-        flex-shrink: 0;
-        white-space: nowrap;
-    }
-
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
         padding: ${(props) => props.theme.margins.medium} 0;
 
-        .tools-buttons {
+        .file-name-section {
             gap: ${(props) => props.theme.margins.small};
-
-            .label {
-                display: none;
+            
+            h2 {
+                font-size: ${(props) => props.theme.fontSizes.default};
             }
         }
     }

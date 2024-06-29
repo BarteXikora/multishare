@@ -18,6 +18,8 @@ const StyledLocationSelector = styled.div`
 
         .path-button {
             color: ${(props) => props.theme.colors.white};
+            white-space: nowrap;
+            overflow: hidden;
 
             &:hover {
                 background-color: ${(props) => props.theme.colors.gray6};
@@ -38,6 +40,8 @@ const StyledLocationSelector = styled.div`
 
         button {
             width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
         }
     }
 

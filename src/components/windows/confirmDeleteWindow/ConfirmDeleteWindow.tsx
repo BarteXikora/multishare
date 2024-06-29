@@ -37,7 +37,7 @@ const ConfirmDeleteWindow = () => {
         }
 
         <section className="actions">
-            <Button $variant='secondary' onClick={() => dispatch(closeWindow())}>
+            <Button $variant='secondary' onClick={() => dispatch(closeWindow())} className='no-mobile-button'>
                 Anuluj
             </Button>
 

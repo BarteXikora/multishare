@@ -112,6 +112,7 @@ const StyledContentTools = styled.div`
         position: absolute;
         top: 0;
         right: 0;
+        margin-top: ${(props) => props.theme.margins.small};
         box-sizing: border-box;
         background-color: ${(props) => props.theme.colors.black};
         border-radius: ${(props) => props.theme.borderRadiuses.big};
@@ -120,6 +121,10 @@ const StyledContentTools = styled.div`
         &.selected-tools-shown {
             width: 100%;
             padding: ${(props) => props.theme.margins.small + ' ' + props.theme.margins.medium};
+
+            button {
+                padding: ${(props) => props.theme.margins.small};
+            }
         }
 
         .general-tools {

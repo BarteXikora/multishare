@@ -35,8 +35,8 @@ const StyledTopBar = styled.nav`
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
-        padding: ${(props) => props.theme.margins.sectionMedium};
-        gap: ${(props) => props.theme.margins.medium};
+        padding: ${(props) => props.theme.margins.sectionSmall};
+        gap: ${(props) => props.theme.margins.small};
     }
 `
 

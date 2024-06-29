@@ -39,6 +39,11 @@ const StyledTextPreviewSection = styled.div`
         margin: 0;
         white-space: pre-line;
     }
+
+    @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        padding: ${(props) => props.theme.margins.sectionMedium};
+        margin: ${(props) => props.theme.margins.sectionMedium};
+    }
 `
 
 export default StyledTextPreviewSection

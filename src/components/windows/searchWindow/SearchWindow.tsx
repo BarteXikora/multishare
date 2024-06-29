@@ -31,6 +31,7 @@ const SearchWindow = () => {
                     value={searchValue}
                     onChange={e => setSearchValue(e.target.value)}
                     placeholder={displayType === 'TRASH' ? 'Szukaj w koszu...' : 'Szukaj folderów i plików...'}
+                    autoFocus
                 />
 
                 <Button $size='big' type='submit'>

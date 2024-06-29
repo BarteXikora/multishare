@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { setSelected } from '../../../store/features/contentSlice/contentSlice'
 import useOpenFolder from '../useOpenFolder/useOpenFolder'
@@ -16,6 +16,7 @@ const useMobileEvents = () => {
     const selected = useSelector(state => state.content.selected)
 
     const [touchHoldTimeout, setTouchHoldTimeout] = useState<ReturnType<typeof setTimeout> | null>(null)
+    const isTouchMovingRef = useRef<boolean>(false)
 
     const selectedCnt = (selected: selectedType): number => {
         let cnt = 0
@@ -26,10 +27,15 @@ const useMobileEvents = () => {
         return cnt
     }
 
-    const mobileEvents = (event: React.TouchEvent<HTMLElement>, isTouchStart: boolean, type: elementType, id: number) => {
-        event.preventDefault()
+    const mobileEvents = (
+        action: 'START' | 'END' | 'MOVE',
+        type: elementType,
+        id: number
+    ) => {
 
-        if (isTouchStart) setTouchHoldTimeout(setTimeout(() => {
+        if (action === 'START') setTouchHoldTimeout(setTimeout(() => {
+            if (isTouchMovingRef.current) return
+
             if (selectedCnt(selected) === 0) dispatch(setSelected(getSingleElement(type, id)))
 
             if (touchHoldTimeout) clearTimeout(touchHoldTimeout)
@@ -37,17 +43,25 @@ const useMobileEvents = () => {
 
         }, 500))
 
-        else {
+        else if (action === 'END') {
             if (touchHoldTimeout !== null) {
                 clearTimeout(touchHoldTimeout)
                 setTouchHoldTimeout(null)
 
-                if (selectedCnt(selected) === 0) {
-                    if (type === 'FOLDER') openFolder(id)
-                    else openFile(id)
+                if (!isTouchMovingRef.current) {
+                    if (selectedCnt(selected) === 0) {
+                        if (type === 'FOLDER') openFolder(id, true)
+                        else openFile(id, true)
+                    }
+                    else dispatch(setSelected(getSwitchedElements({ ...selected }, type, id)))
                 }
-                else dispatch(setSelected(getSwitchedElements({ ...selected }, type, id)))
             }
+
+            isTouchMovingRef.current = false
+        }
+
+        else {
+            isTouchMovingRef.current = true
         }
     }
 

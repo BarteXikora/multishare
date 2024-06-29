@@ -36,7 +36,7 @@ const UploadList = () => {
     if (uploadList.length === 0) return null
 
     return <StyledUploadList className={(isCollapsed || isAllDone) ? 'collapsed' : ''}>
-        <section className="bar">
+        <section className="bar" onClick={() => setIsCollapsed(!isCollapsed)}>
             {
                 isAllDone ?
                     <h2>
@@ -54,7 +54,7 @@ const UploadList = () => {
                             Przesyłanie plików...
                         </h2>
 
-                        <Button $variant='tertiary' onClick={() => setIsCollapsed(!isCollapsed)}>
+                        <Button $variant='tertiary'>
                             <IconArrowDown />
                         </Button>
                     </>

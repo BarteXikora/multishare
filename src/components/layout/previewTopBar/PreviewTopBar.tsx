@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom'
 
 import StyledPreviewTopBar from './PreviewTopBar.styles'
 import Button from '../../ui/button/Button'
-import SelectedTools from '../../elements/contentTools/contentToolsSections/SelectedTools'
 import { IconBack } from '../../ui/icon/Icons'
 
 const PreviewTopBar = ({ name, extension }: { name: string, extension: string }) => {
@@ -16,10 +15,6 @@ const PreviewTopBar = ({ name, extension }: { name: string, extension: string })
                 </Button>
 
                 <h2>{name}<span className='extension'>.{extension.toLocaleLowerCase()}</span></h2>
-            </div>
-
-            <div className="tools-sction">
-                <SelectedTools />
             </div>
         </div>
     </StyledPreviewTopBar>
