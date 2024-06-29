@@ -109,6 +109,10 @@ const StyledDropArea = styled.div`
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
+        .section-img {
+            display: none;
+        }
+
         .section-image, .heading {
             display: none;
         }
