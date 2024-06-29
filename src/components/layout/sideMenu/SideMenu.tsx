@@ -38,6 +38,8 @@ const SideMenu = () => {
         dispatch(setSearch(''))
         dispatch(setFilter({ time: null, type: null, star: null }))
         dispatch(setSelected({ folders: [], files: [], selectionStart: null }))
+
+        dispatch(toggle(false))
     }
 
     return <StyledSideMenu className={`${isMenuShown ? 'shown' : ''}`}>

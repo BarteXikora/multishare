@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from '../../../../store/store'
 import { useNavigate } from 'react-router-dom'
 import { setFilter, setSearch } from '../../../../store/features/contentSlice/contentSlice'
+import { toggle } from '../../../../store/features/sideMenuSlice/sideMenuSlice'
 
 import Button from '../../../ui/button/Button'
 import { IconFolder, IconFiles, IconStar, IconTrash } from '../../../ui/icon/Icons'
@@ -26,6 +27,8 @@ const ContentButtons = () => {
 
             dispatch(setFilter({ ...filter, star: true }))
         }
+
+        dispatch(toggle(false))
     }
 
     return <>
