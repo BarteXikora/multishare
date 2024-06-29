@@ -24,7 +24,7 @@ const GeneralTools = () => {
     return <section className="general-tools">
         <div className="tools-buttons">
             <Button disabled={displayType === 'TRASH'} onClick={handleUploadWindow}>
-                <IconUpload />
+                <IconUpload $color={displayType === 'TRASH' ? 'dark' : 'light'} />
 
                 Prześlij pliki
             </Button>
