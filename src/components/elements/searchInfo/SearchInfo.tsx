@@ -1,5 +1,6 @@
 import { useDispatch } from '../../../store/store'
 import { setSearch } from '../../../store/features/contentSlice/contentSlice'
+import getShortenName from '../../../functions/getShortenName/getShortenName'
 
 import StyledSearchInfo from './SearchInfo.styles'
 import Button from '../../ui/button/Button'
@@ -12,15 +13,15 @@ const SearchInfo = ({ search }: { search: string }) => {
 
     return <StyledSearchInfo>
         <div className='info-box'>
-            <IconSearchResults $color='dark' />
+            <div className="icon"><IconSearchResults $color='dark' /></div>
 
-            <span>Wyniki wyszukiwania dla frazy <b>&bdquo;{search}&rdquo;</b>.</span>
+            <span>Wyniki wyszukiwania dla frazy <b>&bdquo;{getShortenName(search, 30)}&rdquo;</b>.</span>
         </div>
 
         <Button $variant='primary' onClick={handleClearSearch}>
             <IconClose />
 
-            Wyczyść wyszukiwanie
+            <span className="label">Wyczyść wyszukiwanie</span>
         </Button>
     </StyledSearchInfo>
 }
