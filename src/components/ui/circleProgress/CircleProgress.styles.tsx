@@ -3,7 +3,7 @@ import { CircleProgressType } from './CircleProgress'
 
 const StyledCircleProgress = styled.div<CircleProgressType>`
     position: relative;
-    background-color: ${(props) => props.theme.colors.gray6};
+    background-color: ${(props) => props.$isWaiting ? props.theme.colors.gray4 : props.theme.colors.gray6};
     width: 18px;
     height: 18px;
     border-radius: 50%;
@@ -13,7 +13,7 @@ const StyledCircleProgress = styled.div<CircleProgressType>`
 
     background: conic-gradient(
         ${(props) => props.theme.colors.correct6} ${(props) => props.$percent}%, 
-        ${(props) => props.theme.colors.gray6} 0
+        ${(props) => props.$isWaiting ? props.theme.colors.gray4 : props.theme.colors.gray6} 0
     );
 
     transition: ${(props) => props.theme.transition};
