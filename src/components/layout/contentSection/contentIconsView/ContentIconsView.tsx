@@ -2,7 +2,6 @@ import { useSelector } from '../../../../store/store'
 
 import StyledContentIconsView from './ContentIconsView.styles'
 import FolderNotFound from '../../../elements/folderNotFound/FolderNotFound'
-import TrashWarning from '../../../elements/trashWarning/TrashWarning'
 import FoldersSection from './foldersSection/FoldersSection'
 import FilesSection from './filesSection/FilesSection'
 import Empty from '../../../elements/empty/Empty'
@@ -17,8 +16,6 @@ const ContentIconsView = () => {
     if (content.notFound) return <StyledContentIconsView><FolderNotFound /></StyledContentIconsView>
 
     return <StyledContentIconsView>
-        {displayType === 'TRASH' && <TrashWarning isTrashEmpty={content.folders.length + content.files.length === 0} />}
-
         {content.folders.length > 0 && <FoldersSection content={content} selected={selected} onMove={onMove} />}
 
         {content.files.length > 0 && <FilesSection content={content} selected={selected} onMove={onMove} displayType={displayType} />}
