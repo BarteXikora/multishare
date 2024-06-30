@@ -28,7 +28,7 @@ const ContentListView = () => {
                             name={folder.name}
                             isStar={folder.star}
                             lastModificationDate={folder.details.lastModificationDate}
-                            isEmpty={folder.insideContent.folders + folder.insideContent.files > 0}
+                            isEmpty={folder.insideContent.folders + folder.insideContent.files === 0}
                             isSelected={selected.folders ? selected.folders.includes(folder.id) : false}
 
                             onClick={e => folderEvents.onClick(e, folder.id)}
