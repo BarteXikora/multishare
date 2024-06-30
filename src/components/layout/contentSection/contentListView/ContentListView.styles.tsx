@@ -49,8 +49,11 @@ const StyledContentListView = styled.div`
         }
 
         .icon-placeholder {
-            width: 26px;
             height: 26px;
+
+            &.offset {
+                width: 26px;
+            }
         }
 
         &.selected {

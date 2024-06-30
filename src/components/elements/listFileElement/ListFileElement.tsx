@@ -37,7 +37,7 @@ const ListFileElement = ({
         onTouchEnd={onTouchEnd}
     >
         <div className='name-column'>
-            {isFolderIconOffset && <div className="icon-placeholder"></div>}
+            <div className={`icon-placeholder ${isFolderIconOffset ? 'offset' : ''}`}></div>
 
             <b>{name}</b>
         </div>
