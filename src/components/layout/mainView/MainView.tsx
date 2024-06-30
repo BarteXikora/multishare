@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { useLocation } from 'react-router-dom'
 import { logIn } from '../../../store/features/userSlice/userSlice'
-import useLocalStorage from '../../../functions/useLocalStorage/useLocalStorage'
+import useLocalStorage from '../../../hooks/useLocalStorage/useLocalStorage'
 import { Outlet } from 'react-router-dom'
 
 import SideMenu from '../sideMenu/SideMenu'

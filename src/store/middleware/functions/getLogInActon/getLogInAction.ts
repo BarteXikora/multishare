@@ -1,5 +1,5 @@
 import getDataFromPathname from '../../../../functions/getDataFromPathname/getDataFromPathname'
-import getFromLocalStorage from '../../../../functions/useLocalStorage/getFromLocalStorage/getFromLocalStorage'
+import getFromLocalStorage from '../../../../hooks/useLocalStorage/getFromLocalStorage/getFromLocalStorage'
 
 const getLogInAction = (action: any) => {
     let projectId = getDataFromPathname(action.payload.pathname).projectId
