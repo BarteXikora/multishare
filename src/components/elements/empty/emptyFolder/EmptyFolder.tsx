@@ -1,6 +1,6 @@
 import { useDispatch } from '../../../../store/store'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
-import useGoBack from '../../../../functions/useGoBack/useGoBack'
+import useGoBack from '../../../../hooks/useGoBack/useGoBack'
 
 import Button from '../../../ui/button/Button'
 import { IconBack, IconUpload } from '../../../ui/icon/Icons'

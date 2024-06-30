@@ -1,4 +1,4 @@
-import useGoBack from '../../../../functions/useGoBack/useGoBack'
+import useGoBack from '../../../../hooks/useGoBack/useGoBack'
 
 import StyledBackButton from './BackButton.styles'
 import AnimatedBackButton from './BackButton.animation'
