@@ -102,12 +102,8 @@ const StyledContentListView = styled.div`
         .list-grid {
             grid-template-columns: 5fr 1fr;
 
-            div {
+            .type-column, .size-column {
                 display: none;
-
-                &.name-column, &.star-column, .icon-placeholder {
-                    display: flex;
-                }
             }
         }
     }
