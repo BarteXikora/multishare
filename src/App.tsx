@@ -11,14 +11,10 @@ import ProjectsPage from './pages/projectsPage/ProjectsPage'
 import FilePage from './pages/filePage/FilePage'
 import NotFoundPage from './pages/notFoundPage/NotFoundPage'
 
-import ScreenSize from './components/__dev/__ScreenSize'
-
 const App = () => {
   return (
     <Provider store={store}>
       <AppTheme>
-        <ScreenSize />
-
         <BrowserRouter>
           <Routes>
             <Route element={<MainView />}>
