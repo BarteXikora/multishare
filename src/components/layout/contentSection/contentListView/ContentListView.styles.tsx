@@ -26,6 +26,24 @@ const StyledContentListView = styled.div`
         font-weight: bold;
         border-radius: ${(props) => props.theme.borderRadiuses.big + ' ' + props.theme.borderRadiuses.big} 0 0;
 
+        div {
+            position: relative;
+
+            &:not(:first-of-type) {
+                padding-left: ${(props) => props.theme.margins.medium};
+            }
+
+            &:not(:last-of-type)::after {
+                content: '';
+                position: absolute;
+                display: flex;
+                height: 20px;
+                width: 0;
+                right: 0;
+                border-right: 2px solid ${(props) => props.theme.colors.gray4};
+            }
+        }
+
         .icon-star {
             width: 20px;
         }
@@ -104,6 +122,10 @@ const StyledContentListView = styled.div`
     @media (max-width: ${(props) => props.theme.screenBreakpoints.smallerMobile}) {
         .list-grid {
             grid-template-columns: 5fr 1fr;
+
+            .star-column::after {
+                display: none !important;
+            }
 
             .type-column, .size-column {
                 display: none;
