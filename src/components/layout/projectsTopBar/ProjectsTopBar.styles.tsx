@@ -53,7 +53,7 @@ const StyledProjectsTopBar = styled.header`
     }
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
-        padding: ${(props) => props.theme.margins.sectionMedium};
+        padding: ${(props) => props.theme.margins.sectionSmall};
 
         .side {
             width: auto;

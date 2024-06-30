@@ -24,7 +24,7 @@ const StyledProjectsSection = styled.section`
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
         padding: ${(props) => props.theme.margins.sectionSmall};
-        padding-top: calc(${(props) => props.theme.margins.big} + 74px);
+        padding-top: calc(${(props) => props.theme.margins.big} + 62px);
 
         .content {
             grid-template-columns: 1fr;

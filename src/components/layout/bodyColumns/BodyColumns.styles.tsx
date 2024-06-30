@@ -9,9 +9,7 @@ const StyledBodyColumns = styled.div`
 
     .main-column {
         width: 100%;
-        padding: ${(props) => props.theme.margins.sectionBig};
-        padding-top: 0;
-        padding-right: 0;
+        padding-bottom: ${(props) => props.theme.margins.sectionBig};
         min-height: 100%;
         box-sizing: border-box;
     }
@@ -26,11 +24,6 @@ const StyledBodyColumns = styled.div`
 
     @media (max-width: ${(props) => props.theme.screenBreakpoints.desktop}) {
         gap: 0;
-        
-        .main-column {
-            padding: ${(props) => props.theme.margins.sectionBig};
-            padding-top: 0;
-        }
 
         .aside-column {
             width: 0;
@@ -42,7 +35,6 @@ const StyledBodyColumns = styled.div`
         padding-top: calc(30px +  ${(props) => props.theme.margins.small});
         
         .main-column {
-            padding: ${(props) => props.theme.margins.sectionMedium};
             min-height: 100%;
         }
     }

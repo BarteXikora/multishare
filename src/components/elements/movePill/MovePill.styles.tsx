@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const StyledMovePill = styled.div`
-    position: absolute;
+    position: fixed;
     display: flex;
     align-items: center;
     gap: ${(props) => props.theme.margins.medium};

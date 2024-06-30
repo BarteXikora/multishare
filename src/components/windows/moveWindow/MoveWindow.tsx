@@ -46,7 +46,7 @@ const MoveWindow = () => {
             </Button>
 
             <Button disabled={selectedLocation === null} onClick={handleMove}>
-                <IconMove />
+                <IconMove $color={selectedLocation === null ? 'dark' : 'light'} />
 
                 Przenieś
             </Button>

@@ -61,6 +61,9 @@ const StyledUploadList = styled.div`
 
             .status {
                 padding: 0 ${(props) => props.theme.margins.small};
+                height: 30px;
+                display: flex;
+                align-items: center;
 
                 div {
                     display: inline-block;

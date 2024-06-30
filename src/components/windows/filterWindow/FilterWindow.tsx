@@ -194,7 +194,7 @@ const FilterWindow = () => {
                 disabled={!currentFilter.star && !currentFilter.time && !currentFilter.type}
                 onClick={() => setCurrentFilter({ time: null, type: null, star: null })}
             >
-                <IconClose />
+                <IconClose $color={(!currentFilter.star && !currentFilter.time && !currentFilter.type) ? 'dark' : 'light'} />
 
                 Wyczyść filtry
             </Button>

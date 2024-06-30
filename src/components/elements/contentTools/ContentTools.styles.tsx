@@ -111,9 +111,10 @@ const StyledContentTools = styled.div`
     @media (max-width: ${(props) => props.theme.screenBreakpoints.mobile}) {
         position: absolute;
         top: 0;
-        right: 0;
+        right: ${(props) => props.theme.margins.medium};
         margin-top: ${(props) => props.theme.margins.small};
         box-sizing: border-box;
+        max-width: calc(100% - (2 * ${(props) => props.theme.margins.medium}));
         background-color: ${(props) => props.theme.colors.black};
         border-radius: ${(props) => props.theme.borderRadiuses.big};
         padding: ${(props) => props.theme.margins.small};

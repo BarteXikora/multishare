@@ -68,7 +68,7 @@ const DateRangeWindow = () => {
             </Button>
 
             <Button disabled={!isDateRangeSelected || !isDateRangeOK} onClick={handleSetDateRange}>
-                <IconFilter />
+                <IconFilter $color={(!isDateRangeSelected || !isDateRangeOK) ? 'dark' : 'light'} />
 
                 Ustaw zakres dat
             </Button>

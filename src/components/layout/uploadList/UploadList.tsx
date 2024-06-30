@@ -81,10 +81,10 @@ const UploadList = () => {
                                 >
                                     {
                                         file.status === 'WAITING' ?
-                                            null // <img src={iconWaiting} alt='Oczekuje...' />
+                                            <CircleProgress $isWaiting={true} $percent={0} />
                                             :
                                             file.status === 'UPLOADING' ?
-                                                <CircleProgress $percent={file.uploadPercent} />
+                                                <CircleProgress $isWaiting={false} $percent={file.uploadPercent} />
                                                 :
                                                 <IconOK $color='correct' />
                                     }

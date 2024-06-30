@@ -56,7 +56,7 @@ const StyledFilterWarning = styled.button`
         position: absolute;
         padding: ${(props) => props.theme.margins.sectionSmall};
         height: auto;
-        top: ${(props) => props.theme.margins.small};
+        top: ${(props) => props.theme.margins.medium};
         right: 70px;
         border-radius: ${(props) => props.theme.borderRadiuses.small};
 

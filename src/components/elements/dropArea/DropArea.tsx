@@ -88,7 +88,7 @@ const DropArea = ({ filesState, locationState, upload, showLocationSelector = tr
 
                     <div className="actions">
                         <Button onClick={handleUpload} disabled={!(filesState[0] && locationState[0])}>
-                            <IconUpload />
+                            <IconUpload $color={!(filesState[0] && locationState[0]) ? 'dark' : 'light'} />
 
                             Prześlij wybrane pliki
                         </Button>
