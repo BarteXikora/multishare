@@ -1,7 +1,7 @@
 import Moment from 'react-moment'
 import moment from 'moment'
 
-import { IconFolder, IconStar } from '../../ui/icon/Icons'
+import { IconFolder, IconStarSpecial } from '../../ui/icon/Icons'
 
 type ListFolderElementType = {
     name: string
@@ -37,7 +37,7 @@ const ListFolderElement = ({
         </div>
 
         <div className='star-column'>
-            {isStar && <IconStar $color='dark' />}
+            {isStar && <IconStarSpecial />}
         </div>
 
         <div className='date-column'>
