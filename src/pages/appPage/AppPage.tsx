@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import { initializeContent } from '../../store/features/contentSlice/contentSlice'
 
 import useUpdateContent from '../../functions/useUpdateContent/useUpdateContent'
-import useUpdatePathName from '../../functions/useUpdatePathName/useUpdatePathName'
+import useUpdatePathName from '../../hooks/useUpdatePathName/useUpdatePathName'
 
 import LoadingPage from '../loadingPage/LoadingPage'
 import ErrorPage from '../errorPage/ErrorPage'
