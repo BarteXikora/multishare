@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { motion } from 'framer-motion'
-import useScreenSize from '../../../functions/useScreenSize/useScreenSize'
+import useScreenSize from '../../../hooks/useScreenSize/useScreenSize'
 
 const AnimatedContentTools = ({ children }: { children: ReactNode }) => {
     const { screenNumberSize } = useScreenSize()

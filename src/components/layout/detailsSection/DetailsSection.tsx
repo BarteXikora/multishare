@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { toggle } from '../../../store/features/detailsSectionSlice/detailsSectionSlice'
 import useInvokeDetails from '../../../hooks/useInvokeDetails/useInvokeDetails'
-import useScreenSize from '../../../functions/useScreenSize/useScreenSize'
+import useScreenSize from '../../../hooks/useScreenSize/useScreenSize'
 
 import StyledDetailsSection from './DetailsSection.styles'
 import AnimatedDetailsSction from './DetailsSection.animation'
