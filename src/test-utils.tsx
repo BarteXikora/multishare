@@ -4,6 +4,8 @@ import { render, RenderOptions } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 
+import { BrowserRouter } from 'react-router-dom'
+
 import AppTheme from './theme/AppTheme'
 
 type ChildrenProps = {
@@ -13,7 +15,9 @@ type ChildrenProps = {
 const Wrapper = ({ children }: ChildrenProps) => {
     return <Provider store={store}>
         <AppTheme>
-            {children}
+            <BrowserRouter>
+                {children}
+            </BrowserRouter>
         </AppTheme>
     </Provider>
 }
