@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from '../../../store/store'
-import useFollowMouse from '../../../functions/useFollowMouse/useFollowMouse'
+import useFollowMouse from '../../../hooks/useFollowMouse/useFollowMouse'
 import { elementType } from '../../../store/features/contentSlice/contentSlice.types'
 import getShortenName from '../../../functions/getShortenName/getShortenName'
 
