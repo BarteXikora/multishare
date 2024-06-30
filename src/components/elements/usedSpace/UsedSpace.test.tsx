@@ -10,5 +10,3 @@ describe('Used Space', () => {
     })
 
 })
-
-// TODO - test with different values after creating a redux store.

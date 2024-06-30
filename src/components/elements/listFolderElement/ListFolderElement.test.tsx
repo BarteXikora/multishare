@@ -16,6 +16,7 @@ const _ListFolderElementTypeProps = {
 
 describe('List Folder Element', () => {
 
+
     test('renders correctly', () => {
         render(<ListFolderElement {..._ListFolderElementTypeProps} />)
 
@@ -32,10 +33,10 @@ describe('List Folder Element', () => {
         expect(dateElement).toBeInTheDocument()
     })
 
-    test("doesn't render date when invalid", async () => {
+    test("doesn't render date when invalid", () => {
         render(<ListFolderElement {..._ListFolderElementTypeProps} lastModificationDate='invalid date string' />)
 
-        const dateElement = await screen.findByText(/Invalid date/)
+        const dateElement = screen.queryByText(/Invalid date/)
 
         expect(dateElement).not.toBeInTheDocument()
     })

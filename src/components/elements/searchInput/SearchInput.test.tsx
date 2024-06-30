@@ -3,6 +3,7 @@ import SearchInput from './SearchInput'
 
 describe('Search Input', () => {
 
+
     test('renders correctly', () => {
         const value = ''
 
@@ -10,7 +11,7 @@ describe('Search Input', () => {
 
         const inputElement = screen.getByRole('textbox')
         const buttonsElements = screen.getAllByRole('button')
-        const imagesElements = screen.getAllByRole('img')
+        const imagesElements = screen.getAllByRole('figure')
 
         expect(inputElement).toBeInTheDocument()
         expect(buttonsElements).toHaveLength(2)
