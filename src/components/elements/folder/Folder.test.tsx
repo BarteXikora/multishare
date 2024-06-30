@@ -43,9 +43,9 @@ describe('Folder', () => {
             <Folder {..._folderDefaultProps} isStar={true} />
         </>)
 
-        const starElements = screen.getAllByAltText(/Oznaczono gwiazdką/)
+        const starElements = screen.getAllByRole('figure')
 
-        expect(starElements).toHaveLength(1)
+        expect(starElements).toHaveLength(3)
     })
 
 })

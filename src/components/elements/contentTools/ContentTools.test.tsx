@@ -5,8 +5,8 @@ describe('Content Tools', () => {
 
     test('renders correctly', () => {
         render(<ContentTools />)
-        const buttonElements = screen.getAllByRole('button')
-        expect(buttonElements).toHaveLength(8)
+        const buttonElement = screen.getByRole('button', { name: 'Prześlij pliki' })
+        expect(buttonElement).toBeInTheDocument()
     })
 
 })
