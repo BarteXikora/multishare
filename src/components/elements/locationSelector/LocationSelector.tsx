@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useSelector } from '../../../store/store'
 import getCurrentContent from '../../../functions/getCurrentContent/getCurrentContent'
 import { folderDisplayType } from '../../../store/features/contentSlice/contentSlice.types'
-import getIsTouchScreen from '../../../functions/useContentEvents/functions/getIsTouchScreen/getIsTouchScreen'
+import getIsTouchScreen from '../../../hooks/useContentEvents/functions/getIsTouchScreen/getIsTouchScreen'
 
 import StyledLocationSelector from './LocationSelector.styles'
 import Button from '../../ui/button/Button'

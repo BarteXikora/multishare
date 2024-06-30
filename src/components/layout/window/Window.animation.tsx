@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import StyledWindow from './Window.styles'
 import { motion } from 'framer-motion'
-import useScreenSize from '../../../functions/useScreenSize/useScreenSize'
+import useScreenSize from '../../../hooks/useScreenSize/useScreenSize'
 
 const AnimatedWindow = ({ children }: { children: ReactNode }) => {
     const AnimatedComponent = motion(StyledWindow)

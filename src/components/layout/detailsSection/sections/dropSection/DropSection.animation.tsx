@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion'
-import { ChildrenProps } from '../../../../../utilities/types'
+import { ReactNode } from 'react'
 
-const AnimatedDropSection = ({ children }: ChildrenProps) => {
+import { motion } from 'framer-motion'
+
+const AnimatedDropSection = ({ children }: { children: ReactNode }) => {
     return <motion.div
         className='animated-div'
         initial={{ y: 10 }}

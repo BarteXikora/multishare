@@ -1,6 +1,6 @@
 import StyledContentListView from './ContentListView.styles'
 import { useSelector } from '../../../../store/store'
-import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
+import useContentEvents from '../../../../hooks/useContentEvents/useContentEvents'
 
 import FolderNotFound from '../../../elements/folderNotFound/FolderNotFound'
 import ListHeader from '../../../elements/listHeader/ListHeader'

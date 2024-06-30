@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import useClickOutside from '../../../functions/useClickOutside/useClickOutside'
+import useClickOutside from '../../../hooks/useClickOutside/useClickOutside'
 
 import StyledDropdown from './Dropdown.styles'
 import AnimatedDropdownContent from './Dropdown.animation'

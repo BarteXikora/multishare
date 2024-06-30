@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { toggle } from '../../../store/features/sideMenuSlice/sideMenuSlice'
 import { useNavigate, useLocation } from 'react-router-dom'
-import useScreenSize from '../../../functions/useScreenSize/useScreenSize'
+import useScreenSize from '../../../hooks/useScreenSize/useScreenSize'
 import { setFilter, setSearch, setSelected, setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
 
 import AnimatedSideMenu from './SideMenu.animation'

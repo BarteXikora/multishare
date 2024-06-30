@@ -1,4 +1,4 @@
-import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
+import useContentEvents from '../../../../hooks/useContentEvents/useContentEvents'
 
 import Button from '../../../ui/button/Button'
 import SortDropdown from '../elements/SortDropdown'

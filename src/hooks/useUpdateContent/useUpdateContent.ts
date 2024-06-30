@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import { setTreeLocation } from '../../store/features/contentSlice/contentSlice'
-import getCurrentFolderId from '../getCurrentFolderId/getCurrentFolderId'
+import getCurrentFolderId from '../../functions/getCurrentFolderId/getCurrentFolderId'
 
 const useUpdateContent = () => {
     const dispatch = useDispatch()

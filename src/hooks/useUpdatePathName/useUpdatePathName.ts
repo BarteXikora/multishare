@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { setDisplayType, setTreeLocation } from '../../store/features/contentSlice/contentSlice'
-import getDataFromPathname from '../getDataFromPathname/getDataFromPathname'
+import getDataFromPathname from '../../functions/getDataFromPathname/getDataFromPathname'
 
 const useUpdatePathName = () => {
     const navigate = useNavigate()

@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { closeContextMenu } from '../../../store/features/contextMenuSlice/contextMenuSlice'
-import useClickOutside from '../../../functions/useClickOutside/useClickOutside'
-import useMoveToClick from '../../../functions/useMoveToClick/useMoveToClick'
+import useClickOutside from '../../../hooks/useClickOutside/useClickOutside'
+import useMoveToClick from '../../../hooks/useMoveToClick/useMoveToClick'
 
 import StyledContextMenu from './ContextMenu.styles'
 import ElementsContextMenu from './elementsContextMenu/ElementsContextMenu'

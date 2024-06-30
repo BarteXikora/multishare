@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion'
-import { ChildrenProps } from '../../../../utilities/types'
+import { ReactNode } from 'react'
 
-const AnimatedPathFragment = ({ children }: ChildrenProps) => {
+import { motion } from 'framer-motion'
+
+const AnimatedPathFragment = ({ children }: { children: ReactNode }) => {
     return <motion.div
         className='path-fragment'
         initial={{ x: -10, opacity: 0 }}
