@@ -1,6 +1,6 @@
-import { ChildrenProps } from '../../../../utilities/types'
+import { ReactNode } from 'react'
 
-const AsideColumn = ({ children }: ChildrenProps) => {
+const AsideColumn = ({ children }: { children: ReactNode }) => {
     return <aside className='aside-column'>
         {children}
     </aside>

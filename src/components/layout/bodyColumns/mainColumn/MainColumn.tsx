@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
-import { ChildrenProps } from '../../../../utilities/types'
+import { ReactNode } from 'react'
 
-const MainColumn = ({ children }: ChildrenProps) => {
+const MainColumn = ({ children }: { children: ReactNode }) => {
     const sectionRef = useRef<HTMLElement>(null)
 
     const { unselectAll, locationContextMenu } = useContentEvents()

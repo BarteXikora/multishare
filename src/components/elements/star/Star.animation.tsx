@@ -1,7 +1,8 @@
-import { ChildrenProps } from '../../../utilities/types'
+import { ReactNode } from 'react'
+
 import { motion } from 'framer-motion'
 
-const AnimatedStar = ({ children }: ChildrenProps) => {
+const AnimatedStar = ({ children }: { children: ReactNode }) => {
     return <motion.div
         className='star'
         initial={{ opacity: 0 }}

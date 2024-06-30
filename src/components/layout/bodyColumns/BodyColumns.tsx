@@ -1,7 +1,7 @@
 import StyledBodyColumns from './BodyColumns.styles'
-import { ChildrenProps } from '../../../utilities/types'
+import { ReactNode } from 'react'
 
-const BodyColumns = ({ children }: ChildrenProps) => {
+const BodyColumns = ({ children }: { children: ReactNode }) => {
     return <StyledBodyColumns>{children}</StyledBodyColumns>
 }
 

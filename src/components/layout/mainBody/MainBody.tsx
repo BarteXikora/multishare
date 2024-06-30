@@ -1,9 +1,9 @@
+import { ReactNode } from 'react'
+
 import StyledMainBody from './MainBody.styles'
 import MessagePill from '../messagPill/MessagePill'
 
-import { ChildrenProps } from '../../../utilities/types'
-
-const MainBody = ({ children }: ChildrenProps) => {
+const MainBody = ({ children }: { children: ReactNode }) => {
     return <StyledMainBody>
         {children}
 

@@ -1,8 +1,8 @@
-import { ChildrenProps } from '../../../../utilities/types'
+import { ReactNode } from 'react'
 
 import { motion } from 'framer-motion'
 
-const AnimatedCurrentFolderButton = ({ children }: ChildrenProps) => {
+const AnimatedCurrentFolderButton = ({ children }: { children: ReactNode }) => {
     return <motion.div
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

@@ -1,8 +1,9 @@
-import { ChildrenProps } from '../../../utilities/types'
+import { ReactNode } from 'react'
+
 import StyledMessagePill from './MssagePill.styles'
 import { motion } from 'framer-motion'
 
-const AnimatedMessagePill = ({ children }: ChildrenProps) => {
+const AnimatedMessagePill = ({ children }: { children: ReactNode }) => {
     const AnimatedComponent = motion(StyledMessagePill)
 
     return <AnimatedComponent

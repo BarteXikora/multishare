@@ -1,7 +1,8 @@
-import { ChildrenProps } from '../../../../utilities/types'
+import { ReactNode } from 'react'
+
 import { motion } from 'framer-motion'
 
-export const AnimatedIcon = ({ children }: ChildrenProps) => {
+export const AnimatedIcon = ({ children }: { children: ReactNode }) => {
     return <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -12,7 +13,7 @@ export const AnimatedIcon = ({ children }: ChildrenProps) => {
     </motion.div>
 }
 
-export const AnimatedTitle = ({ children }: ChildrenProps) => {
+export const AnimatedTitle = ({ children }: { children: ReactNode }) => {
     return <motion.h2
         initial={{ x: -10, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}

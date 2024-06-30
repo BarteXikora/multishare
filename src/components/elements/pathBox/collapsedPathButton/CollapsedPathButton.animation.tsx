@@ -1,9 +1,9 @@
-import { ChildrenProps } from '../../../../utilities/types'
+import { ReactNode } from 'react'
 import StyledCollapsedPathButton from './CollapsedPathButton.styles'
 
 import { motion } from 'framer-motion'
 
-const AnimatedCollapsedPathButton = ({ children }: ChildrenProps) => {
+const AnimatedCollapsedPathButton = ({ children }: { children: ReactNode }) => {
     const AnimatedComponent = motion(StyledCollapsedPathButton)
 
     return <AnimatedComponent
