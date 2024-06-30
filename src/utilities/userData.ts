@@ -1,1 +1,0 @@
-export const defaultProject = 0
