@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from '../../../../store/store'
-import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
+import useContentEvents from '../../../../hooks/useContentEvents/useContentEvents'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSlice'
 import { closeContextMenu } from '../../../../store/features/contextMenuSlice/contextMenuSlice'

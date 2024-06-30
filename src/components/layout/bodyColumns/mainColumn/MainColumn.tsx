@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import useContentEvents from '../../../../functions/useContentEvents/useContentEvents'
+import useContentEvents from '../../../../hooks/useContentEvents/useContentEvents'
 import { ReactNode } from 'react'
 
 const MainColumn = ({ children }: { children: ReactNode }) => {

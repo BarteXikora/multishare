@@ -1,4 +1,4 @@
-import getRangeOfElements from '../../../getRangeOfElements/getRangeOfElements'
+import getRangeOfElements from '../../../../functions/getRangeOfElements/getRangeOfElements'
 import getSingleElement from '../../functions/getSingleElement/getSingleElement'
 
 import { elementType, selectedType, contentDisplayType } from '../../../../store/features/contentSlice/contentSlice.types'

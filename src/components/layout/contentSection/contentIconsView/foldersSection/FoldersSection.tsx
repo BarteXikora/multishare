@@ -1,5 +1,5 @@
 import Folder from '../../../../elements/folder/Folder'
-import useContentEvents from '../../../../../functions/useContentEvents/useContentEvents'
+import useContentEvents from '../../../../../hooks/useContentEvents/useContentEvents'
 
 import { contentDisplayType, onMoveType, selectedType } from '../../../../../store/features/contentSlice/contentSlice.types'
 

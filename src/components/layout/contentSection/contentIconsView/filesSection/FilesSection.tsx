@@ -1,5 +1,5 @@
 import File from '../../../../elements/file/File'
-import useContentEvents from '../../../../../functions/useContentEvents/useContentEvents'
+import useContentEvents from '../../../../../hooks/useContentEvents/useContentEvents'
 
 import { contentDisplayType, displayTypeType, onMoveType, selectedType } from '../../../../../store/features/contentSlice/contentSlice.types'
 

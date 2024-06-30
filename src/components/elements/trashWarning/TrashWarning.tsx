@@ -1,4 +1,4 @@
-import useContentEvents from '../../../functions/useContentEvents/useContentEvents'
+import useContentEvents from '../../../hooks/useContentEvents/useContentEvents'
 import { useDispatch } from '../../../store/store'
 import { showWindow } from '../../../store/features/windowSlice/windowSlice'
 
