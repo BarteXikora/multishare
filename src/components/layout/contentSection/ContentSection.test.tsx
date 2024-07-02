@@ -1,5 +1,4 @@
 import { render, screen, act, fireEvent } from '../../../test-utils'
-import user from '@testing-library/user-event'
 
 import ContentSection from './ContentSection'
 import MainColumn from '../bodyColumns/mainColumn/MainColumn'
@@ -72,9 +71,7 @@ describe('Content Section', () => {
 
 describe('Content Sections Events', () => {
 
-    test('changes location after double click on folder', async () => {
-        user.setup()
-
+    test('changes location after double click on folder', () => {
         render(<ContentSection />)
 
         act(() => {
@@ -83,7 +80,7 @@ describe('Content Sections Events', () => {
         })
 
         const firstFolderButtonElement = screen.getByRole('button', { name: /TEST/ })
-        await user.dblClick(firstFolderButtonElement)
+        fireEvent.dblClick(firstFolderButtonElement)
 
         const secondFolderButtonElement = screen.getByRole('button', { name: /NESTED FOLDER/ })
         expect(secondFolderButtonElement).toBeInTheDocument()

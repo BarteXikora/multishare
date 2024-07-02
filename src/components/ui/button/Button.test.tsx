@@ -1,5 +1,4 @@
-import { render, screen } from '../../../test-utils'
-import user from '@testing-library/user-event'
+import { render, screen, fireEvent } from '../../../test-utils'
 
 import Button from './Button'
 import image from '../../../assets/icons/icon-folder.svg'
@@ -35,14 +34,13 @@ describe('Button', () => {
         expect(buttonElement).toHaveLength(3)
     })
 
-    test('works with onclick', async () => {
-        user.setup()
+    test('works with onclick', () => {
         const onClickMock = jest.fn()
 
         render(<Button onClick={onClickMock}></Button>)
         const buttonElement = screen.getByRole('button')
 
-        await user.click(buttonElement)
+        fireEvent.click(buttonElement)
 
         expect(onClickMock).toHaveBeenCalled()
     })
