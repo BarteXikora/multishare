@@ -1,4 +1,4 @@
-import { PayloadAction, current } from '@reduxjs/toolkit'
+import { PayloadAction } from '@reduxjs/toolkit'
 import { contentStateType } from '../../contentSlice.types'
 
 const deleteForever = (state: contentStateType, action: PayloadAction<{ folders: number[], files: number[] }>) => {
@@ -30,8 +30,6 @@ const deleteForever = (state: contentStateType, action: PayloadAction<{ folders:
     })
 
     state.loadedContent = { ...currentContent }
-
-    console.log(current(currentContent.trash), action.payload)
 }
 
 export default deleteForever
