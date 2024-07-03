@@ -1,3 +1,7 @@
+/** 
+ * Empty trash; information about no content in the trash
+**/
+
 import imgTrash from '../../../../assets/images/img-empty-trash.svg'
 
 const EmptyTrash = () => {

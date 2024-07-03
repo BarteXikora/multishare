@@ -1,3 +1,7 @@
+/** 
+ * Empty files; information about no content in the files page
+**/
+
 import { useDispatch } from '../../../../store/store'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 

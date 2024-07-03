@@ -1,3 +1,7 @@
+/** 
+ * Empty project; information about no content in home folder
+**/
+
 import { useDispatch } from '../../../../store/store'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 
