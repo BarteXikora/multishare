@@ -1,3 +1,10 @@
+/** 
+ * Location context menu
+ * 
+ * It is rendered in the ContextMenu component conditionally when clicking on the
+ * content sections background.
+**/
+
 import { useSelector, useDispatch } from '../../../../store/store'
 import useContentEvents from '../../../../hooks/useContentEvents/useContentEvents'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
@@ -15,6 +22,7 @@ const LocationContextMenu = () => {
     const viewStyle = useSelector(state => state.view.contentViewStyle)
     const displayType = useSelector(state => state.content.displayType)
 
+    // Handling buttons onClicks:
     const handleCloseContextMenu = () => dispatch(closeContextMenu())
 
     const handleUpload = () => {
@@ -47,6 +55,7 @@ const LocationContextMenu = () => {
         handleCloseContextMenu()
     }
 
+    // Rendering the component:
     return <>
         <Button $variant='quaternary' onClick={handleUpload} disabled={displayType === 'TRASH'}>
             <IconUpload $color='dark' />
