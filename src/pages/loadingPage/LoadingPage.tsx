@@ -1,3 +1,7 @@
+/**
+ * The loading page; displays loading spinner
+**/
+
 import StyledLoadingPage from './LoadingPage.styles'
 import Spinner from '../../components/ui/spinner/Spinner'
 

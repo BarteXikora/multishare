@@ -1,3 +1,7 @@
+/**
+ * The error page, renders error info passed as a prop. 
+**/
+
 import { useNavigate } from 'react-router-dom'
 
 import StyledErrorPage from './ErrorPage.styles'

@@ -1,3 +1,7 @@
+/**
+ * The projects page, shows all projects list and allows to enter them. 
+**/
+
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 
@@ -12,14 +16,17 @@ const ProjectsPage = () => {
 
     const userStatus = useSelector(state => state.user)
 
+    // Clearing content selection, so it is clar after selecting a new project:
     useEffect(() => {
         dispatch(setSelected({ folders: [], files: [], selectionStart: null }))
 
     }, [dispatch])
 
+    // Rendering LoadingPage or ErrorPage depending on stored user status:
     if (userStatus.status === 'LOADING') return <LoadingPage />
     if (userStatus.status === 'ERROR') return <ErrorPage error={userStatus.message} />
 
+    // Rendering the component:
     return <>
         <ProjectsTopBar />
 

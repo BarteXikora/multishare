@@ -1,3 +1,10 @@
+/**
+ * The "page not found" page (404)
+ * 
+ * Renders for any wrong pathname. Shows information and redirecting to "/project" button.
+ * It also redirects to the "/project" automaticly after 5 seconds.
+**/
+
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -12,6 +19,7 @@ const NotFoundPage = () => {
 
     const [time, setTime] = useState<number>(5)
 
+    // Redirecting to the "/project" after 5 seconds:
     useEffect(() => {
         const timeout = setTimeout(() => {
             if (time === 1) navigate('/')
@@ -23,6 +31,7 @@ const NotFoundPage = () => {
 
     }, [time, navigate])
 
+    // Rendering component:
     return <StyledNotFoundPage>
         <div className="content">
             <img src={logo} alt='Logo multishare' className='logo' />
