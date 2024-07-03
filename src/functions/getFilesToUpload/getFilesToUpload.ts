@@ -1,23 +1,9 @@
 import { uploadFileType } from '../../store/features/uploadListSlice/uploadListSlice.types'
 import { v4 as uuid } from 'uuid'
+import { fileToBase64 } from '../base64Converters/base64Conterters'
 
 const getFilesToUpload = async (files: File[] | null, location: number | null): Promise<uploadFileType[] | false> => {
     if (!files || !location) return false
-
-    const fileToBase64 = (file: File): Promise<string | false> => {
-        return new Promise(resolve => {
-            const reader = new FileReader()
-
-            reader.onload = () => {
-                if (typeof reader.result === 'string') resolve(reader.result)
-                else resolve(false)
-            }
-
-            reader.onerror = () => resolve(false)
-
-            reader.readAsDataURL(file)
-        })
-    }
 
     const filesToUpload: (uploadFileType | null)[] = await Promise.all(files.map(async f => {
         const file = await fileToBase64(f)
