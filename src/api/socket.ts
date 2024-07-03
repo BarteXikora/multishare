@@ -1,3 +1,7 @@
+/** 
+ * Creates and configures the socket
+**/
+
 import io from 'socket.io-client'
 import { WEB_SOCKET_HOST } from '../utilities/config'
 
