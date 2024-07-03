@@ -15,8 +15,6 @@ import { AnimatePresence } from 'framer-motion'
 const Path = ({ path }: { path: pathType[] }) => {
     const dispatch = useDispatch()
 
-    console.log(path)
-
     return <StyledPath>
         {path.length > 4 && <CollapsedPathButton path={path} />}
 

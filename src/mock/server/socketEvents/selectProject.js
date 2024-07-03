@@ -2,8 +2,6 @@ const { projects } = require('../storage')
 const { responde, respondeError } = require('../functions/responde')
 
 const selectProject = (socket, data) => {
-    console.log('select', data)
-
     const foundProject = projects.find(project => project.id === data)
 
     if (!foundProject)

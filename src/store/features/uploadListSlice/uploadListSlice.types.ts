@@ -17,7 +17,7 @@ export type uploadFileType = {
     parentFolder: number
     status: uploadFileStatusType
     uploadPercent: number
-    file: File
+    file: string
 }
 
 export type uploadListStateType = uploadFileType[]

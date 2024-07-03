@@ -8,8 +8,8 @@ import { uploadFileStatusType } from '../../../store/features/uploadListSlice/up
 const status: uploadFileStatusType = 'WAITING'
 
 const _mockedUpladFiles = [
-    { uploadId: '0', name: 'FILEA', extension: 'PNG', parentFolder: -1, status, uploadPercent: 0, file: new File([], '') },
-    { uploadId: '1', name: 'FILEB', extension: 'PNG', parentFolder: -1, status, uploadPercent: 0, file: new File([], '') }
+    { uploadId: '0', name: 'FILEA', extension: 'PNG', parentFolder: -1, status, uploadPercent: 0, file: '' },
+    { uploadId: '1', name: 'FILEB', extension: 'PNG', parentFolder: -1, status, uploadPercent: 0, file: '' }
 ]
 
 describe('Upload List', () => {

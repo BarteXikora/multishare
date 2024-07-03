@@ -42,7 +42,9 @@ const ListFolderElement = ({
 
         <div className='date-column'>
             {
-                moment(lastModificationDate).isValid() && <Moment format='DD.MM.yyyy, HH:mm:ss'>{lastModificationDate}</Moment>
+                lastModificationDate &&
+                moment(lastModificationDate).isValid() &&
+                <Moment format='DD.MM.yyyy, HH:mm:ss'>{lastModificationDate}</Moment>
             }
         </div>
 

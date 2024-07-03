@@ -7,21 +7,27 @@ const exampleContent = {
                 name: 'Folder 1',
                 star: true,
                 details: {
-                    createdDate: new Date().toLocaleString(),
-                    lastModificationDate: new Date().toLocaleString()
+                    createdDate: new Date().toISOString(),
+                    lastModificationDate: new Date().toISOString()
                 }
             }, {
                 id: 1,
                 parentFolder: -1,
                 name: 'Folder 2',
                 star: false,
-                details: {}
+                details: {
+                    createdDate: new Date().toISOString(),
+                    lastModificationDate: new Date().toISOString()
+                }
             }, {
                 id: 2,
                 parentFolder: -1,
                 name: 'Folder 3',
                 star: false,
-                details: {}
+                details: {
+                    createdDate: new Date().toISOString(),
+                    lastModificationDate: new Date().toISOString()
+                }
             }
         ],
         files: []
