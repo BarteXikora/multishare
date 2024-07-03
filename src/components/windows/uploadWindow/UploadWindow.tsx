@@ -14,8 +14,8 @@ const UploadWindow = () => {
 
     useEffect(() => { if (!files) setLocation(null) }, [files])
 
-    const handleUpload = () => {
-        const filesToUpload = getFilesToUpload(files, location)
+    const handleUpload = async () => {
+        const filesToUpload = await getFilesToUpload(files, location)
 
         if (filesToUpload === false) return
 
