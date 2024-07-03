@@ -1,3 +1,10 @@
+/** 
+ * Collapsed path button 
+ * 
+ * It is rendered in the Path coponent if the path s longer than 4 elements. It displays
+ * a dropdown button with a collapsed path.  
+**/
+
 import { useDispatch } from '../../../../store/store'
 import { setTreeLocation } from '../../../../store/features/contentSlice/contentSlice'
 import { pathType } from '../../../../store/features/contentSlice/contentSlice.types'
@@ -10,6 +17,7 @@ import { IconFolder, IconArrowRight } from '../../../ui/icon/Icons'
 const CollapsedPathButton = ({ path }: { path: pathType[] }) => {
     const dispatch = useDispatch()
 
+    // Rendering the component:
     return <AnimatedCollapsedPathButton>
         <Dropdown
             buttonContent='Wyświetl ścieżkę'
