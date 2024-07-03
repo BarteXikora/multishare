@@ -1,5 +1,6 @@
 import socket from '../../../../api/socket'
 import getLogInAction from '../getLogInActon/getLogInAction'
+import getUploadAction from '../getUploadAction/getUploadAction'
 import beforeLogIn from '../beforeLogIn/beforeLogIn'
 import beforePreview from '../beforePreview/beforePreview'
 
@@ -26,7 +27,7 @@ const events: eventType[] = [
     { on: 'contentSlice/restoreFromTrash', eventName: 'restore_from_trash' },
     { on: 'contentSlice/deleteForever', eventName: 'delete_forever' },
     { on: 'previewSlice/initializePreview', eventName: 'get_file', before: beforePreview, doNext: true },
-    { on: 'uploadSlice/addFiles', eventName: 'upload_request', doNext: true }
+    { on: 'uploadSlice/addFiles', eventName: 'upload_request', getData: getUploadAction, doNext: true }
 ]
 
 const socketEvents = (next: (data: any) => void, action: any, dispatch: Dispatch) => {
