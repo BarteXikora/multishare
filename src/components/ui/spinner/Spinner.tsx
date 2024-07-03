@@ -1,3 +1,7 @@
+/** 
+ * The UI spinner component; displays loading animation
+**/
+
 import StyledSpinner from './Spinner.styles'
 
 const Spinner = () => {
