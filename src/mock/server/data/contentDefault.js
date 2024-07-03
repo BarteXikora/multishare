@@ -6,25 +6,37 @@ const exampleContent = {
                 parentFolder: -1,
                 name: 'Wycieczka na rowery - sierpień 2023',
                 star: false,
-                details: {}
+                details: {
+                    createdDate: new Date().toISOString(),
+                    lastModificationDate: new Date().toISOString()
+                }
             }, {
                 id: 456745675455,
                 parentFolder: -1,
                 name: 'Pozostałe',
                 star: false,
-                details: {}
+                details: {
+                    createdDate: new Date().toISOString(),
+                    lastModificationDate: new Date().toISOString()
+                }
             }, {
                 id: 68665437674,
                 parentFolder: 387456394534,
                 name: 'Nieobrobione',
                 star: true,
-                details: {}
+                details: {
+                    createdDate: new Date().toISOString(),
+                    lastModificationDate: new Date().toISOString()
+                }
             }, {
                 id: 74567486345,
                 parentFolder: 387456394534,
                 name: 'Pozostałe - większość do śmieci',
                 star: false,
-                details: {}
+                details: {
+                    createdDate: new Date().toISOString(),
+                    lastModificationDate: new Date().toISOString()
+                }
             }
         ],
         files: [
@@ -35,8 +47,8 @@ const exampleContent = {
                 extension: 'PNG',
                 preview: 'https://picsum.photos/seed/wycieczkaa/200/300',
                 details: {
-                    createdDate: new Date().toString(),
-                    lastModificationDate: new Date('5.5.2023 12:05:36').toString(),
+                    createdDate: new Date().toISOString(),
+                    lastModificationDate: new Date('5.5.2023 12:05:36').toISOString(),
                     fileSizeBites: 25000
                 },
                 star: false
@@ -47,8 +59,8 @@ const exampleContent = {
                 extension: 'PNG',
                 preview: 'https://picsum.photos/seed/wycieczkab/200/300',
                 details: {
-                    createdDate: new Date().toString(),
-                    lastModificationDate: new Date().toString(),
+                    createdDate: new Date().toISOString(),
+                    lastModificationDate: new Date().toISOString(),
                     fileSizeBites: 25000
                 },
                 star: false
@@ -59,8 +71,8 @@ const exampleContent = {
                 extension: 'JPG',
                 preview: 'https://picsum.photos/seed/wycieczkac/200/300',
                 details: {
-                    createdDate: new Date().toString(),
-                    lastModificationDate: new Date().toString(),
+                    createdDate: new Date().toISOString(),
+                    lastModificationDate: new Date().toISOString(),
                     fileSizeBites: 25000
                 },
                 star: false
@@ -70,8 +82,8 @@ const exampleContent = {
                 name: 'Do zrobienia',
                 extension: 'TXT',
                 details: {
-                    createdDate: new Date().toString(),
-                    lastModificationDate: new Date('1.1.2023 12:00:00').toString(),
+                    createdDate: new Date().toISOString(),
+                    lastModificationDate: new Date('1.1.2023 12:00:00').toISOString(),
                     fileSizeBites: 25000
                 },
                 star: false
@@ -86,7 +98,10 @@ const exampleContent = {
                     parentFolder: -1,
                     name: 'Usunięty folder',
                     star: false,
-                    details: {}
+                    details: {
+                        createdDate: new Date().toISOString(),
+                        lastModificationDate: new Date().toISOString()
+                    }
                 }
             ],
             files: [
@@ -96,8 +111,8 @@ const exampleContent = {
                     name: 'Wszystkie zdjęcia',
                     extension: 'XLSX',
                     details: {
-                        createdDate: new Date().toString(),
-                        lastModificationDate: new Date().toString(),
+                        createdDate: new Date().toISOString(),
+                        lastModificationDate: new Date().toISOString(),
                         fileSizeBites: 25000
                     },
                     star: false
