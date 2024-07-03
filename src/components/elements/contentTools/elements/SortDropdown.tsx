@@ -1,3 +1,7 @@
+/** 
+ * Sort dropdown; displays sort buttons 
+**/
+
 import { useSelector, useDispatch } from '../../../../store/store'
 import { setSort } from '../../../../store/features/contentSlice/contentSlice'
 import { sortType } from '../../../../store/features/contentSlice/contentSlice.types'

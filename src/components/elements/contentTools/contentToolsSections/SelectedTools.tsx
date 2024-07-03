@@ -1,3 +1,10 @@
+/** 
+ * Selected tools; displays selected tools when anything is selected
+ * 
+ * Component renders content or trash selected tools based on the current display type.
+ * It also displays the toggle details section button on mobile.
+**/
+
 import { useDispatch, useSelector } from '../../../../store/store'
 import { toggle } from '../../../../store/features/detailsSectionSlice/detailsSectionSlice'
 
@@ -11,6 +18,7 @@ const SelectedTools = () => {
 
     const displayType = useSelector(state => state.content.displayType)
 
+    // Rendering the component:
     return <section className="selected-tools">
         {displayType !== 'TRASH' && <ContentSelectedTools />}
 

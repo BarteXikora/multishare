@@ -1,3 +1,11 @@
+/** 
+ * The content tools buttons; displays buttons for the available content operations
+ * 
+ * The component renders general tools (upload files and create new folder) for every display
+ * type, and list tools - when nothing is selected, or selected tools - when anything is selected.
+ * Showing and hiding buttons on selection change is managed by css display. 
+**/
+
 import { useState, useEffect } from 'react'
 import { useSelector } from '../../../store/store'
 
@@ -13,6 +21,7 @@ const ContentTools = () => {
 
     const [isSelectedToolsShown, setIsSelectedToolsShown] = useState<boolean>(false)
 
+    // Seting isSelectedToolsShown (is anything selected) state on stored selection change:
     useEffect(() => {
         let sum = 0
 
@@ -23,6 +32,7 @@ const ContentTools = () => {
 
     }, [selected])
 
+    // Rendering the component:
     return <StyledContentTools className={isSelectedToolsShown ? 'selected-tools-shown' : ''}>
         <GeneralTools />
 

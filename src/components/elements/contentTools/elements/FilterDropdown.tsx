@@ -1,3 +1,7 @@
+/** 
+ * Filter dropdown; displays filter buttons 
+**/
+
 import { useSelector, useDispatch } from '../../../../store/store'
 import { setFilter } from '../../../../store/features/contentSlice/contentSlice'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'

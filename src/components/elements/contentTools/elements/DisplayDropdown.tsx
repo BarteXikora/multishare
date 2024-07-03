@@ -1,3 +1,7 @@
+/** 
+ * Display Dropdown; displays view styles buttons 
+**/
+
 import { useSelector, useDispatch } from '../../../../store/store'
 import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSlice'
 
