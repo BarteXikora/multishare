@@ -1,3 +1,10 @@
+/** 
+ * Content list view
+ * 
+ * Rendered in the ContentSection component if list view is selected. It displays the content in the form
+ * of an array like list. It can also display information if content is not found.
+**/
+
 import StyledContentListView from './ContentListView.styles'
 import { useSelector } from '../../../../store/store'
 import useContentEvents from '../../../../hooks/useContentEvents/useContentEvents'
@@ -14,8 +21,10 @@ const ContentListView = () => {
 
     const { folderEvents, filesEvents } = useContentEvents()
 
+    // Rendering information if content is not found:
     if (content.notFound) return <StyledContentListView><FolderNotFound /></StyledContentListView>
 
+    // Rendering the component:
     return <StyledContentListView>
         {
             (content.folders.length > 0 || content.files.length > 0) && <div className="content-list">

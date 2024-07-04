@@ -1,3 +1,12 @@
+/** 
+ * Content cons view
+ * 
+ * Rendered in the ContentSection component if icons view is selected. It displays folders and 
+ * files sections. It can also display information if content is not found.
+ * 
+ * Component renders also the MovePill component.
+**/
+
 import { useSelector } from '../../../../store/store'
 
 import StyledContentIconsView from './ContentIconsView.styles'
@@ -13,8 +22,10 @@ const ContentIconsView = () => {
     const onMove = useSelector(state => state.content.onMove)
     const displayType = useSelector(state => state.content.displayType)
 
+    // Rendering information if content is not found:
     if (content.notFound) return <StyledContentIconsView><FolderNotFound /></StyledContentIconsView>
 
+    // Rendering the component:
     return <StyledContentIconsView>
         {content.folders.length > 0 && <FoldersSection content={content} selected={selected} onMove={onMove} />}
 
