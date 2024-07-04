@@ -1,3 +1,7 @@
+/** 
+ * Loading content; displays loading spinner
+**/
+
 import StyledLoadingContent from './LoadingContent.styles'
 import Spinner from '../../ui/spinner/Spinner'
 
@@ -6,6 +10,8 @@ type loadingContentType = {
 }
 
 const LoadingContent = ({ text }: loadingContentType) => {
+
+    // Rendering the coponent:
     return <StyledLoadingContent>
         <div className="icon">
             <Spinner />

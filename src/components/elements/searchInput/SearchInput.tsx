@@ -1,3 +1,10 @@
+/** 
+ * Search input
+ * 
+ * It is the search coponent, renders a styled form with text input and submit button for desktop, and
+ * open search window button for mobile. 
+**/
+
 import { FormEvent } from 'react'
 
 import StyledSeachInput from './SearchInput.styles'
@@ -5,6 +12,7 @@ import Input from '../../ui/input/Input'
 import Button from '../../ui/button/Button'
 import { IconSearch } from '../../ui/icon/Icons'
 
+// Search input props types:
 type SearchInputType = {
     state: [string, (s: string) => void]
     onSubmit: (e: FormEvent<HTMLFormElement>) => void
@@ -13,6 +21,8 @@ type SearchInputType = {
 }
 
 const SearchInput = ({ state, onSubmit, mobileButton, placeholder }: SearchInputType) => {
+
+    // Rendering the component:
     return <StyledSeachInput onSubmit={onSubmit}>
         <Input value={state[0]} onChange={e => state[1](e.target.value)} placeholder={placeholder || ''} />
 

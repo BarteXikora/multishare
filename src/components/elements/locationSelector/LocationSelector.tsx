@@ -1,3 +1,13 @@
+/** 
+ * Location selector
+ * 
+ * It displays the projects folders in the form of the array. It allows user to quickly navigate in
+ * the folders tree to select location. It gets the state as prop.
+ * 
+ * It also gets excluded ids array. Buttons for folders with ids fro the array are disabled, so user
+ * can not choose them.
+**/
+
 import { useState } from 'react'
 import { useSelector } from '../../../store/store'
 import getCurrentContent from '../../../functions/getCurrentContent/getCurrentContent'
@@ -8,6 +18,7 @@ import StyledLocationSelector from './LocationSelector.styles'
 import Button from '../../ui/button/Button'
 import { IconHome, IconBack, IconFolder } from '../../ui/icon/Icons'
 
+// Location selector props types:
 type locationSelectorType = {
     selectionState: [number | null, (v: number | null) => void]
     excluded: number[]
@@ -28,6 +39,7 @@ const LocationSelector = (props: locationSelectorType) => {
             getCurrentContent(content.content, currentFolder.id).folders : []
     )
 
+    // Handling opening the folder on double click or touch:
     const handleOpenFolder = (id: number) => {
         if (content.status !== 'READY') return
         const found = content.content.folders.find(f => f.id === id)
@@ -39,6 +51,7 @@ const LocationSelector = (props: locationSelectorType) => {
         setSelectedFolder(found || id === -1 ? id : null)
     }
 
+    // Handling going back one step in the folders tree:
     const handleGoBack = () => {
         if (content.status !== 'READY') return
 
@@ -56,7 +69,10 @@ const LocationSelector = (props: locationSelectorType) => {
         setBody(getCurrentContent(content.content, parent?.id || -1).folders)
     }
 
+    // Rendering the coponent:
     return <StyledLocationSelector>
+
+        {/* Current path: */}
         <section className="path">
             {
                 currentFolder.id === -1 ?
@@ -84,6 +100,7 @@ const LocationSelector = (props: locationSelectorType) => {
             </Button>
         </section>
 
+        {/* Selected folder content: */}
         <section className="body">
             {
                 body.map(folder => <Button

@@ -1,3 +1,7 @@
+/** 
+ * Used space; progress bar showing usage of projects disk space
+**/
+
 import { useState, useEffect } from 'react'
 
 import getDataWithUnit from '../../../functions/getDataWithUnit/getDataWithUnit'
@@ -5,6 +9,7 @@ import getDataWithUnit from '../../../functions/getDataWithUnit/getDataWithUnit'
 import StyledUsedSpace from './UsedSpace.styles'
 import Button from '../../ui/button/Button'
 
+// __dev hardtyped disk space:
 const __usedSpaceData = {
     currentValue: 9126805504, // 8.5 GB in B
     wholeSpace: 26843545600 // 25 GB in B
@@ -17,6 +22,7 @@ const UsedSpace = () => {
         percentage: 0
     })
 
+    // Calculating used space and setting it in the state:
     useEffect(() => {
         setUsedSpaceData({
             currentValue: getDataWithUnit(__usedSpaceData.currentValue),
@@ -26,6 +32,7 @@ const UsedSpace = () => {
 
     }, [])
 
+    // Rendering the component:
     return <StyledUsedSpace>
         <Button $variant='tertiary' $size='big'>
             <h2>Aktualne wykorzystanie dysku:</h2>

@@ -1,3 +1,9 @@
+/** 
+ * Trash warning; information / warning about content in the trash being deleted after 30 days
+ * 
+ * It displays info and provides the empty trash button
+**/
+
 import useContentEvents from '../../../hooks/useContentEvents/useContentEvents'
 import { useDispatch } from '../../../store/store'
 import { showWindow } from '../../../store/features/windowSlice/windowSlice'
@@ -10,11 +16,13 @@ const TrashWarning = ({ isTrashEmpty }: { isTrashEmpty: boolean }) => {
     const dispatch = useDispatch()
     const { selectAll } = useContentEvents()
 
+    // Handling emptying the trashL
     const handleEmptyTrash = () => {
         selectAll()
         dispatch(showWindow('CONFIRM_DELETE_FOREVER'))
     }
 
+    // Rendering the component:
     return <StyledTrashWarning>
         <div className='info-box'>
             <div className="icon"><IconInfo $color='dark' /></div>

@@ -1,3 +1,7 @@
+/** 
+ * Folder not found; renders information about folder with selected id doesn't exist
+**/
+
 import { useDispatch } from '../../../store/store'
 import { setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
 
@@ -10,6 +14,7 @@ import imgFolderNotFound from '../../../assets/images/img-folder-not-found.svg'
 const FolderNotFound = () => {
     const dispatch = useDispatch()
 
+    // Rendering the coponent:
     return <StyledFolderNotFound>
         <div className="image">
             <img src={imgFolderNotFound} alt='Nie znaleziono folderu' />

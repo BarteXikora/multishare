@@ -1,6 +1,14 @@
+/** 
+ * List header; renders the contents list header
+ * 
+ * It is rendered in the ContentListView. 
+**/
+
 import { IconStar } from '../../ui/icon/Icons'
 
 const ListHeader = () => {
+
+    // Rendering the component:
     return <div className="list-header list-grid">
         <div className='name-column'>
             Nazwa:
