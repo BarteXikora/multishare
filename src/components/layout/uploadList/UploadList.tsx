@@ -1,3 +1,10 @@
+/** 
+ * Upload list
+ * 
+ * The component shows curretly uploading files. I has functionality of collapsing. It also collapses
+ * automatically after all files are uploaded, then it hides itself.
+**/
+
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { removeFiles } from '../../../store/features/uploadListSlice/uploadListSlice'
@@ -18,6 +25,7 @@ const UploadList = () => {
     const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
     const [isAllDone, setIsAllDone] = useState<boolean>(false)
 
+    // Setting components state based on current upload list from store: 
     useEffect(() => {
         if (uploadList.filter(file => file.status !== 'DONE').length === 0) {
             setIsAllDone(true)
@@ -33,9 +41,13 @@ const UploadList = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [uploadList])
 
+    // Rendering nothing if no files are uploading:
     if (uploadList.length === 0) return null
 
+    // Rendering the component:
     return <StyledUploadList className={(isCollapsed || isAllDone) ? 'collapsed' : ''}>
+
+        {/* The title bar: */}
         <section className="bar" onClick={() => setIsCollapsed(!isCollapsed)}>
             {
                 isAllDone ?
@@ -61,6 +73,7 @@ const UploadList = () => {
             }
         </section>
 
+        {/* The list: */}
         <AnimatePresence>
             {
                 !(isCollapsed || isAllDone) && <AnimatedUploadMainList>

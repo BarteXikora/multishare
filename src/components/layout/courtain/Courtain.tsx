@@ -1,3 +1,11 @@
+/** 
+ * Courtain
+ * 
+ * It is a page translucent courtain that cover the page when a side menu, details section,
+ * or window is shown. It appears automatically when any of these are shown. It also adds
+ * css styles to itself based on whitch element is shown to set the proper z-index value.
+**/
+
 import { useSelector, useDispatch } from '../../../store/store'
 import { toggle as toggleSideMenu } from '../../../store/features/sideMenuSlice/sideMenuSlice'
 import { toggle as toggleDetailsSection } from '../../../store/features/detailsSectionSlice/detailsSectionSlice'
@@ -13,6 +21,7 @@ const Courtain = () => {
 
     const dispatch = useDispatch()
 
+    // Rendering the component:
     return <AnimatePresence>
         {
             (isSideMenuShown || isDetailsSectionShown || isWindowShown) && <AnimatedCourtain

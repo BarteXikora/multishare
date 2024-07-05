@@ -1,3 +1,9 @@
+/** 
+ * Projects section
+ * 
+ * Rendered in the ProjectsPage. Displays the list of projects and allows to select one.
+**/
+
 import StyledProjectsSection from './ProjectsSection.styles'
 import Project from '../../elements/project/Project'
 import LoadingContent from '../../elements/loadingContent/LoadingContent'
@@ -14,6 +20,7 @@ const ProjectsSection = () => {
 
     const user = useSelector(state => state.user)
 
+    // Handling the project selection on click:
     const handleClick = (project: projectType) => {
         dispatch(resetContent())
 
@@ -22,6 +29,7 @@ const ProjectsSection = () => {
         dispatch(setTreeLocation(-1))
     }
 
+    // Rendering the component:
     return <StyledProjectsSection>
         {user.status === 'LOADING' && <LoadingContent text='Wczytywanie projektów...' />}
 
