@@ -1,3 +1,7 @@
+/** 
+ * app theme provider with global styles. 
+**/
+
 import { ThemeProvider } from 'styled-components'
 import defaultTheme from './defaultTheme'
 

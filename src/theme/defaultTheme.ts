@@ -1,3 +1,7 @@
+/** 
+ * This file contains all styles variables like colors, margins, fonts. etc...
+**/
+
 const colors = {
     black: '#172943',
     white: 'white',
