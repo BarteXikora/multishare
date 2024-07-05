@@ -1,3 +1,10 @@
+/** 
+ * Tools window
+ * 
+ * The window is shown when user clicks on the content tools button whitch appear in mobile screens and
+ * is an equivalent of the ContentTools component. 
+**/
+
 import { useSelector, useDispatch } from '../../../store/store'
 import { closeWindow, showWindow } from '../../../store/features/windowSlice/windowSlice'
 import { setContentViewStyle } from '../../../store/features/viewSlice/viewSlice'
@@ -19,18 +26,22 @@ const ToolsWindow = () => {
     const displayType = useSelector(state => state.content.displayType)
     const viewStyle = useSelector(state => state.view.contentViewStyle)
 
+    // Handling selecting all elements: 
     const handleSelectAll = () => {
         selectAll()
         dispatch(closeWindow())
     }
 
+    // Handling setting view style:
     const handleSetViewStyle = (style: contentViewStyleType) => {
         dispatch(setContentViewStyle(style))
         dispatch(closeWindow())
     }
 
+    // Rendering the component:
     return <StyledToolsWindow>
         {
+            // General tools:
             displayType !== 'TRASH' && <section className="main">
                 <Button $variant='quaternary' $size='big' onClick={() => dispatch(showWindow('UPLOAD'))}>
                     <IconUpload $color='dark' />
@@ -54,6 +65,7 @@ const ToolsWindow = () => {
 
         <hr />
 
+        {/* List tools: */}
         <section className="main">
             <Button
                 $variant='quaternary'
@@ -80,6 +92,7 @@ const ToolsWindow = () => {
 
         <hr />
 
+        {/* View style selection tools: */}
         <section className="main">
             <Button $variant='quaternary' $size='big' $active={viewStyle === 'ICONS'} onClick={() => handleSetViewStyle('ICONS')}>
                 <IconDisplay $color='dark' />

@@ -1,3 +1,9 @@
+/** 
+ * Upload window
+ * 
+ * The window is shown when user wants to upload files. It dispalys the DropArea cmponent.
+**/
+
 import { useState, useEffect } from 'react'
 import { useDispatch } from '../../../store/store'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
@@ -12,8 +18,10 @@ const UploadWindow = () => {
     const [files, setFiles] = useState<File[] | null>(null)
     const [location, setLocation] = useState<number | null>(null)
 
+    // Clearing the selected location when files list is empty:
     useEffect(() => { if (!files) setLocation(null) }, [files])
 
+    // Handling upload:
     const handleUpload = async () => {
         const filesToUpload = await getFilesToUpload(files, location)
 
@@ -25,6 +33,7 @@ const UploadWindow = () => {
         dispatch(closeWindow())
     }
 
+    // Rendering the component:
     return <section>
         <DropArea filesState={[files, setFiles]} locationState={[location, setLocation]} upload={handleUpload} />
     </section>

@@ -1,3 +1,10 @@
+/** 
+ * Confirm delete window
+ * 
+ * This window is shown when user wants to detele alements (move them to trash). It asks if the user is
+ * sure and allows to delete slected elements.
+**/
+
 import { useSelector, useDispatch } from '../../../store/store'
 import { moveToTrash } from '../../../store/features/contentSlice/contentSlice'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
@@ -12,11 +19,13 @@ const ConfirmDeleteWindow = () => {
     const selected = useSelector(state => state.content.selected)
     const selectedCnt = selected.folders.length + selected.files.length
 
+    // Handling moving elements to trash:
     const handleMoveToTrash = () => {
         dispatch(moveToTrash({ view: { folders: selected.folders, files: selected.files }, contained: { folders: [], files: [] } }))
         dispatch(closeWindow())
     }
 
+    // Rendering the component:
     return <>
         <section>
             <h2>{`Czy na pewno chcesz przenieść ${selectedCnt === 1 ? 'wybrany element' : 'wybrane elementy'} do kosza?`}</h2>
