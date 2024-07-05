@@ -1,3 +1,10 @@
+/** 
+ * Side menu
+ * 
+ * It is the main navigation menu in the application. It displays logo, used projects disk space and 
+ * navigation buttons based on displayed app page. It also has a close menu button for mobile screens.
+**/
+
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { toggle } from '../../../store/features/sideMenuSlice/sideMenuSlice'
@@ -25,12 +32,15 @@ const SideMenu = () => {
     const location = useLocation().pathname
     const { screenNumberSize } = useScreenSize()
 
+    // Setting the menu hidden when screen is bigger than "tablet". The component is always visible then by css.
+    // The side menu is set to hidden to make the courtain hide as well. 
     useEffect(() => {
         if (screenNumberSize >= 3) dispatch(toggle(false))
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [screenNumberSize])
 
+    // Handling logo click:
     const handleLogoClick = () => {
         navigate('/project')
 
@@ -42,11 +52,14 @@ const SideMenu = () => {
         dispatch(toggle(false))
     }
 
+    // Rendering the component:
     return <StyledSideMenu className={`${isMenuShown ? 'shown' : ''}`}>
         <AnimatePresence>
             {
                 (screenNumberSize >= 3 || isMenuShown) && <AnimatedSideMenu>
                     <div className="container">
+
+                        {/* The logo: */}
                         <section className='logo'>
                             <Button $variant='tertiary' onClick={handleLogoClick}>
                                 <img src={logo} alt="Logo multishare" />
@@ -57,6 +70,7 @@ const SideMenu = () => {
                             </Button>
                         </section>
 
+                        {/* Main navigation button - depending on displayed page: */}
                         <section className='nav-menu'>
                             {
                                 location === '/projects' ?
@@ -66,10 +80,12 @@ const SideMenu = () => {
                             }
                         </section>
 
+                        {/* Used projects disk space: */}
                         <section className='used-space'>
                             <UsedSpace />
                         </section>
 
+                        {/* Project managing buttons: */}
                         <section>
                             <Button $variant='tertiary'>
                                 <IconManageProject />
