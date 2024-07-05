@@ -1,3 +1,11 @@
+/** 
+ * Nothing selected
+ * 
+ * Rendered in the DtailsSction component when nothing is selected. It displays
+ * information about the project and the DropSection component, so user can drag and
+ * drop files on the DtailsSction to upload them to the current folders tree location.
+**/
+
 import StyledNothingSelectedDetails from './NothingSelectedDetails.styles'
 import PreviewSection from '../../sections/previewSection/PreviewSection'
 import NameSection from '../../sections/nameSection/NameSection'
@@ -10,8 +18,10 @@ type NothingSelectedDetailsType = {
 }
 
 const NothingSelectedDetails = ({ project }: NothingSelectedDetailsType) => {
+    // Rendering nothing if project is not loaded:
     if (!project) return null
 
+    // Rendering the component:
     return <StyledNothingSelectedDetails>
         <PreviewSection
             type={getProjectIcon(project.icon).type}

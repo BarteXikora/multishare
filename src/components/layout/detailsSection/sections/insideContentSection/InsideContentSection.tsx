@@ -1,11 +1,21 @@
+/** 
+ * Inside content section
+ * 
+ * Used in the SingleFolderSection component. It displays information about selected folders 
+ * inside content (count of contained folders and files).
+**/
+
 import StyledInsideContentSection from './InsideContentSection.styles'
 
+// Inside content section props types:
 type InsideContentSectionType = {
     folders: number
     files: number
 }
 
 const InsideContentSection = ({ folders, files }: InsideContentSectionType) => {
+
+    // Rendering the component:
     return <StyledInsideContentSection>
         <h4>Zawartość:</h4>
 
