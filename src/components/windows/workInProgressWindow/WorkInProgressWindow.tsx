@@ -6,7 +6,13 @@
  */
 
 const WorkInProgressWindow = () => {
-    return <></>
+
+    // Rendering the component:
+    return <section>
+        <h2>Prace trwają...</h2>
+
+        <p>Ta funkcjonalność nie jest jeszcze gotowa.</p>
+    </section>
 }
 
 export default WorkInProgressWindow
