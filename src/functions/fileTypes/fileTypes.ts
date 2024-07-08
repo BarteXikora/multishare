@@ -1,3 +1,9 @@
+/**
+ * fileTypes array
+ * 
+ * It contains files extensons with display names and preview icon types. 
+ */
+
 type fileTypesType = {
     extension: string
     name: string

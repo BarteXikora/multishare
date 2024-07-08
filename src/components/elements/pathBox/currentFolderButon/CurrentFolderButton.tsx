@@ -1,3 +1,10 @@
+/** 
+ * Current folder button
+ * 
+ * This component is displaing only on mobile. It s a dropdown button with 
+ * collapsed path.
+**/
+
 import { useDispatch } from '../../../../store/store'
 import { setTreeLocation } from '../../../../store/features/contentSlice/contentSlice'
 import { pathType } from '../../../../store/features/contentSlice/contentSlice.types'
@@ -12,6 +19,7 @@ import { AnimatePresence } from 'framer-motion'
 const CurrentFolderButton = ({ path }: { path: pathType[] }) => {
     const dispatch = useDispatch()
 
+    // Rendering the component:
     return <StyledCurrentFolderButton
         buttonOptions={{ $variant: 'tertiary' }}
         showArrow={false}

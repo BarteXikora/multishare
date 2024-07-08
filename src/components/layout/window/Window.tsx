@@ -1,3 +1,9 @@
+/** 
+ * Window
+ * 
+ * Renders the window if any is open. Gets all content from the store:
+**/
+
 import { useState, useEffect, ReactNode } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
@@ -17,6 +23,7 @@ const Window = () => {
     const [windowTitle, setWindowTitle] = useState<string>('')
     const [windowBody, setWindowBody] = useState<ReactNode | null>(null)
 
+    // Setting the window title and content when window slice is changing:
     useEffect(() => {
         if (!window.window) return
 
@@ -26,6 +33,7 @@ const Window = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [window.window])
 
+    // Rendering the component:
     return <AnimatePresence>
         {
             window.isShown && <AnimatedWindow>

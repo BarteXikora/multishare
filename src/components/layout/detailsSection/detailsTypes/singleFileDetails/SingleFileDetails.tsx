@@ -1,3 +1,11 @@
+/** 
+ * Single file details
+ * 
+ * Rendered in the DetailsSection component when a single file is selected. It gets the files
+ * preview or icon and displays all informations about the file. It gets informations about
+ * the file as props.
+**/
+
 import PreviewSection from '../../sections/previewSection/PreviewSection'
 import NameSection from '../../sections/nameSection/NameSection'
 import DetailsListSection from '../../sections/detailsListSection/DetailsListSection'
@@ -9,6 +17,7 @@ import getFileTypeName from '../../../../../functions/fileTypes/getFileTypeName/
 const SingleFileDetails = ({ content }: { content: contentFileType }) => {
     const { name, extension, star, details, preview } = content.data
 
+    // Rendering the component:
     return <>
         <PreviewSection
             type='IMAGE'

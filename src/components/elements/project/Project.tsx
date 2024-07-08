@@ -1,9 +1,16 @@
+/** 
+ * Project; renders single project list element, used to select a project
+ * 
+ * It displays projects name, icon and description 
+**/
+
 import StyledProject from './Project.styles'
 import { projectIconType } from '../../../store/features/userSlice/userSlice.types'
 import getProjectIcon from '../../../functions/getProjectIcon/getProjectIcon'
 
 import { IconProjects } from '../../ui/icon/Icons'
 
+// Project props types:
 type ProjectType = {
     name: string
     description?: string
@@ -13,6 +20,8 @@ type ProjectType = {
 }
 
 const Project = ({ name, icon, description, onClick, isSelected }: ProjectType) => {
+
+    // Rendering the component:
     return <StyledProject $variant='secondary' onClick={onClick}>
         {
             (!icon || icon.type === 'ICON') && <div className="preview icon">

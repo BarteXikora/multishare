@@ -1,3 +1,9 @@
+/** 
+ * Sort window
+ * 
+ * The window is shown when user wants to set the content sort on mobile screns. 
+**/
+
 import { useState } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { setSort } from '../../../store/features/contentSlice/contentSlice'
@@ -12,9 +18,13 @@ const SortWindow = () => {
     const disptach = useDispatch()
     const sort = useSelector(state => state.content.sort)
 
+    // Local sort state:
     const [selectedSort, setSelectedSort] = useState<sortType>(sort)
 
+    // Rendering the component:
     return <StyledSortWindow>
+
+        {/* Sort by buttons: */}
         <section className='main'>
             <h2>Sortuj według:</h2>
 
@@ -49,6 +59,7 @@ const SortWindow = () => {
             </Button>
         </section>
 
+        {/* Sorting mthods buttons: */}
         <section className='main'>
             <h2>Metoda sortowania:</h2>
 
@@ -73,6 +84,7 @@ const SortWindow = () => {
             </Button>
         </section>
 
+        {/* Actions buttons: */}
         <section className="actions">
             <Button $variant='secondary' onClick={() => disptach(closeWindow())} className='no-mobile-button'>
                 Anuluj

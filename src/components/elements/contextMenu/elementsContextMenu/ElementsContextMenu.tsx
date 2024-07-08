@@ -1,3 +1,10 @@
+/** 
+ * Elements context menu
+ * 
+ * It is rendered in the ContextMenu component conditionally if clcked on the Folder
+ * or File button. 
+**/
+
 import { useSelector, useDispatch } from '../../../../store/store'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import { downloadElements } from '../../../../store/features/contentSlice/contentSlice'
@@ -14,6 +21,7 @@ const ElementsContextMenu = () => {
     const selected = useSelector(state => state.content.selected)
     const content = useSelector(state => state.content.loadedContent)
 
+    // Handling butons onClicks: 
     const handleCloseContextMenu = () => dispatch(closeContextMenu())
 
     const handleDownload = () => {
@@ -58,6 +66,7 @@ const ElementsContextMenu = () => {
         handleCloseContextMenu()
     }
 
+    // Rendering the component:
     return <>
         <Button $variant='quaternary' onClick={handleDownload}>
             <IconDownload $color='dark' />

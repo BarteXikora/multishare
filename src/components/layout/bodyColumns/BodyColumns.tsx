@@ -1,3 +1,9 @@
+/** 
+ * Body columns
+ * 
+ * Rendered in the AppPage component, provides css styles for the columns.
+**/
+
 import StyledBodyColumns from './BodyColumns.styles'
 import { ReactNode } from 'react'
 

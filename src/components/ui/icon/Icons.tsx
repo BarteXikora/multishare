@@ -1,3 +1,9 @@
+/** 
+ * The UI icons components
+ *  
+ * Display styled svg icons, get variants as props.
+**/
+
 import { Icon, IconOutline, IconOptionOutline } from './Icon'
 import { iconType, iconOutlineType } from './Icon.types'
 

@@ -1,3 +1,10 @@
+/** 
+ * Image preview section
+ * 
+ * Rendered in the PreviewContentSection component if opened file is type "image". It loads the
+ * image and displays it.
+**/
+
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -12,6 +19,7 @@ const ImagePreviewSection = ({ data }: { data: string }) => {
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [isError, setIsError] = useState<boolean>(false)
 
+    // Conditional rendering the error info if image has not been loaded correcty:
     if (isError) return <StyledImagePreviewSection>
         <div className="error">
             <IconError $color='wrong' $size='big' />
@@ -26,6 +34,7 @@ const ImagePreviewSection = ({ data }: { data: string }) => {
         </div>
     </StyledImagePreviewSection>
 
+    // Rendering the component:
     return <StyledImagePreviewSection>
         {
             isLoading && <div className="loading">

@@ -1,3 +1,11 @@
+/**
+ * restoreFromTrash reducer of the redux contentSLice reducer
+ * 
+ * It recives the list of folders and files in the trash (view - visible in the trash) and
+ * movives them to the content. It also moves to the content all contained elements with restored
+ * folders ID as parent folder id.
+ */
+
 import { PayloadAction } from '@reduxjs/toolkit'
 import { contentStateType } from '../../contentSlice.types'
 
@@ -11,8 +19,10 @@ export type restoreFromTrashType = {
 const restoreFromTrash = (state: contentStateType, action: PayloadAction<restoreFromTrashType>) => {
     if (state.loadedContent.status !== 'READY') return
 
+    // Preparing data:
     let currentContent = { ...state.loadedContent }
 
+    // Moving folders to the content:
     action.payload.folders.forEach(folderData => {
         let found = currentContent.trash.view.folders.find(f => f.id === folderData.id)
 
@@ -30,6 +40,7 @@ const restoreFromTrash = (state: contentStateType, action: PayloadAction<restore
         }
     })
 
+    // Moving files to the content:
     action.payload.files.forEach(fileData => {
         let found = currentContent.trash.view.files.find(f => f.id === fileData.id)
 
@@ -47,6 +58,7 @@ const restoreFromTrash = (state: contentStateType, action: PayloadAction<restore
         }
     })
 
+    // Setting the new state:
     state.loadedContent = { ...currentContent }
 }
 

@@ -1,3 +1,7 @@
+/**
+ * detailsSection types
+ */
+
 import { fileType, folderDisplayType } from '../contentSlice/contentSlice.types'
 
 export type multipleDataType = {
@@ -26,6 +30,7 @@ export type contentMultipleType = {
 
 export type contentType = contentEmptyType | contentFolderType | contentFileType | contentMultipleType
 
+// The state type:
 export type detailsSectionStateType = {
     isShown: boolean
     content: contentType

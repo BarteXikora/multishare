@@ -1,3 +1,7 @@
+/**
+ * previewSlice types
+ */
+
 import { fileType } from '../contentSlice/contentSlice.types'
 
 type previewLoading = {
@@ -19,6 +23,7 @@ export type previewReady = setPreviewType & {
     status: 'READY',
 }
 
+// The state type:
 export type previewStateType = {
     content: previewLoading | previewError | previewReady
 }

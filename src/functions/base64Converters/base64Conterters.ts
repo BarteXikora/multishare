@@ -1,3 +1,8 @@
+/** 
+ * file and base64 converters (both directions)
+*/
+
+// Converting file type variable to the base64 file string:
 const fileToBase64 = (file: File): Promise<string | false> => {
     return new Promise(resolve => {
         const reader = new FileReader()
@@ -13,6 +18,7 @@ const fileToBase64 = (file: File): Promise<string | false> => {
     })
 }
 
+// Converting the base64 file string to the file type variable:
 const base64ToFile = (fileData: string, name: string): File => {
     const binaryString = window.atob(fileData.split(',')[1])
     const len = binaryString.length

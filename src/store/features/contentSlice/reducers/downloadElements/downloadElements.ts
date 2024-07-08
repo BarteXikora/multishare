@@ -1,3 +1,9 @@
+/**
+ * downloadElements reducer of the redux contentSlice
+ * 
+ * It recives file from the server and saves it.
+ */
+
 import { PayloadAction } from '@reduxjs/toolkit'
 import { contentStateType } from '../../contentSlice.types'
 import { saveAs } from 'file-saver'
@@ -18,6 +24,7 @@ type downloadElemetsResponseType = {
 
 type downloadElemetsType = downloadElemetsRequestType | downloadElemetsResponseType
 
+// The reducer:
 const downloadElements = (state: contentStateType, action: PayloadAction<downloadElemetsType>) => {
     if (action.payload.type !== 'RES') return
 

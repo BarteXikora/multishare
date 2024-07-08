@@ -1,3 +1,10 @@
+/** 
+ * Confirm delete forever window
+ * 
+ * The window is shown when user wants to delete elements forever (from the trash). It asks if the
+ * user is sure and allows to delte files forever. 
+**/
+
 import { useSelector, useDispatch } from '../../../store/store'
 import { deleteForever } from '../../../store/features/contentSlice/contentSlice'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
@@ -12,11 +19,13 @@ const ConfirmDeleteForeverWindow = () => {
     const selected = useSelector(state => state.content.selected)
     const selectedCnt = selected.folders.length + selected.files.length
 
+    // Handling elements deleting forever:
     const handleDeleteForever = () => {
         dispatch(deleteForever({ folders: selected.folders, files: selected.files }))
         dispatch(closeWindow())
     }
 
+    // Rendering the component:
     return <>
         <section>
             <h2>{`Czy na pewno chcesz trwale usunąć ${selectedCnt === 1 ? 'wybrany element' : 'wybrane elementy'}?`}</h2>

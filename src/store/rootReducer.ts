@@ -1,3 +1,7 @@
+/**
+ * rootReducer; combined reducers from all redux slices
+ */
+
 import { combineReducers } from '@reduxjs/toolkit'
 
 import sideMenuSlice from './features/sideMenuSlice/sideMenuSlice'

@@ -1,3 +1,9 @@
+/** 
+ * Folder; renders the folder content button
+ * 
+ * It gets all folders data as props and renders a stylized button
+**/
+
 import StyledFolder from './Folder.styles'
 import Star from '../star/Star'
 import { IconFolder } from '../../ui/icon/Icons'
@@ -28,6 +34,7 @@ const Folder = ({
     onTouchEnd, onMouseDown, onMouseUp, onMouseMove, onMouseEnter, onMouseLeave
 }: FolderProps) => {
 
+    // Rendering the component:
     return <StyledFolder
         $variant='secondary'
         $size='big'

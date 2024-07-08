@@ -1,3 +1,9 @@
+/**
+ * The UI button component
+ * 
+ * It gets variants props and renders buttons with proper styles. 
+**/
+
 import StyledButton from './Button.styles'
 
 type ButtonSizes = 'big' | 'small'

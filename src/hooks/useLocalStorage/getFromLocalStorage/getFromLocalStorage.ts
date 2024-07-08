@@ -1,3 +1,9 @@
+/** 
+ * getFromLocalStorage function
+ * 
+ * It gets a value from the local storage.
+**/
+
 const getFromLocalStorage = <T>(key: string): T | null => {
     const storedValue = localStorage.getItem(key)
 

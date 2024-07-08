@@ -1,3 +1,7 @@
+/** 
+ * Empty filters; information about no content due to selected filters
+**/
+
 import { useDispatch } from '../../../../store/store'
 import { setFilter } from '../../../../store/features/contentSlice/contentSlice'
 

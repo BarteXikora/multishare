@@ -1,3 +1,7 @@
+/** 
+ * Global app styles:
+**/
+
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`

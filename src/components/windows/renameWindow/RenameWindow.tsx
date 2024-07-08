@@ -1,3 +1,9 @@
+/** 
+ * Rename window
+ * 
+ * The window is shown when user wants to change the selected folder or file name.
+**/
+
 import { useState, useEffect, FormEvent } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { elementType, fileType, folderType, loadedContentType, selectedType, updateContentType }
@@ -12,6 +18,7 @@ import { IconEdit } from '../../ui/icon/Icons'
 
 type getCurrentElementType = { element: folderType | fileType | null, elementType: elementType | null }
 
+// Getting selected element with all needed data:
 const getCurrentElement = (content: loadedContentType, selected: selectedType): getCurrentElementType => {
     let response: getCurrentElementType = { element: null, elementType: null }
 
@@ -43,6 +50,7 @@ const RenameWindow = () => {
     const [isNewNameOk, setIsNewNameOk] = useState<boolean>(true)
     const [newName, setNewName] = useState<string>(getCurrentElement(content, selected).element?.name || '')
 
+    // Getting selected element on stored selected or content change: 
     useEffect(() => {
         let currentElement = getCurrentElement(content, selected)
 
@@ -53,11 +61,13 @@ const RenameWindow = () => {
 
     }, [selected, content])
 
+    // Validating the new name:
     useEffect(() => {
         setIsNewNameOk(newName.length > 0 && newName.length <= 50)
 
     }, [newName])
 
+    // Handling selected elements name changnig:
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
 
@@ -70,6 +80,7 @@ const RenameWindow = () => {
         dispatch(closeWindow())
     }
 
+    // Rendering the component:
     return <>
         {
             isDataOk ?

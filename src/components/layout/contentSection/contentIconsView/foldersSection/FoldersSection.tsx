@@ -1,3 +1,10 @@
+/** 
+ * Folders section
+ * 
+ * Rendered in the ContentIconsVew component if there are any folders to display. Displays the section
+ * title and buttons for all folders with foldersEvents set.
+**/
+
 import Folder from '../../../../elements/folder/Folder'
 import useContentEvents from '../../../../../hooks/useContentEvents/useContentEvents'
 
@@ -6,6 +13,7 @@ import { contentDisplayType, onMoveType, selectedType } from '../../../../../sto
 const FoldersSection = ({ content, selected, onMove }: { content: contentDisplayType, selected: selectedType, onMove: onMoveType }) => {
     const { folderEvents } = useContentEvents()
 
+    // Rendering the component:
     return <section className='folders-section'>
         <h2>Foldery:</h2>
 

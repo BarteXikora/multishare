@@ -1,3 +1,7 @@
+/**
+ * userSlice types
+ */
+
 type userLoadingType = { status: 'LOADING' }
 type userErrorType = { status: 'ERROR', message: string }
 
@@ -38,4 +42,5 @@ type userReadyType = {
 
 export type logInType = { pathname: string } | { userData: userDataType, project: projectsType, message: string }
 
+// The state type:
 export type userStateType = userLoadingType | userReadyType | userErrorType

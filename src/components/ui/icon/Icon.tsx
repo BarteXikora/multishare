@@ -1,3 +1,10 @@
+/** 
+ * The Icon components, render the styled icon with svg content send in props. 
+ * 
+ * WARNING! These components are not ment to be used directly in the app. Other components
+ * (in the Icons.tsx) are using these as parent components and providing proper svg sources. 
+**/
+
 import { ReactSVG } from 'react-svg'
 
 import StyledIcon from './Icon.styles'

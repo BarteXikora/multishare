@@ -1,3 +1,9 @@
+/** 
+ * Content section
+ * 
+ * It displays content in the form of icons or list and warnings if there are any.
+**/
+
 import { useSelector } from '../../../store/store'
 
 import StyledContentSection from './ContentSection.styles'
@@ -13,8 +19,10 @@ const ContentSection = () => {
     const content = useSelector(state => state.content.currentFolder)
     const displayType = useSelector(state => state.content.displayType)
 
+    // Rendering the component:
     return <StyledContentSection>
         {
+            // Warnings:
             (
                 displayType === 'TRASH' || (search !== '' && (content.folders.length + content.files.length > 0))
 
@@ -26,6 +34,7 @@ const ContentSection = () => {
         }
 
         {
+            // Content:
             contentViewStyle === 'ICONS' ?
                 <ContentIconsView />
                 :

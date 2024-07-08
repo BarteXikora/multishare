@@ -1,3 +1,9 @@
+/** 
+ * Date range window
+ * 
+ * This window allows to select date range and set it as content filter. 
+**/
+
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
@@ -19,6 +25,7 @@ const DateRangeWindow = () => {
     const [isDateRangeSelected, setIsDateRangeSelected] = useState<boolean>(false)
     const [isDateRangeOK, setIsDateRangeOK] = useState<boolean>(false)
 
+    // Handling setting date range in the filter store:
     const handleSetDateRange = () => {
         if (!isDateRangeOK || !isDateRangeSelected) return
 
@@ -31,6 +38,7 @@ const DateRangeWindow = () => {
         dispatch(closeWindow())
     }
 
+    // Setting local states on inputs change:
     useEffect(() => {
         if (dateFrom.isDefault && dateTo.isDefault) return setIsDateRangeSelected(false)
 
@@ -43,6 +51,7 @@ const DateRangeWindow = () => {
 
     }, [dateFrom, dateTo])
 
+    // Rendering the component:
     return <>
         <section>
             <h2 className='extra-margin'>Wybierz zakres dat:</h2>

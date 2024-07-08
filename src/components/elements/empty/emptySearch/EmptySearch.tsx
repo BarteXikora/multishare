@@ -1,3 +1,7 @@
+/** 
+ * Empty search; information about no content uue to no search results
+**/
+
 import { useDispatch } from '../../../../store/store'
 import { setSearch } from '../../../../store/features/contentSlice/contentSlice'
 

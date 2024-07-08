@@ -1,3 +1,9 @@
+/** 
+ * Filter warning
+ * 
+ * Renders information about filters being set and button to clear all filters.
+**/
+
 import { useSelector, useDispatch } from '../../../store/store'
 import { setFilter } from '../../../store/features/contentSlice/contentSlice'
 
@@ -12,10 +18,12 @@ const FilterWarning = () => {
 
     const filter = useSelector(state => state.content.filter)
 
+    // Handling clearing all filters:
     const handleClearFilters = () => {
         dispatch(setFilter({ time: null, type: null, star: null }))
     }
 
+    // Rendering the component:
     return <AnimatePresence>
         {
             (filter.time || filter.type || filter.star) && <AnimatedFilterWarning>

@@ -1,3 +1,11 @@
+/** 
+ * Top bar
+ * 
+ * This is the top bar for the app page. It displays the hamburger button to show side
+ * menu (on mobile), the SelectProject and the SearchInput. It also provides
+ * searching functionality.
+**/
+
 import { FormEvent, useState } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { toggle } from '../../../store/features/sideMenuSlice/sideMenuSlice'
@@ -17,8 +25,10 @@ const TopBar = () => {
 
     const [searchValue, setSearchValue] = useState<string>('')
 
+    // Handling search window toggle for mobile:
     const handleSearchWindow = () => dispatch(showWindow('SEARCH'))
 
+    // Handling searching for desktop:
     const handleSearch = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         e.currentTarget.querySelectorAll('input')[0].blur()
@@ -30,6 +40,7 @@ const TopBar = () => {
         setSearchValue('')
     }
 
+    // Rendering the component:
     return <StyledTopBar>
         <Button className='hamburger-button' $size='big' onClick={() => dispatch(toggle())}>
             <IconHamburger />

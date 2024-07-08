@@ -1,3 +1,9 @@
+/** 
+ * Content buttons
+ * 
+ * Rendered in the SideMenu component when a project is selected.
+**/
+
 import { useSelector, useDispatch } from '../../../../store/store'
 import { useNavigate } from 'react-router-dom'
 import { setFilter, setSearch } from '../../../../store/features/contentSlice/contentSlice'
@@ -14,6 +20,7 @@ const ContentButtons = () => {
     const search = useSelector(state => state.content.search)
     const displayType = useSelector(state => state.content.displayType)
 
+    // Handling buttons click:
     const handleClick = (to: 'project' | 'files' | 'trash' | 'star') => {
         dispatch(setFilter({ type: null, time: null, star: null }))
         dispatch(setSearch(''))
@@ -31,6 +38,7 @@ const ContentButtons = () => {
         dispatch(toggle(false))
     }
 
+    // Rendering the component:
     return <>
         <Button
             $variant='tertiary'

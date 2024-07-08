@@ -1,3 +1,10 @@
+/** 
+ * Files section
+ * 
+ * Rendered in the ContentIconsVew component if there are any files to display. Displays the section
+ * title based on dsplay type and buttons for all files with filesEvents set.
+**/
+
 import File from '../../../../elements/file/File'
 import useContentEvents from '../../../../../hooks/useContentEvents/useContentEvents'
 
@@ -13,6 +20,7 @@ type filesSectionType = {
 const FilesSection = ({ content, selected, onMove, displayType }: filesSectionType) => {
     const { filesEvents } = useContentEvents()
 
+    // Rendering th component:
     return <section className='files-section'>
         <h2>{displayType !== 'FILES' ? 'Pliki:' : 'Wszystkie pliki:'}</h2>
 

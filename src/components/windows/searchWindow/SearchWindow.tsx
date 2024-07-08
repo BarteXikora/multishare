@@ -1,3 +1,9 @@
+/** 
+ * Search window
+ * 
+ * This windw is shown when user wants to search content on mobile screens. 
+**/
+
 import { FormEvent, useState } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { setSearch } from '../../../store/features/contentSlice/contentSlice'
@@ -15,6 +21,7 @@ const SearchWindow = () => {
 
     const [searchValue, setSearchValue] = useState<string>('')
 
+    // Handling setting search:
     const handleSearch = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
@@ -24,6 +31,7 @@ const SearchWindow = () => {
         dispatch(closeWindow())
     }
 
+    // Rendering the component:
     return <StyledSearchWindow>
         <section>
             <form className="main" onSubmit={handleSearch}>

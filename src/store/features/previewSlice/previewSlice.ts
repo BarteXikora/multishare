@@ -1,3 +1,9 @@
+/**
+ * previewSlice
+ * 
+ * This is a slice ot the file preview. It contains data about file preview as file name or type.
+ */
+
 import { createSlice } from '@reduxjs/toolkit'
 import initialState from './initialState'
 
@@ -6,6 +12,7 @@ import setPreviewReducer from './reducers/setPreview/setPreview'
 import setPreviewErrorReducer from './reducers/setPreviewError/setPreviewError'
 import resetPreviewReducer from './reducers/resetPreview/resetPreview'
 
+// Creating the slice:
 export const previewSlice = createSlice({
     name: 'previewSlice',
     initialState,

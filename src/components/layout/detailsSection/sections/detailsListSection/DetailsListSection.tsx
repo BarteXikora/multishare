@@ -1,8 +1,17 @@
+/** 
+ * Details list section
+ * 
+ * Used in SingleFolderSection and SingleFileSection component. It displays details of selected
+ * element as file type, size, etc... It gets the data as props; the data is sent from the server
+ * when project is loading. 
+**/
+
 import StyledDetailsListSection from './DetailsListSection.styles'
 
 import Moment from 'react-moment'
 import getDataWithUnit from '../../../../../functions/getDataWithUnit/getDataWithUnit'
 
+// Details list section props types:
 type DetailsListSectionType = {
     type: string
     fileSizeBites?: number
@@ -11,6 +20,8 @@ type DetailsListSectionType = {
 }
 
 const DetailsListSection = ({ type, fileSizeBites, createdDate, lastModificationDate }: DetailsListSectionType) => {
+
+    // Rendering the component:
     return <StyledDetailsListSection>
         <h4>Szczegóły:</h4>
 

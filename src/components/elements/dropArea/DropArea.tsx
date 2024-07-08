@@ -1,3 +1,9 @@
+/** 
+ * Drop area; renders area the user can drop files on
+ * 
+ * It renders the file input in the form of area, or the LocationSelector component when files are selected. 
+**/
+
 import { useEffect, useRef } from 'react'
 
 import StyledDropArea from './DropArea.styles'
@@ -11,6 +17,7 @@ import imgDrop from '../../../assets/images/img-drop.svg'
 import imgDropColor from '../../../assets/images/img-drop-color.svg'
 import imgFiles from '../../../assets/images/img-selected-files.svg'
 
+// Drop area props type:
 type DropAreaType = {
     filesState: [File[] | null, (f: File[] | null) => void]
     locationState: [number | null, (v: number | null) => void]
@@ -23,16 +30,20 @@ const DropArea = ({ filesState, locationState, upload, showLocationSelector = tr
     const inputRef = useRef<HTMLInputElement>(null)
     const dropRef = useRef<HTMLDivElement>(null)
 
+    // Handling the addition and removal of certain CSS styles to the drop area on drag enter and leave 
+    // events to show the user a visual hint that they can drop files.
     const setDropSectionActive = (to: boolean) => {
         if (to) return dropRef.current && dropRef.current.classList.add('file-input-drag')
         dropRef.current && dropRef.current.classList.remove('file-input-drag')
     }
 
+    // Clearing the file input when filesState is cleared:
     useEffect(() => {
         if (!filesState[0] && inputRef.current) inputRef.current.value = ''
 
     }, [filesState])
 
+    // Handling seting files from the input to the state:
     const handleSetFiles = (files: FileList | null) => {
         if (!files) return
 
@@ -46,13 +57,17 @@ const DropArea = ({ filesState, locationState, upload, showLocationSelector = tr
         setDropSectionActive(false)
     }
 
+    // Handling calling the upload function when all data is correct:
     const handleUpload = () => {
         if (!filesState[0] || !locationState[0]) return
 
         upload()
     }
 
+    // Rendering the component:
     return <StyledDropArea>
+
+        {/* The files input: */}
         <input
             type="file"
             multiple
@@ -66,6 +81,8 @@ const DropArea = ({ filesState, locationState, upload, showLocationSelector = tr
 
         {
             (filesState[0] && filesState[0].length > 0) ?
+
+                // The location selection: 
                 <section className='content selected-files'>
                     <img src={imgFiles} className='section-img' alt="Wybrano pliki" />
 
@@ -103,6 +120,7 @@ const DropArea = ({ filesState, locationState, upload, showLocationSelector = tr
 
                 :
 
+                // The drop area:
                 <section className="content empty-drop" ref={dropRef}>
                     <div className="section-image">
                         <img src={imgDrop} className='img' alt='Przeciągnij i upuść pliki tutaj' />

@@ -1,3 +1,7 @@
+/** 
+ * Empty folder; information about no content in selected folder (except for home folder)
+**/
+
 import { useDispatch } from '../../../../store/store'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import useGoBack from '../../../../hooks/useGoBack/useGoBack'

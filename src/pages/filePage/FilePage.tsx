@@ -1,3 +1,10 @@
+/**
+ * The file page, renders for the "/file" pathname, shows the selected file preview.
+ * 
+ * It gets file id from the pathname, then fetches file data with preview and
+ * displays it. 
+**/
+
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import { useLocation } from 'react-router-dom'
@@ -17,6 +24,7 @@ const FilePage = () => {
     const preview = useSelector(state => state.preview.content)
     const user = useSelector(state => state.user)
 
+    // Geting file id from the pathname and initializing fetching data when user is loaded:
     useEffect(() => {
         const { data } = getDataFromPathname(location.pathname)
 
@@ -27,9 +35,11 @@ const FilePage = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user])
 
+    // Rendering LoadingPage or ErrorPage depending on stored contentStatus:
     if (preview.status === 'LOADING') return <LoadingPage />
     if (preview.status === 'ERROR') return <ErrorPage error={preview.error} />
 
+    // Rendering the file preview page when file data is loaded:
     return <StyledFilePage>
         <PreviewTopBar name={preview.file.name} extension={preview.file.extension} />
 

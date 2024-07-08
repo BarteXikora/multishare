@@ -1,3 +1,11 @@
+/** 
+ * Filter window
+ * 
+ * This windows is shown when user wants to set filters on a mobile screen. It displays all 
+ * filters buttons and allows do set them. It also provides functionality of clearing all
+ * filters.
+**/
+
 import { useState } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { setFilter } from '../../../store/features/contentSlice/contentSlice'
@@ -13,10 +21,13 @@ const FilterWindow = () => {
 
     const filter = useSelector(state => state.content.filter)
 
+    // Local filter state:
     const [currentFilter, setCurrentFilter] = useState<filterType>(filter)
 
+    // Handling setting "marked with star" filter in the local state: 
     const handleStar = () => setCurrentFilter({ ...currentFilter, star: currentFilter.star ? null : true })
 
+    // Handling setting "last days" filter in the local state:
     const handleTimeDays = (days: number) => {
         if (currentFilter.time) if ('lastDays' in currentFilter.time) if (currentFilter.time.lastDays === days)
             return setCurrentFilter({ ...currentFilter, time: null })
@@ -24,6 +35,7 @@ const FilterWindow = () => {
         setCurrentFilter({ ...currentFilter, time: { lastDays: days } })
     }
 
+    // Handling date range window displaing:
     const handleDateRange = () => dispatch(showWindow('DATE_RANGE'))
 
     const handleType = (type: filterTypeType) => {
@@ -32,12 +44,16 @@ const FilterWindow = () => {
         setCurrentFilter({ ...currentFilter, type })
     }
 
+    // Handling settng stored filters to the local state values:
     const handleFilter = () => {
         dispatch(setFilter(currentFilter))
         dispatch(closeWindow())
     }
 
+    // Rendering the component:
     return <StyledFilterWindow>
+
+        {/* Marked with star filter button: */}
         <section className='main'>
             <h3>Oznaczono gwiazdką:</h3>
 
@@ -46,6 +62,7 @@ const FilterWindow = () => {
             </Button>
         </section>
 
+        {/* Date filter buttons: */}
         <section className='main'>
             <h3>Data modyfikacji:</h3>
 
@@ -85,6 +102,7 @@ const FilterWindow = () => {
             </Button>
         </section>
 
+        {/* Elements types filter buttons: */}
         <section className='main'>
             <h3>Typ elementu:</h3>
 

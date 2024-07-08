@@ -1,3 +1,9 @@
+/**
+ * windowTypes object
+ * 
+ * It contains all window types and assign to them window titles and react bodies.
+ */
+
 import { ReactNode } from 'react'
 import { windowsList } from '../../store/features/windowSlice/windowSlice.types'
 
@@ -14,6 +20,7 @@ import FilterWindow from '../../components/windows/filterWindow/FilterWindow'
 import DateRangeWindow from '../../components/windows/dateRangeWindow/DateRangeWindow'
 import SearchWindow from '../../components/windows/searchWindow/SearchWindow'
 
+// The object:
 const windowTypes: Record<windowsList, { title: string, body: ReactNode | null }> = {
     'CAN_NOT_OPEN_IN_TRASH': { title: 'Element znajduje się w koszu', body: <CanNotOpenInTrashWindow /> },
     'CONFIRM_DELETE': { title: 'Czy na pewno chcesz przenieść do kosza?', body: <ConfirmDeleteWindow /> },

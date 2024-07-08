@@ -1,3 +1,9 @@
+/** 
+ * Projects top bar
+ * 
+ * This is the tob bar for the projcts page.
+**/
+
 import { useDispatch } from '../../../store/store'
 import { toggle } from '../../../store/features/sideMenuSlice/sideMenuSlice'
 
@@ -8,6 +14,7 @@ import { IconHamburger, IconProjects, IconAdd } from '../../ui/icon/Icons'
 const ProjectsTopBar = () => {
     const dispatch = useDispatch()
 
+    // Rendering the component:
     return <StyledProjectsTopBar>
         <div className='main'>
             <Button className='hamburger-button' $size='big' onClick={() => dispatch(toggle())}>

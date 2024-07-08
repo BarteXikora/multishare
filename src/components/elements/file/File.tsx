@@ -1,9 +1,16 @@
+/** 
+ * File; renders the file content button
+ * 
+ * It gets all files data as props and renders a stylized button
+**/
+
 import { useState, useEffect } from 'react'
 import getPreviewImage from '../../../functions/fileTypes/getPreviewImage/getPreviewImage'
 
 import StyledFile from './File.styles'
 import Star from '../star/Star'
 
+// File props types:
 type FileProps = {
     displayName: string
     extension: string
@@ -31,11 +38,13 @@ const File = ({
 }: FileProps) => {
     const [previewImage, setPreviewImage] = useState<string>('')
 
+    // Setting the image preview / icon:
     useEffect(() => {
         setPreviewImage(getPreviewImage(preview, extension))
 
     }, [preview, extension])
 
+    // Rendering the component:
     return <StyledFile
         $variant='secondary'
         $size='big'

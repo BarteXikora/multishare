@@ -1,3 +1,11 @@
+/** 
+ * New folder window
+ * 
+ * This windows is shown when user is creating a new folder. It displays folder name input and
+ * the submit button. It prepares the new folder name, checks if name is not taken and 
+ * allows to create new folder.
+**/
+
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
@@ -16,6 +24,8 @@ const NewFolderWindow = () => {
     const path = useSelector(state => state.content.currentPath)
     const currentFolders = useSelector(state => state.content.currentFolder.folders)
 
+    // Handling new folder name preeparation. New folder name should be "Nowy folder", but if the name is taken it adds
+    // a first free number after the name:
     const getSuggestedFolerName = (): string => {
         if (currentFolders.filter(f => f.name === 'Nowy folder').length === 0) return 'Nowy folder'
         else {
@@ -34,6 +44,7 @@ const NewFolderWindow = () => {
     const [usedFolderNames, setUsedFolderNames] = useState<string[]>([])
     const [validation, setValidation] = useState<string | false>(false)
 
+    // Preparing taken folders names list:
     useEffect(() => {
         let names: string[] = []
         currentFolders.forEach(f => names.push(f.name))
@@ -42,6 +53,7 @@ const NewFolderWindow = () => {
 
     }, [currentFolders])
 
+    // Validating current folder name. Function chcecks it length and if it is not taken:
     useEffect(() => {
         let currentValidation: string | false = false
 
@@ -53,6 +65,7 @@ const NewFolderWindow = () => {
 
     }, [folderName, usedFolderNames])
 
+    // Handling new folder creation:
     const handleCreateFolder = (e: React.FormEvent) => {
         e.preventDefault()
         if (validation) return
@@ -69,6 +82,7 @@ const NewFolderWindow = () => {
         dispatch(closeWindow())
     }
 
+    // Renderng the component:
     return <StyledNewFolderWindow>
         <section>
             <h2>Utwórz nowy folder w:</h2>

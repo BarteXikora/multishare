@@ -1,3 +1,10 @@
+/** 
+ * Move window
+ * 
+ * The window is shown when user wants to move elements to the different folder. It displays the
+ * LocationSelector component and allows to move selected elements to the new location.
+**/
+
 import { useState } from 'react'
 import { useSelector, useDispatch } from '../../../store/store'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
@@ -15,6 +22,7 @@ const MoveWindow = () => {
 
     const [selectedLocation, setSelectedLocation] = useState<number | null>(null)
 
+    // Handling moving elements:
     const handleMove = () => {
         if (!selectedLocation) return
 
@@ -27,6 +35,7 @@ const MoveWindow = () => {
         dispatch(closeWindow())
     }
 
+    // Rendering the component:
     return <>
         <section>
             <h2>{

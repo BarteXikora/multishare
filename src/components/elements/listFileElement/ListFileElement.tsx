@@ -1,3 +1,9 @@
+/** 
+ * List file element; renders the single content list element for the file
+ * 
+ * It is rendered in the ContentListView. Gets all data as props and renders a stylized button.
+**/
+
 import Moment from 'react-moment'
 import moment from 'moment'
 
@@ -6,6 +12,7 @@ import getDataWithUnit from '../../../functions/getDataWithUnit/getDataWithUnit'
 
 import { IconStarSpecial } from '../../ui/icon/Icons'
 
+// List file element props types:
 type ListFileElementType = {
     name: string
     isStar: boolean
@@ -28,6 +35,7 @@ const ListFileElement = ({
 
 }: ListFileElementType) => {
 
+    // Rendering the coponent:
     return <button
         className={`list-element list-grid ${isSelected ? 'selected' : ''}`}
         onClick={onClick}

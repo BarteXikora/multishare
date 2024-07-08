@@ -1,3 +1,7 @@
+/**
+ * rootReducer types
+ */
+
 import { sideMenuStateType } from './features/sideMenuSlice/sideMenuSlice'
 import { detailsSectionStateType } from './features/detailsSectionSlice/initialState.types'
 import { userStateType } from './features/userSlice/userSlice.types'

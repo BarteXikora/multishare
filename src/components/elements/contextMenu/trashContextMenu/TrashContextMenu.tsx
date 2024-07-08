@@ -1,3 +1,10 @@
+/** 
+ * Trash context menu
+ * 
+ * It is rendered in the ContextMenu component conditionally when clicking on the
+ * Folder on File button in the trash.
+**/
+
 import { useSelector, useDispatch } from '../../../../store/store'
 import { restoreFromTrash } from '../../../../store/features/contentSlice/contentSlice'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
@@ -12,6 +19,7 @@ const TrashContextMenu = () => {
 
     const selected = useSelector(state => state.content.selected)
 
+    // Handling buttons onClicks:
     const handleCloseContextMenu = () => dispatch(closeContextMenu())
 
     const handleRestoreFromTrash = () => {
@@ -29,6 +37,7 @@ const TrashContextMenu = () => {
         handleCloseContextMenu()
     }
 
+    // Renderng the component:
     return <>
         <Button $variant='quaternary' onClick={handleRestoreFromTrash}>
             <IconRestore $color='dark' />

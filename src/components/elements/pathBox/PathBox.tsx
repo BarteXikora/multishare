@@ -1,3 +1,13 @@
+/** 
+ * Path box; renders the current path, or location title
+ * 
+ * Component is preparing the display path by adding the project name as the first element of
+ * the path (home folder) and shorting folders names. Then it displays the path in the form
+ * of buttons to navigate in the project folders tree.
+ * 
+ * It also shows filter warning info if any filter is set.
+**/
+
 import { useState, useEffect } from 'react'
 import { useSelector } from '../../../store/store'
 import { pathType } from '../../../store/features/contentSlice/contentSlice.types'
@@ -20,6 +30,7 @@ const PathBox = () => {
 
     const [shortenPath, setShortenPath] = useState<pathType[]>([])
 
+    // Creating display path every time the stored path or project name is changing:
     useEffect(() => {
         setShortenPath([
             { id: -1, name: getShortenName(projectName, MAX_FOLDER_NAME_LENGTH) },
@@ -35,6 +46,7 @@ const PathBox = () => {
 
     }, [projectName, currentPath])
 
+    // Rendering the coponent:
     return <StyledPathBox>
         <section className='main-section'>
             {

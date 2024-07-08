@@ -1,8 +1,15 @@
+/** 
+ * List folder element; renders the single content list element for the folder
+ * 
+ * It is rendered in the ContentListView. Gets all data as props and renders a stylized button.
+**/
+
 import Moment from 'react-moment'
 import moment from 'moment'
 
 import { IconFolder, IconStarSpecial } from '../../ui/icon/Icons'
 
+// List folder element props types:
 type ListFolderElementType = {
     name: string
     isStar: boolean
@@ -22,6 +29,7 @@ const ListFolderElement = ({
 
 }: ListFolderElementType) => {
 
+    // Rendering the component:
     return <button
         className={`list-element list-grid ${isSelected ? 'selected' : ''}`}
         onClick={onClick}

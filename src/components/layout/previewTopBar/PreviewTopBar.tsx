@@ -1,3 +1,10 @@
+/** 
+ * Preview top bar
+ * 
+ * This is the top bar for the FilePage. It displays the files name and the
+ * go back button.
+**/
+
 import { useNavigate } from 'react-router-dom'
 
 import StyledPreviewTopBar from './PreviewTopBar.styles'
@@ -7,6 +14,7 @@ import { IconBack } from '../../ui/icon/Icons'
 const PreviewTopBar = ({ name, extension }: { name: string, extension: string }) => {
     const navigate = useNavigate()
 
+    // Rendering the component:
     return <StyledPreviewTopBar>
         <div className="content">
             <div className="file-name-section">

@@ -1,3 +1,9 @@
+/** 
+ * Content Selected tools; dispalys tools for the projects content when anything is selected
+ * 
+ * It also disables the rename button when more than one element is selected.
+**/
+
 import { useDispatch, useSelector } from '../../../../store/store'
 import { downloadElements, updateContent } from '../../../../store/features/contentSlice/contentSlice'
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
@@ -12,6 +18,7 @@ const ContentSelectedTools = () => {
     const content = useSelector(state => state.content.loadedContent)
     const selected = useSelector(state => state.content.selected)
 
+    // Handling buttons onCLicks:
     const handleDownload = () => {
         dispatch(downloadElements({
             type: 'REQ',
@@ -42,6 +49,7 @@ const ContentSelectedTools = () => {
         dispatch(updateContent(data))
     }
 
+    // Rendering the component:
     return <div className="tools-buttons">
         <Button onClick={handleDownload}>
             <IconDownload />

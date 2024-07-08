@@ -1,3 +1,10 @@
+/**
+ * This is the main app page, it works with "/project", "/files" and "/trash" pathnames.
+ * 
+ * It renders TopBar, Header, ContentSection and DetialsSection components in the
+ * columns.  
+**/
+
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from '../../store/store'
 import { useLocation } from 'react-router-dom'
@@ -24,18 +31,22 @@ const AppPage = () => {
     const contentStatus = useSelector(state => state.content.loadedContent)
     const user = useSelector(state => state.user)
 
+    // Initializing fetching selected projects content when user data is loaded:
     useEffect(() => {
         if (user.status === 'READY') dispatch(initializeContent(location.pathname))
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user])
 
+    // Calling hooks working with content:
     useUpdatePathName()
     useUpdateContent()
 
+    // Rendering LoadingPage or ErrorPage depending on stored contentStatus:
     if (contentStatus.status === 'LOADING') return <LoadingPage />
     if (contentStatus.status === 'ERROR') return <ErrorPage error={contentStatus.error} />
 
+    // Rendering app page when content is loaded:
     return <>
         <TopBar />
 

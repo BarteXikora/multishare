@@ -1,3 +1,11 @@
+/**
+ * contentSlice
+ * 
+ * This is a slice of content data. It contains all data about loaded projects content as folders,
+ * files, trash, but also informations about current folders tree location, path, etc. It has a lot
+ * of reducers to manage the state.
+ */
+
 import { createSlice } from '@reduxjs/toolkit'
 
 import initialState from './initialState'
@@ -22,6 +30,7 @@ import moveToTrashReducer from './reducers/moveToTrash/moveToTrash'
 import restoreFromTrashReducer from './reducers/restoreFromTrash/restoreFromTrash'
 import deleteForeverReducer from './reducers/deleteForever/deleteForever'
 
+// Creating the slice:
 export const contentSlice = createSlice({
     name: 'contentSlice',
     initialState,

@@ -1,3 +1,10 @@
+/** 
+ * useContentEvents custom hook
+ * 
+ * It is used to manage projects content, like entering folders, moving, selecting, etc. It returns the set of functions
+ * designed to be set as events callbacks. 
+**/
+
 import useSelect from './useSelect/useSelect'
 import useOpenFolder from './useOpenFolder/useOpenFolder'
 import useOpenFile from './useOpenFile/useOpenFile'
@@ -8,6 +15,8 @@ import useSelectAll from './useSelectAll/useSelectAll'
 import useUnselectAll from './useUnselectAll/useUnselectAll'
 
 const useContentEvents = () => {
+
+    // Getting functions from other custom hooks:  
     const select = useSelect()
     const openFolder = useOpenFolder()
     const openFile = useOpenFile()
@@ -17,7 +26,10 @@ const useContentEvents = () => {
     const selectAll = useSelectAll()
     const unselectAll = useUnselectAll()
 
+    // Returning the set of events callbacks:
     return {
+
+        // Functions to managing folders:
         folderEvents: {
             onClick: (event: React.MouseEvent<HTMLElement>, folderId: number) => select(event, 'FOLDER', folderId),
             onContextMenu: (event: React.MouseEvent<HTMLElement>, folderId: number) => elementsContextMenu(event, 'FOLDER', folderId),
@@ -32,6 +44,7 @@ const useContentEvents = () => {
             onMouseLeave: (event: React.MouseEvent<HTMLElement>, folderId: number) => mouseMoveEvents(event, 'HOVER_OUT', 'FOLDER', folderId)
         },
 
+        // Functions to managing files:
         filesEvents: {
             onClick: (event: React.MouseEvent<HTMLElement>, fileId: number) => select(event, 'FILE', fileId),
             onContextMenu: (event: React.MouseEvent<HTMLElement>, folderId: number) => elementsContextMenu(event, 'FILE', folderId),
@@ -45,6 +58,7 @@ const useContentEvents = () => {
             onMouseLeave: (event: React.MouseEvent<HTMLElement>, fileId: number) => mouseMoveEvents(event, 'HOVER_OUT', 'FILE', fileId)
         },
 
+        // Other functions:
         locationContextMenu,
         selectAll,
         unselectAll
