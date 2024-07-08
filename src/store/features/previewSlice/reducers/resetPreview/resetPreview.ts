@@ -5,7 +5,7 @@
  */
 
 import { PayloadAction } from '@reduxjs/toolkit'
-import { previewStateType } from '../../initialState.types'
+import { previewStateType } from '../../previewSlice.types'
 
 const resetPreview = (state: previewStateType, action: PayloadAction) => {
 

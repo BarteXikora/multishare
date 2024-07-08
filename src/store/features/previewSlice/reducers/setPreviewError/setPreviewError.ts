@@ -5,7 +5,7 @@
  */
 
 import { PayloadAction } from '@reduxjs/toolkit'
-import { previewStateType } from '../../initialState.types'
+import { previewStateType } from '../../previewSlice.types'
 
 const setPreviewError = (state: previewStateType, action: PayloadAction<string>) => {
 

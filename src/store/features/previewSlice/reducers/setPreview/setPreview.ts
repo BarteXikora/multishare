@@ -5,7 +5,7 @@
  */
 
 import { PayloadAction } from '@reduxjs/toolkit'
-import { previewStateType, setPreviewType } from '../../initialState.types'
+import { previewStateType, setPreviewType } from '../../previewSlice.types'
 
 const setPreview = (state: previewStateType, action: PayloadAction<setPreviewType>) => {
     const { file, type, data } = action.payload
