@@ -1,3 +1,10 @@
+/**
+ * useLocalStorage custom hook
+ * 
+ * This hook manages state persistence using the localStorage API. It allows storing and retrieving
+ * values across page reloads. The hook synchronizes relevant state variables with localStorage.
+ */
+
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import setInLocalStorage from './setInLocalStorage/setInLocalStorage'
@@ -15,6 +22,7 @@ const useLocalStorage = () => {
     const sort = useSelector(state => state.content.sort)
     const filter = useSelector(state => state.content.filter)
 
+    // Sync viewStyle, sort, and filter settings from localStorage on load:
     useEffect(() => {
         const storedViewStyle = getFromLocalStorage<contentViewStyleType>('viewStyle')
         if (storedViewStyle) dispatch(setContentViewStyle(storedViewStyle))
@@ -28,7 +36,10 @@ const useLocalStorage = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    // Updating project ID in localStorage when user status changes:
     useEffect(() => { if (user.status === 'READY') setInLocalStorage('projectId', user.project.selectedProject.id) }, [user])
+
+    // Sync viewStyle, sort, and filter settings to localStorage on change:
     useEffect(() => setInLocalStorage('viewStyle', viewStyle), [viewStyle])
     useEffect(() => setInLocalStorage('sort', sort), [sort])
     useEffect(() => setInLocalStorage('filter', filter), [filter])
