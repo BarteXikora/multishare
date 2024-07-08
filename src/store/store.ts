@@ -1,3 +1,7 @@
+/**
+ * store; the redux store
+ */
+
 import { configureStore } from '@reduxjs/toolkit'
 import {
     TypedUseSelectorHook,
@@ -9,8 +13,11 @@ import {
 import rootReducer from './rootReducer'
 import socketMiddleware from './middleware/socketMiddleware'
 
+// Creating the store:
 export const store = configureStore({
     reducer: rootReducer,
+
+    // Adding the custom middleware (socketMiddleware):
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(socketMiddleware())
 })
 
