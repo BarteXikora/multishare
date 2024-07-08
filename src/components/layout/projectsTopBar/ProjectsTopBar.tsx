@@ -6,6 +6,7 @@
 
 import { useDispatch } from '../../../store/store'
 import { toggle } from '../../../store/features/sideMenuSlice/sideMenuSlice'
+import { showWindow } from '../../../store/features/windowSlice/windowSlice'
 
 import StyledProjectsTopBar from './ProjectsTopBar.styles'
 import Button from '../../ui/button/Button'
@@ -13,6 +14,11 @@ import { IconHamburger, IconProjects, IconAdd } from '../../ui/icon/Icons'
 
 const ProjectsTopBar = () => {
     const dispatch = useDispatch()
+
+    // Handling the create new project button click:
+    const __handleClick = () => {
+        dispatch(showWindow('WIP'))
+    }
 
     // Rendering the component:
     return <StyledProjectsTopBar>
@@ -29,7 +35,7 @@ const ProjectsTopBar = () => {
         </div>
 
         <div className="side">
-            <Button $variant='primary' $size='big' className='create-project-btn'>
+            <Button $variant='primary' $size='big' className='create-project-btn' onClick={__handleClick}>
                 <IconAdd />
 
                 <span>Utwórz projekt</span>
