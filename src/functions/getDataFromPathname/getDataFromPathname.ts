@@ -1,5 +1,12 @@
+/**
+ * getDataFromPathname function
+ * 
+ * This function gets data (project ID, folder ID, etc) from the URL pathname.
+ */
+
 import { displayTypeType } from '../../store/features/contentSlice/contentSlice.types'
 
+// Export data type:
 type dataType = {
     page: string | null
     projectId: number | null
@@ -16,6 +23,7 @@ const getDataFromPathname = (pathname: string): dataType => {
     if (/\/trash/.test(pathname)) displayType = 'TRASH'
     if (/\/project/.test(pathname)) displayType = 'TREE'
 
+    // Returning data:
     return {
         page: pathnameData[0] || null,
         projectId: Number(pathnameData[1]) || null,

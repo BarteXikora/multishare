@@ -1,3 +1,9 @@
+/**
+ * getCurrentFolderId function
+ * 
+ * It returns current locations folder id based on the path.
+ */
+
 import { pathType } from '../../store/features/contentSlice/contentSlice.types'
 
 const getCurrentFolderId = (path: pathType[]) => {

@@ -1,3 +1,9 @@
+/**
+ * getFileTypeName function
+ * 
+ * Uses the fileTypes array, finds the display name based on extension.
+ */
+
 import fileTypes from '../fileTypes'
 
 const getFileTypeName = (extension: string): string => {

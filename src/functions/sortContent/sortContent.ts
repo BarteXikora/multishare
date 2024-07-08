@@ -1,7 +1,16 @@
+/**
+ * sortContent function
+ * 
+ * Sorts the content based on the specified sorting method.
+ * It sorts folders and files either by name, last modification date, or file type.
+ * Additionally, it can reverse the sorting order if specified.
+ **/
+
 import { contentDisplayType, sortType } from '../../store/features/contentSlice/contentSlice.types'
 import getFileType from '../fileTypes/getFileType/getFileType'
 import getFileTypeName from '../fileTypes/getFileTypeName/getFileTypeName'
 
+// Handling sorting by name:
 const sortByName = (content: contentDisplayType): contentDisplayType => {
     const { folders, files } = content
 
@@ -11,6 +20,7 @@ const sortByName = (content: contentDisplayType): contentDisplayType => {
     return { ...content }
 }
 
+// Handling sorting by date:
 const sortByDate = (content: contentDisplayType): contentDisplayType => {
     const { folders, files } = content
 
@@ -35,6 +45,7 @@ const sortByDate = (content: contentDisplayType): contentDisplayType => {
     return { ...content }
 }
 
+// Handling sorting by element type:
 const sortByType = (content: contentDisplayType): contentDisplayType => {
     const { files } = content
 
@@ -44,13 +55,18 @@ const sortByType = (content: contentDisplayType): contentDisplayType => {
     return { ...content }
 }
 
+// Handling reversing elements order:
 const reverse = (content: contentDisplayType): contentDisplayType => {
     return { folders: content.folders.reverse(), files: [...content.files.reverse()] }
 }
 
+// The function:
 const sortContent = (content: contentDisplayType, sort: sortType): contentDisplayType => {
+
+    // Creating the deep copy of the content object:
     let currentContent = JSON.parse(JSON.stringify(content))
 
+    // Applying all filters:
     currentContent = sortByName(currentContent)
 
     if (sort.sortBy === 'DATE') currentContent = sortByDate(currentContent)
@@ -58,6 +74,7 @@ const sortContent = (content: contentDisplayType, sort: sortType): contentDispla
 
     if (sort.method === 'DESC') currentContent = reverse(currentContent)
 
+    // Returning the new content:
     return currentContent
 }
 

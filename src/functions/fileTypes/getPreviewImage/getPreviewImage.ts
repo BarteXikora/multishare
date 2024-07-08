@@ -1,3 +1,11 @@
+/**
+ * getPreviewImage function
+ * 
+ * Uses the fileTypes array, returns the preview of the file. If file has its own
+ * preview image the function returs it. Otherwise it finds icon type in the fileTypes
+ * array and returns proper icon.
+ */
+
 import fileTypes from '../fileTypes'
 
 import imgImage from '../../../assets/images/img-file-image.svg'
@@ -12,12 +20,15 @@ import imgPDF from '../../../assets/images/img-file-pdf.svg'
 import imgUnknown from '../../../assets/images/img-file-unknown.svg'
 
 const getPreviewImage = (preview: string | false, extension: string): string => {
+
+    // Returning files preview if exists:
     if (preview) return preview
 
+
+    // Finding and returning file type icon:
     const found = fileTypes.find(type => type.extension === extension.toUpperCase())
 
     if (!found) return imgUnknown
-
     switch (found.type) {
         case 'IMAGE': return imgImage
         case 'TEXT': return imgText

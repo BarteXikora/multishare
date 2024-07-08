@@ -1,3 +1,9 @@
+/**
+ * getFileType function
+ * 
+ * Uses the fileTypes array, finds the preview icon type based on extension.
+ */
+
 import fileTypes from '../fileTypes'
 
 const getFileType = (extension: string): string => {
