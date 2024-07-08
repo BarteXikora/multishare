@@ -2,7 +2,7 @@
  * The initila state of the redux viewSlice
  */
 
-import { viewStateType } from './initialState.types'
+import { viewStateType } from './viewSlice.types'
 
 const initialState: viewStateType = {
     contentViewStyle: 'ICONS'

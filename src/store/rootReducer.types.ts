@@ -3,11 +3,11 @@
  */
 
 import { sideMenuStateType } from './features/sideMenuSlice/sideMenuSlice'
-import { detailsSectionStateType } from './features/detailsSectionSlice/initialState.types'
+import { detailsSectionStateType } from './features/detailsSectionSlice/detailsSection.types'
 import { userStateType } from './features/userSlice/userSlice.types'
 import { contentStateType } from './features/contentSlice/contentSlice.types'
-import { previewStateType } from './features/previewSlice/initialState.types'
-import { viewStateType } from './features/viewSlice/initialState.types'
+import { previewStateType } from './features/previewSlice/previewSlice.types'
+import { viewStateType } from './features/viewSlice/viewSlice.types'
 import { windowStateType } from './features/windowSlice/windowSlice.types'
 import { uploadListStateType } from './features/uploadListSlice/uploadListSlice.types'
 import { contextMenuStateType } from './features/contextMenuSlice/contextMenuSlice'

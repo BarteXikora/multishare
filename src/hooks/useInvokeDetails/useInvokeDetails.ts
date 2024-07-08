@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 
 import { setDetails } from '../../store/features/detailsSectionSlice/detailsSectionSlice'
-import { multipleDataType } from '../../store/features/detailsSectionSlice/initialState.types'
+import { multipleDataType } from '../../store/features/detailsSectionSlice/detailsSection.types'
 
 const useInvokeDetails = () => {
     const selected = useSelector(state => state.content.selected)

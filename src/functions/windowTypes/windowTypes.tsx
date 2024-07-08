@@ -19,6 +19,7 @@ import SortWindow from '../../components/windows/sortWindow/SortWindow'
 import FilterWindow from '../../components/windows/filterWindow/FilterWindow'
 import DateRangeWindow from '../../components/windows/dateRangeWindow/DateRangeWindow'
 import SearchWindow from '../../components/windows/searchWindow/SearchWindow'
+import WorkInProgressWindow from '../../components/windows/workInProgressWindow/WorkInProgressWindow'
 
 // The object:
 const windowTypes: Record<windowsList, { title: string, body: ReactNode | null }> = {
@@ -33,7 +34,8 @@ const windowTypes: Record<windowsList, { title: string, body: ReactNode | null }
     'SEARCH': { title: 'Wyszukaj', body: <SearchWindow /> },
     'SORT': { title: 'Sortuj zawartość', body: <SortWindow /> },
     'UPLOAD': { title: 'Prześlij na dysk', body: <UploadWindow /> },
-    'TOOLS': { title: 'Narzędzia', body: <ToolsWindow /> }
+    'TOOLS': { title: 'Narzędzia', body: <ToolsWindow /> },
+    'WIP': { title: 'Prace trwają...', body: <WorkInProgressWindow /> }
 }
 
 export default windowTypes

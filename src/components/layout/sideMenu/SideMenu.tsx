@@ -11,6 +11,7 @@ import { toggle } from '../../../store/features/sideMenuSlice/sideMenuSlice'
 import { useNavigate, useLocation } from 'react-router-dom'
 import useScreenSize from '../../../hooks/useScreenSize/useScreenSize'
 import { setFilter, setSearch, setSelected, setTreeLocation } from '../../../store/features/contentSlice/contentSlice'
+import { showWindow } from '../../../store/features/windowSlice/windowSlice'
 
 import AnimatedSideMenu from './SideMenu.animation'
 import StyledSideMenu from './SideMenu.styles'
@@ -52,6 +53,11 @@ const SideMenu = () => {
         dispatch(toggle(false))
     }
 
+    // Handling showing the work in progress window:
+    const __handleWorkInProgressWindow = () => {
+        dispatch(showWindow('WIP'))
+    }
+
     // Rendering the component:
     return <StyledSideMenu className={`${isMenuShown ? 'shown' : ''}`}>
         <AnimatePresence>
@@ -81,19 +87,19 @@ const SideMenu = () => {
                         </section>
 
                         {/* Used projects disk space: */}
-                        <section className='used-space'>
+                        <section className='used-space' onClick={__handleWorkInProgressWindow}>
                             <UsedSpace />
                         </section>
 
                         {/* Project managing buttons: */}
                         <section>
-                            <Button $variant='tertiary'>
+                            <Button $variant='tertiary' onClick={__handleWorkInProgressWindow}>
                                 <IconManageProject />
 
                                 Zarządzaj projektem
                             </Button>
 
-                            <Button $variant='tertiary'>
+                            <Button $variant='tertiary' onClick={__handleWorkInProgressWindow}>
                                 <IconAccount />
 
                                 Moje konto

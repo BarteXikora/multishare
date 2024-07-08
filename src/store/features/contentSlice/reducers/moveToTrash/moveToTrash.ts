@@ -63,6 +63,7 @@ const moveToTrash = (state: contentStateType, action: PayloadAction<moveToTrashT
 
     // Setting the new state:
     state.loadedContent = { ...currentContent }
+    state.selected = { folders: [], files: [], selectionStart: null }
 }
 
 export default moveToTrash
