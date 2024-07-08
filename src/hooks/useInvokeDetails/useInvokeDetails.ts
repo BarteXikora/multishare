@@ -1,3 +1,10 @@
+/**
+ * useInvokeDetails custom hook
+ * 
+ * This hook manages the details section by synchronizing its content  to the selected elements.
+ * It calculates which folders and files are currently selected and updates the details accordingly.
+ */
+
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 
@@ -9,6 +16,7 @@ const useInvokeDetails = () => {
     const content = useSelector(state => state.content.currentFolder)
     const dispatch = useDispatch()
 
+    // Updating every time selected or content changes:
     useEffect(() => {
         const data: multipleDataType = { folders: [], files: [] }
 
@@ -20,6 +28,7 @@ const useInvokeDetails = () => {
             if (selected.files.includes(file.id)) data.files.push(file)
         }
 
+        // Dispatching setDetails:
         dispatch(setDetails(data))
 
     }, [selected, dispatch, content])

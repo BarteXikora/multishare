@@ -1,3 +1,9 @@
+/** 
+ * useGoBack custom hook
+ * 
+ * This hook is used to move one step back in the folders tree location.
+**/
+
 import { useSelector, useDispatch } from '../../store/store'
 import { setTreeLocation } from '../../store/features/contentSlice/contentSlice'
 

@@ -1,3 +1,10 @@
+/**
+ * useUpdatePathName custom hook
+ * 
+ * Manages updating the URL pathname based on changes in content, display type, and path.
+ * Calculates the new pathname and navigates to it if necessary.
+ */
+
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from '../../store/store'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -18,6 +25,7 @@ const useUpdatePathName = () => {
     useEffect(() => {
         if (contentStatus !== 'READY') return
 
+        // Constructing the new pathname based on display type, project ID, and current path:
         let newPathName = displayType === 'TREE' ? '/project/' : displayType === 'FILES' ? '/files/' : '/trash/'
 
         if (project) newPathName += project.id
@@ -32,14 +40,19 @@ const useUpdatePathName = () => {
             } else newPathName += '/home'
         }
 
+        // Navigating to the new pathname if it differs from the current location:
+        // This "if" is very important, w/o it the app rerenders everytime any related
+        // state changes!
         if (newPathName !== location.pathname) navigate(newPathName)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentFolder])
 
     useEffect(() => {
+        // Extracting display type from the current location pathname:
         const pathData = getDataFromPathname(location.pathname)
 
+        // Updating display type and tree location in the store if needed:
         if (displayType !== pathData.displayType) {
             dispatch(setDisplayType(pathData.displayType || 'TREE'))
             dispatch(setTreeLocation(-1))
