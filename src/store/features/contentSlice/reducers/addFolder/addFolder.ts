@@ -1,3 +1,9 @@
+/**
+ * addFolder reducer of the redux contentSlice
+ * 
+ * It recives and adds a single folder to the folders array of the loaded content. 
+ */
+
 import { PayloadAction } from '@reduxjs/toolkit'
 import { contentStateType, folderType } from '../../contentSlice.types'
 

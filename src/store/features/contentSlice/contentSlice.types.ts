@@ -1,3 +1,7 @@
+/**
+ * contentSlice types
+ */
+
 export type elementType = 'FOLDER' | 'FILE'
 
 export type folderDetailsType = {
@@ -117,6 +121,7 @@ export type onMoveType = {
     } | null
 }
 
+// The main type; type of whole slice:
 export type contentStateType = {
     loadedContent: loadedContentType,
     displayType: displayTypeType,

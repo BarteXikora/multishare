@@ -1,3 +1,7 @@
+/**
+ * The initial state of the redux contentSlice:
+ */
+
 import { contentStateType } from './contentSlice.types'
 
 const emptyContent = { folders: [], files: [] }
