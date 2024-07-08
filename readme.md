@@ -24,7 +24,7 @@ To install and run the project locally, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/multishare.git
+    git clone https://github.com/BarteXikora/multishare.git
     cd multishare
     ```
 
