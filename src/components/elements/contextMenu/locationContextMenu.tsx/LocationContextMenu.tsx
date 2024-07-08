@@ -10,7 +10,7 @@ import useContentEvents from '../../../../hooks/useContentEvents/useContentEvent
 import { showWindow } from '../../../../store/features/windowSlice/windowSlice'
 import { setContentViewStyle } from '../../../../store/features/viewSlice/viewSlice'
 import { closeContextMenu } from '../../../../store/features/contextMenuSlice/contextMenuSlice'
-import { contentViewStyleType } from '../../../../store/features/viewSlice/initialState.types'
+import { contentViewStyleType } from '../../../../store/features/viewSlice/viewSlice.types'
 
 import Button from '../../../ui/button/Button'
 import { IconUpload, IconNewFolder, IconOK, IconSort, IconFilter, IconDisplay, IconList } from '../../../ui/icon/Icons'

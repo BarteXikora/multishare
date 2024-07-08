@@ -8,7 +8,7 @@
 import { useSelector, useDispatch } from '../../../store/store'
 import { closeWindow, showWindow } from '../../../store/features/windowSlice/windowSlice'
 import { setContentViewStyle } from '../../../store/features/viewSlice/viewSlice'
-import { contentViewStyleType } from '../../../store/features/viewSlice/initialState.types'
+import { contentViewStyleType } from '../../../store/features/viewSlice/viewSlice.types'
 import useContentEvents from '../../../hooks/useContentEvents/useContentEvents'
 
 import StyledToolsWindow from './ToolsWindow.styles'

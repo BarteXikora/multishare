@@ -6,7 +6,7 @@
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import initialState from './initialState'
-import { contentViewStyleType } from './initialState.types'
+import { contentViewStyleType } from './viewSlice.types'
 
 // Creating the slice:
 export const viewSlice = createSlice({
