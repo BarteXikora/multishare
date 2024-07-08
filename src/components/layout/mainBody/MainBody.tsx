@@ -7,7 +7,7 @@
 import { ReactNode } from 'react'
 
 import StyledMainBody from './MainBody.styles'
-import MessagePill from '../messagPill/MessagePill'
+import MessagePill from '../messagePill/MessagePill'
 
 const MainBody = ({ children }: { children: ReactNode }) => {
 

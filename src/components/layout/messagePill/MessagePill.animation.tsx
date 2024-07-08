@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import StyledMessagePill from './MssagePill.styles'
+import StyledMessagePill from './MessagePill.styles'
 import { motion } from 'framer-motion'
 
 const AnimatedMessagePill = ({ children }: { children: ReactNode }) => {
