@@ -10,10 +10,10 @@ const projects = [
     }, {
         id: 1,
         name: 'Inny projekt',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae facilis ad neque!',
+        description: 'Inny projekt.',
         icon: {
             type: 'LINK',
-            link: 'https://picsum.photos/seed/multishare/200/300'
+            link: 'https://picsum.photos/seed/multishare15/200/300'
         }
     }
 ]
