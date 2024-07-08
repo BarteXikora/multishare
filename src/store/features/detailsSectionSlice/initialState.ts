@@ -1,3 +1,7 @@
+/** 
+ * The initial state of the redux detailsSectionSlice
+*/
+
 import { detailsSectionStateType } from './initialState.types'
 
 const initialState: detailsSectionStateType = {
