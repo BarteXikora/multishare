@@ -1,3 +1,7 @@
+/**
+ * uploadListSlice types
+ */
+
 export type uploadFileStatusType = 'WAITING' | 'UPLOADING' | 'DONE'
 
 export type changeStatusType = {
@@ -20,4 +24,5 @@ export type uploadFileType = {
     file: string
 }
 
+// The state type:
 export type uploadListStateType = uploadFileType[]
