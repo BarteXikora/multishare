@@ -11,7 +11,7 @@ import NameSection from '../../sections/nameSection/NameSection'
 import InsideContentSection from '../../sections/insideContentSection/InsideContentSection'
 import DetailsListSection from '../../sections/detailsListSection/DetailsListSection'
 
-import { contentFolderType } from '../../../../../store/features/detailsSectionSlice/initialState.types'
+import { contentFolderType } from '../../../../../store/features/detailsSectionSlice/detailsSection.types'
 
 import imgFolder from '../../../../../assets/images/img-folder.svg'
 import imgEmptyFolder from '../../../../../assets/images/img-empty-folder.svg'

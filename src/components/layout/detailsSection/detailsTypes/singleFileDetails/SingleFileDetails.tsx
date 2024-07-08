@@ -10,7 +10,7 @@ import PreviewSection from '../../sections/previewSection/PreviewSection'
 import NameSection from '../../sections/nameSection/NameSection'
 import DetailsListSection from '../../sections/detailsListSection/DetailsListSection'
 
-import { contentFileType } from '../../../../../store/features/detailsSectionSlice/initialState.types'
+import { contentFileType } from '../../../../../store/features/detailsSectionSlice/detailsSection.types'
 import getPreviewImage from '../../../../../functions/fileTypes/getPreviewImage/getPreviewImage'
 import getFileTypeName from '../../../../../functions/fileTypes/getFileTypeName/getFileTypeName'
 

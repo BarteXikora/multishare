@@ -3,7 +3,7 @@
  */
 
 import { sideMenuStateType } from './features/sideMenuSlice/sideMenuSlice'
-import { detailsSectionStateType } from './features/detailsSectionSlice/initialState.types'
+import { detailsSectionStateType } from './features/detailsSectionSlice/detailsSection.types'
 import { userStateType } from './features/userSlice/userSlice.types'
 import { contentStateType } from './features/contentSlice/contentSlice.types'
 import { previewStateType } from './features/previewSlice/initialState.types'

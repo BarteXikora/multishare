@@ -6,7 +6,7 @@
  */
 
 import { PayloadAction } from '@reduxjs/toolkit'
-import { detailsSectionStateType } from '../../initialState.types'
+import { detailsSectionStateType } from '../../detailsSection.types'
 
 const toggle = (state: detailsSectionStateType, action: PayloadAction<boolean | undefined>) => {
 

@@ -2,7 +2,7 @@
  * The initial state of the redux detailsSectionSlice
 */
 
-import { detailsSectionStateType } from './initialState.types'
+import { detailsSectionStateType } from './detailsSection.types'
 
 const initialState: detailsSectionStateType = {
     isShown: false,

@@ -9,7 +9,7 @@ import PreviewSection from '../../sections/previewSection/PreviewSection'
 import NameSection from '../../sections/nameSection/NameSection'
 import MultipleSelectionSection from '../../sections/multipleSelectionSection/MultipleSelectionSection'
 
-import { contentMultipleType } from '../../../../../store/features/detailsSectionSlice/initialState.types'
+import { contentMultipleType } from '../../../../../store/features/detailsSectionSlice/detailsSection.types'
 import imgMultiple from '../../../../../assets/images/img-multiple-selection.svg'
 
 const MultipleDetails = ({ content }: { content: contentMultipleType }) => {

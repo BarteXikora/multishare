@@ -6,7 +6,7 @@
  */
 
 import { PayloadAction } from '@reduxjs/toolkit'
-import { detailsSectionStateType, multipleDataType } from '../../initialState.types'
+import { detailsSectionStateType, multipleDataType } from '../../detailsSection.types'
 
 const setDetails = (state: detailsSectionStateType, action: PayloadAction<multipleDataType>) => {
 
