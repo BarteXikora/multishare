@@ -13,6 +13,7 @@ import getShortenName from '../../../functions/getShortenName/getShortenName'
 import InputButton from '../../ui/inputButton/InputButton'
 import { updateContent } from '../../../store/features/contentSlice/contentSlice'
 import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
+import { ELEMENT_NAME_LENGTH } from '../../../store/features/contentSlice/contentSlice.types'
 
 import { IconEdit } from '../../ui/icon/Icons'
 
@@ -41,13 +42,15 @@ const RenameWindow = () => {
     const dispatch = useDispatch()
 
     const content = useSelector(state => state.content.loadedContent)
+    const currentFolder = useSelector(state => state.content.currentFolder)
     const selected = useSelector(state => state.content.selected)
 
     const [isDataOk, setIsDataOk] = useState<boolean>(true)
     const [element, setElement] = useState<folderType | fileType | null>(null)
     const [elementType, setElementType] = useState<elementType>('FOLDER')
 
-    const [isNewNameOk, setIsNewNameOk] = useState<boolean>(true)
+    const [validation, setValidation] = useState<string | false>(false)
+    const [usedElementsNemes, setUsedElementsNames] = useState<string[]>([])
     const [newName, setNewName] = useState<string>(getCurrentElement(content, selected).element?.name || '')
 
     // Getting selected element on stored selected or content change: 
@@ -61,11 +64,36 @@ const RenameWindow = () => {
 
     }, [selected, content])
 
+    // Setting the list of taken names of a specific element type: 
+    useEffect(() => {
+        if (elementType === 'FOLDER') setUsedElementsNames(currentFolder.folders.map(f => f.name))
+        else setUsedElementsNames(currentFolder.files.map(f => f.name))
+
+    }, [elementType, currentFolder])
+
     // Validating the new name:
     useEffect(() => {
-        setIsNewNameOk(newName.length > 0 && newName.length <= 50)
+        let currentValidation: string | false = false
+        let newNameTrimmed = newName.trim()
 
-    }, [newName])
+        if (newNameTrimmed.length === 0)
+            currentValidation = 'Należy podać nazwę folderu.'
+
+        else if (newNameTrimmed.length < ELEMENT_NAME_LENGTH.MIN)
+            currentValidation = `Wybrana nazwa jest zbyt krótka (minimum ${ELEMENT_NAME_LENGTH.MIN} znaków).`
+
+        else if (newNameTrimmed.length > ELEMENT_NAME_LENGTH.MAX)
+            currentValidation = `Wybrana nazwa jest zbyt długa (maksymalnie ${ELEMENT_NAME_LENGTH.MAX} znaków).`
+
+        else if (newName === element?.name)
+            return setValidation(false)
+
+        else if (usedElementsNemes.includes(newNameTrimmed))
+            currentValidation = 'Wybrana nazwa jest już zajęta.'
+
+        setValidation(currentValidation)
+
+    }, [newName, usedElementsNemes, element])
 
     // Handling selected elements name changnig:
     const handleSubmit = (e: FormEvent) => {
@@ -74,7 +102,7 @@ const RenameWindow = () => {
         if (!element) return null
 
         let update: updateContentType = { folders: [], files: [] }
-        update[elementType === 'FOLDER' ? 'folders' : 'files'] = [{ id: element.id, name: newName }]
+        update[elementType === 'FOLDER' ? 'folders' : 'files'] = [{ id: element.id, name: newName.trim() }]
 
         dispatch(updateContent(update))
         dispatch(closeWindow())
@@ -94,7 +122,7 @@ const RenameWindow = () => {
                     <section>
                         <InputButton
                             buttonContent={<><IconEdit /> Zmień nazwę</>}
-                            buttonOptions={{ disabled: !isNewNameOk }}
+                            buttonOptions={{ disabled: !!validation }}
                             inputState={[newName, setNewName]}
                             onSubmit={e => handleSubmit(e)}
                             autoFocus
@@ -103,16 +131,7 @@ const RenameWindow = () => {
                     </section>
 
                     <section className="info-box">
-                        {
-                            !isNewNameOk && <span className='error'>
-                                {
-                                    newName.length < 1 ?
-                                        `Należy podać nazwę ${elementType === 'FOLDER' ? 'folderu' : 'pliku'}.`
-                                        :
-                                        'Nazwa nie może być dłuższa, niż 50 znaków.'
-                                }
-                            </span>
-                        }
+                        {validation && <span className='error'>{validation}</span>}
                     </section>
                 </>
 
