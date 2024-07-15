@@ -27,6 +27,7 @@ const useMouseMoveEvents = () => {
     const selected = useSelector(state => state.content.selected)
     const onMove = useSelector(state => state.content.onMove)
     const displayType = useSelector(state => state.content.displayType)
+    const filter = useSelector(state => state.content.filter)
 
     // Setting local state to manage mouse down status and start position:
     const [isMouseDown, setIsMouseDown] = useState<boolean>(false)
@@ -59,7 +60,7 @@ const useMouseMoveEvents = () => {
 
     // Checking if the mouse has moved a minimum distance:
     const handleCheckDistance = (newPosition: [number | null, number | null]) => {
-        if (displayType !== 'TREE') return
+        if (displayType !== 'TREE' || filter.star || filter.time || filter.type) return
 
         if (startMousePosition[0] === null || startMousePosition[1] === null) return
         if (newPosition[0] === null || newPosition[1] === null) return
