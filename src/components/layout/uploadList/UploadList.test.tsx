@@ -1,22 +1,29 @@
 import { render, screen, act, fireEvent, waitFor } from '../../../test-utils'
 import { store } from '../../../store/store'
 import { addFiles, changeStatus, removeFiles } from '../../../store/features/uploadListSlice/uploadListSlice'
+import { fileToBase64 } from '../../../functions/base64Converters/base64Conterters'
 
 import UploadList from './UploadList'
 import { uploadFileStatusType } from '../../../store/features/uploadListSlice/uploadListSlice.types'
 
 const status: uploadFileStatusType = 'WAITING'
 
-const _mockedUpladFiles = [
-    { uploadId: '0', name: 'FILEA', extension: 'PNG', parentFolder: -1, status, uploadPercent: 0, file: '' },
-    { uploadId: '1', name: 'FILEB', extension: 'PNG', parentFolder: -1, status, uploadPercent: 0, file: '' }
-]
+const getMockedUploadFiles = async () => {
+    const _file = await fileToBase64(new File([], '')) || ''
+
+    return [
+        { uploadId: '0', name: 'FILEA', extension: 'PNG', parentFolder: -1, status, uploadPercent: 0, file: _file },
+        { uploadId: '1', name: 'FILEB', extension: 'PNG', parentFolder: -1, status, uploadPercent: 0, file: _file }
+    ]
+}
 
 describe('Upload List', () => {
 
-    test('renders correctly', () => {
+    test('renders correctly', async () => {
+        const _mockedUploadFiles = await getMockedUploadFiles()
+
         act(() => {
-            store.dispatch(addFiles(_mockedUpladFiles))
+            store.dispatch(addFiles(_mockedUploadFiles))
         })
 
         render(<UploadList />)
@@ -29,8 +36,10 @@ describe('Upload List', () => {
     })
 
     test('collapses files list on bar click', async () => {
+        const _mockedUploadFiles = await getMockedUploadFiles()
+
         act(() => {
-            store.dispatch(addFiles(_mockedUpladFiles))
+            store.dispatch(addFiles(_mockedUploadFiles))
         })
 
         render(<UploadList />)
@@ -46,9 +55,11 @@ describe('Upload List', () => {
     })
 
     test('displays different bar when all done', async () => {
+        const _mockedUploadFiles = await getMockedUploadFiles()
+
         act(() => {
             store.dispatch(removeFiles(store.getState().uploadList.map(f => f.uploadId)))
-            store.dispatch(addFiles(_mockedUpladFiles))
+            store.dispatch(addFiles(_mockedUploadFiles))
         })
 
         render(<UploadList />)

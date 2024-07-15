@@ -12,6 +12,7 @@ import { closeWindow } from '../../../store/features/windowSlice/windowSlice'
 import getShortenName from '../../../functions/getShortenName/getShortenName'
 import { addFolder } from '../../../store/features/contentSlice/contentSlice'
 import { folderType } from '../../../store/features/contentSlice/contentSlice.types'
+import { ELEMENT_NAME_LENGTH } from '../../../store/features/contentSlice/contentSlice.types'
 
 import StyledNewFolderWindow from './NewFolderWindow.styles'
 import InputButton from '../../ui/inputButton/InputButton'
@@ -56,10 +57,19 @@ const NewFolderWindow = () => {
     // Validating current folder name. Function chcecks it length and if it is not taken:
     useEffect(() => {
         let currentValidation: string | false = false
+        let folderNameTrimmed = folderName.trim()
 
-        if (folderName.length === 0) currentValidation = 'Należy podać nazwę folderu.'
-        else if (folderName.length > 50) currentValidation = 'Wybrana nazwa jest zbyt długa.'
-        else if (usedFolderNames.includes(folderName)) currentValidation = 'Wybrana nazwa jest już zajęta.'
+        if (folderNameTrimmed.length === 0)
+            currentValidation = 'Należy podać nazwę folderu.'
+
+        else if (folderNameTrimmed.length < ELEMENT_NAME_LENGTH.MIN)
+            currentValidation = `Wybrana nazwa jest zbyt krótka (minimum ${ELEMENT_NAME_LENGTH.MIN} znaków).`
+
+        else if (folderNameTrimmed.length > ELEMENT_NAME_LENGTH.MAX)
+            currentValidation = `Wybrana nazwa jest zbyt długa (maksymalnie ${ELEMENT_NAME_LENGTH.MAX} znaków).`
+
+        else if (usedFolderNames.includes(folderNameTrimmed))
+            currentValidation = 'Wybrana nazwa jest już zajęta.'
 
         setValidation(currentValidation)
 
@@ -73,7 +83,7 @@ const NewFolderWindow = () => {
         const newFolder: folderType = {
             id: -2,
             parentFolder: path.length > 0 ? path[path.length - 1].id : -1,
-            name: folderName,
+            name: folderName.trim(),
             details: {},
             star: false
         }

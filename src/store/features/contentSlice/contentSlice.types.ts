@@ -4,6 +4,8 @@
 
 export type elementType = 'FOLDER' | 'FILE'
 
+export const ELEMENT_NAME_LENGTH = { MIN: 5, MAX: 50 }
+
 export type folderDetailsType = {
     createdDate?: string,
     lastModificationDate?: string,

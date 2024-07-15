@@ -73,7 +73,8 @@ const socketEventListeners = (next: any, dispatch: Dispatch) => {
         if (data.message) dispatch(setMessage(data.message))
 
         // Calling the next:
-        if (actonType !== null) next({ type: actonType, payload: getPayload ? getPayload(data.data) : data.data })
+        if (actonType !== null && data.success)
+            next({ type: actonType, payload: getPayload ? getPayload(data.data) : data.data })
     }
 
     // Creating events based on the events array:
